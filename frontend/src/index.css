@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-black text-white font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* ========== IMMERSIVE LUXURY EFFECTS ========== */
+
+  /* Luxury glass morphism */
+  .glass-luxury {
+    @apply bg-white/5 border border-white/10;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Luxury button with smooth transitions */
+  .btn-luxury {
+    @apply relative px-8 py-4 rounded-full font-semibold overflow-hidden;
+    @apply transition-all duration-500;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(90deg, #ff10f0 0%, #b026ff 50%, #00d4ff 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    @apply hover:scale-105 hover:shadow-2xl;
+  }
+
+  .btn-luxury::before {
+    content: "";
+    @apply absolute inset-0 bg-white/20 blur-xl opacity-0;
+    @apply transition-opacity duration-500;
+  }
+
+  .btn-luxury:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Premium card with hover lift */
+  .card-luxury {
+    @apply bg-zinc-900/80 rounded-2xl p-8;
+    @apply border border-white/5 transition-all duration-700;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    @apply hover:-translate-y-2 hover:shadow-2xl;
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(255, 16, 240, 0);
+  }
+
+  .card-luxury:hover {
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.6),
+      0 0 60px rgba(255, 16, 240, 0.3),
+      0 0 100px rgba(0, 212, 255, 0.2);
+  }
+
+  /* ========== GLOW EFFECTS ========== */
+
+  .text-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .text-glow-pink {
+    text-shadow:
+      0 0 10px rgba(255, 16, 240, 0.5),
+      0 0 20px rgba(255, 16, 240, 0.3),
+      0 0 30px rgba(255, 16, 240, 0.1);
+  }
+
+  .text-glow-green {
+    text-shadow:
+      0 0 10px rgba(57, 255, 20, 0.5),
+      0 0 20px rgba(57, 255, 20, 0.3),
+      0 0 30px rgba(57, 255, 20, 0.1);
+  }
+
+  .text-glow-cyan {
+    text-shadow:
+      0 0 10px rgba(0, 212, 255, 0.5),
+      0 0 20px rgba(0, 212, 255, 0.3),
+      0 0 30px rgba(0, 212, 255, 0.1);
+  }
+
+  /* ========== UV EFFECTS ========== */
+
+  .uv-light-bg {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 16, 240, 0.15) 0%,
+      rgba(0, 212, 255, 0.1) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  .uv-orb {
+    @apply absolute rounded-full blur-3xl opacity-30;
+    animation: pulseLuxury 3s ease-in-out infinite;
+    background: radial-gradient(
+      circle,
+      rgba(255, 16, 240, 0.6) 0%,
+      rgba(255, 16, 240, 0) 70%
+    );
+  }
+
+  /* ========== GRADIENT BUTTONS ========== */
+
+  .btn-gradient {
+    @apply relative overflow-hidden transition-all duration-500;
+    background: linear-gradient(90deg, #ff10f0 0%, #00d4ff 100%);
+  }
+
+  .btn-gradient::before {
+    content: "";
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(90deg, #00d4ff 0%, #ff10f0 100%);
+  }
+
+  .btn-gradient:hover::before {
+    @apply opacity-100;
+  }
+
+  /* ========== SHIMMER EFFECT ========== */
+
+  .shimmer-luxury {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer-luxury::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  /* ========== SMOOTH TRANSITIONS ========== */
+
+  .transition-luxury {
+    @apply transition-all duration-700;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-500;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    @apply hover:-translate-y-2 hover:scale-105;
+  }
+
+  /* ========== PARALLAX SCROLL ========== */
+
+  .parallax-slow {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-zinc-900;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-600;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      90deg,
+      #ff10f0 0%,
+      #00d4ff 50%,
+      #39ff14 100%
+    );
+  }
+
+  /* Floating animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* ========== CUSTOM KEYFRAMES ========== */
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Shimmer utility */
+.shimmer {
+  animation: shimmer 8s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 16, 240, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+/* Hardware acceleration for smooth animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html[data-test-mode="static"] * {
+  transition: none !important;
+  animation: none !important;
+}

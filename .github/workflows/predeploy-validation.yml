@@ -1,0 +1,89 @@
+name: Pre-Deploy Validation
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - production
+  pull_request:
+    branches:
+      - main
+      - staging
+      - production
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  validate:
+    name: Run Pre-Deploy Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Install Python dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Make predeploy script executable
+        run: chmod +x scripts/predeploy.sh
+
+      - name: Run Pre-Deploy Validation
+        id: validation
+        run: npm run predeploy:check
+        continue-on-error: true
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: predeploy-report
+          path: reports/predeploy_*.txt
+          retention-days: 30
+
+      - name: Check validation result
+        if: steps.validation.outcome == 'failure'
+        run: |
+          echo "❌ Pre-deploy validation failed!"
+          echo "Review the validation report in the artifacts."
+          exit 1
+
+      - name: Validation success
+        if: steps.validation.outcome == 'success'
+        run: |
+          echo "✅ Pre-deploy validation passed!"
+          echo "Deployment can proceed safely."
+
+  # Optional: Block deployment if validation fails
+  deployment-gate:
+    name: Deployment Gate
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/production'
+
+    steps:
+      - name: Check validation status
+        run: |
+          echo "All validation checks passed."
+          echo "Deployment is approved."

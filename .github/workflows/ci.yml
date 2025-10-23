@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop, '**/fix/**' ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install root deps
+        run: npm ci
+
+      - name: Install backend deps
+        run: npm --prefix backend ci
+
+      - name: Install frontend deps
+        run: npm --prefix frontend ci
+
+      - name: Prepare env files
+        run: |
+          cp backend/.env.example backend/.env
+          cp frontend/.env.example frontend/.env
+
+      - name: Lint & typecheck & build frontend
+        run: |
+          npm --prefix frontend run lint
+          npm --prefix frontend run typecheck
+          npm --prefix frontend run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: E2E_BASE_URL=http://localhost:4173 npm run e2e
+        env:
+          CI: true
+
+      - name: Generate E2E summary
+        if: always()
+        run: npm run e2e:report
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
