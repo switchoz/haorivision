@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import helmet from "helmet";
 
-const CONFIG_PATH = path.join(process.cwd(), "configs", "csp.json");
+const CONFIG_PATH = path.join(process.cwd(), "backend", "configs", "csp.json");
 
 export default function cspSafe() {
   let cfg = {
