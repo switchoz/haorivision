@@ -7,3 +7,9 @@ dist/
 *.log
 coverage/
 AUDIT/
+
+# CI/Testing artifacts
+ci-summary.md
+playwright-report/
+test-results/
+visual-pages/
