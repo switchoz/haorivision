@@ -40,8 +40,7 @@ const TwinArtworkViewer = ({ collection }) => {
             alt={`${collection.name} Daylight`}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src =
-                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&h=675&fit=crop";
+              e.target.src = "/artist/page5_img1.jpeg";
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -64,8 +63,7 @@ const TwinArtworkViewer = ({ collection }) => {
             alt={`${collection.name} UV`}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src =
-                "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=1200&h=675&fit=crop";
+              e.target.src = "/artist/haori-dark-uv.jpg";
             }}
           />
 

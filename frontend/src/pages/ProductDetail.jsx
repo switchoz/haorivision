@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
-import productsData from "../data/demo-products-ru.json";
 import ARPreview from "../components/premium/ARPreview";
 import ProductCTA from "../components/ProductCTA";
 import ARButton from "../components/ARButton";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -19,10 +20,25 @@ const ProductDetail = () => {
   const [expandedIncludedItem, setExpandedIncludedItem] = useState(null);
 
   useEffect(() => {
-    const foundProduct = productsData.products.find((p) => p.id === productId);
-    if (foundProduct) {
-      setProduct(foundProduct);
-    }
+    fetch(`${API_URL}/api/products/${productId}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.product) {
+          // Map API fields to component expectations
+          const p = data.product;
+          setProduct({
+            ...p,
+            collection: p.productCollection || p.collection,
+            description: {
+              short: p.description?.short,
+              full: p.description?.long || p.description?.full,
+              story: p.description?.story,
+              ...p.description,
+            },
+          });
+        }
+      })
+      .catch(() => {});
   }, [productId]);
 
   if (!product) {

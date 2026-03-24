@@ -96,18 +96,20 @@ const HikariChat = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className={`fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center ${
+            className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 ${
               isUVMode
-                ? "bg-gradient-to-br from-uv-pink to-uv-purple text-white"
-                : "bg-gradient-to-br from-zinc-800 to-black text-white"
+                ? "bg-gradient-to-br from-purple-700 to-pink-600 text-white"
+                : "bg-gradient-to-br from-zinc-800 to-zinc-900 text-white border border-zinc-700"
             }`}
             style={{
               boxShadow: isUVMode
-                ? "0 0 30px rgba(255, 16, 240, 0.5), 0 0 60px rgba(176, 38, 255, 0.3)"
-                : "0 10px 40px rgba(0, 0, 0, 0.5)",
+                ? "0 0 25px rgba(139, 0, 255, 0.5), 0 0 50px rgba(255, 0, 180, 0.2)"
+                : "0 8px 30px rgba(0, 0, 0, 0.5)",
             }}
           >
-            <span className="text-3xl">🌟</span>
+            <span className="text-2xl" style={{ fontFamily: "serif" }}>
+              光
+            </span>
           </motion.button>
         )}
       </AnimatePresence>
@@ -139,8 +141,11 @@ const HikariChat = () => {
               }`}
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-uv-pink to-uv-purple flex items-center justify-center text-xl">
-                  🌟
+                <div
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-700 to-pink-600 flex items-center justify-center text-lg"
+                  style={{ fontFamily: "serif" }}
+                >
+                  光
                 </div>
                 <div>
                   <h3

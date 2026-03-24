@@ -1,23 +1,24 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { useCart } from "../contexts/CartContext";
-import { useState, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import productsData from "../data/gallery-products.json";
 import toast from "react-hot-toast";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
 
 const CATEGORIES = [
   { key: "all", label: "Все товары" },
-  { key: "haori", label: "Хаори", match: "real-haori" },
-  { key: "jackets", label: "Куртки", match: "real-jackets" },
-  { key: "jeans", label: "Джинсы", match: "real-jeans" },
-  { key: "robes", label: "Халаты", match: "real-robes" },
-  { key: "hoodies", label: "Худи", match: "real-hoodies" },
-  { key: "sneakers", label: "Кроссовки", match: "real-sneakers" },
-  { key: "scarves", label: "Шарфы", match: "real-scarves" },
-  { key: "bags", label: "Сумки", match: "real-bags" },
-  { key: "caps", label: "Кепки", match: "real-caps" },
-  { key: "belts", label: "Ремни", match: "real-belts" },
+  { key: "haori", label: "Хаори" },
+  { key: "jackets", label: "Куртки" },
+  { key: "jeans", label: "Джинсы" },
+  { key: "robes", label: "Халаты" },
+  { key: "hoodies", label: "Худи" },
+  { key: "sneakers", label: "Кроссовки" },
+  { key: "scarves", label: "Шарфы" },
+  { key: "bags", label: "Сумки" },
+  { key: "caps", label: "Кепки" },
+  { key: "belts", label: "Ремни" },
 ];
 
 const SORT_OPTIONS = [
@@ -33,48 +34,72 @@ const Shop = () => {
   const [category, setCategory] = useState("all");
   const [sort, setSort] = useState("default");
   const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [categoryCounts, setCategoryCounts] = useState({});
 
-  const products = productsData.products;
-
-  const filtered = useMemo(() => {
-    let result = products;
-
-    // Category filter
-    if (category !== "all") {
-      const cat = CATEGORIES.find((c) => c.key === category);
-      if (cat?.match) {
-        result = result.filter((p) => p.id.startsWith(cat.match));
+  // Fetch category counts on mount
+  useEffect(() => {
+    async function fetchCounts() {
+      try {
+        const res = await fetch(`${API_URL}/api/products?limit=100`);
+        const data = await res.json();
+        const counts = { all: data.pagination.total };
+        data.products.forEach((p) => {
+          const cat = p.category || "other";
+          counts[cat] = (counts[cat] || 0) + 1;
+        });
+        setCategoryCounts(counts);
+      } catch {
+        // Fallback: counts will be empty
       }
     }
+    fetchCounts();
+  }, []);
 
-    // Search filter
-    if (search.trim()) {
-      const q = search.toLowerCase();
-      result = result.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.collection.toLowerCase().includes(q) ||
-          (p.tagline && p.tagline.toLowerCase().includes(q)),
-      );
+  // Fetch products when filters change
+  const fetchProducts = useCallback(async () => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams({ limit: "100" });
+      if (category !== "all") params.set("category", category);
+      if (search.trim()) params.set("search", search.trim());
+
+      const res = await fetch(`${API_URL}/api/products?${params}`);
+      const data = await res.json();
+
+      let items = data.products || [];
+
+      // Client-side sort (API sorts by createdAt desc by default)
+      switch (sort) {
+        case "price-asc":
+          items = [...items].sort((a, b) => a.price - b.price);
+          break;
+        case "price-desc":
+          items = [...items].sort((a, b) => b.price - a.price);
+          break;
+        case "name":
+          items = [...items].sort((a, b) => a.name.localeCompare(b.name, "ru"));
+          break;
+        default:
+          break;
+      }
+
+      setProducts(items);
+      setTotal(items.length);
+    } catch {
+      setProducts([]);
+      setTotal(0);
+    } finally {
+      setLoading(false);
     }
+  }, [category, sort, search]);
 
-    // Sort
-    switch (sort) {
-      case "price-asc":
-        result = [...result].sort((a, b) => a.price - b.price);
-        break;
-      case "price-desc":
-        result = [...result].sort((a, b) => b.price - a.price);
-        break;
-      case "name":
-        result = [...result].sort((a, b) => a.name.localeCompare(b.name, "ru"));
-        break;
-      default:
-        break;
-    }
-
-    return result;
-  }, [products, category, sort, search]);
+  useEffect(() => {
+    const debounce = setTimeout(fetchProducts, search ? 300 : 0);
+    return () => clearTimeout(debounce);
+  }, [fetchProducts, search]);
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
@@ -85,18 +110,10 @@ const Shop = () => {
       price: product.price,
       currency: product.currency || "USD",
       image: product.images?.daylight?.hero,
-      collection: product.collection,
+      collection: product.productCollection,
       editions: product.editions,
     });
     toast.success(`${product.name} добавлено в корзину`);
-  };
-
-  const categoryCount = (key) => {
-    if (key === "all") return products.length;
-    const cat = CATEGORIES.find((c) => c.key === key);
-    return cat?.match
-      ? products.filter((p) => p.id.startsWith(cat.match)).length
-      : 0;
   };
 
   return (
@@ -149,9 +166,11 @@ const Shop = () => {
               }`}
             >
               {cat.label}
-              <span className="ml-1 text-xs opacity-60">
-                ({categoryCount(cat.key)})
-              </span>
+              {categoryCounts[cat.key] !== undefined && (
+                <span className="ml-1 text-xs opacity-60">
+                  ({categoryCounts[cat.key]})
+                </span>
+              )}
             </motion.button>
           ))}
         </div>
@@ -159,12 +178,7 @@ const Shop = () => {
         {/* Sort + Count */}
         <div className="flex items-center justify-between mb-8">
           <p className="text-zinc-500 text-sm">
-            {filtered.length}{" "}
-            {filtered.length === 1
-              ? "товар"
-              : filtered.length < 5
-                ? "товара"
-                : "товаров"}
+            {total} {total === 1 ? "товар" : total < 5 ? "товара" : "товаров"}
           </p>
           <select
             value={sort}
@@ -181,7 +195,11 @@ const Shop = () => {
 
         {/* Products Grid */}
         <AnimatePresence mode="popLayout">
-          {filtered.length === 0 ? (
+          {loading ? (
+            <div className="text-center py-20">
+              <div className="inline-block w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : products.length === 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -200,7 +218,7 @@ const Shop = () => {
             </motion.div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-              {filtered.map((product, i) => (
+              {products.map((product, i) => (
                 <motion.div
                   key={product.id}
                   layout
@@ -264,7 +282,7 @@ const Shop = () => {
                       {/* Product Info */}
                       <div className="p-4">
                         <p className="text-zinc-500 text-xs mb-1 truncate">
-                          {product.collection}
+                          {product.productCollection}
                         </p>
                         <h3 className="text-white font-semibold text-sm mb-2 truncate">
                           {product.name}

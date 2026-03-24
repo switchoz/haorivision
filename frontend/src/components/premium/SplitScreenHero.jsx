@@ -65,8 +65,7 @@ const SplitScreenHero = () => {
               animate={isHovering ? { scale: 1.05 } : { scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               style={{
-                backgroundImage:
-                  "url(https://images.unsplash.com/photo-1558769132-cb1aea672c70?w=800&h=1200&fit=crop)",
+                backgroundImage: "url(/artist/haori-presentation.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -142,8 +141,7 @@ const SplitScreenHero = () => {
               animate={isHovering ? { scale: 1.05 } : { scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               style={{
-                backgroundImage:
-                  "url(https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=800&h=1200&fit=crop)",
+                backgroundImage: "url(/artist/haori-dark-uv.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 opacity: isUVMode ? 0.5 : 0.2,

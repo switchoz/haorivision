@@ -49,6 +49,7 @@ import orderRoutes from "./routes/orders.js";
 import contactRoutes from "./routes/contact.js";
 import chatRoutes from "./routes/chat.js";
 import haori3dRoutes from "./routes/haori3d.js";
+import eventsRoutes from "./routes/events.js";
 import {
   edgeCacheMiddleware,
   edgeCacheAgeMiddleware,
@@ -197,6 +198,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/haori-3d", haori3dRoutes);
+app.use("/api/events", eventsRoutes);
 app.use("/", sitemapRoutes); // Sitemap routes (no /api prefix)
 
 // Admin routes

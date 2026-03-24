@@ -12,7 +12,6 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
-    { path: "/", label: "Главная" },
     { path: "/shop", label: "Магазин", testid: "nav-shop" },
     { path: "/collections", label: "Коллекции" },
     { path: "/gallery", label: "Галерея" },
@@ -42,7 +41,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {links.map((link) => (
               <Link
                 key={link.path}

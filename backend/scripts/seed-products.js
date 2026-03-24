@@ -1,5 +1,5 @@
 /**
- * Seed products into MongoDB from demo-products-ru.json
+ * Seed products into MongoDB from gallery-products.json
  * Usage: node backend/scripts/seed-products.js
  */
 
@@ -19,7 +19,13 @@ const MONGO_URI =
   process.env.MONGO_URI ||
   "mongodb://localhost:27017/haorivision";
 
-// Map demo status to model enum
+// Extract category from product ID: "real-haori-001" → "haori"
+function extractCategory(id) {
+  const match = id.match(/^real-(\w+)-\d+$/);
+  return match ? match[1] : "other";
+}
+
+// Map status to model enum
 function mapStatus(status, remaining) {
   if (remaining === 0) return "sold-out";
   if (status === "upcoming") return "coming-soon";
@@ -32,18 +38,18 @@ async function seed() {
   await mongoose.connect(MONGO_URI);
   console.log("Connected.");
 
-  const demoPath = path.join(
+  const galleryPath = path.join(
     __dirname,
     "..",
     "..",
     "frontend",
     "src",
     "data",
-    "demo-products-ru.json",
+    "gallery-products.json",
   );
-  const demo = JSON.parse(readFileSync(demoPath, "utf-8"));
+  const data = JSON.parse(readFileSync(galleryPath, "utf-8"));
 
-  const products = demo.products.map((p) => {
+  const products = data.products.map((p) => {
     const specs = p.specifications || {};
     const haoriSpec = specs.haori || {};
     const canvasSpec = specs.canvas || {};
@@ -52,6 +58,7 @@ async function seed() {
       id: p.id,
       name: p.name,
       productCollection: p.collection,
+      category: extractCategory(p.id),
       tagline: p.tagline,
       description: {
         short: p.description?.short,
@@ -62,9 +69,9 @@ async function seed() {
       currency: p.currency || "USD",
       images: p.images,
       editions: {
-        total: p.editions.total,
-        remaining: p.editions.remaining,
-        sold: p.editions.total - p.editions.remaining,
+        total: p.editions?.total || 1,
+        remaining: p.editions?.remaining ?? 1,
+        sold: (p.editions?.total || 1) - (p.editions?.remaining ?? 1),
       },
       uvColors: p.uvColors || [],
       techniques: [haoriSpec.technique, canvasSpec.technique].filter(Boolean),
@@ -77,7 +84,7 @@ async function seed() {
           }
         : undefined,
       weight: haoriSpec.weight,
-      status: mapStatus(p.status, p.editions.remaining),
+      status: mapStatus(p.status, p.editions?.remaining ?? 1),
       featured: p.featured || false,
       artist: {
         name: "Елизавета Федькина (LiZa)",
@@ -91,14 +98,22 @@ async function seed() {
   const deleted = await Product.deleteMany({});
   console.log(`Deleted ${deleted.deletedCount} existing products.`);
 
-  // Insert new
+  // Insert all at once for speed
   for (const p of products) {
     const doc = new Product(p);
-    await doc.save(); // triggers pre-save hook for status
-    console.log(`  + ${doc.id} — ${doc.name} [${doc.status}]`);
+    await doc.save();
   }
 
-  console.log(`\nSeeded ${products.length} products.`);
+  // Summary by category
+  const cats = {};
+  products.forEach((p) => {
+    cats[p.category] = (cats[p.category] || 0) + 1;
+  });
+  console.log(`\nSeeded ${products.length} products:`);
+  Object.entries(cats)
+    .sort((a, b) => b[1] - a[1])
+    .forEach(([cat, count]) => console.log(`  ${cat}: ${count}`));
+
   await mongoose.disconnect();
 }
 

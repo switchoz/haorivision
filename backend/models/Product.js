@@ -76,6 +76,10 @@ const productSchema = new mongoose.Schema(
       sleeves: String,
     },
     weight: String,
+    category: {
+      type: String,
+      index: true,
+    },
     status: {
       type: String,
       enum: ["coming-soon", "available", "low-stock", "sold-out", "archived"],

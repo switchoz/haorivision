@@ -26,41 +26,48 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        {/* Main Video Section */}
+        {/* Hero Image — UV Before/After */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-24"
         >
-          <div className="relative aspect-video rounded-lg overflow-hidden bg-zinc-900 mb-8">
-            {/* Video Placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div
-                  className={`w-20 h-20 mx-auto mb-4 rounded-full border-4 ${
-                    isUVMode ? "border-uv-pink" : "border-white"
-                  } border-t-transparent animate-spin`}
-                />
-                <p className="text-zinc-400">Видео процесса скоро</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+              <img
+                src="/artist/haori-presentation.jpg"
+                alt="Хаори при дневном свете"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-4 left-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded text-sm text-zinc-300">
+                Дневной свет
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+              <img
+                src="/artist/haori-dark-uv.jpg"
+                alt="Хаори под UV-светом"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-4 left-4 px-3 py-1 bg-purple-900/60 backdrop-blur-sm rounded text-sm text-purple-300">
+                UV-свет
               </div>
             </div>
           </div>
 
           <div className="text-center">
             <h2
-              className={`text-3xl font-display font-bold mb-4 ${
-                isUVMode ? "text-uv-cyan" : "text-white"
+              className={`text-3xl font-bold mb-4 ${
+                isUVMode ? "text-cyan-400" : "text-white"
               }`}
             >
               От Холста к Хаори: Путешествие Света
             </h2>
             <p className="text-zinc-400 leading-relaxed max-w-3xl mx-auto">
-              Каждая работа HAORI VISION начинается в студии, где традиционное
-              японское мастерство встречается с современным флуоресцентным
-              искусством. Наблюдайте, как УФ-реактивные пигменты тщательно
-              наносятся вручную, создавая узоры, которые остаются скрытыми при
-              дневном свете, но взрываются яркими красками под ультрафиолетовым
-              светом.
+              Каждая работа HAORI VISION рождается в мастерской художника, где
+              интуитивная живопись встречается с UV-технологией. Флуоресцентные
+              пигменты наносятся вручную, создавая узоры, скрытые при дневном
+              свете, но раскрывающиеся под ультрафиолетом.
             </p>
           </div>
         </motion.div>
@@ -129,24 +136,25 @@ const Experience = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
+            {[
+              "/artist/page2_img1.jpeg",
+              "/artist/page4_img1.jpeg",
+              "/artist/page6_img1.jpeg",
+              "/artist/page8_img2.jpeg",
+              "/artist/page12_img2.jpeg",
+              "/artist/page20_img1.jpeg",
+            ].map((src, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="aspect-square rounded-lg bg-zinc-900 overflow-hidden cursor-pointer"
+                className="aspect-square rounded-lg overflow-hidden cursor-pointer"
               >
-                <div className="w-full h-full flex items-center justify-center relative">
-                  <div
-                    className={`absolute inset-0 opacity-20 ${
-                      isUVMode
-                        ? "bg-gradient-to-br from-uv-pink to-uv-cyan"
-                        : "bg-zinc-800"
-                    }`}
-                  />
-                  <span className="text-zinc-600 text-sm relative z-10">
-                    Фото Студии {i + 1}
-                  </span>
-                </div>
+                <img
+                  src={src}
+                  alt={`Мастерская ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </motion.div>
             ))}
           </div>
@@ -228,13 +236,17 @@ const Experience = () => {
           >
             Стань владельцем произведения светового искусства
           </h2>
-          <Link to="/collections">
+          <Link to="/shop">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-gradient px-12 py-5 rounded-full text-white text-lg font-semibold"
+              className={`px-12 py-5 text-lg font-semibold transition-all ${
+                isUVMode
+                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                  : "bg-white text-black"
+              }`}
             >
-              Исследовать Коллекции
+              Смотреть коллекции
             </motion.button>
           </Link>
         </motion.div>

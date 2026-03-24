@@ -61,7 +61,19 @@ function App() {
         <Toaster position="top-right" />
         <Router>
           <Suspense
-            fallback={<div className="p-8 text-neutral-400">Loading…</div>}
+            fallback={
+              <div className="min-h-screen bg-black flex items-center justify-center">
+                <div className="text-center">
+                  <div
+                    className="text-4xl mb-4"
+                    style={{ fontFamily: "serif" }}
+                  >
+                    光
+                  </div>
+                  <div className="w-8 h-8 border-2 border-zinc-600 border-t-white rounded-full animate-spin mx-auto"></div>
+                </div>
+              </div>
+            }
           >
             <Routes>
               <Route path="/" element={<Layout />}>
