@@ -291,6 +291,13 @@ export default function HaoriVisionPresentation() {
         .work-card:hover{transform:translateY(-4px)!important;border-color:rgba(${accent},.5)!important;box-shadow:0 8px 32px rgba(${accent},.15)!important}
         .nav-btn:hover{color:rgba(${accent},1)!important}
         ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+        @media(max-width:768px){
+          .pres-grid-2{grid-template-columns:1fr!important}
+          .pres-grid-3{grid-template-columns:1fr!important}
+          .pres-grid-4{grid-template-columns:repeat(2,1fr)!important}
+          .pres-content{padding:0 24px!important}
+          .pres-stats{gap:24px!important}
+        }
       `}</style>
 
       {/* UV Toggle */}
@@ -616,7 +623,7 @@ export default function HaoriVisionPresentation() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "0 80px",
+          padding: "0 clamp(16px, 5vw, 80px)",
         }}
       >
         {/* 0: Hero */}
@@ -1113,6 +1120,7 @@ export default function HaoriVisionPresentation() {
               </div>
             </div>
             <div
+              className="pres-grid-4"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(4,1fr)",
@@ -1291,6 +1299,7 @@ export default function HaoriVisionPresentation() {
               Как рождается хаори
             </h2>
             <div
+              className="pres-grid-3"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3,1fr)",

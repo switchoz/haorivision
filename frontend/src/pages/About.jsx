@@ -1,3 +1,4 @@
+import PageMeta from "../components/PageMeta";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
@@ -59,6 +60,10 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+      <PageMeta
+        title="О нас"
+        description="HAORI VISION — бренд носимого светового искусства. Художник Елизавета Федькина (LiZa). Интуитивная живопись, UV-арт."
+      />
       {/* ═══════════════════════════════════════════
           HERO — Full-bleed cinematic header
           ═══════════════════════════════════════════ */}

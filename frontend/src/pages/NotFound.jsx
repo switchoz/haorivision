@@ -46,15 +46,21 @@ const NotFound = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mb-12"
         >
+          <div
+            className={`text-5xl mb-4 ${isUVMode ? "text-purple-400" : "text-zinc-700"}`}
+            style={{ fontFamily: "serif" }}
+          >
+            光
+          </div>
           <h1
-            className={`text-6xl md:text-8xl font-bold tracking-wider mb-4 transition-colors ${
+            className={`text-5xl md:text-7xl font-bold tracking-wider mb-4 transition-colors ${
               isUVMode ? "text-purple-400" : "text-white"
             }`}
           >
             HAORI VISION
           </h1>
-          <div className="text-zinc-500 text-lg tracking-widest">
-            UV-REACTIVE FASHION
+          <div className="text-zinc-500 text-sm tracking-widest uppercase">
+            Wearable Light Art
           </div>
         </motion.div>
 

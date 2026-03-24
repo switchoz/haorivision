@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+
 const HikariChat = () => {
   const { isUVMode } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +38,7 @@ const HikariChat = () => {
         .slice(1) // пропускаем приветствие
         .map((m) => ({ role: m.role, content: m.content }));
 
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage, history }),
@@ -121,7 +123,7 @@ const HikariChat = () => {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-50 w-96 h-[600px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-96 h-full sm:h-[600px] sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col"
             style={{
               background: isUVMode
                 ? "linear-gradient(135deg, rgba(255, 16, 240, 0.1) 0%, rgba(0, 0, 0, 0.95) 100%)"

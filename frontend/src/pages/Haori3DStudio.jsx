@@ -8,6 +8,8 @@ import { useTheme } from "../contexts/ThemeContext";
 
 const HaoriViewer = lazy(() => import("../components/HaoriModelViewer.jsx"));
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+
 const SLOTS = [
   { key: "front", label: "Перёд", desc: "Фото хаори спереди", required: true },
   { key: "back", label: "Спина", desc: "Фото хаори сзади", required: false },
@@ -46,7 +48,7 @@ export default function Haori3DStudio() {
 
   // Load saved items on mount
   useEffect(() => {
-    fetch("/api/haori-3d")
+    fetch(`${API_URL}/api/haori-3d`)
       .then((r) => r.json())
       .then((data) => {
         if (data.items) setSavedItems(data.items);
@@ -105,7 +107,7 @@ export default function Haori3DStudio() {
         formData.append(key, file);
       }
 
-      const res = await fetch(`/api/haori-3d/${itemId}/upload`, {
+      const res = await fetch(`${API_URL}/api/haori-3d/${itemId}/upload`, {
         method: "POST",
         body: formData,
       });

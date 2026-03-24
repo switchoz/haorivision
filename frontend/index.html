@@ -47,178 +47,56 @@
     <meta http-equiv="cleartype" content="on" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="apple-touch-icon" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <!-- DNS Prefetch for External Resources -->
-    <link rel="dns-prefetch" href="//localhost:3010" />
+    <title>HAORI VISION — Wearable Light Art | Носимое световое искусство</title>
 
-    <!-- Preconnect to Backend API -->
-    <link rel="preconnect" href="http://localhost:3010" crossorigin />
-
-    <title>HAORI VISION — Wearable Light Art</title>
-
-    <!-- Защита от конфликтов криптокошельков -->
-    <script>
-      // Блокируем множественную инициализацию TronWeb
-      (function() {
-        // Перехватываем console ПЕРЕД загрузкой скриптов расширений
-        const originalConsoleWarn = console.warn;
-        const originalConsoleError = console.error;
-        const originalConsoleLog = console.log;
-
-        console.warn = function(...args) {
-          const msg = String(args[0] || '');
-
-          // Игнорируем расширения криптокошельков
-          if (msg.includes('TronWeb') ||
-              msg.includes('TronLink') ||
-              msg.includes('already initiated') ||
-              msg.includes('Backpack') ||
-              msg.includes("couldn't override")) {
-            return;
-          }
-
-          // Игнорируем Stripe dev warnings
-          if (msg.includes('Stripe.js integration over HTTP') ||
-              msg.includes('live Stripe.js integrations must use HTTPS')) {
-            return;
-          }
-
-          // Игнорируем AudioContext warnings (нормальное поведение браузера)
-          if (msg.includes('AudioContext') ||
-              msg.includes('user gesture') ||
-              msg.includes('autoplay')) {
-            return;
-          }
-
-          originalConsoleWarn.apply(console, args);
-        };
-
-        console.error = function(...args) {
-          const msg = String(args[0] || '');
-          const str = JSON.stringify(args);
-
-          // Игнорируем ошибки расширений криптокошельков
-          if (msg.includes('TronWeb') ||
-              msg.includes('bybit:page provider') ||
-              msg.includes('Namada') ||
-              msg.includes('message port closed') ||
-              msg.includes('Backpack') ||
-              msg.includes("couldn't override") ||
-              msg.includes('window.ethereum')) {
-            return;
-          }
-
-          // Игнорируем Stripe origin errors от расширений
-          if (msg.includes("origins don't match") ||
-              msg.includes('stripe.com') ||
-              msg.includes('stripe.network') ||
-              msg.includes('Failed to load Stripe') ||
-              msg.includes('ERR_NETWORK_CHANGED')) {
-            return;
-          }
-
-          // Игнорируем React DevTools errors
-          if (msg.includes('Invalid argument not valid semver') ||
-              msg.includes('react_devtools') ||
-              str.includes('react_devtools')) {
-            return;
-          }
-
-          // Игнорируем JSX attribute warnings
-          if (msg.includes('non-boolean attribute') ||
-              msg.includes('Received `true` for a non-boolean')) {
-            return;
-          }
-
-          originalConsoleError.apply(console, args);
-        };
-
-        console.log = function(...args) {
-          const msg = String(args[0] || '');
-
-          // Игнорируем логи расширений
-          if (msg.includes('bybit:page provider') ||
-              msg.includes('Listening on port') ||
-              msg.includes('[INFO]')) {
-            return;
-          }
-
-          // Игнорируем Tone.js startup messages
-          if (msg.includes('Tone.js v') ||
-              msg.includes('* Tone.js')) {
-            return;
-          }
-
-          originalConsoleLog.apply(console, args);
-        };
-
-        // Защищаем window от переопределения (только getters/setters)
-        try {
-          Object.defineProperty(window, 'tronWeb', {
-            configurable: false,
-            set: function(value) {
-              if (!this._tronWebSet) {
-                this._tronWebValue = value;
-                this._tronWebSet = true;
-              }
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "HAORI VISION",
+      "description": "Носимое световое искусство. Хаори с ручной росписью UV-реактивными красками. Каждое изделие уникально.",
+      "url": "https://haorivision.com",
+      "logo": "https://haorivision.com/favicon.svg",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressCountry": "RU"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Елизавета Федькина",
+        "alternateName": "LiZa",
+        "jobTitle": "Художник",
+        "sameAs": ["https://instagram.com/DIKO.RATIVNO"]
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "HAORI VISION",
+        "slogan": "Wearable Light Art"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Коллекции HAORI VISION",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Bespoke Haori",
+              "description": "Индивидуальный заказ хаори с ручной росписью UV-красками"
             },
-            get: function() {
-              return this._tronWebValue;
-            }
-          });
-        } catch (e) {
-          // Уже определено, игнорируем
-        }
-
-        // Предотвращаем переопределение ethereum
-        try {
-          Object.defineProperty(window, 'ethereum', {
-            configurable: false,
-            set: function(value) {
-              if (!this._ethereumSet) {
-                this._ethereumValue = value;
-                this._ethereumSet = true;
-              }
-            },
-            get: function() {
-              return this._ethereumValue;
-            }
-          });
-        } catch (e) {
-          // Уже определено, игнорируем
-        }
-      })();
-    </script>
-    
-    <!-- Feature Detection & Polyfills -->
-    <script>
-      // Detect critical features
-      (function() {
-        const features = {
-          webgl: !!document.createElement('canvas').getContext('webgl'),
-          webgl2: !!document.createElement('canvas').getContext('webgl2'),
-          webp: false,
-          avif: false
-        };
-        
-        // Test WebP support
-        const webpTest = new Image();
-        webpTest.onload = webpTest.onerror = function() {
-          features.webp = (webpTest.height === 1);
-        };
-        webpTest.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
-        
-        // Test AVIF support
-        const avifTest = new Image();
-        avifTest.onload = avifTest.onerror = function() {
-          features.avif = (avifTest.height === 1);
-        };
-        avifTest.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=';
-        
-        window.__HAORI_FEATURES__ = features;
-      })();
+            "priceCurrency": "EUR",
+            "price": "3000",
+            "priceValidUntil": "2027-12-31"
+          }
+        ]
+      }
+    }
     </script>
   </head>
   <body>

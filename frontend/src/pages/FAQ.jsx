@@ -1,3 +1,4 @@
+import PageMeta from "../components/PageMeta";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { useState } from "react";
@@ -157,6 +158,10 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen py-24 px-4">
+      <PageMeta
+        title="FAQ"
+        description="Часто задаваемые вопросы о HAORI VISION. Доставка, уход за хаори, bespoke-заказы, UV-краски."
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div

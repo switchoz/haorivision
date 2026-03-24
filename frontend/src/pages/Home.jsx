@@ -43,6 +43,7 @@ const Home = () => {
     <div className="relative min-h-screen overflow-hidden">
       <UVParticles isActive={isUVMode} />
 
+      <PageMeta description="HAORI VISION — носимое световое искусство. Хаори с ручной росписью UV-красками. Каждое изделие уникально. Bespoke от €3,000." />
       {/* ===== HERO ===== */}
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0">

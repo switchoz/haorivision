@@ -1,7 +1,10 @@
+import PageMeta from "../components/PageMeta";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
 
 const Contact = () => {
   const { isUVMode } = useTheme();
@@ -22,7 +25,7 @@ const Contact = () => {
     setError("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -79,6 +82,10 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen py-24 px-4">
+      <PageMeta
+        title="Контакты"
+        description="Свяжитесь с HAORI VISION. Заказ хаори, bespoke-комиссии, сотрудничество. Москва."
+      />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

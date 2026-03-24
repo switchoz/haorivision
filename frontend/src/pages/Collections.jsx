@@ -1,3 +1,4 @@
+import PageMeta from "../components/PageMeta";
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
@@ -51,6 +52,10 @@ const Collections = () => {
 
   return (
     <div className="min-h-screen py-24 px-4">
+      <PageMeta
+        title="Коллекции"
+        description="Коллекции HAORI VISION — UV-арт хаори с 3D-визуализацией. Лимитированные серии ручной работы."
+      />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

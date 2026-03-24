@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+
 /**
  * Bespoke Commission Page - "Создать свой свет"
  */
@@ -48,7 +50,7 @@ export default function BespokeCommissionPage() {
         localStorage.getItem("hv_customer_id") || "demo_customer";
 
       // Submit commission
-      const response = await fetch("/api/bespoke/create", {
+      const response = await fetch(`${API_URL}/api/bespoke/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

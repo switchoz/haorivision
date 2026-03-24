@@ -15,14 +15,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/twin-001-mycelium-daylight-hero.svg",
-          "haori": "/images/products/twin-001-mycelium-daylight-haori.svg",
-          "canvas": "/images/products/twin-001-mycelium-daylight-canvas.svg"
+          "hero": "/artist/page3_img1.jpeg",
+          "haori": "/artist/page3_img1.jpeg",
+          "canvas": "/artist/page3_img1.jpeg",
+          "detail1": "/artist/page3_img1.jpeg",
+          "detail2": "/artist/page3_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/twin-001-mycelium-uv-hero.svg",
-          "haori": "/images/products/twin-001-mycelium-uv-haori.svg",
-          "canvas": "/images/products/twin-001-mycelium-uv-canvas.svg"
+          "hero": "/artist/page3_img2.jpeg",
+          "haori": "/artist/page3_img2.jpeg",
+          "canvas": "/artist/page3_img2.jpeg",
+          "detail1": "/artist/page3_img2.jpeg",
+          "detail2": "/artist/page3_img2.jpeg"
         }
       },
       "description": {
@@ -98,14 +102,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/twin-002-void-bloom-daylight-hero.svg",
-          "haori": "/images/products/twin-002-void-bloom-daylight-haori.svg",
-          "canvas": "/images/products/twin-002-void-bloom-daylight-canvas.svg"
+          "hero": "/artist/page5_img1.jpeg",
+          "haori": "/artist/page5_img1.jpeg",
+          "canvas": "/artist/page5_img1.jpeg",
+          "detail1": "/artist/page5_img1.jpeg",
+          "detail2": "/artist/page5_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/twin-002-void-bloom-uv-hero.svg",
-          "haori": "/images/products/twin-002-void-bloom-uv-haori.svg",
-          "canvas": "/images/products/twin-002-void-bloom-uv-canvas.svg"
+          "hero": "/artist/page5_img2.jpeg",
+          "haori": "/artist/page5_img2.jpeg",
+          "canvas": "/artist/page5_img2.jpeg",
+          "detail1": "/artist/page5_img2.jpeg",
+          "detail2": "/artist/page5_img2.jpeg"
         }
       },
       "description": {
@@ -184,14 +192,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/twin-003-neon-ancestors-daylight-hero.svg",
-          "haori": "/images/products/twin-003-neon-ancestors-daylight-haori.svg",
-          "canvas": "/images/products/twin-003-neon-ancestors-daylight-canvas.svg"
+          "hero": "/artist/page7_img1.jpeg",
+          "haori": "/artist/page7_img1.jpeg",
+          "canvas": "/artist/page7_img1.jpeg",
+          "detail1": "/artist/page7_img1.jpeg",
+          "detail2": "/artist/page7_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/twin-003-neon-ancestors-uv-hero.svg",
-          "haori": "/images/products/twin-003-neon-ancestors-uv-haori.svg",
-          "canvas": "/images/products/twin-003-neon-ancestors-uv-canvas.svg"
+          "hero": "/artist/page7_img2.jpeg",
+          "haori": "/artist/page7_img2.jpeg",
+          "canvas": "/artist/page7_img2.jpeg",
+          "detail1": "/artist/page7_img2.jpeg",
+          "detail2": "/artist/page7_img2.jpeg"
         }
       },
       "description": {
@@ -270,14 +282,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/haori-004-electric-sakura-daylight-hero.svg",
-          "haori": "/images/products/haori-004-electric-sakura-daylight-haori.svg",
-          "canvas": "/images/products/haori-004-electric-sakura-daylight-canvas.svg"
+          "hero": "/artist/haori-presentation.jpg",
+          "haori": "/artist/haori-presentation.jpg",
+          "canvas": "/artist/haori-presentation.jpg",
+          "detail1": "/artist/haori-presentation.jpg",
+          "detail2": "/artist/haori-presentation.jpg"
         },
         "uv": {
-          "hero": "/images/products/haori-004-electric-sakura-uv-hero.svg",
-          "haori": "/images/products/haori-004-electric-sakura-uv-haori.svg",
-          "canvas": "/images/products/haori-004-electric-sakura-uv-canvas.svg"
+          "hero": "/artist/haori-dark-uv.jpg",
+          "haori": "/artist/haori-dark-uv.jpg",
+          "canvas": "/artist/haori-dark-uv.jpg",
+          "detail1": "/artist/haori-dark-uv.jpg",
+          "detail2": "/artist/haori-dark-uv.jpg"
         }
       },
       "description": {
@@ -342,14 +358,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/canvas-005-cosmic-waves-daylight-hero.svg",
-          "canvas": "/images/products/canvas-005-cosmic-waves-daylight-canvas.svg",
-          "haori": "/images/products/canvas-005-cosmic-waves-daylight-haori.svg"
+          "hero": "/artist/page9_img1.jpeg",
+          "haori": "/artist/page9_img1.jpeg",
+          "canvas": "/artist/page9_img1.jpeg",
+          "detail1": "/artist/page9_img1.jpeg",
+          "detail2": "/artist/page9_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/canvas-005-cosmic-waves-uv-hero.svg",
-          "canvas": "/images/products/canvas-005-cosmic-waves-uv-canvas.svg",
-          "haori": "/images/products/canvas-005-cosmic-waves-uv-haori.svg"
+          "hero": "/artist/page10_img1.jpeg",
+          "haori": "/artist/page10_img1.jpeg",
+          "canvas": "/artist/page10_img1.jpeg",
+          "detail1": "/artist/page10_img1.jpeg",
+          "detail2": "/artist/page10_img1.jpeg"
         }
       },
       "description": {
@@ -405,14 +425,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/twin-006-koi-dreams-daylight-hero.svg",
-          "haori": "/images/products/twin-006-koi-dreams-daylight-haori.svg",
-          "canvas": "/images/products/twin-006-koi-dreams-daylight-canvas.svg"
+          "hero": "/artist/page11_img1.jpeg",
+          "haori": "/artist/page11_img1.jpeg",
+          "canvas": "/artist/page11_img1.jpeg",
+          "detail1": "/artist/page11_img1.jpeg",
+          "detail2": "/artist/page11_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/twin-006-koi-dreams-uv-hero.svg",
-          "haori": "/images/products/twin-006-koi-dreams-uv-haori.svg",
-          "canvas": "/images/products/twin-006-koi-dreams-uv-canvas.svg"
+          "hero": "/artist/page11_img2.jpeg",
+          "haori": "/artist/page11_img2.jpeg",
+          "canvas": "/artist/page11_img2.jpeg",
+          "detail1": "/artist/page11_img2.jpeg",
+          "detail2": "/artist/page11_img2.jpeg"
         }
       },
       "description": {
@@ -489,14 +513,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/haori-007-midnight-forest-daylight-hero.svg",
-          "haori": "/images/products/haori-007-midnight-forest-daylight-haori.svg",
-          "canvas": "/images/products/haori-007-midnight-forest-daylight-canvas.svg"
+          "hero": "/artist/page14_img1.jpeg",
+          "haori": "/artist/page14_img1.jpeg",
+          "canvas": "/artist/page14_img1.jpeg",
+          "detail1": "/artist/page14_img1.jpeg",
+          "detail2": "/artist/page14_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/haori-007-midnight-forest-uv-hero.svg",
-          "haori": "/images/products/haori-007-midnight-forest-uv-haori.svg",
-          "canvas": "/images/products/haori-007-midnight-forest-uv-canvas.svg"
+          "hero": "/artist/page14_img2.jpeg",
+          "haori": "/artist/page14_img2.jpeg",
+          "canvas": "/artist/page14_img2.jpeg",
+          "detail1": "/artist/page14_img2.jpeg",
+          "detail2": "/artist/page14_img2.jpeg"
         }
       },
       "description": {
@@ -561,14 +589,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/twin-008-dragon-ascent-daylight-hero.svg",
-          "haori": "/images/products/twin-008-dragon-ascent-daylight-haori.svg",
-          "canvas": "/images/products/twin-008-dragon-ascent-daylight-canvas.svg"
+          "hero": "/artist/page15_img1.jpeg",
+          "haori": "/artist/page15_img1.jpeg",
+          "canvas": "/artist/page15_img1.jpeg",
+          "detail1": "/artist/page15_img1.jpeg",
+          "detail2": "/artist/page15_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/twin-008-dragon-ascent-uv-hero.svg",
-          "haori": "/images/products/twin-008-dragon-ascent-uv-haori.svg",
-          "canvas": "/images/products/twin-008-dragon-ascent-uv-canvas.svg"
+          "hero": "/artist/page15_img2.jpeg",
+          "haori": "/artist/page15_img2.jpeg",
+          "canvas": "/artist/page15_img2.jpeg",
+          "detail1": "/artist/page15_img2.jpeg",
+          "detail2": "/artist/page15_img2.jpeg"
         }
       },
       "description": {
@@ -651,14 +683,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/canvas-009-zen-circle-daylight-hero.svg",
-          "canvas": "/images/products/canvas-009-zen-circle-daylight-canvas.svg",
-          "haori": "/images/products/canvas-009-zen-circle-daylight-haori.svg"
+          "hero": "/artist/page17_img1.jpeg",
+          "haori": "/artist/page17_img1.jpeg",
+          "canvas": "/artist/page17_img1.jpeg",
+          "detail1": "/artist/page17_img1.jpeg",
+          "detail2": "/artist/page17_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/canvas-009-zen-circle-uv-hero.svg",
-          "canvas": "/images/products/canvas-009-zen-circle-uv-canvas.svg",
-          "haori": "/images/products/canvas-009-zen-circle-uv-haori.svg"
+          "hero": "/artist/page19_img1.jpeg",
+          "haori": "/artist/page19_img1.jpeg",
+          "canvas": "/artist/page19_img1.jpeg",
+          "detail1": "/artist/page19_img1.jpeg",
+          "detail2": "/artist/page19_img1.jpeg"
         }
       },
       "description": {
@@ -712,14 +748,18 @@
       },
       "images": {
         "daylight": {
-          "hero": "/images/products/haori-010-phoenix-rebirth-daylight-hero.svg",
-          "haori": "/images/products/haori-010-phoenix-rebirth-daylight-haori.svg",
-          "canvas": "/images/products/haori-010-phoenix-rebirth-daylight-canvas.svg"
+          "hero": "/artist/page21_img1.jpeg",
+          "haori": "/artist/page21_img1.jpeg",
+          "canvas": "/artist/page21_img1.jpeg",
+          "detail1": "/artist/page21_img1.jpeg",
+          "detail2": "/artist/page21_img1.jpeg"
         },
         "uv": {
-          "hero": "/images/products/haori-010-phoenix-rebirth-uv-hero.svg",
-          "haori": "/images/products/haori-010-phoenix-rebirth-uv-haori.svg",
-          "canvas": "/images/products/haori-010-phoenix-rebirth-uv-canvas.svg"
+          "hero": "/artist/page23_img1.jpeg",
+          "haori": "/artist/page23_img1.jpeg",
+          "canvas": "/artist/page23_img1.jpeg",
+          "detail1": "/artist/page23_img1.jpeg",
+          "detail2": "/artist/page23_img1.jpeg"
         }
       },
       "description": {

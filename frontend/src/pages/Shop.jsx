@@ -4,6 +4,7 @@ import { useCart } from "../contexts/CartContext";
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import PageMeta from "../components/PageMeta";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
 
@@ -117,7 +118,16 @@ const Shop = () => {
   };
 
   return (
-    <div className="min-h-screen py-24 px-4">
+    <div
+      className={`min-h-screen py-24 px-4 transition-all duration-1000 ${isUVMode ? "bg-[#0a0015]" : ""}`}
+    >
+      <PageMeta
+        title="Магазин"
+        description="Магазин HAORI VISION — хаори, куртки, джинсы с UV-росписью. Ручная работа, лимитированные тиражи."
+      />
+      {isUVMode && (
+        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(139,0,255,0.08)_0%,transparent_60%)] pointer-events-none" />
+      )}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -132,7 +142,9 @@ const Shop = () => {
           >
             Магазин
           </h1>
-          <p className="text-xl text-zinc-400">
+          <p
+            className={`text-xl transition-colors duration-700 ${isUVMode ? "text-purple-300/70" : "text-zinc-400"}`}
+          >
             Каждая работа — уникальный артефакт света. Ручная роспись
             UV-красками.
           </p>
@@ -229,15 +241,26 @@ const Shop = () => {
                   transition={{ delay: Math.min(i * 0.03, 0.3) }}
                 >
                   <Link to={`/product/${product.id}`} className="block group">
-                    <div className="card-uv overflow-hidden">
+                    <div
+                      className={`overflow-hidden transition-all duration-700 ${
+                        isUVMode
+                          ? "bg-black/80 border border-purple-500/30 shadow-[0_0_20px_rgba(139,0,255,0.15)]"
+                          : "card-uv"
+                      }`}
+                    >
                       {/* Product Image */}
                       <div className="relative aspect-[3/4] overflow-hidden bg-zinc-800">
                         <img
                           src={product.images?.daylight?.hero}
                           alt={product.name}
                           loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+                            isUVMode ? "brightness-110 saturate-[1.3]" : ""
+                          }`}
                         />
+                        {isUVMode && (
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 mix-blend-screen pointer-events-none" />
+                        )}
 
                         {/* Hover overlay */}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
@@ -358,7 +381,7 @@ const Shop = () => {
             для вас. Художник Елизавета Федькина (LiZa) создаст работу в
             потоковом состоянии — из вашей энергии, цвета и формы.
           </p>
-          <Link to="/bespoke">
+          <Link to="/contact">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

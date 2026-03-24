@@ -13,6 +13,8 @@ import { useCart } from "../contexts/CartContext";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
 import { tid } from "../shared/testid";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+
 // Stripe publishable key (test mode)
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -78,7 +80,7 @@ const CheckoutForm = ({ items, totalAmount, onSuccess, clearCart }) => {
         throw new Error(pmError.message);
       }
 
-      const orderRes = await fetch("/api/orders", {
+      const orderRes = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

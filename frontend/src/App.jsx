@@ -5,6 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { CartProvider } from "./contexts/CartContext";
 import Layout from "./components/Layout";
 import CartDrawer from "./components/CartDrawer";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Lazy loaded pages
 const Home = lazy(() => import("./pages/Home"));
@@ -60,6 +61,7 @@ function App() {
       <CartProvider>
         <Toaster position="top-right" />
         <Router>
+          <ScrollToTop />
           <Suspense
             fallback={
               <div className="min-h-screen bg-black flex items-center justify-center">

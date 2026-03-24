@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import HikariChat from "./HikariChat";
+import AnimatedOutlet from "./AnimatedOutlet";
 import { useTheme } from "../contexts/ThemeContext";
 
 const Layout = () => {
@@ -13,7 +13,7 @@ const Layout = () => {
     >
       <Navigation />
       <main className="pt-16">
-        <Outlet />
+        <AnimatedOutlet />
       </main>
       <Footer />
       <HikariChat />
