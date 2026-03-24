@@ -55,6 +55,45 @@ const HIKARI_SYSTEM_PROMPT = `Ты — Хикари (光), дух Света и 
 - Используй метафоры света естественно, не навязывая
 - Если спрашивают о художнике — расскажи о Елизавете Федькиной с теплотой и уважением`;
 
+// Fallback responses when Claude API is unavailable
+const FALLBACK_RESPONSES = [
+  {
+    keywords: ["привет", "здравствуй", "хай", "hello", "hi"],
+    response:
+      "Здравствуй, путник Света! Я Хикари — дух Света бренда HAORI VISION. Спрашивай о наших хаори, UV-арте или художнике LiZa. Чем могу помочь?",
+  },
+  {
+    keywords: ["цена", "стоимость", "сколько", "price", "cost"],
+    response:
+      "Наши хаори — от $85 за аксессуары до $820 за куртки и $622 за хаори. Bespoke (индивидуальный заказ) — от €3,000. Каждое изделие расписано вручную UV-красками и существует в единственном экземпляре. Напиши нам через контактную форму для деталей!",
+  },
+  {
+    keywords: ["хаори", "haori", "uv", "ультрафиолет"],
+    response:
+      "Хаори — традиционная японская накидка, которую LiZa превращает в произведение искусства. При дневном свете — элегантное пальто с авторской росписью. Под UV-лампой — скрытый мир оживает: космические спирали, мифические существа, порталы в другие измерения. Каждое хаори уникально.",
+  },
+  {
+    keywords: ["художник", "лиза", "liza", "автор", "кто создаёт"],
+    response:
+      "Елизавета Федькина (LiZa) — художник-визионер из Москвы. Её направление — интуитивная живопись, «Картины из будущего». Образование: промышленный дизайн, стилистика, искусствоведение. Выставлялась в Братиславе, Храме Христа Спасителя. Палитра: бирюзовый, фуксия, золотой, фиолетовый на тёмных фонах.",
+  },
+  {
+    keywords: ["заказ", "купить", "bespoke", "индивидуальн"],
+    response:
+      "Для индивидуального заказа (bespoke) — заполни форму на странице /contact или /bespoke. Стоимость от €3,000, срок 2-4 недели. LiZa создаст moodboard по твоей энергии и предложит эскиз в течение 72 часов.",
+  },
+];
+
+function getFallbackResponse(message) {
+  const lower = message.toLowerCase();
+  for (const entry of FALLBACK_RESPONSES) {
+    if (entry.keywords.some((kw) => lower.includes(kw))) {
+      return entry.response;
+    }
+  }
+  return "Я Хикари, дух Света бренда HAORI VISION. Сейчас я работаю в упрощённом режиме. Спроси о наших хаори, ценах, художнике LiZa или процессе создания — я с радостью расскажу! Или напиши через форму связи на /contact.";
+}
+
 /**
  * POST /api/chat
  * Отправить сообщение Хикари
@@ -70,9 +109,16 @@ router.post("/", async (req, res) => {
     }
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
-    if (!apiKey) {
-      baseLogger.error("ANTHROPIC_API_KEY is not set");
-      return res.status(500).json({ error: "Chat service is not configured" });
+    if (
+      !apiKey ||
+      apiKey === "sk-ant-replace" ||
+      apiKey.startsWith("sk-ant-replace")
+    ) {
+      // No valid API key — use fallback
+      return res.json({
+        response: getFallbackResponse(message),
+        fallback: true,
+      });
     }
 
     const client = new Anthropic({ apiKey });
@@ -116,10 +162,12 @@ router.post("/", async (req, res) => {
   } catch (error) {
     baseLogger.error({ err: error }, "Chat error");
 
-    if (error.status === 401) {
-      return res
-        .status(500)
-        .json({ error: "Chat service authentication failed" });
+    if (error.status === 401 || error.status === 403) {
+      // Invalid API key — use fallback
+      return res.json({
+        response: getFallbackResponse(req.body.message || ""),
+        fallback: true,
+      });
     }
 
     if (error.status === 429) {
@@ -128,7 +176,11 @@ router.post("/", async (req, res) => {
         .json({ error: "Too many requests, please try again later" });
     }
 
-    res.status(500).json({ error: "Failed to get response from Hikari" });
+    // Any other error — fallback
+    res.json({
+      response: getFallbackResponse(req.body.message || ""),
+      fallback: true,
+    });
   }
 });
 
