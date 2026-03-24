@@ -1,0 +1,53 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light Mark (Stylized 光 symbol) -->
+  <defs>
+    <linearGradient id="uvGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B026FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF10F0;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Light Mark Symbol (Abstract 光) -->
+  <g id="light-mark" transform="translate(50, 60)">
+    <!-- Top triangle -->
+    <path d="M 30 0 L 45 25 L 15 25 Z" fill="url(#uvGradient)" filter="url(#glow)"/>
+    <!-- Middle diamond -->
+    <path d="M 30 30 L 50 50 L 30 70 L 10 50 Z" fill="url(#uvGradient)" filter="url(#glow)"/>
+    <!-- Side rays -->
+    <path d="M 0 50 L 8 50 L 10 48 L 8 46 Z" fill="url(#uvGradient)" opacity="0.8"/>
+    <path d="M 60 50 L 52 50 L 50 48 L 52 46 Z" fill="url(#uvGradient)" opacity="0.8"/>
+    <!-- Bottom triangle -->
+    <path d="M 30 75 L 45 100 L 15 100 Z" fill="url(#uvGradient)" filter="url(#glow)"/>
+  </g>
+
+  <!-- HAORI VISION Text -->
+  <text x="140" y="90"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="52"
+        font-weight="900"
+        letter-spacing="3"
+        fill="#FFFFFF">HAORI VISION</text>
+
+  <!-- Subtitle: WEAR THE LIGHT -->
+  <text x="140" y="120"
+        font-family="Georgia, serif"
+        font-size="16"
+        font-weight="400"
+        letter-spacing="6"
+        fill="#C0C0C0">WEAR THE LIGHT</text>
+
+  <!-- Japanese subtitle -->
+  <text x="140" y="145"
+        font-family="serif"
+        font-size="18"
+        font-weight="400"
+        fill="#B026FF">光を纏う</text>
+</svg>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Bespoke — HAORI VISION</title>
+    <meta name="description" content="Создайте уникальное хаори с UV-эффектами по вашей энергии. Индивидуальный дизайн от художника HAORI VISION.">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-text: #f5f5f5;
+            --color-accent: #a855f7;
+            --color-accent-secondary: #6366f1;
+            --color-border: rgba(255, 255, 255, 0.1);
+            --color-input-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Form */
+        .form-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+        }
+
+        .label-description {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-input-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: var(--color-text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: rgba(168, 85, 247, 0.05);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+
+        .input-hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.5rem;
+        }
+
+        /* Submit Button */
+        .submit-button {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.03em;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-box p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+        }
+
+        .info-box ul {
+            margin: 1rem 0 0 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .info-box li {
+            margin: 0.5rem 0;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .success-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* Error Message */
+        .error-message {
+            display: none;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #ef4444;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Назад в магазин</a>
+
+        <div class="header">
+            <div class="logo">光 HAORI VISION</div>
+            <p class="tagline">BESPOKE ATELIER</p>
+        </div>
+
+        <h1>Bespoke Commission</h1>
+        <p class="intro">
+            Создайте уникальное хаори, отражающее вашу энергию и индивидуальность.
+            Я разработаю для вас moodboard, подберу цвета и паттерны UV-эффектов,
+            которые резонируют именно с вами.
+        </p>
+
+        <div class="info-box">
+            <h3>Что включено</h3>
+            <ul>
+                <li>Индивидуальная консультация с художником</li>
+                <li>Moodboard по вашей энергии и предпочтениям</li>
+                <li>Эскиз дизайна в течение 72 часов</li>
+                <li>Ручная роспись премиум-материалами</li>
+                <li>UV-реактивные пигменты (кастомная палитра)</li>
+                <li>NFT-сертификат подлинности</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+                <strong>Стоимость:</strong> от €3,000<br>
+                <strong>Срок изготовления:</strong> 2–4 недели
+            </p>
+        </div>
+
+        <form id="bespokeForm" class="form-section">
+            <div class="form-group">
+                <label for="name">
+                    Ваше имя *
+                    <span class="label-description">Как к вам обращаться?</span>
+                </label>
+                <input type="text" id="name" name="name" required placeholder="Например: Анна">
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    E-mail *
+                    <span class="label-description">Для отправки moodboard и эскиза</span>
+                </label>
+                <input type="email" id="email" name="email" required placeholder="example@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="energy">
+                    Энергия и цвета *
+                    <span class="label-description">Опишите свою энергию, любимые цвета, настроение</span>
+                </label>
+                <textarea id="energy" name="energy" required placeholder="Например: Я чувствую себя как ночное небо — спокойная, но с яркими вспышками энергии. Люблю глубокий синий, фиолетовый, золотистые акценты..."></textarea>
+                <div class="input-hint">
+                    Чем больше деталей — тем точнее я смогу передать вашу суть в дизайне
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="measurements">
+                    Рост и объём груди *
+                    <span class="label-description">Для идеальной посадки</span>
+                </label>
+                <input type="text" id="measurements" name="measurements" required placeholder="Например: 170 см, ОГ 90 см">
+                <div class="input-hint">
+                    Хаори oversized, но эти параметры помогут подобрать оптимальную длину
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">
+                    Страна доставки *
+                    <span class="label-description">Для расчёта стоимости доставки</span>
+                </label>
+                <select id="country" name="country" required>
+                    <option value="">Выберите страну</option>
+                    <option value="RU">Россия</option>
+                    <option value="US">США</option>
+                    <option value="GB">Великобритания</option>
+                    <option value="DE">Германия</option>
+                    <option value="FR">Франция</option>
+                    <option value="IT">Италия</option>
+                    <option value="ES">Испания</option>
+                    <option value="JP">Япония</option>
+                    <option value="CN">Китай</option>
+                    <option value="AU">Австралия</option>
+                    <option value="CA">Канада</option>
+                    <option value="OTHER">Другая страна</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="additional">
+                    Дополнительные пожелания
+                    <span class="label-description">Символы, мотивы, особые детали (опционально)</span>
+                </label>
+                <textarea id="additional" name="additional" placeholder="Например: Хочу, чтобы на спине был лотос, а на рукавах — японские иероглифы 'свет' и 'сила'..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-button" id="submitBtn">
+                Отправить заявку
+            </button>
+
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">✨</div>
+            <div class="success-title">Заявка отправлена!</div>
+            <div class="success-text">
+                Спасибо за доверие! Я создам moodboard по вашей энергии<br>
+                и предложу эскиз в течение 72 часов.<br><br>
+                Стоимость bespoke от €3000, срок 2–4 недели.<br>
+                Ответьте "да" на письмо, если бронируем слот.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('bespokeForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            // Hide previous messages
+            errorMessage.classList.remove('show');
+            errorMessage.textContent = '';
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                energy: document.getElementById('energy').value.trim(),
+                measurements: document.getElementById('measurements').value.trim(),
+                country: document.getElementById('country').value,
+                additional: document.getElementById('additional').value.trim()
+            };
+
+            try {
+                // Send to API
+                const response = await fetch('/api/bespoke', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Success
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    // Error from server
+                    throw new Error(result.error || 'Ошибка при отправке формы');
+                }
+
+            } catch (error) {
+                // Show error
+                errorMessage.textContent = error.message || 'Произошла ошибка. Попробуйте ещё раз.';
+                errorMessage.classList.add('show');
+
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+{
+  "metadata": {
+    "project": "HAORI VISION",
+    "version": "1.0",
+    "last_updated": "2025-01-20",
+    "description": "Visual content generation prompts and specifications for social media content"
+  },
+
+  "video_concepts": [
+    {
+      "id": "video-01",
+      "title": "Invisible Becomes Visible",
+      "tagline": "Чёрное хаори × UV-откровение",
+      "duration_seconds": 15,
+      "viral_potential": 5,
+      "category": "product_reveal",
+      "platforms": ["instagram_reels", "tiktok", "youtube_shorts"],
+      "hook": "What you see is not all there is",
+      "wow_moment": "Переход от полной черноты к взрыву неоновых узоров за 0.5 секунды",
+      "scene_breakdown": [
+        {"timestamp": "00:00-03", "action": "Крупный план: абсолютно чёрное хаори висит в темноте", "audio": "Звук дыхания художника"},
+        {"timestamp": "03-05", "action": "Медленное движение камеры вокруг хаори", "text_overlay": "What you see is not all there is"},
+        {"timestamp": "05-07", "action": "Рука художника тянется к выключателю", "fps": 120, "effect": "slow_motion"},
+        {"timestamp": "07-10", "action": "UV-свет включается", "visual_fx": "взрыв зелёно-фиолетовых паттернов", "audio_fx": "whoosh + reverb"},
+        {"timestamp": "10-13", "action": "Zoom-in на светящиеся узоры", "effect": "паттерны пульсируют в такт музыке"},
+        {"timestamp": "13-15", "action": "Финальная цитата", "text": "Light is hidden in everything. — HAORI VISION"}
+      ],
+      "music_style": "Ambient house с deep bass (120 BPM)",
+      "color_grading": "холодная температура (5000K), bloom effect + chromatic aberration в UV-моменте",
+      "hashtags": ["#HaoriVision", "#UVArt", "#InvisibleArt", "#LightMagic", "#DeepLight", "#WearTheLight", "#FluorescentArt"]
+    },
+    {
+      "id": "video-02",
+      "title": "The Brush Stroke Ritual",
+      "tagline": "Один мазок кисти под UV в замедленной съёмке",
+      "duration_seconds": 20,
+      "viral_potential": 4,
+      "category": "process_art",
+      "platforms": ["instagram_reels", "tiktok"],
+      "hook": "One stroke. One breath. One moment.",
+      "wow_moment": "Превращение невидимого мазка в яркий неоновый иероглиф + AR-глич",
+      "scene_breakdown": [
+        {"timestamp": "00:00-04", "action": "Overhead shot: чёрный шёлк на столе", "camera": "view from above", "audio": "ambient studio"},
+        {"timestamp": "04-08", "action": "Кисть погружается в UV-пигмент", "fps": 240, "text": "One stroke. One breath. One moment."},
+        {"timestamp": "08-12", "action": "Каллиграфический мазок (иероглиф 光 — свет)", "audio_detail": "ASMR звук кисти по ткани"},
+        {"timestamp": "12-15", "action": "UV-свет включается", "visual_fx": "мазок взрывается розовым неоном", "effect": "AR-глич 0.2 сек"},
+        {"timestamp": "15-18", "action": "Камера отъезжает", "effect": "иероглиф светится, пульсирует как heartbeat"},
+        {"timestamp": "18-20", "action": "Финал", "text": "Every stroke is a meditation. — HAORI VISION"}
+      ],
+      "music_style": "Ambient minimal с shakuhachi flute + синтезатор (60 BPM)",
+      "color_grading": "desaturated daylight → full neon UV",
+      "hashtags": ["#Calligraphy", "#JapaneseArt", "#UVPaint", "#SlowMotion", "#ASMR", "#ArtRitual", "#Meditation"]
+    },
+    {
+      "id": "video-03",
+      "title": "Mirror Reflection Glitch",
+      "tagline": "Модель в зеркале — в отражении UV-узоры, в реальности — черное",
+      "duration_seconds": 12,
+      "viral_potential": 5,
+      "category": "conceptual_fashion",
+      "platforms": ["tiktok", "instagram_reels"],
+      "hook": "What if your reflection knows the truth?",
+      "wow_moment": "AR-эффект раздвоения реальности + финальное слияние миров",
+      "scene_breakdown": [
+        {"timestamp": "00:00-03", "action": "Модель перед зеркалом в чёрном хаори", "lighting": "дневной свет"},
+        {"timestamp": "03-05", "action": "Модель поднимает руку к зеркалу", "text": "What if your reflection knows the truth?"},
+        {"timestamp": "05-07", "action": "Глич в зеркале", "visual_fx": "AR эффект — в отражении UV паттерны"},
+        {"timestamp": "07-09", "action": "Быстрые переключения: реальность → зеркало → реальность", "effect": "AR-глич волна"},
+        {"timestamp": "09-11", "action": "Модель касается зеркала", "audio_fx": "glass shatter + reverb", "effect": "вся реальность переключается в UV"},
+        {"timestamp": "11-12", "action": "Финал", "text": "Two worlds. One light. — HAORI VISION"}
+      ],
+      "music_style": "Glitch-hop / experimental electronic (140 BPM)",
+      "editing_style": "Split screen, AR effects, VHS tracking lines",
+      "hashtags": ["#MirrorMagic", "#AREffect", "#Glitch", "#DualReality", "#UVMagic", "#Cyberpunk"]
+    },
+    {
+      "id": "video-04",
+      "title": "Paint Drip Cosmos",
+      "tagline": "UV-краска стекает по хаори, создавая космические паттерны",
+      "duration_seconds": 18,
+      "viral_potential": 5,
+      "category": "satisfying_content",
+      "platforms": ["instagram_reels", "tiktok", "youtube_shorts"],
+      "hook": "From a single drop... a universe is born",
+      "wow_moment": "Растекание краски под UV-светом создаёт эффект живой галактики",
+      "scene_breakdown": [
+        {"timestamp": "00:00-04", "action": "Пипетка с UV-пигментом над шёлком", "text": "From a single drop... a universe is born"},
+        {"timestamp": "04-08", "action": "Капля падает на ткань", "fps": 240, "audio": "ASMR капли"},
+        {"timestamp": "08-11", "action": "Художник наклоняет ткань, краска стекает", "effect": "под UV похоже на туманность"},
+        {"timestamp": "11-14", "action": "Zoom-out, добавляются новые цвета", "colors": ["розовый", "голубой", "фиолетовый"]},
+        {"timestamp": "14-16", "action": "Вращение камеры 360°", "pattern": "космос/галактика"},
+        {"timestamp": "16-18", "action": "Финал: хаори висит, паттерн светится", "text": "Every piece is a universe. — HAORI VISION"}
+      ],
+      "music_style": "Cosmic ambient / space music (85 BPM)",
+      "filming_technique": "Macro photography + timelapse 10x speed",
+      "hashtags": ["#CosmicArt", "#UVPaint", "#Satisfying", "#ProcessVideo", "#ArtASMR", "#SpaceAesthetic", "#FluidArt"]
+    },
+    {
+      "id": "video-05",
+      "title": "Daylight Deception",
+      "tagline": "Уличная съёмка — хаори невидимый на солнце, неоновый в клубе",
+      "duration_seconds": 15,
+      "viral_potential": 4,
+      "category": "lifestyle_fashion",
+      "platforms": ["tiktok", "instagram_reels"],
+      "hook": "In daylight, invisible.",
+      "wow_moment": "Трансформация от невидимого к центру внимания за 2 секунды",
+      "scene_breakdown": [
+        {"timestamp": "00:00-04", "action": "Модель идёт по улице Tokyo днём", "text": "In daylight, invisible.", "lighting": "natural daylight"},
+        {"timestamp": "04-06", "action": "Модель заходит в тёмный коридор", "camera": "следует сзади"},
+        {"timestamp": "06-08", "action": "Вход в клуб с UV-освещением", "effect": "hard cut + bass drop", "visual_fx": "хаори взрывается неоном"},
+        {"timestamp": "08-11", "action": "Slow-motion: модель оборачивается", "effect": "паттерны пульсируют", "cutaway": "удивлённые лица crowd"},
+        {"timestamp": "11-13", "action": "Модель танцует", "editing": "fast cuts, strobe light"},
+        {"timestamp": "13-15", "action": "Финал: центр танцпола", "text": "In darkness, become art. — HAORI VISION"}
+      ],
+      "music_style": "Ambient city sounds (0-6s) → hard techno/bass house (8-15s, 130 BPM)",
+      "color_grading": "desaturated daylight → oversaturated neon",
+      "hashtags": ["#TokyoNights", "#ClubFashion", "#UVClothing", "#StreetStyle", "#NeonFashion", "#Nightlife", "#RaveFashion"]
+    },
+    {
+      "id": "video-06",
+      "title": "Breath of Light",
+      "tagline": "Модель дышит, с каждым выдохом хаори светится ярче",
+      "duration_seconds": 20,
+      "viral_potential": 4,
+      "category": "wellness_spiritual",
+      "platforms": ["instagram_reels", "youtube_shorts"],
+      "hook": "Breathe. The light awakens.",
+      "wow_moment": "Синхронизация света с дыханием создаёт эффект 'живой' одежды",
+      "scene_breakdown": [
+        {"timestamp": "00:00-05", "action": "Тёмная комната, модель неподвижна", "audio": "ASMR глубокое дыхание", "text": "Breathe. The light awakens."},
+        {"timestamp": "05-08", "action": "Глубокий вдох", "visual_fx": "лёгкое свечение", "audio_fx": "40 Hz гул"},
+        {"timestamp": "08-11", "action": "Выдох: свечение усиливается 2x", "audio_fx": "440 Hz tone + reverb"},
+        {"timestamp": "11-14", "action": "Второй вдох-выдох: ещё ярче", "camera": "медленное круговое движение"},
+        {"timestamp": "14-17", "action": "Третий вдох-выдох: максимум", "visual_fx": "частицы света поднимаются вверх"},
+        {"timestamp": "17-20", "action": "Модель открывает глаза", "effect": "глаза светятся (AR)", "text": "You are the source of light. — HAORI VISION"}
+      ],
+      "music_style": "Meditative ambient / binaural beats (60 BPM, 432 Hz)",
+      "special_effects": "Pulsating glow синхронизирован с дыханием, particle system",
+      "hashtags": ["#Meditation", "#BreathWork", "#LightWithin", "#SpiritualFashion", "#EnergyArt", "#ASMR", "#Mindfulness"]
+    },
+    {
+      "id": "video-07",
+      "title": "The Artist's Hands",
+      "tagline": "Крупный план рук художника, рисующего паттерн в темноте под UV",
+      "duration_seconds": 12,
+      "viral_potential": 4,
+      "category": "behind_the_scenes",
+      "platforms": ["instagram_reels", "tiktok"],
+      "hook": "In darkness, creation begins.",
+      "wow_moment": "Светящиеся руки художника как инструмент света",
+      "scene_breakdown": [
+        {"timestamp": "00:00-03", "action": "Абсолютная темнота", "audio": "дыхание художника", "text": "In darkness, creation begins."},
+        {"timestamp": "03-05", "action": "UV-свет включается (dimmed)", "camera": "macro lens", "detail": "руки покрыты UV-краской, светятся"},
+        {"timestamp": "05-08", "action": "Художник рисует паттерн", "camera": "следует за кистью", "audio": "ASMR кисть по шёлку"},
+        {"timestamp": "08-10", "action": "Показывает ладони к камере", "detail": "светящиеся отпечатки краски"},
+        {"timestamp": "10-12", "action": "Руки в жесте медитации", "text": "Art flows through the hands of those who listen. — HAORI VISION"}
+      ],
+      "music_style": "Minimal ambient с koto + синтезатор (70 BPM)",
+      "filming_technique": "Macro photography, shallow depth of field, no cuts первые 8 сек",
+      "hashtags": ["#ArtistHands", "#ProcessArt", "#UVArt", "#Handmade", "#ASMR", "#MakersMovement", "#BehindTheScenes", "#Craftsmanship"]
+    },
+    {
+      "id": "video-08",
+      "title": "Transform in 3 Seconds",
+      "tagline": "Jump-cut трансформация: обычная одежда → UV хаори → back",
+      "duration_seconds": 10,
+      "viral_potential": 5,
+      "category": "product_showcase",
+      "platforms": ["tiktok", "instagram_reels"],
+      "hook": "Normal clothes? Boring 😴",
+      "wow_moment": "Быстрая трансформация + bullet-time spin",
+      "scene_breakdown": [
+        {"timestamp": "00:00-01", "action": "Модель в обычной чёрной одежде", "text": "3"},
+        {"timestamp": "01-02", "action": "Hard cut: та же поза, в хаори (UV off)", "text": "2"},
+        {"timestamp": "02-03", "action": "Hard cut: UV включён", "text": "1"},
+        {"timestamp": "03-05", "action": "Модель делает spin 360°", "effect": "bullet-time, camera 360° одновременно"},
+        {"timestamp": "05-06", "action": "Hard cut обратно: обычная одежда", "action_detail": "модель улыбается"},
+        {"timestamp": "06-08", "action": "Только хаори висит под UV", "effect": "медленно вращается"},
+        {"timestamp": "08-10", "action": "QR-код появляется", "text": "Own the transformation. — HAORI VISION", "cta": "Link to shop"}
+      ],
+      "music_style": "Upbeat electronic / house (128 BPM)",
+      "editing_style": "Jump cuts каждую секунду, bullet-time, split-screen finale",
+      "hashtags": ["#Transformation", "#BeforeAfter", "#UVFashion", "#FashionTech", "#QuickChange", "#TikTokFashion", "#ShopNow", "#WearableArt"]
+    },
+    {
+      "id": "video-09",
+      "title": "Mycelium Network Grows",
+      "tagline": "Timelapse роспись Mycelium Dreams коллекции",
+      "duration_seconds": 25,
+      "viral_potential": 4,
+      "category": "process_timelapse",
+      "platforms": ["instagram_reels", "youtube_shorts"],
+      "hook": "8 hours of creation. 25 seconds of magic.",
+      "wow_moment": "Ускоренный рост органической сети создаёт гипнотический эффект",
+      "scene_breakdown": [
+        {"timestamp": "00:00-05", "action": "Пустой чёрный шёлк", "camera": "overhead static", "text": "8 hours of creation. 25 seconds of magic."},
+        {"timestamp": "05-10", "action": "Timelapse: первый узел мицелия", "speed": "500x", "colors": ["зелёный"], "pattern": "линии-нити расходятся"},
+        {"timestamp": "10-15", "action": "Сеть растёт: новые узлы", "colors": ["зелёный", "голубой", "фиолетовый"], "pattern": "как нейронная сеть"},
+        {"timestamp": "15-20", "action": "Финальные детали", "detail": "малые точки-споры, градиенты"},
+        {"timestamp": "20-23", "action": "Финальный паттерн: вся ткань в сети", "camera": "zoom-in на центральный узел"},
+        {"timestamp": "23-25", "action": "Fade to black", "text": "Life is a network. Wear the connection. — HAORI VISION"}
+      ],
+      "music_style": "Organic ambient / nature sounds + синтезатор drones (60-100 BPM variable)",
+      "filming_technique": "Timelapse 500x speed (8 часов → 20 секунд)",
+      "hashtags": ["#Timelapse", "#ProcessArt", "#Mycelium", "#NatureInspired", "#UVArt", "#MyceliumDreams", "#NetworkArt", "#OrganicArt"]
+    },
+    {
+      "id": "video-10",
+      "title": "Two People, One Light",
+      "tagline": "Два человека в хаори обнимаются, паттерны сливаются в единый",
+      "duration_seconds": 18,
+      "viral_potential": 5,
+      "category": "emotional_storytelling",
+      "platforms": ["instagram_reels", "tiktok", "youtube_shorts"],
+      "hook": "Two souls.",
+      "wow_moment": "AR-слияние паттернов создаёт эффект единого светового поля",
+      "scene_breakdown": [
+        {"timestamp": "00:00-04", "action": "Два человека спиной друг к другу", "haori_1": "зелёные линии (Mycelium)", "haori_2": "розовые цветы (Void Bloom)", "text": "Two souls."},
+        {"timestamp": "04-07", "action": "Поворачиваются друг к другу", "camera": "360° orbit"},
+        {"timestamp": "07-10", "action": "Обнимаются", "lighting": "UV max", "visual_fx": "AR линии соединяют хаори"},
+        {"timestamp": "10-14", "action": "Камера вращается", "effect": "единый гибридный узор на двоих"},
+        {"timestamp": "14-16", "action": "Отходят друг от друга", "visual_fx": "AR-линии остаются как световой мост, затем исчезают"},
+        {"timestamp": "16-18", "action": "Держатся за руки, смотрят друг на друга", "text": "Two lights. One vision. — HAORI VISION"}
+      ],
+      "music_style": "Emotional ambient / modern classical (violin, cello + синтезатор, 75 BPM)",
+      "filming_technique": "Circular tracking shot, slow motion 120fps, AR effects",
+      "hashtags": ["#Love", "#Connection", "#CoupleGoals", "#UVFashion", "#TogetherWeShine", "#ArtLove", "#LightConnection", "#Soulmates"]
+    }
+  ],
+
+  "production_specifications": {
+    "camera": {
+      "recommended_models": ["Sony A7S III", "Canon R5"],
+      "resolution": "4K (3840x2160) minimum",
+      "frame_rates": {
+        "cinematic": "24fps",
+        "smooth": "60fps",
+        "slow_motion": "120fps or 240fps"
+      },
+      "recording_format": {
+        "production": "S-Log3 / C-Log",
+        "delivery": "Rec.709"
+      },
+      "export_format": {
+        "social_media": "1080x1920 (9:16), H.264, 15-20 Mbps"
+      }
+    },
+
+    "lighting": {
+      "uv_specifications": {
+        "wavelength": "365nm",
+        "power": "50W minimum per light",
+        "beam_angle": "120°"
+      },
+      "camera_settings_uv": {
+        "iso": "800-3200",
+        "aperture": "f/2.8 - f/5.6",
+        "shutter": "1/50s (может быть slower для brighter glow)",
+        "white_balance": "Custom (3200K starting point)"
+      }
+    },
+
+    "audio": {
+      "recording": {
+        "sample_rate": "48kHz",
+        "bit_depth": "24-bit",
+        "format_production": "WAV",
+        "format_delivery": "AAC"
+      },
+      "mixing_social_media": {
+        "loudness": "-14 LUFS",
+        "true_peak": "-1.0 dB",
+        "notes": "Heavy compression для mobile playback"
+      }
+    },
+
+    "post_production": {
+      "editing": ["Adobe Premiere Pro", "Final Cut Pro"],
+      "color_grading": "DaVinci Resolve",
+      "vfx": "After Effects (AR effects, particle systems, glitch effects)",
+      "audio_design": ["Ableton Live", "Logic Pro"]
+    }
+  },
+
+  "platform_optimizations": {
+    "instagram_reels": {
+      "resolution": "1080x1920",
+      "aspect_ratio": "9:16",
+      "frame_rate": "30fps",
+      "max_file_size": "4GB",
+      "optimal_duration": "15-30 seconds",
+      "best_practices": [
+        "Первые 3 секунды критичны (hook)",
+        "Субтитры обязательны (85% без звука)",
+        "Text overlay для storytelling",
+        "CTA в последние 3 секунды"
+      ]
+    },
+    "tiktok": {
+      "resolution": "1080x1920",
+      "aspect_ratio": "9:16",
+      "frame_rate": "30fps or 60fps",
+      "optimal_duration": "10-60 seconds",
+      "best_practices": [
+        "Completion rate #1 фактор",
+        "Immediate hook (1 секунда)",
+        "Trending sounds = algorithm boost",
+        "Text в safe zone (центральные 80%)"
+      ]
+    },
+    "youtube_shorts": {
+      "resolution": "1080x1920",
+      "aspect_ratio": "9:16",
+      "frame_rate": "24, 25, 30fps",
+      "max_duration": "60 seconds",
+      "best_practices": [
+        "CTA to full video",
+        "Playlists для series",
+        "End screen: subscribe prompt"
+      ]
+    }
+  },
+
+  "content_calendar_template": {
+    "posting_frequency": {
+      "instagram_reels": "3-4x/week",
+      "tiktok": "Daily",
+      "youtube_shorts": "2-3x/week"
+    },
+    "optimal_posting_times": "7-9 PM local time (Tokyo, LA, London)",
+    "best_days": ["Thursday", "Friday", "Saturday", "Sunday"]
+  },
+
+  "ar_filter_concept": {
+    "name": "UV Vision Filter",
+    "platform": "Instagram (Spark AR)",
+    "functionality": [
+      "Camera detects dark clothing",
+      "Overlays UV pattern в real-time",
+      "User can swipe для выбора collection style",
+      "Record video или take photo"
+    ],
+    "development_cost": "$2,000-4,000",
+    "timeline": "2-3 weeks"
+  },
+
+  "ugc_challenge": {
+    "name": "#WearTheLightChallenge",
+    "concept": "Пользователи показывают свои before/after моменты",
+    "prize": "Custom HAORI VISION piece",
+    "hashtag": "#MyHaoriVision"
+  },
+
+  "success_metrics": {
+    "engagement": ["views", "engagement_rate", "save_rate", "completion_rate", "ctr"],
+    "growth": ["follower_growth", "profile_visits", "website_clicks", "dm_inquiries", "ugc_mentions"],
+    "conversion": ["shop_visits", "add_to_cart", "purchase_conversion", "aov", "ltv"],
+    "benchmarks_30_days": {
+      "minimum": {
+        "total_views": "500K+",
+        "new_followers": "2,000+",
+        "shop_visits_weekly": "50+",
+        "sales": "5+"
+      },
+      "target": {
+        "total_views": "2M+",
+        "new_followers": "10,000+",
+        "shop_visits_weekly": "500+",
+        "sales": "25+"
+      },
+      "dream": {
+        "total_views": "10M+",
+        "new_followers": "50,000+",
+        "shop_visits_weekly": "2,000+",
+        "sales": "100+",
+        "press_coverage": true
+      }
+    }
+  }
+}

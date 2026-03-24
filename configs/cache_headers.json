@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Cache-Control header configuration for HAORI VISION. Maps paths to cache directives.",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "comment": "Static assets (images, videos, fonts) - Long-term cache with immutable",
+      "pattern": "^/media/.*\\.(jpg|jpeg|png|gif|webp|svg|mp4|webm|woff2|woff|ttf|eot)$",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "comment": "CSS and JS bundles with hash in filename - Long-term cache",
+      "pattern": "^/(css|js)/.*\\.[a-f0-9]{8,}\\.(css|js)$",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "comment": "CSS and JS without hash - Short cache for updates",
+      "pattern": "^/(css|js)/.*\\.(css|js)$",
+      "headers": {
+        "Cache-Control": "public, max-age=3600, must-revalidate"
+      }
+    },
+    {
+      "comment": "Favicon - Medium-term cache",
+      "pattern": "^/favicon\\.(ico|svg|png)$",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "comment": "Manifest and service worker - No cache",
+      "pattern": "^/(manifest\\.json|service-worker\\.js|sw\\.js)$",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, must-revalidate"
+      }
+    },
+    {
+      "comment": "API endpoints - No cache",
+      "pattern": "^/api/",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+      }
+    },
+    {
+      "comment": "Sitemap - Short cache for SEO updates",
+      "pattern": "^/sitemap.*\\.xml$",
+      "headers": {
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "comment": "Robots.txt - Medium-term cache",
+      "pattern": "^/robots\\.txt$",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "comment": "Legal pages - Medium-term cache",
+      "pattern": "^/legal/.*\\.html$",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "comment": "Product pages - Short cache for price/stock updates",
+      "pattern": "^/products/",
+      "headers": {
+        "Cache-Control": "public, max-age=600, must-revalidate"
+      }
+    },
+    {
+      "comment": "Homepage - Short cache",
+      "pattern": "^/$",
+      "headers": {
+        "Cache-Control": "public, max-age=300, must-revalidate"
+      }
+    },
+    {
+      "comment": "Catalog - Short cache",
+      "pattern": "^/catalog$",
+      "headers": {
+        "Cache-Control": "public, max-age=600, must-revalidate"
+      }
+    },
+    {
+      "comment": "Admin pages - No cache",
+      "pattern": "^/admin/",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache"
+      }
+    },
+    {
+      "comment": "Critical CSS - Medium-term cache",
+      "pattern": "^/critical-css/.*\\.(css|html)$",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "comment": "Default fallback - Short cache with revalidation",
+      "pattern": ".*",
+      "headers": {
+        "Cache-Control": "public, max-age=300, must-revalidate"
+      }
+    }
+  ],
+  "notes": [
+    "Rules are evaluated in order - first match wins",
+    "Pattern is a regex string (use double backslashes for escape)",
+    "max-age is in seconds: 300=5min, 3600=1hr, 86400=1day, 31536000=1year",
+    "immutable = file never changes (perfect for hashed assets)",
+    "must-revalidate = check with server if cache expired",
+    "no-store = don't cache at all (for sensitive data)"
+  ]
+}

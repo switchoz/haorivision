@@ -1,14 +1,33 @@
 name: CI
 
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+  pages: write
+
 on:
   push:
     branches: [ main, master, develop, '**/fix/**' ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
   pull_request:
     branches: [ main, master, develop ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,22 +58,137 @@ jobs:
           npm --prefix frontend run typecheck
           npm --prefix frontend run build
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Run E2E tests
-        run: E2E_BASE_URL=http://localhost:4173 npm run e2e
-        env:
-          CI: true
+      - name: Install Playwright (if cache miss)
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
 
-      - name: Generate E2E summary
+      - name: Start servers
+        run: |
+          npm run ci:start:backend &>/tmp/backend.log &
+          npm run ci:start:frontend &>/tmp/frontend.log &
+          npm run ci:wait
+
+      - name: Run E2E (Playwright)
+        run: npm run ci:e2e
+
+      - name: Generate CI Summary
         if: always()
-        run: npm run e2e:report
+        run: |
+          node scripts/ci-report.js
+          cat ci-summary.md >> $GITHUB_STEP_SUMMARY
 
-      - name: Upload test artifacts
-        if: failure()
+      - name: Upload Playwright report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: playwright-report-${{ matrix.os }}
+          path: playwright-report
           retention-days: 7
+
+      - name: Upload visual diffs (if any)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs-${{ matrix.os }}
+          path: |
+            test-results/**/*.png
+            !**/*-actual.png
+          retention-days: 7
+
+      # Страницы с галереей диффов — делаем только на Ubuntu,
+      # чтобы была одна публикация на PR
+      - name: Build visual pages (PR)
+        if: ${{ always() && matrix.os == 'ubuntu-latest' && github.event_name == 'pull_request' }}
+        run: PR_NUMBER=${{ github.event.pull_request.number }} npm run ci:build-visual
+
+      - name: Upload Pages Artifact
+        if: ${{ always() && matrix.os == 'ubuntu-latest' && github.event_name == 'pull_request' }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: visual-pages
+
+      - name: Upload server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-logs-${{ matrix.os }}
+          path: |
+            /tmp/backend.log
+            /tmp/frontend.log
+          retention-days: 7
+
+      - name: Sticky PR comment with summary
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: e2e-summary
+          message: |
+            $(cat ci-summary.md)
+
+  deploy-pages:
+    if: ${{ github.event_name == 'pull_request' }}
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+      pull-requests: write
+      contents: read
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Download visual pages index
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report-ubuntu-latest
+          path: playwright-report
+        continue-on-error: true
+
+      - name: Compose diff preview comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pageUrl = process.env.DEPLOY_URL || '${{ steps.deployment.outputs.page_url }}';
+            const pr = context.payload.pull_request.number;
+            // Берём index.json, если опубликован
+            const fetch = require('node-fetch');
+            let items = [];
+            try {
+              const r = await fetch(`${pageUrl}/pr/${pr}/index.json`);
+              if (r.ok) items = await r.json();
+            } catch (e) {}
+            const top = items.slice(0,3);
+            const lines = [];
+            lines.push(`### 🔍 Visual diffs (preview)`);
+            if (top.length) {
+              top.forEach(e => {
+                const row = `**${e.name}**
+            Expected | Actual | Diff
+            :--:|:--:|:--:
+            <img src="${pageUrl}/pr/${pr}/${e.expected}" width="240"/> | <img src="${pageUrl}/pr/${pr}/${e.actual}" width="240"/> | <img src="${pageUrl}/pr/${pr}/${e.diff}" width="240"/>`;
+                lines.push(row, '');
+              });
+            } else {
+              lines.push('_No diffs detected._');
+            }
+            lines.push(`**Full gallery:** ${pageUrl}/pr/${pr}/`);
+            const body = lines.join('\n');
+            // sticky comment
+            await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr,
+              body
+            });

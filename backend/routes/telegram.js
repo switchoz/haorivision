@@ -1,6 +1,8 @@
 import express from "express";
 import telegramBotService from "../services/telegramBotService.js";
 import TelegramPost from "../models/TelegramPost.js";
+import { baseLogger } from "../middlewares/logger.js";
+import authAdmin from "../middlewares/authAdmin.js";
 
 const router = express.Router();
 
@@ -9,7 +11,7 @@ const router = express.Router();
  * Генерация поста через AI (сохраняет как черновик)
  * Body: { type: 'esoteric'|'haori_work'|'news'|'promo'|'behind_scenes', topic?: string }
  */
-router.post("/generate", async (req, res) => {
+router.post("/generate", authAdmin, async (req, res) => {
   try {
     const { type, topic } = req.body;
 
@@ -20,7 +22,7 @@ router.post("/generate", async (req, res) => {
     const post = await telegramBotService.generatePost(type, topic);
     res.json({ success: true, post });
   } catch (error) {
-    console.error("Generate error:", error);
+    baseLogger.error({ err: error }, "Generate error");
     res.status(500).json({ error: error.message });
   }
 });
@@ -29,12 +31,12 @@ router.post("/generate", async (req, res) => {
  * POST /api/telegram/publish/:id
  * Отправка черновика в канал
  */
-router.post("/publish/:id", async (req, res) => {
+router.post("/publish/:id", authAdmin, async (req, res) => {
   try {
     const post = await telegramBotService.publishPost(req.params.id);
     res.json({ success: true, post });
   } catch (error) {
-    console.error("Publish error:", error);
+    baseLogger.error({ err: error }, "Publish error");
     res.status(500).json({ error: error.message });
   }
 });
@@ -44,7 +46,7 @@ router.post("/publish/:id", async (req, res) => {
  * Генерация + немедленная отправка
  * Body: { type, topic?, imageUrl? }
  */
-router.post("/generate-and-publish", async (req, res) => {
+router.post("/generate-and-publish", authAdmin, async (req, res) => {
   try {
     const { type, topic, imageUrl } = req.body;
 
@@ -59,7 +61,7 @@ router.post("/generate-and-publish", async (req, res) => {
     );
     res.json({ success: true, post });
   } catch (error) {
-    console.error("Generate and publish error:", error);
+    baseLogger.error({ err: error }, "Generate and publish error");
     res.status(500).json({ error: error.message });
   }
 });
@@ -69,7 +71,7 @@ router.post("/generate-and-publish", async (req, res) => {
  * Отправка произвольного текста (без AI)
  * Body: { text, imageUrl? }
  */
-router.post("/send-raw", async (req, res) => {
+router.post("/send-raw", authAdmin, async (req, res) => {
   try {
     const { text, imageUrl } = req.body;
 
@@ -88,7 +90,7 @@ router.post("/send-raw", async (req, res) => {
     const published = await telegramBotService.publishPost(post._id);
     res.json({ success: true, post: published });
   } catch (error) {
-    console.error("Send raw error:", error);
+    baseLogger.error({ err: error }, "Send raw error");
     res.status(500).json({ error: error.message });
   }
 });
@@ -98,7 +100,7 @@ router.post("/send-raw", async (req, res) => {
  * Запланировать пост
  * Body: { type, topic?, imageUrl?, scheduledAt: ISO date string }
  */
-router.post("/schedule", async (req, res) => {
+router.post("/schedule", authAdmin, async (req, res) => {
   try {
     const { type, topic, imageUrl, scheduledAt } = req.body;
 
@@ -116,7 +118,7 @@ router.post("/schedule", async (req, res) => {
 
     res.json({ success: true, post });
   } catch (error) {
-    console.error("Schedule error:", error);
+    baseLogger.error({ err: error }, "Schedule error");
     res.status(500).json({ error: error.message });
   }
 });
@@ -163,7 +165,7 @@ router.get("/stats", async (req, res) => {
  * DELETE /api/telegram/posts/:id
  * Удаление черновика
  */
-router.delete("/posts/:id", async (req, res) => {
+router.delete("/posts/:id", authAdmin, async (req, res) => {
   try {
     const post = await TelegramPost.findById(req.params.id);
     if (!post) return res.status(404).json({ error: "Post not found" });
@@ -183,7 +185,7 @@ router.delete("/posts/:id", async (req, res) => {
  * Редактирование черновика
  * Body: { text?, imageUrl?, scheduledAt?, type? }
  */
-router.patch("/posts/:id", async (req, res) => {
+router.patch("/posts/:id", authAdmin, async (req, res) => {
   try {
     const post = await TelegramPost.findById(req.params.id);
     if (!post) return res.status(404).json({ error: "Post not found" });
@@ -216,7 +218,7 @@ router.post("/webhook", async (req, res) => {
     await telegramBotService.handleUpdate(req.body);
     res.json({ ok: true });
   } catch (error) {
-    console.error("Webhook error:", error);
+    baseLogger.error({ err: error }, "Webhook error");
     res.json({ ok: true }); // Always return 200 to Telegram
   }
 });
@@ -226,7 +228,7 @@ router.post("/webhook", async (req, res) => {
  * Настройка бота: команды, меню, webhook
  * Body: { webhookUrl?: string }
  */
-router.post("/setup", async (req, res) => {
+router.post("/setup", authAdmin, async (req, res) => {
   try {
     await telegramBotService.setCommands();
     await telegramBotService.setMenuButton();
@@ -237,7 +239,7 @@ router.post("/setup", async (req, res) => {
 
     res.json({ success: true, message: "Bot configured" });
   } catch (error) {
-    console.error("Setup error:", error);
+    baseLogger.error({ err: error }, "Setup error");
     res.status(500).json({ error: error.message });
   }
 });

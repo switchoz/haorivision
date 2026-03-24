@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to the Light Circle</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #a855f7;
+      box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .logo {
+      font-size: 40px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 32px;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    .content {
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    .content p {
+      margin: 20px 0;
+    }
+    .nft-box {
+      background: rgba(168, 85, 247, 0.15);
+      border: 2px solid #a855f7;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .nft-box h2 {
+      font-size: 24px;
+      margin: 0 0 20px 0;
+      color: #a855f7;
+    }
+    .nft-box .token-id {
+      font-size: 20px;
+      font-weight: 700;
+      color: #10b981;
+      margin: 10px 0;
+    }
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      color: #ffffff;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin: 10px 5px;
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+    }
+    .product-info {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .product-info h3 {
+      margin: 0 0 10px 0;
+      color: #a855f7;
+    }
+    .edition-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+    .section {
+      margin: 30px 0;
+    }
+    .section h3 {
+      color: #a855f7;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    ul li strong {
+      color: #a855f7;
+    }
+    .quote {
+      margin: 40px 0;
+      padding: 20px;
+      border-left: 4px solid #a855f7;
+      background: rgba(168, 85, 247, 0.1);
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #888;
+      font-size: 13px;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 16px;
+      color: #a855f7;
+      margin-bottom: 10px;
+    }
+    .footer-tagline {
+      font-size: 14px;
+      color: #10b981;
+      margin: 10px 0;
+    }
+    .social-links {
+      margin: 20px 0;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #a855f7;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">光 HAORI VISION</div>
+      <h1>WELCOME TO THE LIGHT CIRCLE</h1>
+    </div>
+
+    <div class="content">
+      <p>Приветствуем тебя, <strong>{{customerName}}</strong>...</p>
+
+      <p>Ты стал частью <strong>Круга Света</strong> — эксклюзивного сообщества тех, кто понимает, что одежда может быть искусством. Это не просто покупка. Это ритуал вступления в новое измерение носимого искусства.</p>
+
+      <div class="product-info">
+        <h3>{{productName}}</h3>
+        <div class="edition-badge">Edition {{editionNumber}}/{{totalEditions}}</div>
+        <p style="margin-top: 15px; opacity: 0.8;">Твоё уникальное хаори уже готовится к отправке. Каждое изделие создано вручную художником и подписано как картина.</p>
+      </div>
+
+      <div class="nft-box">
+        <h2>🎨 Твой NFT-сертификат готов!</h2>
+        <p>Цифровой артефакт подлинности</p>
+        <div class="token-id">Token ID: #{{tokenId}}</div>
+        <p style="margin: 20px 0; opacity: 0.9;">Этот NFT-сертификат подтверждает твоё право владения уникальным произведением искусства и навсегда привязан к твоему хаори.</p>
+        <a href="{{openseaUrl}}" class="button">Посмотреть на OpenSea</a>
+      </div>
+
+      <div class="section">
+        <h3>Что дальше?</h3>
+        <ul>
+          <li><strong>Отслеживание:</strong> Ты получишь номер для отслеживания, как только посылка отправится (7-14 дней международная доставка)</li>
+          <li><strong>Упаковка:</strong> Деревянная коробка с гравировкой + сертификат подлинности + письмо от художника</li>
+          <li><strong>Уход:</strong> Инструкция по уходу за флюоресцентными паттернами прилагается</li>
+          <li><strong>Сообщество:</strong> Присоединяйся к нашему Discord для владельцев HAORI VISION</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Твой заказ</h3>
+        <p>Order #<strong>{{orderNumber}}</strong></p>
+        <p>Статус: <span style="color: #10b981;">✓ Оплачен и обрабатывается</span></p>
+      </div>
+
+      <div class="quote">
+        "В тебе уже живёт этот свет. Хаори только даёт ему форму."<br><br>
+        — 光 Хикари, Хранитель Света
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://haorivision.com/account" class="button">Мой аккаунт</a>
+      <a href="https://haorivision.com/products" class="button">Смотреть коллекции</a>
+    </div>
+
+    <div class="footer">
+      <div class="footer-brand">HAORI VISION</div>
+      <div class="footer-tagline">Wearable Light Art Since 2025</div>
+      <p style="margin: 20px 0; font-size: 16px; color: #a855f7;">Wear the Light. Become the Art.</p>
+
+      <div class="social-links">
+        <a href="https://instagram.com/haorivision">Instagram</a> •
+        <a href="https://twitter.com/haorivision">Twitter</a> •
+        <a href="https://discord.gg/haorivision">Discord</a>
+      </div>
+
+      <p style="margin-top: 30px; font-size: 12px;">
+        Есть вопросы? Напиши нам:<br>
+        <a href="mailto:support@haorivision.com" style="color: #a855f7;">support@haorivision.com</a>
+      </p>
+
+      <p style="margin-top: 20px; font-size: 11px; opacity: 0.6;">
+        © 2025 HAORI VISION. All rights reserved.<br>
+        This is a transactional email. You received this because you placed an order.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

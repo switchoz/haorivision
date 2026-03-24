@@ -25,8 +25,6 @@ const customerSchema = new mongoose.Schema(
     walletAddress: {
       type: String,
       default: null,
-      unique: true,
-      sparse: true,
     },
     phone: {
       type: String,
@@ -83,7 +81,7 @@ const customerSchema = new mongoose.Schema(
     },
     source: {
       type: String,
-      enum: ["web", "dm", "event"],
+      enum: ["web", "dm", "event", "bespoke_form"],
       default: "web",
     },
     product_id: {

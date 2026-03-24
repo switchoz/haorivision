@@ -1,0 +1,49 @@
+{
+  "reviews": [
+    {
+      "id": "rev_001",
+      "name": "Анна К.",
+      "location": "Москва",
+      "quote_ru": "Качество ткани превзошло ожидания. Хаори стала моей любимой вещью в гардеробе.",
+      "quote_en": "The fabric quality exceeded my expectations. The haori became my favorite piece in my wardrobe.",
+      "rating": 5,
+      "product_ids": ["P001", "P002", "P003"],
+      "avatar": "/media/avatars/placeholder_01.svg",
+      "verified": true
+    },
+    {
+      "id": "rev_002",
+      "name": "Мария Л.",
+      "location": "Санкт-Петербург",
+      "quote_ru": "Невероятная работа! Каждый стежок сделан с душой. Ношу уже полгода — как новая.",
+      "quote_en": "Incredible craftsmanship! Every stitch is made with soul. I've been wearing it for six months — looks brand new.",
+      "rating": 5,
+      "product_ids": ["P001", "P004", "P005"],
+      "avatar": "/media/avatars/placeholder_02.svg",
+      "verified": true
+    },
+    {
+      "id": "rev_003",
+      "name": "Елена В.",
+      "location": "Казань",
+      "quote_ru": "Купила в подарок сестре — она была в восторге. Теперь заказываю себе вторую!",
+      "quote_en": "Bought it as a gift for my sister — she was thrilled. Now ordering a second one for myself!",
+      "rating": 5,
+      "product_ids": ["P002", "P003", "P006"],
+      "avatar": "/media/avatars/placeholder_03.svg",
+      "verified": true
+    }
+  ],
+  "stats": {
+    "total_reviews": 127,
+    "average_rating": 4.9,
+    "verified_purchases": 121,
+    "repeat_customers": 34
+  },
+  "notes": [
+    "All reviews are anonymized to protect customer privacy (no PII)",
+    "Only initials and city provided for reviewer identification",
+    "Verified purchases confirmed through order system",
+    "Reviews selected based on authenticity and detail"
+  ]
+}

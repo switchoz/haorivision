@@ -1,0 +1,3298 @@
+{
+  "products": [
+    {
+      "id": "real-haori-001",
+      "name": "Шёпот Сакуры",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Весенние лепестки в вечности",
+      "price": 622,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-01-medium.jpg",
+          "haori": "/images/gallery/haori/haori-01-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-01-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-01-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Шёпот Сакуры - весенние лепестки в вечности. Уникальное произведение ручной работы.",
+        "full": "Шёпот Сакуры воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Весенние лепестки в вечности. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-002",
+      "name": "Дракон Рассвета",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Мифический страж нового дня",
+      "price": 562,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-02-medium.jpg",
+          "haori": "/images/gallery/haori/haori-02-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-02-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-02-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Дракон Рассвета - мифический страж нового дня. Уникальное произведение ручной работы.",
+        "full": "Дракон Рассвета воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Мифический страж нового дня. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный",
+        "Дракон"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-003",
+      "name": "Лунный Храм",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Священная геометрия ночи",
+      "price": 584,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-03-medium.jpg",
+          "haori": "/images/gallery/haori/haori-03-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-03-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-03-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Лунный Храм - священная геометрия ночи. Уникальное произведение ручной работы.",
+        "full": "Лунный Храм воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Священная геометрия ночи. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-004",
+      "name": "Волны Эдо",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Традиция в движении",
+      "price": 520,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-04-medium.jpg",
+          "haori": "/images/gallery/haori/haori-04-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-04-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-04-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Волны Эдо - традиция в движении. Уникальное произведение ручной работы.",
+        "full": "Волны Эдо воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Традиция в движении. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-005",
+      "name": "Сны Гейши",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Элегантность прошлого",
+      "price": 550,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-05-medium.jpg",
+          "haori": "/images/gallery/haori/haori-05-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-05.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-05-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-05-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-05-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Сны Гейши - элегантность прошлого. Уникальное произведение ручной работы.",
+        "full": "Сны Гейши воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Элегантность прошлого. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-006",
+      "name": "Феникс Осени",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Возрождение в огне листвы",
+      "price": 561,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-06-medium.jpg",
+          "haori": "/images/gallery/haori/haori-06-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-06.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-06-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-06-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-06-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Феникс Осени - возрождение в огне листвы. Уникальное произведение ручной работы.",
+        "full": "Феникс Осени воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Возрождение в огне листвы. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный",
+        "Феникс"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-007",
+      "name": "Туман Киото",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Древний город в утренней дымке",
+      "price": 508,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-07-medium.jpg",
+          "haori": "/images/gallery/haori/haori-07-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-07.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-07-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-07-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-07-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Туман Киото - древний город в утренней дымке. Уникальное произведение ручной работы.",
+        "full": "Туман Киото воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Древний город в утренней дымке. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-008",
+      "name": "Бамбуковый Ветер",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Шелест силы и гибкости",
+      "price": 579,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-08-medium.jpg",
+          "haori": "/images/gallery/haori/haori-08-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-08.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-08-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-08-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-08-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Бамбуковый Ветер - шелест силы и гибкости. Уникальное произведение ручной работы.",
+        "full": "Бамбуковый Ветер воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Шелест силы и гибкости. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-009",
+      "name": "Кои в Звёздах",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Карпы плывут сквозь космос",
+      "price": 592,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-09-medium.jpg",
+          "haori": "/images/gallery/haori/haori-09-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-09.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-09-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-09-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-09-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Кои в Звёздах - карпы плывут сквозь космос. Уникальное произведение ручной работы.",
+        "full": "Кои в Звёздах воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Карпы плывут сквозь космос. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-010",
+      "name": "Самурай Теней",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Благородство в темноте",
+      "price": 547,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-10-medium.jpg",
+          "haori": "/images/gallery/haori/haori-10-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-10.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-10-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-10-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-10-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Самурай Теней - благородство в темноте. Уникальное произведение ручной работы.",
+        "full": "Самурай Теней воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Благородство в темноте. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный",
+        "Самурай"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-011",
+      "name": "Цветение Кобры",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Опасная красота природы",
+      "price": 625,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-11-medium.jpg",
+          "haori": "/images/gallery/haori/haori-11-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-11.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-11-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-11-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-11-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Цветение Кобры - опасная красота природы. Уникальное произведение ручной работы.",
+        "full": "Цветение Кобры воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Опасная красота природы. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-012",
+      "name": "Тигр Ночи",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Дикая элегантность",
+      "price": 530,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-12-medium.jpg",
+          "haori": "/images/gallery/haori/haori-12-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-12.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-12-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-12-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-12-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Тигр Ночи - дикая элегантность. Уникальное произведение ручной работы.",
+        "full": "Тигр Ночи воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Дикая элегантность. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-haori-013",
+      "name": "Сокровище Императора",
+      "collection": "Коллекция Haori Heritage",
+      "type": "haori-only",
+      "tagline": "Королевское достоинство",
+      "price": 470,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/haori/haori-13-medium.jpg",
+          "haori": "/images/gallery/haori/haori-13-medium.jpg",
+          "canvas": "/images/gallery/haori/haori-13.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/haori/haori-13-thumb.jpg",
+          "haori": "/images/gallery/haori/haori-13-thumb.jpg",
+          "canvas": "/images/gallery/haori/haori-13-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Сокровище Императора - королевское достоинство. Уникальное произведение ручной работы.",
+        "full": "Сокровище Императора воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Королевское достоинство. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк/хлопок",
+          "weight": "220-280г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная работа",
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Хаори",
+        "Японский",
+        "Уникальный"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-001",
+      "name": "Шёлковый Дождь",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Капли роскоши",
+      "price": 156,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-01-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-01-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-01-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-01-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Шёлковый Дождь - капли роскоши. Уникальное произведение ручной работы.",
+        "full": "Шёлковый Дождь воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Капли роскоши. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-002",
+      "name": "Огонь Танца",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Пламенная грация",
+      "price": 177,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-02-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-02-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-02-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-02-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Огонь Танца - пламенная грация. Уникальное произведение ручной работы.",
+        "full": "Огонь Танца воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Пламенная грация. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-003",
+      "name": "Облако Мечты",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Воздушная невесомость",
+      "price": 139,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-03-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-03-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-03-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-03-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Облако Мечты - воздушная невесомость. Уникальное произведение ручной работы.",
+        "full": "Облако Мечты воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Воздушная невесомость. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-004",
+      "name": "Морской Бриз",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Свежесть океана",
+      "price": 144,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-04-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-04-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-04-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-04-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Морской Бриз - свежесть океана. Уникальное произведение ручной работы.",
+        "full": "Морской Бриз воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Свежесть океана. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-005",
+      "name": "Закатный Горизонт",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Краски уходящего дня",
+      "price": 130,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-05-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-05-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-05.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-05-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-05-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-05-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Закатный Горизонт - краски уходящего дня. Уникальное произведение ручной работы.",
+        "full": "Закатный Горизонт воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Краски уходящего дня. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-006",
+      "name": "Лесной Эфир",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Дух древних деревьев",
+      "price": 129,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-06-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-06-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-06.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-06-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-06-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-06-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Лесной Эфир - дух древних деревьев. Уникальное произведение ручной работы.",
+        "full": "Лесной Эфир воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Дух древних деревьев. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-007",
+      "name": "Пустынная Роза",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Красота в суровости",
+      "price": 176,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-07-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-07-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-07.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-07-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-07-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-07-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Пустынная Роза - красота в суровости. Уникальное произведение ручной работы.",
+        "full": "Пустынная Роза воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Красота в суровости. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-scarves-008",
+      "name": "Ледяной Кристалл",
+      "collection": "Коллекция Silk Stories",
+      "type": "accessories",
+      "tagline": "Прозрачная чистота",
+      "price": 150,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/scarves/scarves-08-medium.jpg",
+          "haori": "/images/gallery/scarves/scarves-08-medium.jpg",
+          "canvas": "/images/gallery/scarves/scarves-08.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/scarves/scarves-08-thumb.jpg",
+          "haori": "/images/gallery/scarves/scarves-08-thumb.jpg",
+          "canvas": "/images/gallery/scarves/scarves-08-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Ледяной Кристалл - прозрачная чистота. Уникальное произведение ручной работы.",
+        "full": "Ледяной Кристалл воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Прозрачная чистота. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% шёлк",
+          "dimensions": {
+            "length": "180см",
+            "width": "70см"
+          },
+          "care": "Только химчистка"
+        }
+      },
+      "tags": [
+        "Шарф",
+        "Шёлк",
+        "Премиум"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-caps-001",
+      "name": "Уличный Самурай",
+      "collection": "Коллекция Urban Legends",
+      "type": "accessories",
+      "tagline": "Воин городских джунглей",
+      "price": 85,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/caps/caps-01-medium.jpg",
+          "haori": "/images/gallery/caps/caps-01-medium.jpg",
+          "canvas": "/images/gallery/caps/caps-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/caps/caps-01-thumb.jpg",
+          "haori": "/images/gallery/caps/caps-01-thumb.jpg",
+          "canvas": "/images/gallery/caps/caps-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Уличный Самурай - воин городских джунглей. Уникальное произведение ручной работы.",
+        "full": "Уличный Самурай воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Воин городских джунглей. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Хлопок/синтетика",
+          "sizes": [
+            "One Size"
+          ],
+          "care": "Ручная стирка"
+        }
+      },
+      "tags": [
+        "Кепка",
+        "Streetwear",
+        "Самурай"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-caps-002",
+      "name": "Токийский Шифр",
+      "collection": "Коллекция Urban Legends",
+      "type": "accessories",
+      "tagline": "Код мегаполиса",
+      "price": 93,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/caps/caps-02-medium.jpg",
+          "haori": "/images/gallery/caps/caps-02-medium.jpg",
+          "canvas": "/images/gallery/caps/caps-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/caps/caps-02-thumb.jpg",
+          "haori": "/images/gallery/caps/caps-02-thumb.jpg",
+          "canvas": "/images/gallery/caps/caps-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Токийский Шифр - код мегаполиса. Уникальное произведение ручной работы.",
+        "full": "Токийский Шифр воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Код мегаполиса. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Хлопок/синтетика",
+          "sizes": [
+            "One Size"
+          ],
+          "care": "Ручная стирка"
+        }
+      },
+      "tags": [
+        "Кепка",
+        "Streetwear"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-caps-003",
+      "name": "Ночной Охотник",
+      "collection": "Коллекция Urban Legends",
+      "type": "accessories",
+      "tagline": "Тень в неоне",
+      "price": 80,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/caps/caps-03-medium.jpg",
+          "haori": "/images/gallery/caps/caps-03-medium.jpg",
+          "canvas": "/images/gallery/caps/caps-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/caps/caps-03-thumb.jpg",
+          "haori": "/images/gallery/caps/caps-03-thumb.jpg",
+          "canvas": "/images/gallery/caps/caps-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Ночной Охотник - тень в неоне. Уникальное произведение ручной работы.",
+        "full": "Ночной Охотник воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Тень в неоне. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Хлопок/синтетика",
+          "sizes": [
+            "One Size"
+          ],
+          "care": "Ручная стирка"
+        }
+      },
+      "tags": [
+        "Кепка",
+        "Streetwear",
+        "Ночной"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-caps-004",
+      "name": "Киберпанк Дракон",
+      "collection": "Коллекция Urban Legends",
+      "type": "accessories",
+      "tagline": "Будущее встречает традицию",
+      "price": 92,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/caps/caps-04-medium.jpg",
+          "haori": "/images/gallery/caps/caps-04-medium.jpg",
+          "canvas": "/images/gallery/caps/caps-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/caps/caps-04-thumb.jpg",
+          "haori": "/images/gallery/caps/caps-04-thumb.jpg",
+          "canvas": "/images/gallery/caps/caps-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Киберпанк Дракон - будущее встречает традицию. Уникальное произведение ручной работы.",
+        "full": "Киберпанк Дракон воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Будущее встречает традицию. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Хлопок/синтетика",
+          "sizes": [
+            "One Size"
+          ],
+          "care": "Ручная стирка"
+        }
+      },
+      "tags": [
+        "Кепка",
+        "Streetwear",
+        "Дракон"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-robes-001",
+      "name": "Храм Спокойствия",
+      "collection": "Коллекция Zen Comfort",
+      "type": "loungewear",
+      "tagline": "Дзен в каждой нити",
+      "price": 375,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/robes/robes-01-medium.jpg",
+          "haori": "/images/gallery/robes/robes-01-medium.jpg",
+          "canvas": "/images/gallery/robes/robes-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/robes/robes-01-thumb.jpg",
+          "haori": "/images/gallery/robes/robes-01-thumb.jpg",
+          "canvas": "/images/gallery/robes/robes-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Храм Спокойствия - дзен в каждой нити. Уникальное произведение ручной работы.",
+        "full": "Храм Спокойствия воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Дзен в каждой нити. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум хлопок/шёлк",
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "care": "Деликатная стирка"
+        }
+      },
+      "tags": [
+        "Халат",
+        "Комфорт"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-robes-002",
+      "name": "Королевский Покой",
+      "collection": "Коллекция Zen Comfort",
+      "type": "loungewear",
+      "tagline": "Императорская роскошь дома",
+      "price": 333,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/robes/robes-02-medium.jpg",
+          "haori": "/images/gallery/robes/robes-02-medium.jpg",
+          "canvas": "/images/gallery/robes/robes-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/robes/robes-02-thumb.jpg",
+          "haori": "/images/gallery/robes/robes-02-thumb.jpg",
+          "canvas": "/images/gallery/robes/robes-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Королевский Покой - императорская роскошь дома. Уникальное произведение ручной работы.",
+        "full": "Королевский Покой воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Императорская роскошь дома. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум хлопок/шёлк",
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "care": "Деликатная стирка"
+        }
+      },
+      "tags": [
+        "Халат",
+        "Комфорт"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-robes-003",
+      "name": "Облачный Дворец",
+      "collection": "Коллекция Zen Comfort",
+      "type": "loungewear",
+      "tagline": "Небесный комфорт",
+      "price": 351,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/robes/robes-03-medium.jpg",
+          "haori": "/images/gallery/robes/robes-03-medium.jpg",
+          "canvas": "/images/gallery/robes/robes-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/robes/robes-03-thumb.jpg",
+          "haori": "/images/gallery/robes/robes-03-thumb.jpg",
+          "canvas": "/images/gallery/robes/robes-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Облачный Дворец - небесный комфорт. Уникальное произведение ручной работы.",
+        "full": "Облачный Дворец воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Небесный комфорт. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум хлопок/шёлк",
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "care": "Деликатная стирка"
+        }
+      },
+      "tags": [
+        "Халат",
+        "Комфорт"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-sneakers-001",
+      "name": "Неоновый Спринт",
+      "collection": "Коллекция Street Art",
+      "type": "footwear",
+      "tagline": "Скорость света под ногами",
+      "price": 303,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/sneakers/sneakers-01-medium.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-01-medium.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/sneakers/sneakers-01-thumb.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-01-thumb.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Неоновый Спринт - скорость света под ногами. Уникальное произведение ручной работы.",
+        "full": "Неоновый Спринт воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Скорость света под ногами. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Канвас/кожа",
+          "sizes": [
+            "36-45 EU"
+          ],
+          "care": "Ручная чистка"
+        }
+      },
+      "tags": [
+        "Кеды",
+        "Кастом"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-sneakers-002",
+      "name": "Граффити Души",
+      "collection": "Коллекция Street Art",
+      "type": "footwear",
+      "tagline": "Искусство в движении",
+      "price": 249,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/sneakers/sneakers-02-medium.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-02-medium.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/sneakers/sneakers-02-thumb.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-02-thumb.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Граффити Души - искусство в движении. Уникальное произведение ручной работы.",
+        "full": "Граффити Души воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Искусство в движении. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Канвас/кожа",
+          "sizes": [
+            "36-45 EU"
+          ],
+          "care": "Ручная чистка"
+        }
+      },
+      "tags": [
+        "Кеды",
+        "Кастом"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-sneakers-003",
+      "name": "Урбан Дракон",
+      "collection": "Коллекция Street Art",
+      "type": "footwear",
+      "tagline": "Мифический streetwear",
+      "price": 305,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/sneakers/sneakers-03-medium.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-03-medium.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/sneakers/sneakers-03-thumb.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-03-thumb.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Урбан Дракон - мифический streetwear. Уникальное произведение ручной работы.",
+        "full": "Урбан Дракон воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Мифический streetwear. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Канвас/кожа",
+          "sizes": [
+            "36-45 EU"
+          ],
+          "care": "Ручная чистка"
+        }
+      },
+      "tags": [
+        "Кеды",
+        "Кастом",
+        "Дракон"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-sneakers-004",
+      "name": "Ночной Бег",
+      "collection": "Коллекция Street Art",
+      "type": "footwear",
+      "tagline": "Тень, которая летает",
+      "price": 271,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/sneakers/sneakers-04-medium.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-04-medium.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/sneakers/sneakers-04-thumb.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-04-thumb.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Ночной Бег - тень, которая летает. Уникальное произведение ручной работы.",
+        "full": "Ночной Бег воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Тень, которая летает. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Канвас/кожа",
+          "sizes": [
+            "36-45 EU"
+          ],
+          "care": "Ручная чистка"
+        }
+      },
+      "tags": [
+        "Кеды",
+        "Кастом",
+        "Ночной"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-sneakers-005",
+      "name": "Киберкои",
+      "collection": "Коллекция Street Art",
+      "type": "footwear",
+      "tagline": "Цифровые карпы",
+      "price": 236,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/sneakers/sneakers-05-medium.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-05-medium.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-05.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/sneakers/sneakers-05-thumb.jpg",
+          "haori": "/images/gallery/sneakers/sneakers-05-thumb.jpg",
+          "canvas": "/images/gallery/sneakers/sneakers-05-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Киберкои - цифровые карпы. Уникальное произведение ручной работы.",
+        "full": "Киберкои воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Цифровые карпы. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Канвас/кожа",
+          "sizes": [
+            "36-45 EU"
+          ],
+          "care": "Ручная чистка"
+        }
+      },
+      "tags": [
+        "Кеды",
+        "Кастом"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-001",
+      "name": "Деним Самурая",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Броня современного воина",
+      "price": 322,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-01-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-01-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-01-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-01-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Деним Самурая - броня современного воина. Уникальное произведение ручной работы.",
+        "full": "Деним Самурая воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Броня современного воина. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-002",
+      "name": "Индиго Восток",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Японская глубина цвета",
+      "price": 353,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-02-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-02-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-02-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-02-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Индиго Восток - японская глубина цвета. Уникальное произведение ручной работы.",
+        "full": "Индиго Восток воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Японская глубина цвета. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-003",
+      "name": "Селвидж Легенда",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Традиция в каждом шве",
+      "price": 422,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-03-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-03-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-03-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-03-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Селвидж Легенда - традиция в каждом шве. Уникальное произведение ручной работы.",
+        "full": "Селвидж Легенда воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Традиция в каждом шве. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-004",
+      "name": "Токийская Потёртость",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Урбанистичный характер",
+      "price": 322,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-04-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-04-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-04-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-04-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Токийская Потёртость - урбанистичный характер. Уникальное произведение ручной работы.",
+        "full": "Токийская Потёртость воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Урбанистичный характер. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-005",
+      "name": "Деним Феникса",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Возрождение классики",
+      "price": 373,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-05-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-05-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-05.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-05-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-05-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-05-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Деним Феникса - возрождение классики. Уникальное произведение ручной работы.",
+        "full": "Деним Феникса воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Возрождение классики. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним",
+        "Феникс"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-006",
+      "name": "Ночной Индиго",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Тёмная элегантность",
+      "price": 384,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-06-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-06-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-06.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-06-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-06-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-06-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Ночной Индиго - тёмная элегантность. Уникальное произведение ручной работы.",
+        "full": "Ночной Индиго воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Тёмная элегантность. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним",
+        "Ночной"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-007",
+      "name": "Драконья Нить",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Сила в текстуре",
+      "price": 443,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-07-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-07-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-07.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-07-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-07-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-07-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Драконья Нить - сила в текстуре. Уникальное произведение ручной работы.",
+        "full": "Драконья Нить воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Сила в текстуре. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним",
+        "Дракон"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-008",
+      "name": "Киото Селвидж",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Древний город в ткани",
+      "price": 458,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-08-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-08-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-08.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-08-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-08-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-08-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Киото Селвидж - древний город в ткани. Уникальное произведение ручной работы.",
+        "full": "Киото Селвидж воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Древний город в ткани. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-009",
+      "name": "Волна Денима",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Поток традиций",
+      "price": 365,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-09-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-09-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-09.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-09-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-09-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-09-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Волна Денима - поток традиций. Уникальное произведение ручной работы.",
+        "full": "Волна Денима воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Поток традиций. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-010",
+      "name": "Синий Самурай",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Честь в каждом волокне",
+      "price": 418,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-10-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-10-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-10.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-10-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-10-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-10-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Синий Самурай - честь в каждом волокне. Уникальное произведение ручной работы.",
+        "full": "Синий Самурай воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Честь в каждом волокне. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним",
+        "Самурай"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-011",
+      "name": "Огонь Индиго",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Страсть в синем",
+      "price": 371,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-11-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-11-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-11.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-11-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-11-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-11-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Огонь Индиго - страсть в синем. Уникальное произведение ручной работы.",
+        "full": "Огонь Индиго воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Страсть в синем. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jeans-012",
+      "name": "Деним Дзен",
+      "collection": "Коллекция Denim Dynasty",
+      "type": "bottoms",
+      "tagline": "Просветление в простоте",
+      "price": 345,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jeans/jeans-12-medium.jpg",
+          "haori": "/images/gallery/jeans/jeans-12-medium.jpg",
+          "canvas": "/images/gallery/jeans/jeans-12.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jeans/jeans-12-thumb.jpg",
+          "haori": "/images/gallery/jeans/jeans-12-thumb.jpg",
+          "canvas": "/images/gallery/jeans/jeans-12-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Деним Дзен - просветление в простоте. Уникальное произведение ручной работы.",
+        "full": "Деним Дзен воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Просветление в простоте. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% японский селвидж деним",
+          "sizes": [
+            "28-38"
+          ],
+          "weight": "14 oz",
+          "care": "Редкая стирка"
+        }
+      },
+      "tags": [
+        "Джинсы",
+        "Деним"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-001",
+      "name": "Доспех Дракона",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Защита легенды",
+      "price": 603,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-01-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-01-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-01-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-01-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Доспех Дракона - защита легенды. Уникальное произведение ручной работы.",
+        "full": "Доспех Дракона воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Защита легенды. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская",
+        "Дракон"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-002",
+      "name": "Ночной Страж",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Тень, что согревает",
+      "price": 788,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-02-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-02-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-02-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-02-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Ночной Страж - тень, что согревает. Уникальное произведение ручной работы.",
+        "full": "Ночной Страж воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Тень, что согревает. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская",
+        "Ночной"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-003",
+      "name": "Токийский Ветер",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Дыхание мегаполиса",
+      "price": 790,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-03-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-03-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-03-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-03-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Токийский Ветер - дыхание мегаполиса. Уникальное произведение ручной работы.",
+        "full": "Токийский Ветер воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Дыхание мегаполиса. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-004",
+      "name": "Самурай Улиц",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Современный воин",
+      "price": 603,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-04-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-04-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-04-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-04-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Самурай Улиц - современный воин. Уникальное произведение ручной работы.",
+        "full": "Самурай Улиц воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Современный воин. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская",
+        "Самурай"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-005",
+      "name": "Огонь Востока",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Пламя традиций",
+      "price": 820,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-05-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-05-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-05.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-05-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-05-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-05-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Огонь Востока - пламя традиций. Уникальное произведение ручной работы.",
+        "full": "Огонь Востока воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Пламя традиций. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-006",
+      "name": "Тень Феникса",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Возрождение в стиле",
+      "price": 748,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-06-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-06-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-06.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-06-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-06-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-06-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Тень Феникса - возрождение в стиле. Уникальное произведение ручной работы.",
+        "full": "Тень Феникса воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Возрождение в стиле. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская",
+        "Феникс"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-007",
+      "name": "Урбан Ронин",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Странник города",
+      "price": 599,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-07-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-07-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-07.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-07-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-07-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-07-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Урбан Ронин - странник города. Уникальное произведение ручной работы.",
+        "full": "Урбан Ронин воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Странник города. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-008",
+      "name": "Киберяпония",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Будущее наследие",
+      "price": 757,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-08-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-08-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-08.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-08-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-08-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-08-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Киберяпония - будущее наследие. Уникальное произведение ручной работы.",
+        "full": "Киберяпония воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Будущее наследие. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-jackets-009",
+      "name": "Император Улиц",
+      "collection": "Коллекция Armor Collection",
+      "type": "outerwear",
+      "tagline": "Королевский streetwear",
+      "price": 701,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/jackets/jackets-09-medium.jpg",
+          "haori": "/images/gallery/jackets/jackets-09-medium.jpg",
+          "canvas": "/images/gallery/jackets/jackets-09.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/jackets/jackets-09-thumb.jpg",
+          "haori": "/images/gallery/jackets/jackets-09-thumb.jpg",
+          "canvas": "/images/gallery/jackets/jackets-09-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Император Улиц - королевский streetwear. Уникальное произведение ручной работы.",
+        "full": "Император Улиц воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Королевский streetwear. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум текстиль",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "care": "Химчистка"
+        }
+      },
+      "tags": [
+        "Куртка",
+        "Дизайнерская"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-hoodies-001",
+      "name": "Комфорт Ниндзя",
+      "collection": "Коллекция Cozy Spirits",
+      "type": "streetwear",
+      "tagline": "Тихая сила",
+      "price": 210,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/hoodies/hoodies-01-medium.jpg",
+          "haori": "/images/gallery/hoodies/hoodies-01-medium.jpg",
+          "canvas": "/images/gallery/hoodies/hoodies-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/hoodies/hoodies-01-thumb.jpg",
+          "haori": "/images/gallery/hoodies/hoodies-01-thumb.jpg",
+          "canvas": "/images/gallery/hoodies/hoodies-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Комфорт Ниндзя - тихая сила. Уникальное произведение ручной работы.",
+        "full": "Комфорт Ниндзя воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Тихая сила. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум хлопок",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "weight": "450 г/м²",
+          "care": "Машинная стирка 30°C"
+        }
+      },
+      "tags": [
+        "Худи",
+        "Streetwear"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-hoodies-002",
+      "name": "Облако Токио",
+      "collection": "Коллекция Cozy Spirits",
+      "type": "streetwear",
+      "tagline": "Мягкость мегаполиса",
+      "price": 196,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/hoodies/hoodies-02-medium.jpg",
+          "haori": "/images/gallery/hoodies/hoodies-02-medium.jpg",
+          "canvas": "/images/gallery/hoodies/hoodies-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/hoodies/hoodies-02-thumb.jpg",
+          "haori": "/images/gallery/hoodies/hoodies-02-thumb.jpg",
+          "canvas": "/images/gallery/hoodies/hoodies-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Облако Токио - мягкость мегаполиса. Уникальное произведение ручной работы.",
+        "full": "Облако Токио воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Мягкость мегаполиса. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум хлопок",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "weight": "450 г/м²",
+          "care": "Машинная стирка 30°C"
+        }
+      },
+      "tags": [
+        "Худи",
+        "Streetwear",
+        "Токио"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-hoodies-003",
+      "name": "Уютный Дракон",
+      "collection": "Коллекция Cozy Spirits",
+      "type": "streetwear",
+      "tagline": "Мифический relax",
+      "price": 227,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/hoodies/hoodies-03-medium.jpg",
+          "haori": "/images/gallery/hoodies/hoodies-03-medium.jpg",
+          "canvas": "/images/gallery/hoodies/hoodies-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/hoodies/hoodies-03-thumb.jpg",
+          "haori": "/images/gallery/hoodies/hoodies-03-thumb.jpg",
+          "canvas": "/images/gallery/hoodies/hoodies-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Уютный Дракон - мифический relax. Уникальное произведение ручной работы.",
+        "full": "Уютный Дракон воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Мифический relax. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Премиум хлопок",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "weight": "450 г/м²",
+          "care": "Машинная стирка 30°C"
+        }
+      },
+      "tags": [
+        "Худи",
+        "Streetwear",
+        "Дракон"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-bags-001",
+      "name": "Странник Душ",
+      "collection": "Коллекция Wanderer Series",
+      "type": "accessories",
+      "tagline": "Носитель историй",
+      "price": 560,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/bags/bags-01-medium.jpg",
+          "haori": "/images/gallery/bags/bags-01-medium.jpg",
+          "canvas": "/images/gallery/bags/bags-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/bags/bags-01-thumb.jpg",
+          "haori": "/images/gallery/bags/bags-01-thumb.jpg",
+          "canvas": "/images/gallery/bags/bags-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Странник Душ - носитель историй. Уникальное произведение ручной работы.",
+        "full": "Странник Душ воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Носитель историй. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% натуральная кожа",
+          "dimensions": {
+            "width": "40см",
+            "height": "30см",
+            "depth": "10см"
+          },
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Сумка",
+        "Кожа"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-bags-002",
+      "name": "Токийский Портал",
+      "collection": "Коллекция Wanderer Series",
+      "type": "accessories",
+      "tagline": "Врата в другой мир",
+      "price": 508,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/bags/bags-02-medium.jpg",
+          "haori": "/images/gallery/bags/bags-02-medium.jpg",
+          "canvas": "/images/gallery/bags/bags-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/bags/bags-02-thumb.jpg",
+          "haori": "/images/gallery/bags/bags-02-thumb.jpg",
+          "canvas": "/images/gallery/bags/bags-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Токийский Портал - врата в другой мир. Уникальное произведение ручной работы.",
+        "full": "Токийский Портал воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Врата в другой мир. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% натуральная кожа",
+          "dimensions": {
+            "width": "40см",
+            "height": "30см",
+            "depth": "10см"
+          },
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Сумка",
+        "Кожа"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-bags-003",
+      "name": "Сумка Самурая",
+      "collection": "Коллекция Wanderer Series",
+      "type": "accessories",
+      "tagline": "Благородная ноша",
+      "price": 395,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/bags/bags-03-medium.jpg",
+          "haori": "/images/gallery/bags/bags-03-medium.jpg",
+          "canvas": "/images/gallery/bags/bags-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/bags/bags-03-thumb.jpg",
+          "haori": "/images/gallery/bags/bags-03-thumb.jpg",
+          "canvas": "/images/gallery/bags/bags-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Сумка Самурая - благородная ноша. Уникальное произведение ручной работы.",
+        "full": "Сумка Самурая воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Благородная ноша. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% натуральная кожа",
+          "dimensions": {
+            "width": "40см",
+            "height": "30см",
+            "depth": "10см"
+          },
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Сумка",
+        "Кожа"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-belts-001",
+      "name": "Драконий Пояс",
+      "collection": "Коллекция Detail Masters",
+      "type": "accessories",
+      "tagline": "Сила в деталях",
+      "price": 99,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/belts/belts-01-medium.jpg",
+          "haori": "/images/gallery/belts/belts-01-medium.jpg",
+          "canvas": "/images/gallery/belts/belts-01.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/belts/belts-01-thumb.jpg",
+          "haori": "/images/gallery/belts/belts-01-thumb.jpg",
+          "canvas": "/images/gallery/belts/belts-01-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Драконий Пояс - сила в деталях. Уникальное произведение ручной работы.",
+        "full": "Драконий Пояс воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Сила в деталях. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Натуральная кожа",
+          "sizes": [
+            "80-100 см"
+          ],
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Ремень",
+        "Аксессуар",
+        "Дракон"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-belts-002",
+      "name": "Обручье Чести",
+      "collection": "Коллекция Detail Masters",
+      "type": "accessories",
+      "tagline": "Символ достоинства",
+      "price": 106,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/belts/belts-02-medium.jpg",
+          "haori": "/images/gallery/belts/belts-02-medium.jpg",
+          "canvas": "/images/gallery/belts/belts-02.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/belts/belts-02-thumb.jpg",
+          "haori": "/images/gallery/belts/belts-02-thumb.jpg",
+          "canvas": "/images/gallery/belts/belts-02-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Обручье Чести - символ достоинства. Уникальное произведение ручной работы.",
+        "full": "Обручье Чести воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Символ достоинства. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Натуральная кожа",
+          "sizes": [
+            "80-100 см"
+          ],
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Ремень",
+        "Аксессуар"
+      ],
+      "featured": true,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-belts-003",
+      "name": "Ночная Застёжка",
+      "collection": "Коллекция Detail Masters",
+      "type": "accessories",
+      "tagline": "Тёмная элегантность",
+      "price": 116,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/belts/belts-03-medium.jpg",
+          "haori": "/images/gallery/belts/belts-03-medium.jpg",
+          "canvas": "/images/gallery/belts/belts-03.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/belts/belts-03-thumb.jpg",
+          "haori": "/images/gallery/belts/belts-03-thumb.jpg",
+          "canvas": "/images/gallery/belts/belts-03-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Ночная Застёжка - тёмная элегантность. Уникальное произведение ручной работы.",
+        "full": "Ночная Застёжка воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Тёмная элегантность. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Натуральная кожа",
+          "sizes": [
+            "80-100 см"
+          ],
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Ремень",
+        "Аксессуар",
+        "Ночной"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    },
+    {
+      "id": "real-belts-004",
+      "name": "Путь Самурая",
+      "collection": "Коллекция Detail Masters",
+      "type": "accessories",
+      "tagline": "Завершающий штрих воина",
+      "price": 120,
+      "currency": "USD",
+      "editions": {
+        "total": 1,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/gallery/belts/belts-04-medium.jpg",
+          "haori": "/images/gallery/belts/belts-04-medium.jpg",
+          "canvas": "/images/gallery/belts/belts-04.jpg"
+        },
+        "uv": {
+          "hero": "/images/gallery/belts/belts-04-thumb.jpg",
+          "haori": "/images/gallery/belts/belts-04-thumb.jpg",
+          "canvas": "/images/gallery/belts/belts-04-thumb.jpg"
+        }
+      },
+      "description": {
+        "short": "Путь Самурая - завершающий штрих воина. Уникальное произведение ручной работы.",
+        "full": "Путь Самурая воплощает философию HAORI VISION - слияние традиционного японского мастерства с современной эстетикой. Завершающий штрих воина. Каждая вещь создаётся вручную и существует в единственном экземпляре, делая владельца частью эксклюзивного сообщества ценителей истинного искусства."
+      },
+      "specifications": {
+        "haori": {
+          "material": "Натуральная кожа",
+          "sizes": [
+            "80-100 см"
+          ],
+          "care": "Уход за кожей"
+        }
+      },
+      "tags": [
+        "Ремень",
+        "Аксессуар"
+      ],
+      "featured": false,
+      "status": "available",
+      "uvColors": [],
+      "realPhoto": true
+    }
+  ],
+  "categories": {
+    "haori": {
+      "name": "Хаори",
+      "nameEn": "Haori",
+      "description": "Традиционная японская верхняя одежда",
+      "count": 13
+    },
+    "scarves": {
+      "name": "Шарфы",
+      "nameEn": "Scarves",
+      "description": "Премиум шарфы и платки",
+      "count": 8
+    },
+    "caps": {
+      "name": "Кепки",
+      "nameEn": "Caps",
+      "description": "Головные уборы streetwear",
+      "count": 4
+    },
+    "robes": {
+      "name": "Халаты",
+      "nameEn": "Robes",
+      "description": "Домашняя одежда премиум класса",
+      "count": 3
+    },
+    "sneakers": {
+      "name": "Кеды",
+      "nameEn": "Sneakers",
+      "description": "Кастомная обувь",
+      "count": 5
+    },
+    "jeans": {
+      "name": "Джинсы",
+      "nameEn": "Jeans",
+      "description": "Японский деним",
+      "count": 12
+    },
+    "jackets": {
+      "name": "Куртки",
+      "nameEn": "Jackets",
+      "description": "Дизайнерская верхняя одежда",
+      "count": 9
+    },
+    "hoodies": {
+      "name": "Худи",
+      "nameEn": "Hoodies",
+      "description": "Премиум streetwear",
+      "count": 3
+    },
+    "bags": {
+      "name": "Сумки",
+      "nameEn": "Bags",
+      "description": "Функциональные аксессуары",
+      "count": 3
+    },
+    "belts": {
+      "name": "Ремни",
+      "nameEn": "Belts",
+      "description": "Стильные аксессуары",
+      "count": 4
+    }
+  },
+  "metadata": {
+    "version": "2.0",
+    "lastUpdated": "2025-10-24",
+    "totalProducts": 64,
+    "totalCategories": 10,
+    "priceRange": {
+      "min": 80,
+      "max": 820,
+      "currency": "USD"
+    }
+  }
+}

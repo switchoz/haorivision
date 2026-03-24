@@ -1,0 +1,42 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="voidGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1A0033;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#B026FF;stop-opacity:0.3" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="600" fill="#000000"/>
+
+  <!-- Radial gradient background -->
+  <circle cx="300" cy="300" r="280" fill="url(#voidGradient)" opacity="0.3"/>
+
+  <!-- Concentric circles (void bloom) -->
+  <g stroke="#B026FF" stroke-width="1" fill="none">
+    <circle cx="300" cy="300" r="20" opacity="0.9"/>
+    <circle cx="300" cy="300" r="40" opacity="0.8"/>
+    <circle cx="300" cy="300" r="65" opacity="0.7"/>
+    <circle cx="300" cy="300" r="95" opacity="0.6"/>
+    <circle cx="300" cy="300" r="130" opacity="0.5"/>
+    <circle cx="300" cy="300" r="170" opacity="0.4"/>
+    <circle cx="300" cy="300" r="215" opacity="0.3"/>
+    <circle cx="300" cy="300" r="265" opacity="0.2"/>
+  </g>
+
+  <!-- Inner glow circles -->
+  <g stroke="#FF10F0" stroke-width="0.5" fill="none">
+    <circle cx="300" cy="300" r="10" opacity="0.6"/>
+    <circle cx="300" cy="300" r="30" opacity="0.5"/>
+    <circle cx="300" cy="300" r="55" opacity="0.4"/>
+  </g>
+
+  <!-- Outer subtle circles -->
+  <g stroke="#C0C0C0" stroke-width="0.3" fill="none">
+    <circle cx="300" cy="300" r="280" opacity="0.15"/>
+  </g>
+
+  <!-- Center point (origin of bloom) -->
+  <circle cx="300" cy="300" r="3" fill="#FFFFFF" opacity="0.8"/>
+</svg>

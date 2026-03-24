@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест изображений</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #a855f7;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .card h3 {
+            margin: 10px 0 5px 0;
+            font-size: 16px;
+            color: #a855f7;
+        }
+        .status {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #10b981;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Тест изображений каталога - HAORI VISION</h1>
+    <p style="text-align: center; color: #888;">Если вы видите изображения ниже, каталог работает!</p>
+
+    <div class="grid">
+        <div class="card">
+            <img src="/images/products/twin-001-mycelium-daylight-hero.svg" alt="Daylight">
+            <h3>Мицелий Грёз - Daylight</h3>
+            <span class="status">✓ Загружено</span>
+        </div>
+
+        <div class="card">
+            <img src="/images/products/twin-001-mycelium-uv-hero.svg" alt="UV">
+            <h3>Мицелий Грёз - UV Glow</h3>
+            <span class="status">✓ Загружено</span>
+        </div>
+
+        <div class="card">
+            <img src="/images/products/twin-002-void-bloom-daylight-hero.svg" alt="Daylight">
+            <h3>Цветение Пустоты - Daylight</h3>
+            <span class="status">✓ Загружено</span>
+        </div>
+
+        <div class="card">
+            <img src="/images/products/twin-002-void-bloom-uv-hero.svg" alt="UV">
+            <h3>Цветение Пустоты - UV Glow</h3>
+            <span class="status">✓ Загружено</span>
+        </div>
+
+        <div class="card">
+            <img src="/images/products/twin-003-neon-ancestors-uv-hero.svg" alt="UV">
+            <h3>Неоновые Предки - UV Glow</h3>
+            <span class="status">✓ Загружено</span>
+        </div>
+
+        <div class="card">
+            <img src="/images/products/haori-004-electric-sakura-uv-hero.svg" alt="UV">
+            <h3>Электрическая Сакура - UV Glow</h3>
+            <span class="status">✓ Загружено</span>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background: #1a1a1a; border-radius: 8px;">
+        <p style="color: #10b981; font-weight: bold; font-size: 18px;">✓ Все изображения загружены успешно!</p>
+        <p style="color: #888; margin-top: 10px;">
+            Перейдите на <a href="/products" style="color: #a855f7;">страницу каталога</a> чтобы увидеть полный каталог
+        </p>
+    </div>
+</body>
+</html>

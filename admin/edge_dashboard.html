@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edge Cache Dashboard — HAORI VISION</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+
+    .refresh-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .refresh-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      background: #f7f9fc;
+    }
+
+    .stat-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #667eea;
+    }
+
+    .stat-card.hit {
+      border-left-color: #10b981;
+    }
+
+    .stat-card.miss {
+      border-left-color: #f59e0b;
+    }
+
+    .stat-card.bypass {
+      border-left-color: #ef4444;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .stat-suffix {
+      font-size: 18px;
+      color: #9ca3af;
+      margin-left: 5px;
+    }
+
+    .logs-section {
+      padding: 40px;
+    }
+
+    .logs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logs-header h2 {
+      font-size: 22px;
+      color: #1f2937;
+    }
+
+    .clear-btn {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .clear-btn:hover {
+      background: #dc2626;
+    }
+
+    .logs-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logs-table thead {
+      background: #f9fafb;
+    }
+
+    .logs-table th {
+      padding: 15px;
+      text-align: left;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    .logs-table td {
+      padding: 15px;
+      border-top: 1px solid #f3f4f6;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .logs-table tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-badge.hit {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .status-badge.miss {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-badge.bypass {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .status-badge.stale {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .path-cell {
+      font-family: 'Courier New', monospace;
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .provider-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f3f4f6;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #9ca3af;
+    }
+
+    .empty-state svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logs-table {
+        font-size: 12px;
+      }
+
+      .logs-table th,
+      .logs-table td {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>🌍 Edge Cache Dashboard</h1>
+        <div class="subtitle">HAORI VISION — Real-time CDN cache monitoring</div>
+      </div>
+      <button class="refresh-btn" onclick="refreshData()">↻ Refresh</button>
+    </header>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Requests</div>
+        <div class="stat-value" id="total-requests">0</div>
+      </div>
+      <div class="stat-card hit">
+        <div class="stat-label">Cache Hits</div>
+        <div class="stat-value" id="cache-hits">0</div>
+      </div>
+      <div class="stat-card miss">
+        <div class="stat-label">Cache Misses</div>
+        <div class="stat-value" id="cache-misses">0</div>
+      </div>
+      <div class="stat-card bypass">
+        <div class="stat-label">Bypassed</div>
+        <div class="stat-value" id="cache-bypasses">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Hit Rate</div>
+        <div class="stat-value" id="hit-rate">0<span class="stat-suffix">%</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg TTL</div>
+        <div class="stat-value" id="avg-ttl">0<span class="stat-suffix">s</span></div>
+      </div>
+    </div>
+
+    <div class="logs-section">
+      <div class="logs-header">
+        <h2>Recent Cache Events (Last 50)</h2>
+        <button class="clear-btn" onclick="clearLogs()">Clear Logs</button>
+      </div>
+
+      <div id="logs-container">
+        <!-- Table will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let logs = [];
+    let refreshInterval = null;
+
+    /**
+     * Загружает данные с API
+     */
+    async function loadData() {
+      try {
+        const response = await fetch('/api/edge-cache/logs?limit=50');
+        if (!response.ok) {
+          throw new Error('Failed to fetch logs');
+        }
+        const data = await response.json();
+        logs = data.logs || [];
+        updateUI();
+      } catch (error) {
+        console.error('[EdgeDashboard] Failed to load data:', error);
+        // Mock data для демо
+        if (logs.length === 0) {
+          logs = generateMockLogs();
+          updateUI();
+        }
+      }
+    }
+
+    /**
+     * Генерирует mock данные для демо
+     */
+    function generateMockLogs() {
+      const paths = [
+        '/', '/catalog', '/catalog/eclipse', '/product/ECLIPSE-01',
+        '/product/NEBULA-02', '/gallery', '/experience', '/about'
+      ];
+      const statuses = ['HIT', 'MISS', 'BYPASS', 'HIT', 'HIT'];
+      const methods = ['GET'];
+      const providers = ['vercel', 'netlify', 'cloudflare', null];
+
+      const mockLogs = [];
+      for (let i = 0; i < 50; i++) {
+        const timestamp = new Date(Date.now() - i * 60000);
+        mockLogs.push({
+          timestamp: timestamp.toISOString(),
+          path: paths[Math.floor(Math.random() * paths.length)],
+          method: methods[0],
+          status: statuses[Math.floor(Math.random() * statuses.length)],
+          ttl: Math.floor(Math.random() * 600) + 60,
+          age: Math.floor(Math.random() * 300),
+          provider: providers[Math.floor(Math.random() * providers.length)],
+        });
+      }
+      return mockLogs;
+    }
+
+    /**
+     * Обновляет UI
+     */
+    function updateUI() {
+      updateStats();
+      updateLogsTable();
+    }
+
+    /**
+     * Обновляет статистику
+     */
+    function updateStats() {
+      const totalRequests = logs.length;
+      const hits = logs.filter(l => l.status === 'HIT').length;
+      const misses = logs.filter(l => l.status === 'MISS').length;
+      const bypasses = logs.filter(l => l.status === 'BYPASS').length;
+      const hitRate = totalRequests > 0 ? ((hits / totalRequests) * 100).toFixed(1) : 0;
+      const avgTtl = totalRequests > 0
+        ? Math.round(logs.reduce((sum, l) => sum + l.ttl, 0) / totalRequests)
+        : 0;
+
+      document.getElementById('total-requests').textContent = totalRequests;
+      document.getElementById('cache-hits').textContent = hits;
+      document.getElementById('cache-misses').textContent = misses;
+      document.getElementById('cache-bypasses').textContent = bypasses;
+      document.getElementById('hit-rate').innerHTML = `${hitRate}<span class="stat-suffix">%</span>`;
+      document.getElementById('avg-ttl').innerHTML = `${avgTtl}<span class="stat-suffix">s</span>`;
+    }
+
+    /**
+     * Обновляет таблицу логов
+     */
+    function updateLogsTable() {
+      const container = document.getElementById('logs-container');
+
+      if (logs.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+            </svg>
+            <div>No cache events yet</div>
+          </div>
+        `;
+        return;
+      }
+
+      const rows = logs.map(log => {
+        const timestamp = new Date(log.timestamp);
+        const timeStr = timestamp.toLocaleTimeString();
+        const dateStr = timestamp.toLocaleDateString();
+
+        return `
+          <tr>
+            <td>${dateStr} ${timeStr}</td>
+            <td class="path-cell">${log.path}</td>
+            <td>${log.method}</td>
+            <td><span class="status-badge ${log.status.toLowerCase()}">${log.status}</span></td>
+            <td>${log.ttl}s</td>
+            <td>${log.age !== undefined ? `${log.age}s` : '—'}</td>
+            <td>${log.provider ? `<span class="provider-badge">${log.provider}</span>` : '—'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <table class="logs-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Path</th>
+              <th>Method</th>
+              <th>Status</th>
+              <th>TTL</th>
+              <th>Age</th>
+              <th>Provider</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+    }
+
+    /**
+     * Обновляет данные
+     */
+    async function refreshData() {
+      console.log('[EdgeDashboard] Refreshing data...');
+      await loadData();
+    }
+
+    /**
+     * Очищает логи
+     */
+    async function clearLogs() {
+      if (!confirm('Are you sure you want to clear all logs?')) {
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/edge-cache/logs', {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          logs = [];
+          updateUI();
+          alert('Logs cleared successfully');
+        }
+      } catch (error) {
+        console.error('[EdgeDashboard] Failed to clear logs:', error);
+        alert('Failed to clear logs');
+      }
+    }
+
+    /**
+     * Инициализация
+     */
+    async function init() {
+      console.log('[EdgeDashboard] Initializing...');
+      await loadData();
+
+      // Auto-refresh каждые 10 секунд
+      refreshInterval = setInterval(loadData, 10000);
+    }
+
+    // Запускаем при загрузке страницы
+    init();
+  </script>
+</body>
+</html>

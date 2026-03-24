@@ -21,7 +21,7 @@ export default function EventPage() {
 
   const fetchEvent = async () => {
     try {
-      const response = await fetch(`http://localhost:3010/api/events/${slug}`);
+      const response = await fetch(`/api/events/${slug}`);
       const data = await response.json();
 
       if (data.success) {
@@ -40,17 +40,14 @@ export default function EventPage() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `http://localhost:3010/api/events/${event._id}/rsvp`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: rsvpEmail,
-            status: "confirmed",
-          }),
-        },
-      );
+      const response = await fetch(`/api/events/${event._id}/rsvp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: rsvpEmail,
+          status: "confirmed",
+        }),
+      });
 
       const data = await response.json();
 

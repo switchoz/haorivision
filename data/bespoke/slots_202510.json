@@ -1,0 +1,91 @@
+{
+  "month": "2025-10",
+  "generated_at": "2025-10-17T21:30:00.000Z",
+  "timezone": "Europe/Stockholm",
+  "version": "1.0.0",
+  "slots": [
+    {
+      "slot_id": "BESPOKE-202510-01",
+      "slot_number": 1,
+      "status": "free",
+      "delivery_window": {
+        "start": "2025-11-15",
+        "end": "2025-11-30"
+      },
+      "hold_expires_at": null,
+      "held_by": null,
+      "booked_at": null,
+      "customer": null,
+      "deposit_paid": false,
+      "price_eur": 3000,
+      "created_at": "2025-10-01T03:33:00.000Z"
+    },
+    {
+      "slot_id": "BESPOKE-202510-02",
+      "slot_number": 2,
+      "status": "free",
+      "delivery_window": {
+        "start": "2025-12-01",
+        "end": "2025-12-15"
+      },
+      "hold_expires_at": null,
+      "held_by": null,
+      "booked_at": null,
+      "customer": null,
+      "deposit_paid": false,
+      "price_eur": 3000,
+      "created_at": "2025-10-01T03:33:00.000Z"
+    },
+    {
+      "slot_id": "BESPOKE-202510-03",
+      "slot_number": 3,
+      "status": "free",
+      "delivery_window": {
+        "start": "2025-12-15",
+        "end": "2025-12-31"
+      },
+      "hold_expires_at": null,
+      "held_by": null,
+      "booked_at": null,
+      "customer": null,
+      "deposit_paid": false,
+      "price_eur": 3000,
+      "created_at": "2025-10-01T03:33:00.000Z"
+    }
+  ],
+  "schema": {
+    "slot_id": "Unique identifier (BESPOKE-YYYYMM-NN)",
+    "slot_number": "Slot number (1-3)",
+    "status": "free | hold | booked",
+    "delivery_window": {
+      "start": "Earliest delivery date (YYYY-MM-DD)",
+      "end": "Latest delivery date (YYYY-MM-DD)"
+    },
+    "hold_expires_at": "ISO 8601 timestamp when hold expires (24h from hold)",
+    "held_by": "Session ID or email of person holding slot",
+    "booked_at": "ISO 8601 timestamp when slot was booked",
+    "customer": {
+      "name": "Customer full name",
+      "email": "Customer email",
+      "country": "Customer country",
+      "preferences": "Energy/colors/measurements from bespoke form"
+    },
+    "deposit_paid": "Boolean - has 50% deposit been received",
+    "price_eur": "Bespoke commission price in EUR",
+    "created_at": "ISO 8601 timestamp when slot was created"
+  },
+  "rules": {
+    "total_slots_per_month": 3,
+    "hold_duration_hours": 24,
+    "minimum_price_eur": 3000,
+    "production_time_weeks": "2-4 weeks",
+    "deposit_percentage": 50,
+    "auto_release_hold": "Automatically release hold after 24 hours",
+    "booking_requires": ["customer_info", "deposit_payment"]
+  },
+  "meta": {
+    "description": "Bespoke commission slots for HAORI VISION",
+    "contact": "bespoke@haorivision.com",
+    "capacity_note": "Limited to 3 slots per month to ensure quality and exclusivity"
+  }
+}

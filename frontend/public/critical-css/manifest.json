@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2025-10-17T20:13:11.529Z",
+  "results": [
+    {
+      "page": "homepage",
+      "path": "/",
+      "success": false,
+      "error": "page.waitForTimeout is not a function"
+    },
+    {
+      "page": "catalog",
+      "path": "/catalog",
+      "success": false,
+      "error": "CSSCoverage is already enabled"
+    }
+  ],
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "frontendUrl": "http://localhost:3012"
+}

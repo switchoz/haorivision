@@ -1,0 +1,238 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-09",
+  "businessHours": {
+    "timezone": "Europe/Stockholm",
+    "start": "10:00",
+    "end": "22:00",
+    "days": [1, 2, 3, 4, 5, 6, 0]
+  },
+  "sla": {
+    "targetMedian": 15,
+    "targetMax": 60,
+    "warningThreshold": 15,
+    "criticalThreshold": 45
+  },
+  "scripts": {
+    "welcome": {
+      "id": "welcome",
+      "category": "greeting",
+      "trigger": "Первое сообщение",
+      "ru": {
+        "message": "Привет! Я с вами. HAORI VISION — это персональный гардероб + арт-объект, который раскрывается под UV.\n\nЧто вас интересует сегодня?",
+        "cta": "• Eclipse коллекция\n• Bespoke заказ\n• Вопрос по товару",
+        "fallback": null
+      },
+      "en": {
+        "message": "Hi! I'm here. HAORI VISION — personal wardrobe + art object that reveals under UV.\n\nWhat are you interested in today?",
+        "cta": "• Eclipse collection\n• Bespoke order\n• Product question",
+        "fallback": null
+      }
+    },
+    "product_inquiry": {
+      "id": "product_inquiry",
+      "category": "product",
+      "trigger": "Вопрос о товаре",
+      "ru": {
+        "message": "Этот комплект — хаори ручной росписи + картина в паре. Лимит 10, свечение в UV.",
+        "cta": "Готовы оформить сейчас или забронировать на 24 часа?",
+        "fallback": "Оставлю бронь открытой ещё на 12 часов — напишите, если будете готовы."
+      },
+      "en": {
+        "message": "This set is a hand-painted haori + matching artwork. Limited to 10 pieces, glows under UV.",
+        "cta": "Ready to order now or reserve for 24 hours?",
+        "fallback": "I'll keep the reservation open for another 12 hours — let me know when you're ready."
+      }
+    },
+    "availability": {
+      "id": "availability",
+      "category": "product",
+      "trigger": "Наличие товара",
+      "ru": {
+        "message": "Да, [SKU] в наличии! Размер [SIZE], готов к отправке в течение 48 часов.",
+        "cta": "Оформим?",
+        "fallback": "Если нужно подумать — могу зарезервировать на 24 часа, чтобы точно не упустили."
+      },
+      "en": {
+        "message": "Yes, [SKU] is available! Size [SIZE], ready to ship within 48 hours.",
+        "cta": "Shall we proceed?",
+        "fallback": "If you need time to think — I can reserve it for 24 hours so you don't miss out."
+      }
+    },
+    "sold_out": {
+      "id": "sold_out",
+      "category": "product",
+      "trigger": "Товар продан",
+      "ru": {
+        "message": "К сожалению, [SKU] уже sold out. Но могу предложить:\n\n1. Bespoke заказ — создадим аналогичный по вашим параметрам\n2. Уведомление, если появится возврат\n3. Посмотреть похожие из коллекции",
+        "cta": "Что вам ближе?",
+        "fallback": "Напишите, если передумаете — всегда можем сделать что-то эксклюзивное!"
+      },
+      "en": {
+        "message": "Unfortunately, [SKU] is sold out. But I can offer:\n\n1. Bespoke order — we'll create similar piece to your specs\n2. Notify you if there's a return\n3. Show similar items from the collection",
+        "cta": "What works for you?",
+        "fallback": "Let me know if you change your mind — we can always create something exclusive!"
+      }
+    },
+    "price_inquiry": {
+      "id": "price_inquiry",
+      "category": "pricing",
+      "trigger": "Вопрос о цене",
+      "ru": {
+        "message": "[PRODUCT] — €[PRICE]. В комплект входит:\n• Хаори с UV-эффектом\n• Картина-компаньон\n• Сертификат подлинности\n• Упаковка в брендированном кейсе",
+        "cta": "Доставка в [COUNTRY] — €[SHIPPING]. Оформить?",
+        "fallback": "Могу зарезервировать на 24 часа, пока думаете."
+      },
+      "en": {
+        "message": "[PRODUCT] — €[PRICE]. The set includes:\n• UV-reactive haori\n• Companion artwork\n• Certificate of authenticity\n• Branded case packaging",
+        "cta": "Shipping to [COUNTRY] — €[SHIPPING]. Shall we proceed?",
+        "fallback": "I can reserve it for 24 hours while you decide."
+      }
+    },
+    "shipping": {
+      "id": "shipping",
+      "category": "logistics",
+      "trigger": "Вопрос о доставке",
+      "ru": {
+        "message": "Доставка:\n\n🇪🇺 Европа: 3-5 дней, €20\n🌍 США/Канада: 5-7 дней, €45\n✈️ Остальной мир: 7-10 дней, €60\n\nБесплатная доставка при заказе от €500.",
+        "cta": "Куда доставляем?",
+        "fallback": "Напишите, когда определитесь с адресом — забронирую товар."
+      },
+      "en": {
+        "message": "Shipping:\n\n🇪🇺 Europe: 3-5 days, €20\n🌍 US/Canada: 5-7 days, €45\n✈️ Rest of world: 7-10 days, €60\n\nFree shipping on orders over €500.",
+        "cta": "Where are we shipping to?",
+        "fallback": "Let me know when you decide on the address — I'll reserve the item."
+      }
+    },
+    "reservation": {
+      "id": "reservation",
+      "category": "checkout",
+      "trigger": "Бронирование",
+      "ru": {
+        "message": "Отлично! Зарезервирую [SKU] на 24 часа.\n\nНужен только размер: [SIZES]\n\nПосле подтверждения вышлю счёт и детали оплаты.",
+        "cta": "Какой размер?",
+        "fallback": "Бронь истекает через [HOURS] часов. Дайте знать, если нужно продлить!"
+      },
+      "en": {
+        "message": "Perfect! I'll reserve [SKU] for 24 hours.\n\nJust need your size: [SIZES]\n\nAfter confirmation, I'll send the invoice and payment details.",
+        "cta": "Which size?",
+        "fallback": "Reservation expires in [HOURS] hours. Let me know if you need an extension!"
+      }
+    },
+    "payment": {
+      "id": "payment",
+      "category": "checkout",
+      "trigger": "Оплата",
+      "ru": {
+        "message": "Способы оплаты:\n\n💳 Карта (Stripe)\n🏦 Банковский перевод\n💰 Crypto (BTC, ETH, USDT)\n\nОтправлю персональную ссылку для оплаты после подтверждения.",
+        "cta": "Какой способ удобнее?",
+        "fallback": "Как определитесь — напишите, и сразу оформим."
+      },
+      "en": {
+        "message": "Payment methods:\n\n💳 Card (Stripe)\n🏦 Bank transfer\n💰 Crypto (BTC, ETH, USDT)\n\nI'll send a personal payment link after confirmation.",
+        "cta": "Which method works best?",
+        "fallback": "Let me know when you decide — we'll process it right away."
+      }
+    },
+    "bespoke": {
+      "id": "bespoke",
+      "category": "custom",
+      "trigger": "Заказ на заказ",
+      "ru": {
+        "message": "Bespoke заказ — это полностью персональный хаори:\n\n• Выбор ткани и UV-паттерна\n• Индивидуальные замеры\n• Срок: 8-12 недель\n• Цена от €1,200\n\nНачнём с брифа — что именно вы представляете?",
+        "cta": "Расскажите о вашей идее",
+        "fallback": "Когда будете готовы обсудить детали — пишите, соберу референсы."
+      },
+      "en": {
+        "message": "Bespoke order — fully personalized haori:\n\n• Choice of fabric and UV pattern\n• Individual measurements\n• Timeline: 8-12 weeks\n• Starting from €1,200\n\nLet's start with a brief — what do you envision?",
+        "cta": "Tell me about your idea",
+        "fallback": "When you're ready to discuss details — message me, I'll gather references."
+      }
+    },
+    "after_hours": {
+      "id": "after_hours",
+      "category": "auto",
+      "trigger": "Вне рабочих часов",
+      "ru": {
+        "message": "Я с вами! Ответим с 10:00 по Стокгольму.\n\nМогу сразу удержать комплект на 24 часа — оставить бронь?",
+        "cta": "Напишите 'да' и укажите SKU",
+        "fallback": null
+      },
+      "en": {
+        "message": "I'm here! We'll respond from 10:00 Stockholm time.\n\nI can hold the set for 24 hours right away — reserve it?",
+        "cta": "Reply 'yes' and provide SKU",
+        "fallback": null
+      }
+    },
+    "followup_24h": {
+      "id": "followup_24h",
+      "category": "auto",
+      "trigger": "Нет ответа 24ч",
+      "ru": {
+        "message": "Привет! Вы спрашивали про [SKU] — всё ещё актуально?\n\nМогу продлить бронь ещё на сутки или помочь с чем-то другим.",
+        "cta": "Дайте знать!",
+        "fallback": null
+      },
+      "en": {
+        "message": "Hi! You asked about [SKU] — still interested?\n\nI can extend the reservation for another day or help with something else.",
+        "cta": "Let me know!",
+        "fallback": null
+      }
+    },
+    "upsell": {
+      "id": "upsell",
+      "category": "sales",
+      "trigger": "Апселл",
+      "ru": {
+        "message": "К [PRODUCT] отлично подойдёт:\n\n• UV-лампа для домашнего просмотра (€120)\n• Доп. картина из той же серии (€350)\n• Care kit для ухода (€45)\n\nДобавить в заказ?",
+        "cta": "Что интересно?",
+        "fallback": "Если передумаете — всегда можем добавить позже!"
+      },
+      "en": {
+        "message": "Perfect match for [PRODUCT]:\n\n• UV lamp for home viewing (€120)\n• Additional artwork from same series (€350)\n• Care kit for maintenance (€45)\n\nAdd to order?",
+        "cta": "What interests you?",
+        "fallback": "If you change your mind — we can always add later!"
+      }
+    },
+    "thank_you": {
+      "id": "thank_you",
+      "category": "post_purchase",
+      "trigger": "После покупки",
+      "ru": {
+        "message": "Спасибо за заказ! 🎨\n\nВаш [SKU] упакован и готов к отправке. Трек-номер придёт в течение 24 часов.\n\nА пока — короткое видео про UV-эффект вашего хаори: [LINK]",
+        "cta": "Вопросы — пишите в любое время!",
+        "fallback": null
+      },
+      "en": {
+        "message": "Thank you for your order! 🎨\n\nYour [SKU] is packed and ready to ship. Tracking number will arrive within 24 hours.\n\nMeanwhile — short video about the UV effect of your haori: [LINK]",
+        "cta": "Questions — message anytime!",
+        "fallback": null
+      }
+    }
+  },
+  "quickReplies": {
+    "yes_ru": "Да, интересно!",
+    "yes_en": "Yes, interested!",
+    "no_ru": "Нет, спасибо",
+    "no_en": "No, thank you",
+    "thinking_ru": "Подумаю",
+    "thinking_en": "I'll think about it",
+    "more_info_ru": "Расскажите подробнее",
+    "more_info_en": "Tell me more",
+    "size_ru": "Какие размеры?",
+    "size_en": "What sizes?",
+    "price_ru": "Сколько стоит?",
+    "price_en": "How much?"
+  },
+  "variables": {
+    "SKU": "Product SKU code",
+    "PRODUCT": "Product name",
+    "PRICE": "Product price",
+    "SIZE": "Available size",
+    "SIZES": "All available sizes",
+    "COUNTRY": "Customer country",
+    "SHIPPING": "Shipping cost",
+    "HOURS": "Hours remaining",
+    "LINK": "URL link"
+  }
+}

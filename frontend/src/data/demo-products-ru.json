@@ -1,0 +1,795 @@
+{
+  "products": [
+    {
+      "id": "twin-001-mycelium",
+      "name": "Мицелий Грёз",
+      "collection": "Коллекция Genesis",
+      "type": "twin-set",
+      "tagline": "Где природа встречается с неоном",
+      "price": 7200,
+      "currency": "USD",
+      "editions": {
+        "total": 8,
+        "remaining": 3,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/twin-001-mycelium-daylight-hero.svg",
+          "haori": "/images/products/twin-001-mycelium-daylight-haori.svg",
+          "canvas": "/images/products/twin-001-mycelium-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/twin-001-mycelium-uv-hero.svg",
+          "haori": "/images/products/twin-001-mycelium-uv-haori.svg",
+          "canvas": "/images/products/twin-001-mycelium-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Органические сети мицелия оживают под UV светом, трансформируясь из чёрной тишины в неоново-зелёную и фиолетовую биолюминесценцию.",
+        "full": "Вдохновлённое скрытыми подземными сетями грибного мицелия, это Двойное Произведение раскрывает секретную систему коммуникации природы. При дневном свете деликатные чёрные чернильные следы намекают на органические соединения. Под UV светом вся сеть взрывается жизнью с яркими неоново-зелёными узлами и фиолетовыми путями."
+      },
+      "uvColors": [
+        "#39FF14",
+        "#B026FF",
+        "#00D4FF"
+      ],
+      "tags": [
+        "Природа",
+        "Биолюминесценция",
+        "Мицелий"
+      ],
+      "featured": true,
+      "status": "available",
+      "specifications": {
+        "haori": {
+          "material": "100% Японский шёлк Хабутай (12 момме)",
+          "weight": "220г",
+          "dimensions": {
+            "length": "105см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная роспись UV пигментами",
+          "paintLayers": 5,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#39FF14",
+            "#B026FF",
+            "#00D4FF"
+          ]
+        },
+        "canvas": {
+          "material": "Хлопковый холст на деревянной раме",
+          "dimensions": {
+            "width": "80см",
+            "height": "100см",
+            "depth": "4см"
+          },
+          "frame": "Деревянная рама, окрашенная в чёрный",
+          "weight": "2.5кг",
+          "technique": "Акриловые краски + UV пигменты",
+          "hanging": "Крепление на стену в комплекте"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "twin-002-void-bloom",
+      "name": "Цветение Пустоты",
+      "collection": "Коллекция Genesis",
+      "type": "twin-set",
+      "tagline": "Из пустоты, бесконечный свет",
+      "price": 9800,
+      "currency": "USD",
+      "editions": {
+        "total": 5,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/twin-002-void-bloom-daylight-hero.svg",
+          "haori": "/images/products/twin-002-void-bloom-daylight-haori.svg",
+          "canvas": "/images/products/twin-002-void-bloom-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/twin-002-void-bloom-uv-hero.svg",
+          "haori": "/images/products/twin-002-void-bloom-uv-haori.svg",
+          "canvas": "/images/products/twin-002-void-bloom-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Чистый белый минимализм трансформируется в взрывную мандалу розового, голубого и фиолетового света. Самая драматичная трансформация в коллекции.",
+        "full": "Цветение Пустоты представляет буддийскую концепцию Śūnyatā (пустота). Произведение начинается как чистое белое пространство. Под UV светом концентрические круги флуоресцентных цветов взрываются из центра, создавая гипнотическую мандалу."
+      },
+      "uvColors": [
+        "#FF10F0",
+        "#00D4FF",
+        "#B026FF",
+        "#FF6600"
+      ],
+      "tags": [
+        "Мандала",
+        "Минимализм",
+        "Пустота",
+        "Буддизм"
+      ],
+      "featured": true,
+      "status": "limited",
+      "specifications": {
+        "haori": {
+          "material": "Премиум шерстяной креп",
+          "weight": "340г",
+          "dimensions": {
+            "length": "108см",
+            "width": "68см",
+            "sleeve": "58см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Многослойная роспись UV пигментами",
+          "paintLayers": 7,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#FF10F0",
+            "#00D4FF",
+            "#B026FF",
+            "#FF6600"
+          ]
+        },
+        "canvas": {
+          "material": "Льняной холст премиум класса",
+          "dimensions": {
+            "width": "90см",
+            "height": "120см",
+            "depth": "5см"
+          },
+          "frame": "Деревянная рама с золотым акцентом",
+          "weight": "3.2кг",
+          "technique": "Акриловые краски + 4 слоя UV пигментов",
+          "hanging": "Профессиональное крепление в комплекте"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "twin-003-neon-ancestors",
+      "name": "Неоновые Предки",
+      "collection": "Коллекция Genesis",
+      "type": "twin-set",
+      "tagline": "Прошлое встречается с будущим в электрическом свете",
+      "price": 8400,
+      "currency": "USD",
+      "editions": {
+        "total": 6,
+        "remaining": 2,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/twin-003-neon-ancestors-daylight-hero.svg",
+          "haori": "/images/products/twin-003-neon-ancestors-daylight-haori.svg",
+          "canvas": "/images/products/twin-003-neon-ancestors-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/twin-003-neon-ancestors-uv-hero.svg",
+          "haori": "/images/products/twin-003-neon-ancestors-uv-haori.svg",
+          "canvas": "/images/products/twin-003-neon-ancestors-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Традиционные японские иероглифы и геометрические паттерны сливаются с киберпанк эстетикой. Древняя мудрость светится неоновым оранжевым, зелёным и фиолетовым.",
+        "full": "Неоновые Предки соединяют 1000 лет истории японского искусства с киберпанк будущим. Традиционные иероглифы сочетаются с геометрическими паттернами эпохи Эдо. Под UV светом каждый иероглиф взрывается электрическим цветом."
+      },
+      "uvColors": [
+        "#FF6600",
+        "#39FF14",
+        "#B026FF",
+        "#FF10F0"
+      ],
+      "tags": [
+        "Каллиграфия",
+        "Иероглифы",
+        "Киберпанк",
+        "Японский"
+      ],
+      "featured": true,
+      "status": "available",
+      "specifications": {
+        "haori": {
+          "material": "100% Японский шёлк дюпион",
+          "weight": "260г",
+          "dimensions": {
+            "length": "106см",
+            "width": "66см",
+            "sleeve": "57см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Каллиграфическая роспись + UV пигменты",
+          "paintLayers": 6,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#FF6600",
+            "#39FF14",
+            "#B026FF",
+            "#FF10F0"
+          ]
+        },
+        "canvas": {
+          "material": "Хлопковый холст музейного качества",
+          "dimensions": {
+            "width": "75см",
+            "height": "100см",
+            "depth": "4см"
+          },
+          "frame": "Черная деревянная рама",
+          "weight": "2.8кг",
+          "technique": "Тушь + UV каллиграфические пигменты",
+          "hanging": "Крепление в комплекте"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "haori-004-electric-sakura",
+      "name": "Электрическая Сакура",
+      "collection": "Коллекция Solo Haori",
+      "type": "haori-only",
+      "tagline": "Цветение сакуры в неоновых снах",
+      "price": 4500,
+      "currency": "USD",
+      "editions": {
+        "total": 12,
+        "remaining": 7,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/haori-004-electric-sakura-daylight-hero.svg",
+          "haori": "/images/products/haori-004-electric-sakura-daylight-haori.svg",
+          "canvas": "/images/products/haori-004-electric-sakura-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/haori-004-electric-sakura-uv-hero.svg",
+          "haori": "/images/products/haori-004-electric-sakura-uv-haori.svg",
+          "canvas": "/images/products/haori-004-electric-sakura-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Традиционные цветы сакуры расписаны вручную. При дневном свете - нежная пастель. Под UV - взрыв розового и голубого неона.",
+        "full": "Электрическая Сакура чествует самую любимую японскую традицию - ханами (наблюдение за цветами). Каждый лепесток расписан индивидуально с градиентами, которые проявляются только под ультрафиолетовым светом. Идеально для весенних фестивалей или любого момента, когда вам нужно нести красоту цветения."
+      },
+      "uvColors": [
+        "#FF10F0",
+        "#00D4FF",
+        "#B026FF"
+      ],
+      "tags": [
+        "Сакура",
+        "Традиционный",
+        "Цветы",
+        "Весна"
+      ],
+      "featured": false,
+      "status": "available",
+      "specifications": {
+        "haori": {
+          "material": "100% Японский шёлк Хабутай",
+          "weight": "210г",
+          "dimensions": {
+            "length": "104см",
+            "width": "64см",
+            "sleeve": "55см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Ручная роспись лепестков UV пигментами",
+          "paintLayers": 4,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#FF10F0",
+            "#00D4FF",
+            "#B026FF"
+          ]
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "canvas-005-cosmic-waves",
+      "name": "Космические Волны",
+      "collection": "Коллекция Solo Canvas",
+      "type": "canvas-only",
+      "tagline": "Океанские волны встречают звёздную пыль",
+      "price": 3200,
+      "currency": "USD",
+      "editions": {
+        "total": 15,
+        "remaining": 9,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/canvas-005-cosmic-waves-daylight-hero.svg",
+          "canvas": "/images/products/canvas-005-cosmic-waves-daylight-canvas.svg",
+          "haori": "/images/products/canvas-005-cosmic-waves-daylight-haori.svg"
+        },
+        "uv": {
+          "hero": "/images/products/canvas-005-cosmic-waves-uv-hero.svg",
+          "canvas": "/images/products/canvas-005-cosmic-waves-uv-canvas.svg",
+          "haori": "/images/products/canvas-005-cosmic-waves-uv-haori.svg"
+        }
+      },
+      "description": {
+        "short": "Абстрактные океанские волны сливаются с космическими туманностями. Глубокий синий переходит в электрический циан и фиолетовый под UV.",
+        "full": "Космические Волны исследуют связь между земным и небесным. Плавные волновые формы напоминают как водную рябь, так и галактические спирали. Эта работа идеальна для медитативных пространств или современных интерьеров."
+      },
+      "uvColors": [
+        "#00D4FF",
+        "#B026FF",
+        "#39FF14"
+      ],
+      "tags": [
+        "Абстракция",
+        "Океан",
+        "Космос",
+        "Медитация"
+      ],
+      "featured": false,
+      "status": "available",
+      "specifications": {
+        "canvas": {
+          "material": "Льняной холст премиум класса",
+          "dimensions": {
+            "width": "70см",
+            "height": "90см",
+            "depth": "4см"
+          },
+          "frame": "Деревянная рама белого цвета",
+          "weight": "2.3кг",
+          "technique": "Абстрактная живопись + UV пигменты",
+          "hanging": "Крепление в комплекте"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "twin-006-koi-dreams",
+      "name": "Сны Карпов Кои",
+      "collection": "Коллекция Genesis",
+      "type": "twin-set",
+      "tagline": "Древние карпы плывут сквозь неоновые воды",
+      "price": 8900,
+      "currency": "USD",
+      "editions": {
+        "total": 7,
+        "remaining": 4,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/twin-006-koi-dreams-daylight-hero.svg",
+          "haori": "/images/products/twin-006-koi-dreams-daylight-haori.svg",
+          "canvas": "/images/products/twin-006-koi-dreams-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/twin-006-koi-dreams-uv-hero.svg",
+          "haori": "/images/products/twin-006-koi-dreams-uv-haori.svg",
+          "canvas": "/images/products/twin-006-koi-dreams-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Традиционные карпы кои оживают в UV свете. Чешуя переливается оранжевым, розовым и голубым неоном, создавая живой подводный мир.",
+        "full": "Сны Карпов Кои воплощают японский символизм удачи и настойчивости. Каждая чешуйка карпа расписана индивидуально, создавая текстурированную поверхность при дневном свете. Под UV карпы как будто оживают и плывут в светящейся воде."
+      },
+      "uvColors": [
+        "#FF6600",
+        "#FF10F0",
+        "#00D4FF"
+      ],
+      "tags": [
+        "Кои",
+        "Традиционный",
+        "Удача",
+        "Вода"
+      ],
+      "featured": true,
+      "status": "available",
+      "specifications": {
+        "haori": {
+          "material": "100% Японский шёлк с текстурой",
+          "weight": "240г",
+          "dimensions": {
+            "length": "107см",
+            "width": "67см",
+            "sleeve": "58см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Детальная роспись чешуи UV пигментами",
+          "paintLayers": 6,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#FF6600",
+            "#FF10F0",
+            "#00D4FF"
+          ]
+        },
+        "canvas": {
+          "material": "Хлопковый холст на деревянной раме",
+          "dimensions": {
+            "width": "85см",
+            "height": "110см",
+            "depth": "4см"
+          },
+          "frame": "Черная деревянная рама",
+          "weight": "2.9кг",
+          "technique": "Акриловые краски + детализированные UV пигменты",
+          "hanging": "Крепление в комплекте"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "haori-007-midnight-forest",
+      "name": "Полуночный Лес",
+      "collection": "Коллекция Solo Haori",
+      "type": "haori-only",
+      "tagline": "Тёмный лес скрывает светящиеся тайны",
+      "price": 5200,
+      "currency": "USD",
+      "editions": {
+        "total": 10,
+        "remaining": 0,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/haori-007-midnight-forest-daylight-hero.svg",
+          "haori": "/images/products/haori-007-midnight-forest-daylight-haori.svg",
+          "canvas": "/images/products/haori-007-midnight-forest-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/haori-007-midnight-forest-uv-hero.svg",
+          "haori": "/images/products/haori-007-midnight-forest-uv-haori.svg",
+          "canvas": "/images/products/haori-007-midnight-forest-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Силуэты деревьев и грибов скрывают биолюминесцентные узоры. Под UV весь лес оживает зелёным и синим свечением.",
+        "full": "Полуночный Лес вдохновлён светящимися грибами японских лесов. При дневном свете работа выглядит как элегантная чёрная графика леса. Под UV свет раскрывает скрытый мир биолюминесцентной жизни между деревьями."
+      },
+      "uvColors": [
+        "#39FF14",
+        "#00D4FF",
+        "#B026FF"
+      ],
+      "tags": [
+        "Лес",
+        "Биолюминесценция",
+        "Природа",
+        "Таинственный"
+      ],
+      "featured": false,
+      "status": "sold-out",
+      "specifications": {
+        "haori": {
+          "material": "Премиум шерстяной креп",
+          "weight": "310г",
+          "dimensions": {
+            "length": "106см",
+            "width": "65см",
+            "sleeve": "56см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Биолюминесцентная роспись UV пигментами",
+          "paintLayers": 5,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#39FF14",
+            "#00D4FF",
+            "#B026FF"
+          ]
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "twin-008-dragon-ascent",
+      "name": "Восхождение Дракона",
+      "collection": "Коллекция Upcoming",
+      "type": "twin-set",
+      "tagline": "Древний дракон поднимается сквозь грозовые облака",
+      "price": 12500,
+      "currency": "USD",
+      "editions": {
+        "total": 3,
+        "remaining": 3,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/twin-008-dragon-ascent-daylight-hero.svg",
+          "haori": "/images/products/twin-008-dragon-ascent-daylight-haori.svg",
+          "canvas": "/images/products/twin-008-dragon-ascent-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/twin-008-dragon-ascent-uv-hero.svg",
+          "haori": "/images/products/twin-008-dragon-ascent-uv-haori.svg",
+          "canvas": "/images/products/twin-008-dragon-ascent-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Самая амбициозная работа коллектива. Традиционный японский дракон с молниями и облаками оживает в многослойном UV свечении.",
+        "full": "Восхождение Дракона - это магнум опус HIKARI Collective. Работа над каждым изданием занимает более 120 часов. Дракон расписан 12 слоями UV пигментов, создавая эффект глубины и движения. Это самое сложное и дорогое произведение в коллекции."
+      },
+      "uvColors": [
+        "#FF6600",
+        "#FF10F0",
+        "#00D4FF",
+        "#39FF14",
+        "#B026FF"
+      ],
+      "tags": [
+        "Дракон",
+        "Премиум",
+        "Традиционный",
+        "Эксклюзив"
+      ],
+      "featured": true,
+      "status": "upcoming",
+      "releaseDate": "2025-03-15",
+      "specifications": {
+        "haori": {
+          "material": "Премиум шёлк дюпион с золотой нитью",
+          "weight": "380г",
+          "dimensions": {
+            "length": "112см",
+            "width": "72см",
+            "sleeve": "62см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL",
+            "XXL"
+          ],
+          "technique": "Многослойная детализированная роспись + золотые акценты",
+          "paintLayers": 12,
+          "care": "Эксклюзивная химчистка",
+          "uvColors": [
+            "#FF6600",
+            "#FF10F0",
+            "#00D4FF",
+            "#39FF14",
+            "#B026FF"
+          ]
+        },
+        "canvas": {
+          "material": "Льняной холст музейного качества",
+          "dimensions": {
+            "width": "100см",
+            "height": "140см",
+            "depth": "6см"
+          },
+          "frame": "Премиум рама с позолотой",
+          "weight": "4.5кг",
+          "technique": "Многослойная живопись + 12 слоев UV пигментов",
+          "hanging": "Профессиональное крепление премиум класса"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Premium Light",
+          "wavelength": "365нм",
+          "power": "10W USB перезаряжаемая",
+          "battery": "До 8 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "canvas-009-zen-circle",
+      "name": "Дзен Круг",
+      "collection": "Коллекция Solo Canvas",
+      "type": "canvas-only",
+      "tagline": "Энсо круг вечности в минималистичном исполнении",
+      "price": 2800,
+      "currency": "USD",
+      "editions": {
+        "total": 20,
+        "remaining": 14,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/canvas-009-zen-circle-daylight-hero.svg",
+          "canvas": "/images/products/canvas-009-zen-circle-daylight-canvas.svg",
+          "haori": "/images/products/canvas-009-zen-circle-daylight-haori.svg"
+        },
+        "uv": {
+          "hero": "/images/products/canvas-009-zen-circle-uv-hero.svg",
+          "canvas": "/images/products/canvas-009-zen-circle-uv-canvas.svg",
+          "haori": "/images/products/canvas-009-zen-circle-uv-haori.svg"
+        }
+      },
+      "description": {
+        "short": "Простой энсо круг дзен-буддизма. При дневном свете - чёрная кисть. Под UV - круг светится мягким фиолетовым сиянием.",
+        "full": "Дзен Круг - это наша самая минималистичная и медитативная работа. Энсо нарисован одним движением кисти, символизируя вселенную и просветление. UV эффект едва уловим, добавляя тонкий духовный аспект."
+      },
+      "uvColors": [
+        "#B026FF"
+      ],
+      "tags": [
+        "Дзен",
+        "Минимализм",
+        "Медитация",
+        "Энсо"
+      ],
+      "featured": false,
+      "status": "available",
+      "specifications": {
+        "canvas": {
+          "material": "Хлопковый холст премиум класса",
+          "dimensions": {
+            "width": "60см",
+            "height": "60см",
+            "depth": "3см"
+          },
+          "frame": "Минималистичная деревянная рама",
+          "weight": "1.8кг",
+          "technique": "Традиционная каллиграфия + UV пигмент",
+          "hanging": "Крепление в комплекте"
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    },
+    {
+      "id": "haori-010-phoenix-rebirth",
+      "name": "Возрождение Феникса",
+      "collection": "Коллекция Upcoming",
+      "type": "haori-only",
+      "tagline": "Феникс восстаёт в пламени UV света",
+      "price": 6800,
+      "currency": "USD",
+      "editions": {
+        "total": 8,
+        "remaining": 8,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "/images/products/haori-010-phoenix-rebirth-daylight-hero.svg",
+          "haori": "/images/products/haori-010-phoenix-rebirth-daylight-haori.svg",
+          "canvas": "/images/products/haori-010-phoenix-rebirth-daylight-canvas.svg"
+        },
+        "uv": {
+          "hero": "/images/products/haori-010-phoenix-rebirth-uv-hero.svg",
+          "haori": "/images/products/haori-010-phoenix-rebirth-uv-haori.svg",
+          "canvas": "/images/products/haori-010-phoenix-rebirth-uv-canvas.svg"
+        }
+      },
+      "description": {
+        "short": "Мифический феникс расправляет крылья в оранжевом и розовом UV пламени. Символ трансформации и возрождения.",
+        "full": "Возрождение Феникса воплощает вечный цикл смерти и возрождения. Каждое перо расписано с градиентами от тёмно-красного до яр��о-оранжевого UV. Работа предназначена для тех, кто проходит через трансформацию в жизни."
+      },
+      "uvColors": [
+        "#FF6600",
+        "#FF10F0",
+        "#B026FF"
+      ],
+      "tags": [
+        "Феникс",
+        "Трансформация",
+        "Мифология",
+        "Огонь"
+      ],
+      "featured": true,
+      "status": "upcoming",
+      "releaseDate": "2025-02-20",
+      "specifications": {
+        "haori": {
+          "material": "100% Японский шёлк дюпион",
+          "weight": "270г",
+          "dimensions": {
+            "length": "108см",
+            "width": "68см",
+            "sleeve": "59см"
+          },
+          "sizes": [
+            "S/M",
+            "L/XL"
+          ],
+          "technique": "Градиентная роспись перьев UV пигментами",
+          "paintLayers": 8,
+          "care": "Только химчистка",
+          "uvColors": [
+            "#FF6600",
+            "#FF10F0",
+            "#B026FF"
+          ]
+        },
+        "uvLamp": {
+          "model": "HAORI UV Pocket Light",
+          "wavelength": "365нм",
+          "power": "5W USB перезаряжаемая",
+          "battery": "До 4 часов непрерывной работы"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "version": "2.0",
+    "lastUpdated": "2025-01-15",
+    "totalProducts": 10,
+    "collections": [
+      "Коллекция Genesis",
+      "Коллекция Solo Haori",
+      "Коллекция Solo Canvas",
+      "Коллекция Upcoming"
+    ],
+    "types": [
+      "twin-set",
+      "haori-only",
+      "canvas-only"
+    ],
+    "priceRange": {
+      "min": 2800,
+      "max": 12500,
+      "currency": "USD"
+    }
+  }
+}

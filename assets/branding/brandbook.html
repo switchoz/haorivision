@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAORI VISION — Brand Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #FFFFFF;
+      background: #000000;
+    }
+
+    /* Page Structure for PDF Export */
+    .page {
+      width: 210mm;
+      min-height: 297mm; /* A4 height */
+      margin: 0 auto;
+      background: #000000;
+      padding: 50px;
+      page-break-after: always;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #B026FF;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-weight: 300;
+    }
+
+    .subtitle {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      color: #C0C0C0;
+      margin-bottom: 30px;
+    }
+
+    .japanese {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 20px;
+      color: #B026FF;
+    }
+
+    /* Cover Page */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+    }
+
+    .cover h1 {
+      font-size: 72px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 30px #B026FF;
+    }
+
+    .cover .tagline {
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: #C0C0C0;
+    }
+
+    .version {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      font-size: 12px;
+      color: #666666;
+    }
+
+    /* Logo Display */
+    .logo-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .logo-item {
+      background: #1A1A1A;
+      padding: 40px;
+      border: 1px solid #333333;
+      text-align: center;
+    }
+
+    .logo-item img {
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .logo-item p {
+      font-size: 12px;
+      color: #999999;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Color Swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .color-swatch {
+      border: 1px solid #333333;
+      overflow: hidden;
+    }
+
+    .color-block {
+      height: 120px;
+      width: 100%;
+    }
+
+    .color-info {
+      background: #1A1A1A;
+      padding: 20px;
+    }
+
+    .color-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .color-values {
+      font-size: 12px;
+      color: #999999;
+      line-height: 1.8;
+    }
+
+    /* Typography Showcase */
+    .type-example {
+      margin: 30px 0;
+      padding: 30px;
+      background: #1A1A1A;
+      border-left: 4px solid #B026FF;
+    }
+
+    .type-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #666666;
+      margin-bottom: 10px;
+    }
+
+    /* Pattern Display */
+    .pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .pattern-item {
+      border: 1px solid #333333;
+      overflow: hidden;
+    }
+
+    .pattern-preview {
+      height: 200px;
+      width: 100%;
+      background: #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pattern-preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .pattern-info {
+      background: #0A0A0A;
+      padding: 15px;
+    }
+
+    .pattern-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .pattern-desc {
+      font-size: 11px;
+      color: #999999;
+    }
+
+    /* Do/Don't Lists */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .rules-column {
+      background: #1A1A1A;
+      padding: 25px;
+      border-radius: 0;
+    }
+
+    .rules-column h3 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .rules-column.do {
+      border-top: 4px solid #39FF14;
+    }
+
+    .rules-column.dont {
+      border-top: 4px solid #FF6600;
+    }
+
+    .rule-item {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .rule-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 15px;
+      height: 15px;
+    }
+
+    .do .rule-item::before {
+      content: '✓';
+      color: #39FF14;
+    }
+
+    .dont .rule-item::before {
+      content: '✗';
+      color: #FF6600;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        width: 210mm;
+        height: 297mm;
+      }
+
+      .page {
+        margin: 0;
+        padding: 15mm;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+
+    /* Utility */
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-large {
+      margin-top: 60px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #333333;
+      margin: 40px 0;
+    }
+
+    .glow-text {
+      text-shadow: 0 0 20px #B026FF;
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="japanese" style="font-size: 48px; margin-bottom: 20px;">光</div>
+  <h1 class="glow-text">HAORI VISION</h1>
+  <div class="tagline">Brand Style Guide</div>
+  <p class="subtitle">Wear the Light. Become the Art.</p>
+  <div class="version">Version 1.0.0 | October 2025</div>
+</div>
+
+<!-- PAGE 2: BRAND ESSENCE -->
+<div class="page">
+  <h1>Brand Essence</h1>
+  <div class="divider"></div>
+
+  <h2>Philosophy</h2>
+  <p class="subtitle">"Свет скрыт в каждом из нас. Хаори даёт ему форму."</p>
+
+  <p>HAORI VISION существует на границе искусства, моды и духовности. Мы создаём не одежду — мы создаём <strong>артефакты света</strong>, которые проявляются только в определённых условиях, как внутренний свет человека.</p>
+
+  <h3>Visual DNA</h3>
+  <p>Японская каллиграфия + Cyber-органика + UV-мистицизм</p>
+
+  <h3>Key Characteristics</h3>
+  <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+    <li style="margin-bottom: 10px;"><strong>Минимализм</strong> — много пустого пространства (чёрного)</li>
+    <li style="margin-bottom: 10px;"><strong>Контраст</strong> — резкое противопоставление тьмы и света</li>
+    <li style="margin-bottom: 10px;"><strong>Таинственность</strong> — не показывать всё сразу</li>
+    <li style="margin-bottom: 10px;"><strong>Ритуальность</strong> — каждый элемент имеет смысл</li>
+    <li style="margin-bottom: 10px;"><strong>Технологичность</strong> — современные шрифты, но с душой</li>
+  </ul>
+
+  <div class="mt-large">
+    <h3>Brand Promise</h3>
+    <div class="type-example">
+      <p style="font-size: 18px; font-style: italic; color: #C0C0C0;">
+        "Это не одежда. Это артефакт света, который вы носите, коллекционируете и передаёте следующему поколению. Каждое хаори — подписанное произведение искусства с цифровым сертификатом вечности."
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: LOGO SYSTEM -->
+<div class="page">
+  <h1>Logo System</h1>
+  <div class="divider"></div>
+
+  <p>Логотип состоит из двух элементов: <strong>Logotype</strong> (HAORI VISION) и <strong>Light Mark</strong> (абстрактный символ света, напоминающий иероглиф 光).</p>
+
+  <div class="logo-showcase">
+    <div class="logo-item">
+      <img src="logos/haori-vision-primary.svg" alt="Primary Logo">
+      <p>Primary Logo — Full Version</p>
+      <p style="font-size: 10px; margin-top: 5px;">Use: Website header, packaging, gallery walls</p>
+    </div>
+
+    <div class="logo-item">
+      <img src="logos/haori-vision-short.svg" alt="Short Logo" style="max-width: 200px;">
+      <p>Short Logo — Icon + HV</p>
+      <p style="font-size: 10px; margin-top: 5px;">Use: Social media profile, favicons</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: LOGO VARIATIONS -->
+<div class="page">
+  <h2>Logo Variations</h2>
+  <div class="divider"></div>
+
+  <div class="logo-showcase">
+    <div class="logo-item">
+      <img src="logos/haori-vision-monogram.svg" alt="Monogram" style="max-width: 150px;">
+      <p>Monogram — Light Mark Only</p>
+      <p style="font-size: 10px; margin-top: 5px;">Use: Labels, embroidery, watermarks</p>
+    </div>
+
+    <div class="logo-item" style="background: #FFFFFF;">
+      <img src="logos/haori-vision-white-bg.svg" alt="White Background">
+      <p style="color: #000000;">White Background Version</p>
+      <p style="font-size: 10px; margin-top: 5px; color: #666666;">Use: Light backgrounds, print materials</p>
+    </div>
+  </div>
+
+  <div class="mt-large">
+    <h3>Logo Usage Rules</h3>
+    <div class="rules-grid">
+      <div class="rules-column do">
+        <h3 style="color: #39FF14;">DO</h3>
+        <div class="rule-item">Use on black or white backgrounds only</div>
+        <div class="rule-item">Maintain clear space</div>
+        <div class="rule-item">Scale proportionally</div>
+        <div class="rule-item">Use official file formats (SVG preferred)</div>
+      </div>
+
+      <div class="rules-column dont">
+        <h3 style="color: #FF6600;">DON'T</h3>
+        <div class="rule-item">Stretch or distort</div>
+        <div class="rule-item">Change colors (except approved variations)</div>
+        <div class="rule-item">Add effects (except UV glow in digital)</div>
+        <div class="rule-item">Place over busy images</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: COLOR PALETTE -->
+<div class="page">
+  <h1>Color Palette</h1>
+  <div class="divider"></div>
+
+  <h2>Primary Colors</h2>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background: #000000;"></div>
+      <div class="color-info">
+        <div class="color-name">Void Black</div>
+        <div class="color-values">
+          HEX: #000000<br>
+          RGB: 0, 0, 0<br>
+          CMYK: 0, 0, 0, 100<br>
+          Pantone: Black 6 C
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="color-block" style="background: #B026FF;"></div>
+      <div class="color-info">
+        <div class="color-name">Hikari Purple</div>
+        <div class="color-values">
+          HEX: #B026FF<br>
+          RGB: 176, 38, 255<br>
+          CMYK: 60, 85, 0, 0<br>
+          Pantone: 2665 C
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="color-block" style="background: #FFFFFF; border: 1px solid #333;"></div>
+      <div class="color-info">
+        <div class="color-name">Light White</div>
+        <div class="color-values">
+          HEX: #FFFFFF<br>
+          RGB: 255, 255, 255<br>
+          CMYK: 0, 0, 0, 0<br>
+          Pantone: White
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="color-block" style="background: #C0C0C0;"></div>
+      <div class="color-info">
+        <div class="color-name">Moonlight Silver</div>
+        <div class="color-values">
+          HEX: #C0C0C0<br>
+          RGB: 192, 192, 192<br>
+          CMYK: 24, 19, 18, 0<br>
+          Pantone: 877 C (metallic)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: UV SPECTRUM COLORS -->
+<div class="page">
+  <h2>UV Spectrum (Secondary Colors)</h2>
+  <p>These colors are used <strong>only in UV-reactive contexts</strong> (photography, digital, physical haori).</p>
+
+  <div class="color-grid" style="margin-top: 30px;">
+    <div class="color-swatch">
+      <div class="color-block" style="background: #FF10F0;"></div>
+      <div class="color-info">
+        <div class="color-name">UV Pink</div>
+        <div class="color-values">
+          HEX: #FF10F0<br>
+          Usage: Fluorescent, electric, feminine energy
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="color-block" style="background: #00D4FF;"></div>
+      <div class="color-info">
+        <div class="color-name">UV Cyan</div>
+        <div class="color-values">
+          HEX: #00D4FF<br>
+          Usage: Cool, technological, water element
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="color-block" style="background: #39FF14;"></div>
+      <div class="color-info">
+        <div class="color-name">UV Green</div>
+        <div class="color-values">
+          HEX: #39FF14<br>
+          Usage: Organic, life, mycelium networks
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="color-block" style="background: #FF6600;"></div>
+      <div class="color-info">
+        <div class="color-name">UV Orange</div>
+        <div class="color-values">
+          HEX: #FF6600<br>
+          Usage: Warmth, ancestors, tradition
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-large">
+    <p style="font-size: 12px; color: #999999; padding: 20px; background: #1A1A1A; border-left: 4px solid #FF6600;">
+      <strong>⚠️ Important Rule:</strong> Never use these colors on printed materials (except UV-reactive prints). They are exclusively for UV photography, digital interfaces, and fluorescent pigments on haori.
+    </p>
+  </div>
+</div>
+
+<!-- PAGE 7: TYPOGRAPHY -->
+<div class="page">
+  <h1>Typography</h1>
+  <div class="divider"></div>
+
+  <h2>Primary Typeface</h2>
+  <p><strong>Neue Haas Grotesk Display</strong> (or Helvetica Neue / Inter as fallback)</p>
+
+  <div class="type-example">
+    <div class="type-label">H1 - Hero (64px / Extra Bold)</div>
+    <h1 style="margin: 0;">WEAR THE LIGHT</h1>
+  </div>
+
+  <div class="type-example">
+    <div class="type-label">H2 - Heading (51px / Bold)</div>
+    <h2 style="margin: 0; color: #FFFFFF;">BECOME THE ART</h2>
+  </div>
+
+  <div class="type-example">
+    <div class="type-label">H3 - Subheading (41px / Bold)</div>
+    <h3 style="margin: 0; color: #FFFFFF;">Three Collections</h3>
+  </div>
+
+  <div class="type-example">
+    <div class="type-label">Body Text (20px / Light)</div>
+    <p style="margin: 0;">HAORI VISION создаёт артефакты света. Каждое хаори — подписанное произведение искусства с цифровым сертификатом вечности.</p>
+  </div>
+
+  <div class="type-example">
+    <div class="type-label">Label (13px / Regular / Uppercase / +15% tracking)</div>
+    <p style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.15em;">MYCELIUM DREAMS</p>
+  </div>
+</div>
+
+<!-- PAGE 8: JAPANESE TYPOGRAPHY -->
+<div class="page">
+  <h2>Secondary Typeface</h2>
+  <p><strong>Shippori Mincho</strong> — Japanese serif for spiritual, poetic elements</p>
+
+  <div class="type-example">
+    <div class="type-label">Japanese Characters (32px / SemiBold)</div>
+    <p class="japanese" style="font-size: 32px; margin: 0;">光 闇 詩 艶 無</p>
+    <p style="font-size: 12px; color: #666; margin-top: 10px;">Light • Darkness • Poetry • Luster • Void</p>
+  </div>
+
+  <div class="type-example">
+    <div class="type-label">Quote / Hikari Voice (32px / Italic)</div>
+    <p style="font-family: 'Shippori Mincho', serif; font-size: 28px; font-style: italic; line-height: 1.6; margin: 0; color: #C0C0C0;">
+      "Свет скрыт в каждом из нас.<br>
+      Большую часть времени мы его не видим..."
+    </p>
+    <p style="margin-top: 15px; font-size: 14px; color: #666;">— Хикари (光)</p>
+  </div>
+
+  <div class="mt-large">
+    <h3>Typography Usage Rules</h3>
+    <ul style="list-style: none; padding-left: 0;">
+      <li style="margin-bottom: 10px;">✓ Use sans-serif for structure, technology, products</li>
+      <li style="margin-bottom: 10px;">✓ Use Japanese serif for soul, ritual, quotes from Hikari</li>
+      <li style="margin-bottom: 10px;">✓ Never mix both in the same sentence</li>
+      <li style="margin-bottom: 10px;">✓ Keep line-height 1.6+ for body text (readability)</li>
+      <li style="margin-bottom: 10px;">✓ Use letter-spacing +10-15% for labels and uppercase</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PAGE 9: PATTERNS -->
+<div class="page">
+  <h1>Patterns & Textures</h1>
+  <div class="divider"></div>
+
+  <p>Паттерны HAORI VISION — это <strong>визуальные метафоры</strong>, а не декорация.</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-item">
+      <div class="pattern-preview">
+        <img src="patterns/mycelium-network.svg" alt="Mycelium Network">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Mycelium Network</div>
+        <div class="pattern-desc">Органическая сеть грибного мицелия — невидимые связи</div>
+      </div>
+    </div>
+
+    <div class="pattern-item">
+      <div class="pattern-preview">
+        <img src="patterns/void-bloom.svg" alt="Void Bloom">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Void Bloom</div>
+        <div class="pattern-desc">Концентрические круги — цветение из пустоты</div>
+      </div>
+    </div>
+
+    <div class="pattern-item">
+      <div class="pattern-preview">
+        <img src="patterns/light-rays.svg" alt="Light Rays">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Light Rays</div>
+        <div class="pattern-desc">Радиальные лучи — распространение энергии</div>
+      </div>
+    </div>
+
+    <div class="pattern-item">
+      <div class="pattern-preview">
+        <img src="patterns/kanji-grid.svg" alt="Kanji Grid">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-name">Kanji Grid</div>
+        <div class="pattern-desc">Иероглиф 光 (hikari) как водяной знак</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-large">
+    <h3>Pattern Application</h3>
+    <p style="font-size: 13px; line-height: 1.8;">
+      <strong>Usage:</strong> Packaging tissue paper, website backgrounds (subtle), exhibition walls (projected in UV), NFT certificates, email headers
+    </p>
+    <p style="font-size: 13px; line-height: 1.8; margin-top: 15px;">
+      <strong>Rule:</strong> Keep opacity 3-10% for backgrounds. Never overpower content. Can combine patterns (e.g., grain + mycelium).
+    </p>
+  </div>
+</div>
+
+<!-- PAGE 10: APPLICATIONS -->
+<div class="page">
+  <h1>Brand Applications</h1>
+  <div class="divider"></div>
+
+  <h2>Packaging System</h2>
+
+  <h3>Box (Outer)</h3>
+  <ul style="list-style: none; padding: 0; font-size: 13px; line-height: 1.8;">
+    <li><strong>Material:</strong> Rigid cardboard (2mm thick), matte black</li>
+    <li><strong>Finish:</strong> Soft-touch coating</li>
+    <li><strong>Logo:</strong> Foil stamped (silver)</li>
+    <li><strong>Inside:</strong> UV pattern printed in UV-reactive ink</li>
+  </ul>
+
+  <h3>Tissue Paper</h3>
+  <ul style="list-style: none; padding: 0; font-size: 13px; line-height: 1.8;">
+    <li><strong>Material:</strong> Acid-free Japanese tissue (17gsm)</li>
+    <li><strong>Color:</strong> White</li>
+    <li><strong>Pattern:</strong> Mycelium network (silver print)</li>
+  </ul>
+
+  <h3>Hang Tag</h3>
+  <ul style="list-style: none; padding: 0; font-size: 13px; line-height: 1.8;">
+    <li><strong>Material:</strong> Black card stock (350gsm)</li>
+    <li><strong>Shape:</strong> Circle (8cm diameter)</li>
+    <li><strong>Front:</strong> Light Mark foil stamped (UV violet)</li>
+    <li><strong>Back:</strong> Edition number, artist signature</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>Digital Applications</h2>
+
+  <h3>Website UI</h3>
+  <p style="font-size: 13px;">Black backgrounds, UV purple accents, glow effects on hover, grain texture overlay (3-5% opacity)</p>
+
+  <h3>Social Media</h3>
+  <p style="font-size: 13px;">Instagram: 1080×1080 (feed), 1080×1920 (stories/reels) | Always include Light Mark watermark (10% opacity) | Use UV mode colors only for UV photos</p>
+
+  <h3>Email</h3>
+  <p style="font-size: 13px;">Black background, minimal design, Light Rays pattern as header, Hikari tone of voice</p>
+</div>
+
+<!-- PAGE 11: BRAND CHECKLIST -->
+<div class="page">
+  <h1>Brand Checklist</h1>
+  <div class="divider"></div>
+
+  <p>Before any design leaves the studio, verify:</p>
+
+  <div class="type-example">
+    <h3 style="color: #39FF14; margin-top: 0;">✓ Design Quality</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li style="margin-bottom: 12px;">☐ Uses approved colors only (primary + UV spectrum)</li>
+      <li style="margin-bottom: 12px;">☐ Typography from brand system (Neue Haas Grotesk + Shippori Mincho)</li>
+      <li style="margin-bottom: 12px;">☐ Maintains high contrast (black background + white text)</li>
+      <li style="margin-bottom: 12px;">☐ Logo properly sized with clear space</li>
+      <li style="margin-bottom: 12px;">☐ Patterns used subtly (3-10% opacity)</li>
+    </ul>
+  </div>
+
+  <div class="type-example">
+    <h3 style="color: #B026FF; margin-top: 0;">✓ Brand Spirit</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li style="margin-bottom: 12px;">☐ Feels mystical, not commercial</li>
+      <li style="margin-bottom: 12px;">☐ Creates space for reflection (not cluttered)</li>
+      <li style="margin-bottom: 12px;">☐ Minimal design (can we remove anything?)</li>
+      <li style="margin-bottom: 12px;">☐ Hikari would approve (WWHS — "What Would Hikari Say?")</li>
+      <li style="margin-bottom: 12px;">☐ Respects the philosophy: "Свет скрыт внутри"</li>
+    </ul>
+  </div>
+
+  <div class="type-example">
+    <h3 style="color: #FF6600; margin-top: 0;">✓ Technical</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li style="margin-bottom: 12px;">☐ Files in correct format (SVG for logos, WebP for web, TIFF for print)</li>
+      <li style="margin-bottom: 12px;">☐ Resolution appropriate (300 DPI for print, 2x for retina screens)</li>
+      <li style="margin-bottom: 12px;">☐ Color space correct (sRGB for digital, Adobe RGB for print)</li>
+      <li style="margin-bottom: 12px;">☐ Accessibility (WCAG AA contrast ratios met)</li>
+    </ul>
+  </div>
+
+  <div class="mt-large text-center">
+    <p class="japanese" style="font-size: 32px;">光</p>
+    <p style="font-size: 14px; color: #666; margin-top: 10px;">
+      "Логотип — это не просто картинка.<br>
+      Это сигнатура света."
+    </p>
+  </div>
+</div>
+
+<!-- PAGE 12: CONTACT & VERSION -->
+<div class="page">
+  <h1>Brand Contacts</h1>
+  <div class="divider"></div>
+
+  <h3>Brand Guardians</h3>
+  <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+    <li><strong>Creative Director:</strong> [Artist Name]</li>
+    <li><strong>Brand Manager:</strong> [Name]</li>
+    <li><strong>Design Lead:</strong> [Name]</li>
+  </ul>
+
+  <h3 style="margin-top: 40px;">For Brand Inquiries</h3>
+  <p style="font-size: 14px;">
+    Email: <a href="mailto:brand@haori-vision.com" style="color: #B026FF;">brand@haori-vision.com</a>
+  </p>
+
+  <h3 style="margin-top: 40px;">For High-Res Assets</h3>
+  <p style="font-size: 14px;">
+    Request via Google Drive link (team access only)
+  </p>
+
+  <div class="divider"></div>
+
+  <h2>Usage Rights</h2>
+  <ul style="list-style: none; padding: 0; font-size: 13px; line-height: 1.8;">
+    <li><strong>Internal use:</strong> Unlimited for HAORI VISION team</li>
+    <li><strong>Partners:</strong> Require approval for each use</li>
+    <li><strong>Press:</strong> May use logo + product photos (with credit)</li>
+    <li><strong>Not allowed:</strong> Modification, recreation, unauthorized merchandise</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <div class="text-center mt-large">
+    <p class="japanese" style="font-size: 64px; margin-bottom: 20px;">光</p>
+    <h2 style="color: #FFFFFF; margin-bottom: 10px;">HAORI VISION</h2>
+    <p style="font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; color: #C0C0C0;">Wear the Light</p>
+    <p style="font-size: 12px; color: #666; margin-top: 30px;">Brand Style Guide v1.0.0 | October 2025</p>
+  </div>
+</div>
+
+</body>
+</html>

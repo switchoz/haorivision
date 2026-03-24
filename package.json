@@ -5,7 +5,14 @@
   "scripts": {
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
+    "e2e:upd": "playwright test --update-snapshots",
     "e2e:report": "node scripts/ci-report.js",
+    "e2e:visual": "node scripts/build-visual-pages.js",
+    "ci:e2e": "E2E_BASE_URL=http://localhost:3012 playwright test",
+    "ci:start:backend": "PORT=3010 NODE_ENV=test npm --prefix backend run dev",
+    "ci:start:frontend": "npm --prefix frontend run preview",
+    "ci:wait": "wait-on -t 120000 http://localhost:3010 http://localhost:3012",
+    "ci:build-visual": "node scripts/build-visual-pages.js",
     "backup": "node claude.js run backup",
     "backup:now": "python scripts/backup_now.py",
     "backup:list": "python scripts/backup_now.py list",
@@ -21,6 +28,10 @@
     "media:check": "node claude.js run media:check",
     "media:placeholders": "python scripts/media_placeholders.py",
     "product_pages:build": "python scripts/product_pages_build.py",
+    "gallery:organize": "node scripts/organize-gallery.mjs",
+    "gallery:optimize": "node scripts/optimize-gallery.mjs",
+    "gallery:catalog": "node scripts/generate-full-catalog.mjs",
+    "gallery:full": "npm run gallery:organize && npm run gallery:optimize && npm run gallery:catalog",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
@@ -83,7 +94,9 @@
     "helmet": "^8.0.0",
     "lighthouse": "^13.0.0",
     "prettier": "^3.6.2",
-    "puppeteer": "^24.23.0"
+    "puppeteer": "^24.23.0",
+    "sharp": "^0.34.4",
+    "wait-on": "^8.0.5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,md}": [

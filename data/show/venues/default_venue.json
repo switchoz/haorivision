@@ -1,0 +1,93 @@
+{
+  "id": "default_venue",
+  "name": "Default Venue — Single Projector",
+  "location": "Studio / Testing",
+  "createdAt": "2025-01-07",
+
+  "displays": [
+    {
+      "id": "projector_main",
+      "name": "Main Projector",
+      "position": "center",
+      "offset": { "x": 0, "y": 0 },
+      "size": { "width": 1920, "height": 1080 },
+      "resolution": { "width": 1920, "height": 1080 },
+      "rotation": 0,
+      "enabled": true
+    }
+  ],
+
+  "projection": {
+    "totalWidth": 1920,
+    "totalHeight": 1080,
+    "throwDistance": 5.0,
+    "aspectRatio": "16:9"
+  },
+
+  "calibration": {
+    "brightness": 1.0,
+    "contrast": 1.0,
+    "gamma": 2.2,
+    "whitePoint": { "r": 1.0, "g": 1.0, "b": 1.0 },
+    "blackLevel": { "r": 0.0, "g": 0.0, "b": 0.0 }
+  },
+
+  "geometry": {
+    "warpEnabled": false,
+    "warpGrid": {
+      "rows": 5,
+      "cols": 5,
+      "points": [
+        [
+          { "x": 0.0, "y": 0.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.25, "y": 0.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.5, "y": 0.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.75, "y": 0.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 1.0, "y": 0.0, "offsetX": 0, "offsetY": 0 }
+        ],
+        [
+          { "x": 0.0, "y": 0.25, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.25, "y": 0.25, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.5, "y": 0.25, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.75, "y": 0.25, "offsetX": 0, "offsetY": 0 },
+          { "x": 1.0, "y": 0.25, "offsetX": 0, "offsetY": 0 }
+        ],
+        [
+          { "x": 0.0, "y": 0.5, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.25, "y": 0.5, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.5, "y": 0.5, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.75, "y": 0.5, "offsetX": 0, "offsetY": 0 },
+          { "x": 1.0, "y": 0.5, "offsetX": 0, "offsetY": 0 }
+        ],
+        [
+          { "x": 0.0, "y": 0.75, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.25, "y": 0.75, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.5, "y": 0.75, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.75, "y": 0.75, "offsetX": 0, "offsetY": 0 },
+          { "x": 1.0, "y": 0.75, "offsetX": 0, "offsetY": 0 }
+        ],
+        [
+          { "x": 0.0, "y": 1.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.25, "y": 1.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.5, "y": 1.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 0.75, "y": 1.0, "offsetX": 0, "offsetY": 0 },
+          { "x": 1.0, "y": 1.0, "offsetX": 0, "offsetY": 0 }
+        ]
+      ]
+    },
+    "keystoneCorrection": {
+      "enabled": false,
+      "corners": {
+        "topLeft": { "x": 0, "y": 0 },
+        "topRight": { "x": 1920, "y": 0 },
+        "bottomLeft": { "x": 0, "y": 1080 },
+        "bottomRight": { "x": 1920, "y": 1080 }
+      }
+    }
+  },
+
+  "sync": {
+    "mode": "local",
+    "frameDelay": 0
+  }
+}

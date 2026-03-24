@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { stripeConfig } from "../config/stripe.js";
 import Order from "../models/Order.js";
+import { baseLogger } from "../middlewares/logger.js";
 
 const stripe = new Stripe(stripeConfig.secretKey, { apiVersion: "2024-06-20" });
 
@@ -74,7 +75,7 @@ export async function handleWebhook(rawBody, signature, webhookSecret) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
-      console.log(`[Webhook] Checkout completed: ${session.id}`);
+      baseLogger.info(`[Webhook] Checkout completed: ${session.id}`);
       if (session.metadata?.orderId) {
         await Order.findByIdAndUpdate(session.metadata.orderId, {
           status: "paid",
@@ -88,7 +89,7 @@ export async function handleWebhook(rawBody, signature, webhookSecret) {
 
     case "payment_intent.succeeded": {
       const paymentIntent = event.data.object;
-      console.log(`[Webhook] Payment succeeded: ${paymentIntent.id}`);
+      baseLogger.info(`[Webhook] Payment succeeded: ${paymentIntent.id}`);
       if (paymentIntent.metadata?.orderId) {
         await Order.findByIdAndUpdate(paymentIntent.metadata.orderId, {
           status: "paid",
@@ -102,7 +103,7 @@ export async function handleWebhook(rawBody, signature, webhookSecret) {
 
     case "payment_intent.payment_failed": {
       const paymentIntent = event.data.object;
-      console.error(`[Webhook] Payment failed: ${paymentIntent.id}`);
+      baseLogger.error(`[Webhook] Payment failed: ${paymentIntent.id}`);
       if (paymentIntent.metadata?.orderId) {
         await Order.findByIdAndUpdate(paymentIntent.metadata.orderId, {
           "payment.status": "failed",
@@ -112,7 +113,7 @@ export async function handleWebhook(rawBody, signature, webhookSecret) {
     }
 
     default:
-      console.log(`[Webhook] Unhandled event type: ${event.type}`);
+      baseLogger.info(`[Webhook] Unhandled event type: ${event.type}`);
       return { received: true, type: event.type };
   }
 }

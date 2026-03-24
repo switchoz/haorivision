@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HAORI VISION — Политика возврата и обмена. 14 дней для готовых изделий, bespoke не возвращается кроме брака.">
+  <title>Политика возврата и обмена — HAORI VISION</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #000;
+      --secondary: #fff;
+      --accent: #ff6b35;
+      --text: #333;
+      --text-light: #666;
+      --border: #e0e0e0;
+      --bg-light: #f9f9f9;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--secondary);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .last-updated {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-top: 10px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 50px 0 20px;
+      color: var(--primary);
+      border-left: 4px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    ul, ol {
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .highlight-box {
+      background-color: var(--bg-light);
+      border-left: 4px solid var(--accent);
+      padding: 25px;
+      margin: 30px 0;
+      border-radius: 4px;
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .info-box {
+      background-color: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+
+    .warning-box {
+      background-color: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 30px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--secondary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: var(--primary);
+      color: var(--secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    tr:hover {
+      background-color: var(--bg-light);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid var(--border);
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: var(--secondary);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    .contact-info {
+      background-color: var(--bg-light);
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+
+    .contact-info h3 {
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      p, li {
+        font-size: 15px;
+      }
+
+      th, td {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">HAORI VISION</div>
+      <h1>Политика возврата и обмена</h1>
+      <p class="subtitle">Условия возврата готовых изделий и изделий на заказ</p>
+      <p class="last-updated">Последнее обновление: 17 октября 2025</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>1. Общие положения</h2>
+        <p>
+          HAORI VISION стремится обеспечить полное удовлетворение наших клиентов качеством и сервисом.
+          Данная политика возврата и обмена применяется ко всем покупкам, совершённым через наш сайт,
+          в шоу-румах или у авторизованных партнёров.
+        </p>
+
+        <div class="info-box">
+          <strong>Важно:</strong> Условия возврата различаются для готовых изделий и изделий на заказ (bespoke).
+          Пожалуйста, внимательно ознакомьтесь с условиями, применимыми к вашей покупке.
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Возврат готовых изделий</h2>
+
+        <h3>2.1. Срок возврата</h3>
+        <p>
+          Вы можете вернуть готовое изделие в течение <strong>14 календарных дней</strong> с момента получения,
+          если оно не подошло вам по размеру, стилю или по другим причинам.
+        </p>
+
+        <h3>2.2. Условия возврата</h3>
+        <p>Для возврата готового изделия должны быть соблюдены следующие условия:</p>
+        <ul>
+          <li><strong>Неношеное состояние:</strong> Изделие не должно иметь следов носки, повреждений, загрязнений или посторонних запахов</li>
+          <li><strong>Оригинальная упаковка:</strong> Изделие должно быть возвращено в оригинальной упаковке с бирками</li>
+          <li><strong>Комплектность:</strong> Все аксессуары, документация и элементы упаковки должны быть на месте</li>
+          <li><strong>Бирки:</strong> Все оригинальные бирки и ярлыки должны быть сохранены и не повреждены</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Обратите внимание:</strong> Изделия с удалёнными бирками, следами носки или повреждениями
+          не подлежат возврату и будут отправлены обратно покупателю за его счёт.
+        </div>
+
+        <h3>2.3. Процедура возврата</h3>
+        <ol>
+          <li><strong>Заявка на возврат:</strong> Свяжитесь с нами по email <a href="mailto:returns@haorivision.com">returns@haorivision.com</a> или через форму на сайте</li>
+          <li><strong>Получение инструкций:</strong> Мы вышлем вам этикетку для возврата и инструкции по упаковке</li>
+          <li><strong>Отправка товара:</strong> Упакуйте изделие согласно инструкциям и отправьте на наш адрес</li>
+          <li><strong>Проверка качества:</strong> После получения мы проверим состояние изделия (2-3 рабочих дня)</li>
+          <li><strong>Возврат средств:</strong> При одобрении возврата средства будут возвращены в течение 7-10 рабочих дней</li>
+        </ol>
+
+        <h3>2.4. Стоимость возврата</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Причина возврата</th>
+                <th>Оплата доставки</th>
+                <th>Комиссия</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Не подошёл размер/стиль</td>
+                <td>Покупатель</td>
+                <td>Без комиссии</td>
+              </tr>
+              <tr>
+                <td>Брак или дефект</td>
+                <td>HAORI VISION</td>
+                <td>Без комиссии</td>
+              </tr>
+              <tr>
+                <td>Ошибка в заказе</td>
+                <td>HAORI VISION</td>
+                <td>Без комиссии</td>
+              </tr>
+              <tr>
+                <td>Повреждение при доставке</td>
+                <td>HAORI VISION</td>
+                <td>Без комиссии</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Возврат изделий на заказ (Bespoke)</h2>
+
+        <div class="highlight-box">
+          <h3>Важная информация о Bespoke заказах</h3>
+          <p>
+            Изделия на заказ (bespoke) создаются индивидуально для вас по вашим размерам и пожеланиям.
+            Из-за персонализированного характера таких изделий они <strong>не подлежат возврату</strong>,
+            за исключением случаев производственного брака.
+          </p>
+        </div>
+
+        <h3>3.1. Невозвратность Bespoke изделий</h3>
+        <p>
+          Поскольку bespoke изделия изготавливаются по индивидуальным меркам и спецификациям клиента,
+          они не могут быть перепроданы другим покупателям. В связи с этим мы не принимаем возвраты
+          bespoke изделий по следующим причинам:
+        </p>
+        <ul>
+          <li>Изменение мнения о дизайне или цвете</li>
+          <li>Несоответствие ожиданиям (если изделие соответствует утверждённым эскизам)</li>
+          <li>Неправильно предоставленные мерки со стороны клиента</li>
+          <li>Изменение веса или фигуры клиента после снятия мерок</li>
+        </ul>
+
+        <h3>3.2. Исключения: Производственный брак</h3>
+        <p>
+          Bespoke изделия <strong>подлежат возврату или бесплатной доработке</strong> только в случае
+          производственного брака или существенного несоответствия утверждённым эскизам:
+        </p>
+        <ul>
+          <li><strong>Дефекты материала:</strong> Брак ткани, неравномерное окрашивание, производственные повреждения</li>
+          <li><strong>Дефекты пошива:</strong> Неровные швы, расхождение швов, неправильная посадка по меркам</li>
+          <li><strong>Несоответствие эскизу:</strong> Существенные отклонения от утверждённого дизайна</li>
+          <li><strong>UV-система:</strong> Неисправность светодиодов, некорректная работа контроллера</li>
+        </ul>
+
+        <h3>3.3. Процедура возврата Bespoke при браке</h3>
+        <ol>
+          <li><strong>Уведомление:</strong> Сообщите о проблеме в течение <strong>7 дней</strong> с момента получения</li>
+          <li><strong>Документация:</strong> Предоставьте фото/видео дефекта и оригинальные эскизы</li>
+          <li><strong>Экспертиза:</strong> Наша команда проведёт оценку (возможен запрос на возврат изделия для осмотра)</li>
+          <li><strong>Решение:</strong> Мы предложим бесплатную доработку, замену или полный возврат средств</li>
+        </ol>
+
+        <div class="info-box">
+          <strong>Гарантия качества:</strong> На все bespoke изделия распространяется гарантия на производственные
+          дефекты в течение 12 месяцев с момента получения. Гарантия не распространяется на естественный износ
+          и повреждения, вызванные неправильным уходом.
+        </div>
+
+        <h3>3.4. Корректировки Bespoke изделий</h3>
+        <p>
+          Если bespoke изделие требует незначительных корректировок по размеру в пределах 2 см,
+          мы предоставляем <strong>одну бесплатную подгонку</strong> в течение 30 дней с момента получения.
+        </p>
+        <p>Бесплатная подгонка включает:</p>
+        <ul>
+          <li>Укорачивание или удлинение рукавов (до 2 см)</li>
+          <li>Корректировка длины изделия (до 2 см)</li>
+          <li>Незначительная подгонка по фигуре</li>
+        </ul>
+        <p>
+          <strong>Важно:</strong> Существенные переделки (более 2 см, изменение конструкции) оплачиваются
+          отдельно согласно прайс-листу ателье.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Обмен изделий</h2>
+
+        <h3>4.1. Обмен готовых изделий</h3>
+        <p>
+          Если готовое изделие вам не подошло, вы можете обменять его на другой размер или модель
+          в течение <strong>14 дней</strong> с момента получения. Условия обмена аналогичны условиям возврата.
+        </p>
+        <p><strong>Процедура обмена:</strong></p>
+        <ol>
+          <li>Свяжитесь с нами для оформления обмена</li>
+          <li>Верните исходное изделие согласно инструкциям</li>
+          <li>Укажите желаемый размер или модель для замены</li>
+          <li>Мы отправим новое изделие после получения и проверки возвращаемого</li>
+        </ol>
+
+        <div class="info-box">
+          <strong>Доставка при обмене:</strong> Если обмен происходит по причине несоответствия размера,
+          доставку нового изделия оплачивает покупатель. Если причина обмена — брак или ошибка магазина,
+          доставка за наш счёт.
+        </div>
+
+        <h3>4.2. Обмен Bespoke изделий</h3>
+        <p>
+          Bespoke изделия <strong>не подлежат обмену</strong>, так как изготавливаются индивидуально под клиента.
+          Возможны только корректировки в рамках бесплатной подгонки (см. раздел 3.4).
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Возврат средств</h2>
+
+        <h3>5.1. Способ возврата</h3>
+        <p>
+          Средства возвращаются тем же способом, которым была совершена оплата:
+        </p>
+        <ul>
+          <li><strong>Банковская карта:</strong> Возврат на карту в течение 7-10 рабочих дней</li>
+          <li><strong>Банковский перевод:</strong> Возврат на счёт в течение 5-7 рабочих дней</li>
+          <li><strong>PayPal:</strong> Возврат на PayPal аккаунт в течение 3-5 рабочих дней</li>
+          <li><strong>Криптовалюта:</strong> Возврат в эквиваленте по курсу на день возврата (5-7 дней)</li>
+        </ul>
+
+        <h3>5.2. Сумма возврата</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Ситуация</th>
+                <th>Возвращаемая сумма</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Возврат по желанию клиента (готовое изделие)</td>
+                <td>Полная стоимость изделия (без стоимости доставки)</td>
+              </tr>
+              <tr>
+                <td>Возврат по причине брака</td>
+                <td>Полная стоимость + стоимость доставки</td>
+              </tr>
+              <tr>
+                <td>Возврат Bespoke при производственном браке</td>
+                <td>Полная стоимость + стоимость доставки</td>
+              </tr>
+              <tr>
+                <td>Частичный возврат (скидка за незначительный дефект)</td>
+                <td>По согласованию (10-30% от стоимости)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>5.3. Сроки возврата средств</h3>
+        <p>
+          Возврат средств производится после получения и проверки возвращённого изделия.
+          Общий срок от отправки изделия до получения средств составляет:
+        </p>
+        <ul>
+          <li><strong>Европа:</strong> 10-15 рабочих дней</li>
+          <li><strong>США/Канада:</strong> 12-18 рабочих дней</li>
+          <li><strong>Азия:</strong> 15-20 рабочих дней</li>
+          <li><strong>Остальной мир:</strong> 15-25 рабочих дней</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Исключения и особые случаи</h2>
+
+        <h3>6.1. Невозвратные товары</h3>
+        <p>Следующие товары не подлежат возврату ни при каких обстоятельствах:</p>
+        <ul>
+          <li>Нижнее бельё и купальники (по гигиеническим соображениям)</li>
+          <li>Изделия с индивидуализацией (вышивка имени, монограмма и т.д.)</li>
+          <li>Товары со скидкой более 50% (распродажа, сток)</li>
+          <li>Подарочные карты и сертификаты</li>
+          <li>Цифровые товары и услуги</li>
+        </ul>
+
+        <h3>6.2. Повреждённая упаковка при доставке</h3>
+        <p>
+          Если упаковка повреждена при доставке, не принимайте посылку до осмотра содержимого.
+          Если изделие повреждено:
+        </p>
+        <ol>
+          <li>Зафиксируйте повреждения на фото/видео в присутствии курьера</li>
+          <li>Составьте акт о повреждении с курьером</li>
+          <li>Немедленно свяжитесь с нами по email или телефону</li>
+          <li>Мы организуем замену или возврат средств за наш счёт</li>
+        </ol>
+
+        <h3>6.3. Утерянная посылка</h3>
+        <p>
+          Если посылка утеряна службой доставки, мы возместим полную стоимость заказа или отправим
+          замену после завершения расследования (обычно 14-21 день).
+        </p>
+
+        <div class="warning-box">
+          <strong>Важно:</strong> Все международные отправления застрахованы. Для оформления возмещения
+          необходимо хранить все документы о заказе и доставке.
+        </div>
+      </section>
+
+      <section>
+        <h2>7. Права покупателя</h2>
+
+        <h3>7.1. Законодательство о защите прав потребителей</h3>
+        <p>
+          Данная политика возврата соответствует законодательству стран ЕС и не ограничивает
+          ваши законные права как потребителя. В некоторых юрисдикциях могут действовать
+          дополнительные права на возврат.
+        </p>
+
+        <h3>7.2. Право на отказ (ЕС)</h3>
+        <p>
+          Для покупателей из ЕС: в соответствии с Директивой о правах потребителей (2011/83/EU),
+          вы имеете право отказаться от покупки в течение 14 дней без объяснения причин
+          (за исключением bespoke изделий и других персонализированных товаров).
+        </p>
+      </section>
+
+      <section class="contact-info">
+        <h3>8. Контакты для возврата</h3>
+        <p><strong>Email:</strong> <a href="mailto:returns@haorivision.com">returns@haorivision.com</a></p>
+        <p><strong>Телефон:</strong> +33 1 234 56 789 (Пн-Пт, 10:00-18:00 CET)</p>
+        <p><strong>Адрес для возврата:</strong><br>
+          HAORI VISION Returns Department<br>
+          123 Rue de la Mode<br>
+          75001 Paris, France
+        </p>
+        <p><strong>Форма возврата онлайн:</strong> <a href="/returns-form">haorivision.com/returns-form</a></p>
+        <p>
+          <em>Обычно мы отвечаем на запросы в течение 24 часов в рабочие дни.</em>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 HAORI VISION. Все права защищены.</p>
+      <p>
+        <a href="/legal/care.html" style="color: var(--text-light); margin: 0 10px;">Уход за изделиями</a> |
+        <a href="/legal/uv_safety.html" style="color: var(--text-light); margin: 0 10px;">UV безопасность</a> |
+        <a href="/privacy" style="color: var(--text-light); margin: 0 10px;">Политика конфиденциальности</a>
+      </p>
+      <a href="/" class="back-link">← Вернуться на главную</a>
+    </footer>
+  </div>
+</body>
+</html>

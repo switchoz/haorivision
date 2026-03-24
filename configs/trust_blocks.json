@@ -1,0 +1,39 @@
+{
+  "description": "P16 Trust Blocks Configuration - Defines which product pages include Trust Blocks",
+  "enabled": true,
+  "new_products": [
+    "P007",
+    "P008",
+    "P009",
+    "P010"
+  ],
+  "legacy_products": [
+    "P001",
+    "P002",
+    "P003",
+    "P004",
+    "P005",
+    "P006"
+  ],
+  "trust_blocks": {
+    "how_made": {
+      "enabled": true,
+      "title_ru": "Процесс создания",
+      "title_en": "Craftsmanship Process",
+      "video_path": "/media/how_made/clip.mp4"
+    },
+    "mini_reviews": {
+      "enabled": true,
+      "title_ru": "Что говорят наши клиенты",
+      "title_en": "What Our Customers Say",
+      "data_source": "/data/reviews.json",
+      "limit": 3
+    }
+  },
+  "notes": [
+    "new_products: Products that were created WITH Trust Blocks (P5 onwards)",
+    "legacy_products: Original products WITHOUT Trust Blocks (Pre-P5)",
+    "Add-Only principle: New product pages get Trust Blocks, old pages unchanged",
+    "To add Trust Blocks to a product, add its ID to new_products array"
+  ]
+}

@@ -7,6 +7,7 @@
 
 import express from "express";
 import Anthropic from "@anthropic-ai/sdk";
+import { baseLogger } from "../middlewares/logger.js";
 
 const router = express.Router();
 
@@ -70,7 +71,7 @@ router.post("/", async (req, res) => {
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      console.error("ANTHROPIC_API_KEY is not set");
+      baseLogger.error("ANTHROPIC_API_KEY is not set");
       return res.status(500).json({ error: "Chat service is not configured" });
     }
 
@@ -97,7 +98,7 @@ router.post("/", async (req, res) => {
     });
 
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-6",
       max_tokens: 1024,
       system: HIKARI_SYSTEM_PROMPT,
       messages,
@@ -113,7 +114,7 @@ router.post("/", async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Chat error:", error);
+    baseLogger.error({ err: error }, "Chat error");
 
     if (error.status === 401) {
       return res

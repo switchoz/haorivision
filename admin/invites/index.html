@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyer Invites — Admin — HAORI VISION</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #000000;
+      --secondary: #E8E8E8;
+      --text: #4A4A4A;
+      --border: #D0D0D0;
+      --success: #2E7D32;
+      --warning: #F57C00;
+      --error: #C62828;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--primary);
+      background: #FAFAFA;
+    }
+
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .badge {
+      background: var(--error);
+      color: #FFFFFF;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 3rem 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--secondary);
+    }
+
+    .table-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: var(--secondary);
+    }
+
+    th {
+      text-align: left;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    tr:hover {
+      background: #FAFAFA;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-active {
+      background: #E8F5E9;
+      color: var(--success);
+    }
+
+    .status-used {
+      background: #E3F2FD;
+      color: #1976D2;
+    }
+
+    .status-revoked {
+      background: #FFEBEE;
+      color: var(--error);
+    }
+
+    .token-code {
+      font-family: 'Courier New', monospace;
+      background: var(--secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      padding: 0.5rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: var(--secondary);
+    }
+
+    .icon-btn.danger:hover {
+      background: #FFEBEE;
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #FFFFFF;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      margin: 1rem;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .alert {
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+    }
+
+    .alert-success {
+      background: #E8F5E9;
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .table-container {
+        font-size: 0.85rem;
+      }
+
+      th, td {
+        padding: 0.75rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div>
+          <div class="logo">HAORI VISION</div>
+          <div style="font-size: 0.85rem; color: var(--text); margin-top: 0.25rem;">Admin / Buyer Invites</div>
+        </div>
+        <div class="badge">ADMIN</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Buyer Invites</h1>
+      <p class="subtitle">Manage invite tokens for wholesale buyers</p>
+
+      <div id="alertContainer"></div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-value" id="totalInvites">0</div>
+          <div class="stat-label">Total Invites</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="activeInvites">0</div>
+          <div class="stat-label">Active</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="usedInvites">0</div>
+          <div class="stat-label">Used</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="revokedInvites">0</div>
+          <div class="stat-label">Revoked</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" onclick="openGenerateModal()">+ Generate Invite</button>
+        <button class="btn btn-secondary" onclick="filterByStatus('all')">All</button>
+        <button class="btn btn-secondary" onclick="filterByStatus('active')">Active</button>
+        <button class="btn btn-secondary" onclick="filterByStatus('used')">Used</button>
+        <button class="btn btn-secondary" onclick="filterByStatus('revoked')">Revoked</button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Used</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="invitesTable">
+            <tr>
+              <td colspan="7" class="empty-state">
+                No invites yet. Generate your first invite token to get started.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Generate Invite Modal -->
+  <div id="generateModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Generate Invite</h2>
+        <button class="close-btn" onclick="closeGenerateModal()">&times;</button>
+      </div>
+      <form onsubmit="generateInvite(event)">
+        <div class="form-group">
+          <label for="email">Buyer Email *</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company">
+        </div>
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Generate Token</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Mock data (in production, load from API)
+    let invites = [
+      {
+        token: 'BUYER-2025-001',
+        email: 'buyer1@fashionhouse.com',
+        company: 'Fashion House Ltd',
+        status: 'active',
+        createdAt: '2025-10-01T10:00:00Z',
+        usedAt: null,
+        notes: 'High-priority buyer from Milan'
+      },
+      {
+        token: 'BUYER-2025-002',
+        email: 'buyer2@boutique.com',
+        company: 'Luxury Boutique',
+        status: 'used',
+        createdAt: '2025-09-15T14:30:00Z',
+        usedAt: '2025-09-20T09:15:00Z',
+        notes: ''
+      },
+      {
+        token: 'BUYER-2025-003',
+        email: 'buyer3@department.com',
+        company: 'Department Store Co',
+        status: 'revoked',
+        createdAt: '2025-08-01T08:00:00Z',
+        usedAt: null,
+        revokedAt: '2025-08-15T12:00:00Z',
+        notes: 'Requested by buyer, then cancelled'
+      }
+    ];
+
+    let currentFilter = 'all';
+
+    function updateStats() {
+      document.getElementById('totalInvites').textContent = invites.length;
+      document.getElementById('activeInvites').textContent = invites.filter(i => i.status === 'active').length;
+      document.getElementById('usedInvites').textContent = invites.filter(i => i.status === 'used').length;
+      document.getElementById('revokedInvites').textContent = invites.filter(i => i.status === 'revoked').length;
+    }
+
+    function renderInvites() {
+      const tbody = document.getElementById('invitesTable');
+
+      let filtered = invites;
+      if (currentFilter !== 'all') {
+        filtered = invites.filter(i => i.status === currentFilter);
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No invites found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(invite => {
+        const statusClass = `status-${invite.status}`;
+        const createdDate = new Date(invite.createdAt).toLocaleDateString();
+        const usedDate = invite.usedAt ? new Date(invite.usedAt).toLocaleDateString() : '-';
+
+        return `
+          <tr>
+            <td><span class="token-code">${invite.token}</span></td>
+            <td>${invite.email}</td>
+            <td>${invite.company || '-'}</td>
+            <td><span class="status-badge ${statusClass}">${invite.status}</span></td>
+            <td>${createdDate}</td>
+            <td>${usedDate}</td>
+            <td>
+              <div class="action-buttons">
+                <button class="icon-btn" onclick="viewInvite('${invite.token}')" title="View details">👁️</button>
+                <button class="icon-btn" onclick="copyToken('${invite.token}')" title="Copy token">📋</button>
+                ${invite.status === 'active' ? `
+                  <button class="icon-btn danger" onclick="revokeInvite('${invite.token}')" title="Revoke">❌</button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterByStatus(status) {
+      currentFilter = status;
+      renderInvites();
+    }
+
+    function openGenerateModal() {
+      document.getElementById('generateModal').classList.add('active');
+    }
+
+    function closeGenerateModal() {
+      document.getElementById('generateModal').classList.remove('active');
+      document.getElementById('email').value = '';
+      document.getElementById('company').value = '';
+      document.getElementById('notes').value = '';
+    }
+
+    function generateInvite(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const company = document.getElementById('company').value;
+      const notes = document.getElementById('notes').value;
+
+      // Generate token (simple mock)
+      const year = new Date().getFullYear();
+      const random = Math.floor(Math.random() * 900) + 100;
+      const token = `BUYER-${year}-${random.toString().padStart(3, '0')}`;
+
+      const invite = {
+        token,
+        email,
+        company,
+        notes,
+        status: 'active',
+        createdAt: new Date().toISOString(),
+        usedAt: null
+      };
+
+      invites.unshift(invite);
+
+      updateStats();
+      renderInvites();
+      closeGenerateModal();
+
+      showAlert(`Invite generated successfully! Token: ${token}`);
+    }
+
+    function viewInvite(token) {
+      const invite = invites.find(i => i.token === token);
+      if (!invite) return;
+
+      alert(`Token: ${invite.token}\nEmail: ${invite.email}\nCompany: ${invite.company || 'N/A'}\nStatus: ${invite.status}\nNotes: ${invite.notes || 'None'}`);
+    }
+
+    function copyToken(token) {
+      navigator.clipboard.writeText(token).then(() => {
+        showAlert(`Token copied: ${token}`);
+      });
+    }
+
+    function revokeInvite(token) {
+      if (!confirm(`Revoke invite token ${token}?`)) return;
+
+      const invite = invites.find(i => i.token === token);
+      if (!invite) return;
+
+      invite.status = 'revoked';
+      invite.revokedAt = new Date().toISOString();
+
+      updateStats();
+      renderInvites();
+
+      showAlert(`Token revoked: ${token}`);
+    }
+
+    function showAlert(message) {
+      const container = document.getElementById('alertContainer');
+      container.innerHTML = `<div class="alert alert-success">${message}</div>`;
+
+      setTimeout(() => {
+        container.innerHTML = '';
+      }, 5000);
+    }
+
+    // Initialize
+    updateStats();
+    renderInvites();
+  </script>
+</body>
+</html>

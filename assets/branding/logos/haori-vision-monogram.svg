@@ -1,0 +1,29 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="uvGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B026FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF10F0;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Light Mark Symbol Only (Centered, Larger) -->
+  <g id="light-mark" transform="translate(45, 15)">
+    <!-- Top triangle -->
+    <path d="M 30 0 L 45 25 L 15 25 Z" fill="url(#uvGradient)" filter="url(#glow)"/>
+    <!-- Middle diamond (larger) -->
+    <path d="M 30 30 L 55 60 L 30 90 L 5 60 Z" fill="url(#uvGradient)" filter="url(#glow)"/>
+    <!-- Side rays -->
+    <path d="M 0 60 L 10 60 L 5 55 Z" fill="url(#uvGradient)" opacity="0.8"/>
+    <path d="M 60 60 L 50 60 L 55 55 Z" fill="url(#uvGradient)" opacity="0.8"/>
+    <!-- Bottom triangle -->
+    <path d="M 30 95 L 45 120 L 15 120 Z" fill="url(#uvGradient)" filter="url(#glow)"/>
+  </g>
+</svg>

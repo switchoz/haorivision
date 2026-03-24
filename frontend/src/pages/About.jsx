@@ -130,6 +130,7 @@ const About = () => {
                     src="/artist/page18_img1.jpeg"
                     alt="С картиной"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="flex-1 aspect-square rounded-xl overflow-hidden">
@@ -137,6 +138,7 @@ const About = () => {
                     src="/artist/page4_img1.jpeg"
                     alt="Процесс создания"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
               </div>

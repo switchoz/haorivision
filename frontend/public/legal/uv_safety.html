@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HAORI VISION — Безопасность UV-системы: дистанция, частота ≤3 Hz, предупреждения для эпилепсии и чувствительности к свету.">
+  <title>UV Безопасность — HAORI VISION</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #000;
+      --secondary: #fff;
+      --accent: #ff6b35;
+      --text: #333;
+      --text-light: #666;
+      --border: #e0e0e0;
+      --bg-light: #f9f9f9;
+      --danger: #f44336;
+      --warning: #ff9800;
+      --info: #2196f3;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--secondary);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .last-updated {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-top: 10px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 50px 0 20px;
+      color: var(--primary);
+      border-left: 4px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 20px 0 10px;
+      color: var(--text);
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    ul, ol {
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .danger-box {
+      background-color: #ffebee;
+      border: 3px solid var(--danger);
+      padding: 25px;
+      margin: 30px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+    }
+
+    .danger-box h3 {
+      margin-top: 0;
+      color: var(--danger);
+      font-size: 24px;
+    }
+
+    .warning-box {
+      background-color: #fff3e0;
+      border-left: 4px solid var(--warning);
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+
+    .info-box {
+      background-color: #e3f2fd;
+      border-left: 4px solid var(--info);
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+
+    .spec-card {
+      background-color: var(--bg-light);
+      border-left: 4px solid var(--accent);
+      padding: 25px;
+      margin: 30px 0;
+      border-radius: 4px;
+    }
+
+    .spec-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 30px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--secondary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: var(--primary);
+      color: var(--secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    tr:hover {
+      background-color: var(--bg-light);
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .icon-item {
+      background-color: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .icon-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .icon-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .icon-desc {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid var(--border);
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: var(--secondary);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    .contact-emergency {
+      background: linear-gradient(135deg, #ff6b35 0%, #f44336 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .contact-emergency h3 {
+      color: white;
+      margin-top: 0;
+    }
+
+    .contact-emergency a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      p, li {
+        font-size: 15px;
+      }
+
+      .icon-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">HAORI VISION</div>
+      <h1>UV Безопасность</h1>
+      <p class="subtitle">Руководство по безопасному использованию UV LED-системы</p>
+      <p class="last-updated">Последнее обновление: 17 октября 2025</p>
+    </header>
+
+    <main>
+      <div class="danger-box">
+        <h3>⚠️ ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ ⚠️</h3>
+        <p>
+          <strong>НЕ ИСПОЛЬЗУЙТЕ изделие с UV-системой, если у вас или у лиц, находящихся рядом:</strong>
+        </p>
+        <ul>
+          <li><strong>Эпилепсия</strong> или другие светочувствительные неврологические состояния</li>
+          <li><strong>Фоточувствительность</strong> (в том числе вызванная медикаментами)</li>
+          <li><strong>Мигрень</strong>, усиливающаяся от мигающего света</li>
+          <li><strong>Заболевания глаз</strong> (глаукома, катаракта, дегенерация сетчатки)</li>
+          <li>Возраст <strong>младше 3 лет</strong></li>
+        </ul>
+        <p>
+          <strong>Перед использованием проконсультируйтесь с врачом, если у вас есть какие-либо сомнения.</strong>
+        </p>
+      </div>
+
+      <section>
+        <h2>1. О UV-системе HAORI VISION</h2>
+
+        <div class="spec-card">
+          <h3>Технические характеристики</h3>
+          <p>
+            UV-система HAORI VISION использует безопасные светодиоды с длиной волны 395-405 нм (ближний UV-A диапазон).
+            Это НЕ медицинский UV-свет и не используется для дезинфекции.
+          </p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+                <th>Безопасный диапазон</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Длина волны</strong></td>
+                <td>395-405 нм</td>
+                <td>UV-A (безопасный для кожи)</td>
+              </tr>
+              <tr>
+                <td><strong>Мощность излучения</strong></td>
+                <td>3 мВт/см²</td>
+                <td>< 10 мВт/см² (безопасно)</td>
+              </tr>
+              <tr>
+                <td><strong>Максимальная частота мигания</strong></td>
+                <td>≤ 3 Гц</td>
+                <td>< 5 Гц (низкий риск эпилепсии)</td>
+              </tr>
+              <tr>
+                <td><strong>Рекомендуемая дистанция</strong></td>
+                <td>> 30 см от лица</td>
+                <td>> 20 см минимум</td>
+              </tr>
+              <tr>
+                <td><strong>Максимальное время непрерывного использования</strong></td>
+                <td>4 часа</td>
+                <td>С перерывами каждые 2 часа</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box">
+          <strong>Сертификация:</strong> UV-система HAORI VISION сертифицирована по стандартам:
+          <ul>
+            <li><strong>CE (EN 62471:2008)</strong> — Фотобиологическая безопасность ламп и ламповых систем</li>
+            <li><strong>RoHS</strong> — Отсутствие опасных веществ</li>
+            <li><strong>FCC Part 15</strong> — Электромагнитная совместимость</li>
+            <li><strong>IEC 62115</strong> — Безопасность электрических игрушек (для детской линии)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Безопасная дистанция и экспозиция</h2>
+
+        <h3>2.1. Дистанция от глаз</h3>
+        <p>
+          UV LED-полосы должны находиться на безопасном расстоянии от глаз, чтобы избежать
+          дискомфорта и потенциального вреда от интенсивного света.
+        </p>
+
+        <div class="icon-grid">
+          <div class="icon-item">
+            <div class="icon">✅</div>
+            <div class="icon-label">Безопасно</div>
+            <div class="icon-desc">> 30 см от лица<br>Рекомендуемое расстояние</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon">⚠️</div>
+            <div class="icon-label">Осторожно</div>
+            <div class="icon-desc">20-30 см<br>Минимизируйте время</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon">❌</div>
+            <div class="icon-label">Опасно</div>
+            <div class="icon-desc">< 20 см от глаз<br>НЕ ДОПУСКАЕТСЯ</div>
+          </div>
+        </div>
+
+        <h3>2.2. Рекомендации по ношению</h3>
+        <ul>
+          <li><strong>Куртки/Haori:</strong> LED-полосы расположены на спине, плечах, рукавах — безопасное расстояние от лица</li>
+          <li><strong>Головные уборы:</strong> НЕ смотрите прямо на LED при активации, надевайте с выключенной системой</li>
+          <li><strong>Аксессуары:</strong> Держите на расстоянии вытянутой руки при настройке</li>
+          <li><strong>Bespoke изделия:</strong> Проконсультируйтесь с дизайнером о размещении LED для максимальной безопасности</li>
+        </ul>
+
+        <h3>2.3. Время экспозиции</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Продолжительность</th>
+                <th>Рекомендация</th>
+                <th>Риск</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>< 2 часа</td>
+                <td>Безопасно для большинства пользователей</td>
+                <td>Низкий</td>
+              </tr>
+              <tr>
+                <td>2-4 часа</td>
+                <td>Делайте 10-минутный перерыв каждые 2 часа</td>
+                <td>Умеренный</td>
+              </tr>
+              <tr>
+                <td>4-8 часов</td>
+                <td>Перерывы каждый час, выключайте систему при отдыхе</td>
+                <td>Повышенный</td>
+              </tr>
+              <tr>
+                <td>> 8 часов</td>
+                <td>НЕ РЕКОМЕНДУЕТСЯ (усталость глаз, головная боль)</td>
+                <td>Высокий</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Частота мигания и эпилепсия</h2>
+
+        <div class="danger-box">
+          <h3>🚨 КРИТИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ ДЛЯ ЛИЦ С ЭПИЛЕПСИЕЙ</h3>
+          <p>
+            <strong>Если у вас или у кого-то из окружающих эпилепсия, фоточувствительная эпилепсия
+            или в анамнезе были припадки при воздействии мигающего света:</strong>
+          </p>
+          <ul>
+            <li><strong>НЕ ИСПОЛЬЗУЙТЕ</strong> режимы с мигающим светом (Strobe, Flash, Pulse)</li>
+            <li><strong>НЕ ИСПОЛЬЗУЙТЕ</strong> частоту мигания выше 3 Гц</li>
+            <li><strong>ИСПОЛЬЗУЙТЕ ТОЛЬКО</strong> статичные режимы (Solid Color, Gradient)</li>
+            <li><strong>ПРОКОНСУЛЬТИРУЙТЕСЬ</strong> с неврологом перед использованием</li>
+          </ul>
+          <p>
+            <strong>Симптомы фоточувствительного припадка:</strong> дезориентация, головокружение,
+            подёргивание мышц, потеря сознания. При появлении этих симптомов <strong>НЕМЕДЛЕННО</strong>
+            выключите UV-систему и обратитесь за медицинской помощью.
+          </p>
+        </div>
+
+        <h3>3.1. Безопасные частоты</h3>
+        <p>
+          UV-система HAORI VISION ограничена максимальной частотой мигания <strong>3 Гц</strong>
+          (3 мигания в секунду), что значительно ниже критической частоты 5-30 Гц, вызывающей
+          фоточувствительные припадки.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Режим</th>
+                <th>Частота</th>
+                <th>Безопасность</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Solid (Статичный)</strong></td>
+                <td>0 Гц (не мигает)</td>
+                <td>✅ Безопасно для всех</td>
+              </tr>
+              <tr>
+                <td><strong>Gradient (Градиент)</strong></td>
+                <td>0 Гц (плавный переход)</td>
+                <td>✅ Безопасно для всех</td>
+              </tr>
+              <tr>
+                <td><strong>Breathe (Дыхание)</strong></td>
+                <td>0.2-0.5 Гц</td>
+                <td>✅ Безопасно для большинства</td>
+              </tr>
+              <tr>
+                <td><strong>Pulse (Пульс)</strong></td>
+                <td>1-2 Гц</td>
+                <td>⚠️ Осторожно при эпилепсии</td>
+              </tr>
+              <tr>
+                <td><strong>Flash (Вспышка)</strong></td>
+                <td>2-3 Гц</td>
+                <td>⚠️ НЕ для лиц с эпилепсией</td>
+              </tr>
+              <tr>
+                <td><strong>Strobe (Стробоскоп)</strong></td>
+                <td>3 Гц (макс.)</td>
+                <td>❌ ЗАПРЕЩЕНО для эпилептиков</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>3.2. Рекомендации по режимам</h3>
+        <ul>
+          <li><strong>Безопасно для всех:</strong> Используйте Solid, Gradient, Rainbow (плавный)</li>
+          <li><strong>Умеренный риск:</strong> Breathe, Pulse — избегайте при чувствительности</li>
+          <li><strong>Высокий риск:</strong> Flash, Strobe — только для здоровых взрослых, избегайте в общественных местах</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>В общественных местах:</strong> Используйте только статичные или медленные режимы (Solid, Gradient, Breathe).
+          Мигающие режимы могут вызвать дискомфорт или припадки у окружающих.
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Воздействие на глаза и кожу</h2>
+
+        <h3>4.1. Воздействие на глаза</h3>
+        <p>
+          UV LED с длиной волны 395-405 нм относятся к диапазону UV-A (ближний ультрафиолет).
+          При соблюдении безопасной дистанции они не представляют опасности для глаз.
+        </p>
+
+        <h4>Потенциальные риски:</h4>
+        <ul>
+          <li><strong>Усталость глаз:</strong> При длительном прямом взгляде на LED (> 30 секунд)</li>
+          <li><strong>Сухость глаз:</strong> При использовании в сухом помещении (используйте увлажнитель)</li>
+          <li><strong>Временное ослепление:</strong> При взгляде на яркую вспышку (проходит в течение минуты)</li>
+          <li><strong>Головная боль:</strong> При длительной экспозиции мигающего света (> 2 часа)</li>
+        </ul>
+
+        <h4>Предотвращение:</h4>
+        <ul>
+          <li>Не смотрите прямо на LED при активации</li>
+          <li>Соблюдайте дистанцию > 30 см</li>
+          <li>Делайте перерывы каждые 2 часа</li>
+          <li>Снижайте яркость в тёмных помещениях</li>
+          <li>При дискомфорте выключайте систему</li>
+        </ul>
+
+        <h3>4.2. Воздействие на кожу</h3>
+        <p>
+          UV-A излучение с мощностью 3 мВт/см² при дистанции > 10 см от кожи не представляет
+          опасности для большинства типов кожи. Однако люди с повышенной фоточувствительностью
+          должны соблюдать осторожность.
+        </p>
+
+        <div class="warning-box">
+          <strong>Фоточувствительность может быть вызвана:</strong>
+          <ul>
+            <li>Медикаментами (антибиотики тетрациклинового ряда, ретиноиды, некоторые антидепрессанты)</li>
+            <li>Кожными заболеваниями (витилиго, порфирия, волчанка)</li>
+            <li>Косметическими процедурами (химический пилинг, лазерная шлифовка)</li>
+            <li>Генетической предрасположенностью (альбинизм, пигментная ксеродерма)</li>
+          </ul>
+          <strong>Если вы принимаете фоточувствительные медикаменты или имеете кожные заболевания,
+          проконсультируйтесь с дерматологом перед использованием UV-системы.</strong>
+        </div>
+
+        <h4>Признаки фоточувствительной реакции:</h4>
+        <ul>
+          <li>Покраснение кожи (эритема)</li>
+          <li>Зуд или жжение</li>
+          <li>Сыпь или крапивница</li>
+          <li>Отёк (опухание кожи)</li>
+        </ul>
+        <p>
+          <strong>При появлении этих симптомов:</strong> Немедленно выключите UV-систему, снимите изделие,
+          промойте поражённую область прохладной водой и обратитесь к врачу.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Правила безопасного использования</h2>
+
+        <h3>5.1. Перед первым использованием</h3>
+        <ol>
+          <li><strong>Прочитайте это руководство полностью</strong></li>
+          <li><strong>Проверьте систему:</strong> Включите UV-систему в хорошо освещённом помещении на 5 минут</li>
+          <li><strong>Тест на чувствительность:</strong> Носите изделие с выключенной UV-системой, затем включите на 10 минут</li>
+          <li><strong>Наблюдайте за реакцией:</strong> Проверьте кожу и глаза на признаки дискомфорта</li>
+          <li><strong>Настройте безопасные параметры:</strong> Установите режим Solid или Gradient, яркость 50%</li>
+        </ol>
+
+        <h3>5.2. Во время использования</h3>
+        <div class="icon-grid">
+          <div class="icon-item">
+            <div class="icon">✅</div>
+            <div class="icon-label">Делайте</div>
+            <div class="icon-desc">
+              • Соблюдайте дистанцию > 30 см<br>
+              • Используйте статичные режимы в общественных местах<br>
+              • Делайте перерывы каждые 2 часа<br>
+              • Снижайте яркость в темноте
+            </div>
+          </div>
+          <div class="icon-item">
+            <div class="icon">❌</div>
+            <div class="icon-label">Не делайте</div>
+            <div class="icon-desc">
+              • Не смотрите прямо на LED<br>
+              • Не используйте Strobe при эпилепсии<br>
+              • Не носите > 8 часов непрерывно<br>
+              • Не давайте детям < 3 лет
+            </div>
+          </div>
+        </div>
+
+        <h3>5.3. В особых ситуациях</h3>
+        <ul>
+          <li><strong>За рулём:</strong> НЕ используйте мигающие режимы — отвлекают внимание</li>
+          <li><strong>На концертах/мероприятиях:</strong> Используйте Solid или Gradient — мигание может мешать другим</li>
+          <li><strong>Рядом с детьми:</strong> Используйте только статичные режимы, следите за реакцией детей</li>
+          <li><strong>В самолёте:</strong> Выключайте UV-систему при взлёте/посадке, соблюдайте правила авиакомпании</li>
+          <li><strong>В больнице/клинике:</strong> Выключайте UV-систему — может мешать медицинскому оборудованию</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Противопоказания</h2>
+
+        <h3>Абсолютные противопоказания (НЕ ИСПОЛЬЗУЙТЕ):</h3>
+        <ul>
+          <li><strong>Эпилепсия</strong> или фоточувствительная эпилепсия в анамнезе</li>
+          <li><strong>Возраст младше 3 лет</strong> (незрелая нервная система)</li>
+          <li><strong>Беременность (III триместр)</strong> — избегайте мигающих режимов</li>
+          <li><strong>Тяжёлые заболевания глаз</strong> (отслоение сетчатки, острая глаукома)</li>
+          <li><strong>Пигментная ксеродерма</strong> (генетическое заболевание кожи)</li>
+        </ul>
+
+        <h3>Относительные противопоказания (используйте с осторожностью):</h3>
+        <ul>
+          <li><strong>Мигрень</strong> — избегайте мигающих режимов, используйте только Solid</li>
+          <li><strong>Приём фоточувствительных медикаментов</strong> — консультация с врачом</li>
+          <li><strong>Катаракта, глаукома</strong> — снизьте яркость, избегайте длительного использования</li>
+          <li><strong>Кожные заболевания</strong> (витилиго, порфирия) — консультация с дерматологом</li>
+          <li><strong>Возраст 3-6 лет</strong> — только под присмотром взрослых, не более 30 минут</li>
+          <li><strong>Возраст старше 65 лет</strong> — повышенная чувствительность глаз, снизьте яркость</li>
+        </ul>
+
+        <div class="info-box">
+          <strong>Беременность и кормление грудью:</strong> UV-система HAORI VISION безопасна при беременности
+          и кормлении грудью при использовании статичных режимов. Избегайте мигающих режимов в III триместре.
+        </div>
+      </section>
+
+      <section>
+        <h2>7. Первая помощь</h2>
+
+        <h3>При фоточувствительном припадке:</h3>
+        <ol>
+          <li><strong>Немедленно выключите UV-систему</strong></li>
+          <li><strong>Уберите пострадавшего от источников мигающего света</strong></li>
+          <li><strong>Положите на бок</strong> (безопасная позиция при припадке)</li>
+          <li><strong>Вызовите скорую помощь</strong> (112 в Европе, 911 в США)</li>
+          <li><strong>Не пытайтесь удерживать</strong> или засовывать что-либо в рот</li>
+          <li><strong>Оставайтесь рядом</strong> до прибытия медиков</li>
+        </ol>
+
+        <h3>При дискомфорте в глазах:</h3>
+        <ol>
+          <li><strong>Выключите UV-систему</strong></li>
+          <li><strong>Закройте глаза</strong> на 1-2 минуты</li>
+          <li><strong>Промойте глаза</strong> чистой водой</li>
+          <li><strong>Используйте увлажняющие капли</strong> (искусственная слеза)</li>
+          <li><strong>Отдохните</strong> в тёмном помещении 10-15 минут</li>
+          <li><strong>При сохранении симптомов</strong> обратитесь к офтальмологу</li>
+        </ol>
+
+        <h3>При кожной реакции:</h3>
+        <ol>
+          <li><strong>Выключите UV-систему и снимите изделие</strong></li>
+          <li><strong>Промойте кожу</strong> прохладной водой</li>
+          <li><strong>Нанесите успокаивающий крем</strong> (алоэ вера, пантенол)</li>
+          <li><strong>Примите антигистаминное</strong> (если аллергическая реакция)</li>
+          <li><strong>Избегайте солнца</strong> в течение 24-48 часов</li>
+          <li><strong>При ухудшении</strong> обратитесь к дерматологу</li>
+        </ol>
+
+        <div class="contact-emergency">
+          <h3>Экстренные контакты</h3>
+          <p><strong>Служба поддержки HAORI VISION (24/7):</strong></p>
+          <p>Email: <a href="mailto:safety@haorivision.com">safety@haorivision.com</a></p>
+          <p>Телефон: <strong>+33 1 234 56 789</strong></p>
+          <p>WhatsApp: <strong>+33 6 12 34 56 78</strong></p>
+          <p><em>При медицинской экстренной ситуации сначала вызовите скорую помощь, затем свяжитесь с нами.</em></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>8. Техническая безопасность</h2>
+
+        <h3>8.1. Электробезопасность</h3>
+        <ul>
+          <li><strong>Напряжение:</strong> 5V DC (безопасное низкое напряжение)</li>
+          <li><strong>Аккумулятор:</strong> Li-ion 3.7V 2000mAh (защита от перезаряда/переразряда)</li>
+          <li><strong>Зарядка:</strong> Используйте только оригинальное зарядное устройство</li>
+          <li><strong>Не заряжайте:</strong> При температуре < 0°C или > 45°C</li>
+          <li><strong>Не модифицируйте:</strong> Вскрытие корпуса аннулирует гарантию и опасно</li>
+        </ul>
+
+        <div class="danger-box">
+          <h3>⚠️ Опасность возгорания аккумулятора</h3>
+          <p><strong>НЕ ДОПУСКАЙТЕ:</strong></p>
+          <ul>
+            <li>Повреждение аккумулятора (прокол, деформация, падение)</li>
+            <li>Короткое замыкание контактов</li>
+            <li>Перегрев (> 60°C)</li>
+            <li>Погружение в воду</li>
+          </ul>
+          <p>
+            <strong>При вздутии, запахе или нагреве аккумулятора:</strong> Немедленно прекратите использование,
+            отключите от зарядки, изолируйте в металлическом контейнере и утилизируйте в специализированном пункте.
+          </p>
+        </div>
+
+        <h3>8.2. Водозащита</h3>
+        <ul>
+          <li><strong>Контроллер и аккумулятор:</strong> НЕ водонепроницаемы (IPX0)</li>
+          <li><strong>LED-полосы:</strong> Защита от брызг (IPX4) — переносят лёгкий дождь</li>
+          <li><strong>Не используйте под дождём</strong> без дополнительной защиты</li>
+          <li><strong>Извлекайте электронику</strong> перед стиркой изделия</li>
+        </ul>
+
+        <h3>8.3. Электромагнитная совместимость</h3>
+        <p>
+          UV-система сертифицирована по стандарту FCC Part 15 и не создаёт помех радиооборудованию.
+          Однако в редких случаях возможны:
+        </p>
+        <ul>
+          <li><strong>Помехи кардиостимуляторам:</strong> Соблюдайте дистанцию > 15 см от контроллера</li>
+          <li><strong>Помехи слуховым аппаратам:</strong> Возможен лёгкий шум, снизьте яркость</li>
+          <li><strong>Помехи чувствительному оборудованию:</strong> Выключайте в больницах, самолётах</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>9. Часто задаваемые вопросы</h2>
+
+        <h3>Безопасно ли использовать UV-систему каждый день?</h3>
+        <p>
+          Да, при соблюдении рекомендаций по дистанции, времени экспозиции и выборе режимов.
+          Избегайте непрерывного использования > 4 часов без перерывов.
+        </p>
+
+        <h3>Может ли UV-система вызвать рак кожи?</h3>
+        <p>
+          Нет. UV-A излучение с мощностью 3 мВт/см² на расстоянии > 10 см не обладает канцерогенным
+          эффектом. Для сравнения: солнечный свет в 1000 раз интенсивнее.
+        </p>
+
+        <h3>Можно ли использовать UV-систему во время беременности?</h3>
+        <p>
+          Да, при использовании статичных режимов (Solid, Gradient). Избегайте мигающих режимов
+          в III триместре, так как они могут вызвать дискомфорт.
+        </p>
+
+        <h3>Безопасна ли UV-система для детей?</h3>
+        <p>
+          <strong>НЕ рекомендуется для детей младше 3 лет.</strong> Для детей 3-6 лет: только под присмотром
+          взрослых, не более 30 минут, статичные режимы. Для детей 6+: следуйте общим рекомендациям.
+        </p>
+
+        <h3>Что делать, если UV-система вызывает головную боль?</h3>
+        <p>
+          Снизьте яркость до 30-50%, используйте только статичные режимы, делайте перерывы каждый час.
+          Если головная боль сохраняется, прекратите использование и проконсультируйтесь с врачом.
+        </p>
+
+        <h3>Нужны ли защитные очки при использовании UV-системы?</h3>
+        <p>
+          Нет, при соблюдении безопасной дистанции (> 30 см) защитные очки не требуются.
+          Не смотрите прямо на LED при активации.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Юридическая информация</h2>
+
+        <h3>Ограничение ответственности</h3>
+        <p>
+          HAORI VISION не несёт ответственности за вред здоровью, возникший в результате:
+        </p>
+        <ul>
+          <li>Несоблюдения инструкций по безопасности</li>
+          <li>Использования UV-системы лицами с противопоказаниями</li>
+          <li>Модификации или несанкционированного ремонта электронных компонентов</li>
+          <li>Использования неоригинальных зарядных устройств или аккумуляторов</li>
+          <li>Использования изделия не по назначению</li>
+        </ul>
+
+        <h3>Гарантия</h3>
+        <p>
+          Гарантия 12 месяцев на UV-систему аннулируется при:
+        </p>
+        <ul>
+          <li>Механическом повреждении (удар, падение, прокол)</li>
+          <li>Попадании жидкости внутрь контроллера или аккумулятора</li>
+          <li>Вскрытии корпуса или попытке ремонта</li>
+          <li>Использовании неоригинальных компонентов</li>
+        </ul>
+
+        <div class="info-box">
+          <strong>Соответствие нормативам:</strong> UV-система HAORI VISION соответствует:
+          <ul>
+            <li>Директиве ЕС 2001/95/EC (Общая безопасность продукции)</li>
+            <li>Директиве ЕС 2014/35/EU (Низковольтное оборудование)</li>
+            <li>Директиве ЕС 2014/30/EU (Электромагнитная совместимость)</li>
+            <li>RoHS, REACH (Химическая безопасность)</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 HAORI VISION. Все права защищены.</p>
+      <p>
+        <a href="/legal/returns.html" style="color: var(--text-light); margin: 0 10px;">Возврат и обмен</a> |
+        <a href="/legal/care.html" style="color: var(--text-light); margin: 0 10px;">Уход за изделиями</a> |
+        <a href="/privacy" style="color: var(--text-light); margin: 0 10px;">Политика конфиденциальности</a>
+      </p>
+      <p style="margin-top: 20px; font-size: 12px;">
+        <strong>Дата публикации:</strong> 17.10.2025 | <strong>Версия:</strong> 1.0
+      </p>
+      <a href="/" class="back-link">← Вернуться на главную</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "enabled": true,
+  "version": "1.0.0",
+  "description": "HAORI VISION — Lazy Hydration Configuration (P24)",
+  "components": {
+    "videoHero": {
+      "enabled": true,
+      "type": "video",
+      "threshold": 0.1,
+      "debounce": 200,
+      "rootMargin": "50px",
+      "priority": "high",
+      "description": "Hero video на главной странице"
+    },
+    "3DBackground": {
+      "enabled": true,
+      "type": "3d",
+      "threshold": 0.2,
+      "debounce": 300,
+      "rootMargin": "100px",
+      "priority": "medium",
+      "description": "3D/WebGL фоны (Canvas, Three.js)"
+    },
+    "toneCanvas": {
+      "enabled": true,
+      "type": "3d",
+      "threshold": 0.25,
+      "debounce": 400,
+      "rootMargin": "150px",
+      "priority": "low",
+      "description": "Tone.js audio visualization canvas"
+    },
+    "galleryLight": {
+      "enabled": true,
+      "type": "video",
+      "threshold": 0.15,
+      "debounce": 250,
+      "rootMargin": "75px",
+      "priority": "medium",
+      "description": "UV-light видео в галерее"
+    },
+    "productVideo": {
+      "enabled": true,
+      "type": "video",
+      "threshold": 0.2,
+      "debounce": 200,
+      "rootMargin": "50px",
+      "priority": "high",
+      "description": "Видео на страницах продуктов"
+    },
+    "experienceScene": {
+      "enabled": true,
+      "type": "3d",
+      "threshold": 0.3,
+      "debounce": 500,
+      "rootMargin": "200px",
+      "priority": "low",
+      "description": "Интерактивные 3D сцены в Experience"
+    }
+  },
+  "global_settings": {
+    "fallback_threshold": 0.1,
+    "fallback_debounce": 200,
+    "fallback_rootMargin": "50px",
+    "disable_on_slow_connection": true,
+    "disable_on_low_memory": true,
+    "min_viewport_width": 768
+  },
+  "performance": {
+    "max_concurrent_loads": 2,
+    "load_delay_between_components": 300,
+    "preload_next": true,
+    "preload_distance": 2
+  },
+  "analytics": {
+    "track_lazy_loads": true,
+    "track_viewport_time": true,
+    "track_load_failures": true
+  },
+  "meta": {
+    "created": "2025-10-17",
+    "last_updated": "2025-10-17",
+    "author": "Claude Code",
+    "project": "HAORI VISION"
+  }
+}

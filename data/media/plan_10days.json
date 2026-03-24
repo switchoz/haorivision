@@ -1,0 +1,465 @@
+{
+  "contentPlan": {
+    "title": "HAORI VISION — 10-Day Content Plan (ECLIPSE & BLOOM Collection)",
+    "description": "План публикаций на 10 дней для новой коллекции ECLIPSE & BLOOM. Фокус на новых товарах: ECLIPSE-01, ECLIPSE-02, LUMIN-01, BLOOM-01.",
+    "dateRange": {
+      "start": "2025-10-09",
+      "end": "2025-10-18"
+    },
+    "collection": {
+      "id": "col_004_eclipse_bloom",
+      "name": "ECLIPSE & BLOOM"
+    },
+    "products": [
+      {
+        "id": "ECLIPSE-01",
+        "name": "ECLIPSE // 01",
+        "edition": "1 of 10",
+        "price": "€1,200"
+      },
+      {
+        "id": "ECLIPSE-02",
+        "name": "ECLIPSE // 02",
+        "edition": "1 of 10",
+        "price": "€1,800"
+      },
+      {
+        "id": "LUMIN-01",
+        "name": "LUMIN SPIRIT // 01",
+        "edition": "1 of 10",
+        "price": "€1,800"
+      },
+      {
+        "id": "BLOOM-01",
+        "name": "FLUO BLOOM // 01",
+        "edition": "1 of 10",
+        "price": "€1,200"
+      }
+    ],
+    "posts": [
+      {
+        "day": 1,
+        "date": "2025-10-09",
+        "product": "ECLIPSE-01",
+        "productName": "ECLIPSE // 01",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "filename": "eclipse_01_reels.mp4",
+          "duration": "15-30s",
+          "concept": "UV transformation reveal — начинаем с чёрного хаори в дневном свете, медленно включаем UV-подсветку, драматичный взрыв фиолетовых и синих световых потоков. Камера orbits вокруг модели.",
+          "music": "Deep ambient с нарастающим синтом",
+          "keyFrames": [
+            "0-5s: Чёрное хаори, дневной свет, минимализм",
+            "5-10s: UV включается постепенно, первые фиолетовые лучи",
+            "10-15s: Полный взрыв света, корона затмения, контраст максимальный",
+            "15-20s: Rotate вокруг модели, детали паттерна",
+            "20-25s: Zoom к картине A3, UV-эффект на холсте",
+            "25-30s: Logo HAORI VISION + текст 'ECLIPSE // 01, лимит 10'"
+          ],
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "filename": "eclipse_01_photo_1.jpg",
+            "description": "Фото 1: Модель в хаори, дневной свет, чёрная основа с серебряными акцентами, минимализм"
+          },
+          {
+            "filename": "eclipse_01_photo_2.jpg",
+            "description": "Фото 2: Модель в хаори, UV-свет, взрыв фиолетовых и синих потоков, драматичный контраст"
+          },
+          {
+            "filename": "eclipse_01_photo_3.jpg",
+            "description": "Фото 3: Close-up деталей паттерна (corona rays) в UV-свете"
+          },
+          {
+            "filename": "eclipse_01_photo_4.jpg",
+            "description": "Фото 4: Картина A3 в UV-свете, корона затмения на холсте, рядом UV LED panel"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nECLIPSE // 01.\n\n#haorivision #wearlight #eclipse #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #fluorescentart",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nECLIPSE // 01.\n\n#haorivision #wearlight #eclipse #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #fluorescentart"
+        },
+        "hashtags": [
+          "#haorivision",
+          "#wearlight",
+          "#eclipse",
+          "#uvart",
+          "#handpainted",
+          "#limitededition",
+          "#artfashion",
+          "#tokyo",
+          "#silkhaori",
+          "#fluorescentart"
+        ],
+        "platforms": ["Instagram", "TikTok", "YouTube Shorts"],
+        "postingTime": "19:00 UTC+3 (peak engagement)"
+      },
+      {
+        "day": 2,
+        "date": "2025-10-10",
+        "product": "ECLIPSE-01",
+        "productName": "ECLIPSE // 01",
+        "contentType": "Carousel (4 Photos)",
+        "photos": [
+          {
+            "filename": "eclipse_01_carousel_1.jpg",
+            "description": "Фото 1: Flat lay — хаори разложено, дневной свет, чёрная основа"
+          },
+          {
+            "filename": "eclipse_01_carousel_2.jpg",
+            "description": "Фото 2: Тот же flat lay, UV-свет, фиолетовые лучи проявляются"
+          },
+          {
+            "filename": "eclipse_01_carousel_3.jpg",
+            "description": "Фото 3: Close-up ткани (100% Silk Habotai), текстура + UV-reactive pigments"
+          },
+          {
+            "filename": "eclipse_01_carousel_4.jpg",
+            "description": "Фото 4: Packaging — чёрная rigid box с UV-фонариком, сертификат подлинности"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nECLIPSE // 01.\n\n100% шёлк Habotai, UV-реактивные пигменты, ручная роспись.\n\n#haorivision #wearlight #eclipse #uvart #handpainted #limitededition #silkhaori #artfashion #tokyo",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nECLIPSE // 01.\n\n100% Silk Habotai, UV-reactive pigments, hand-painted.\n\n#haorivision #wearlight #eclipse #uvart #handpainted #limitededition #silkhaori #artfashion #tokyo"
+        },
+        "platforms": ["Instagram", "Facebook"],
+        "postingTime": "12:00 UTC+3"
+      },
+      {
+        "day": 3,
+        "date": "2025-10-11",
+        "product": "ECLIPSE-02",
+        "productName": "ECLIPSE // 02",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "filename": "eclipse_02_reels.mp4",
+          "duration": "15-30s",
+          "concept": "Kintsugi-inspired reveal — фокус на серебряные трещины в дневном свете, UV включается, трещины вспыхивают ультрафиолетом, фиолетовым и синим. Медленный zoom к деталям.",
+          "music": "Cinematic ambient с японскими инструментами (koto, shakuhachi)",
+          "keyFrames": [
+            "0-5s: Чёрное хаори с серебряными трещинами, дневной свет",
+            "5-10s: UV начинает проявляться, трещины светятся cyan и purple",
+            "10-15s: Полное UV-свечение, Kintsugi-паттерн, драматичный контраст",
+            "15-20s: Close-up трещин, фиолетовые градиенты",
+            "20-25s: Картина A2 в UV-свете, eclipse rays на холсте",
+            "25-30s: Logo + текст 'ECLIPSE // 02, лимит 10, €1,800'"
+          ],
+          "callToAction": "Link in bio → haori.vision"
+        },
+        "photos": [
+          {
+            "filename": "eclipse_02_photo_1.jpg",
+            "description": "Фото 1: Модель в хаори, дневной свет, серебряные трещины на чёрной основе"
+          },
+          {
+            "filename": "eclipse_02_photo_2.jpg",
+            "description": "Фото 2: Модель в хаори, UV-свет, трещины вспыхивают cyan и purple"
+          },
+          {
+            "filename": "eclipse_02_photo_3.jpg",
+            "description": "Фото 3: Close-up Kintsugi-паттерна в UV-свете, градиенты фиолетового"
+          },
+          {
+            "filename": "eclipse_02_photo_4.jpg",
+            "description": "Фото 4: Картина A2 (42x59.4 cm) в UV-свете, рядом с хаори"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nECLIPSE // 02.\n\nКинцуги встречает ультрафиолет. Трещины света.\n\n#haorivision #wearlight #eclipse #kintsugi #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nECLIPSE // 02.\n\nKintsugi meets ultraviolet. Cracks of light.\n\n#haorivision #wearlight #eclipse #kintsugi #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori"
+        },
+        "platforms": ["Instagram", "TikTok", "YouTube Shorts"],
+        "postingTime": "19:00 UTC+3"
+      },
+      {
+        "day": 4,
+        "date": "2025-10-12",
+        "product": "ECLIPSE-02",
+        "productName": "ECLIPSE // 02",
+        "contentType": "Carousel (4 Photos)",
+        "photos": [
+          {
+            "filename": "eclipse_02_carousel_1.jpg",
+            "description": "Фото 1: Хаори на модели, дневной свет, спина с Kintsugi-трещинами"
+          },
+          {
+            "filename": "eclipse_02_carousel_2.jpg",
+            "description": "Фото 2: Та же поза, UV-свет, трещины светятся purple и cyan"
+          },
+          {
+            "filename": "eclipse_02_carousel_3.jpg",
+            "description": "Фото 3: Картина A2 в рамке (black floating frame), UV-эффект"
+          },
+          {
+            "filename": "eclipse_02_carousel_4.jpg",
+            "description": "Фото 4: UV LED panel (12W) включённый, рядом с картиной"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nECLIPSE // 02.\n\nВключено: хаори (100% silk), картина A2, UV LED panel 12W, сертификат NFT.\n\n#haorivision #wearlight #eclipse #uvart #limitededition #artfashion #tokyo",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nECLIPSE // 02.\n\nIncludes: haori (100% silk), A2 painting, UV LED panel 12W, NFT certificate.\n\n#haorivision #wearlight #eclipse #uvart #limitededition #artfashion #tokyo"
+        },
+        "platforms": ["Instagram", "Facebook"],
+        "postingTime": "12:00 UTC+3"
+      },
+      {
+        "day": 5,
+        "date": "2025-10-13",
+        "product": "LUMIN-01",
+        "productName": "LUMIN SPIRIT // 01",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "filename": "lumin_01_reels.mp4",
+          "duration": "15-30s",
+          "concept": "Inner light reveal — начинаем с мягкой серо-белой основы в дневном свете, UV включается, тёплые золотистые и жёлтые потоки проявляются, энергия внутреннего света. Soft, ethereal vibe.",
+          "music": "Warm ambient с piano и strings",
+          "keyFrames": [
+            "0-5s: Светлое хаори, дневной свет, нежные органические паттерны",
+            "5-10s: UV начинает проявляться, тёплые жёлтые и золотистые потоки",
+            "10-15s: Полное свечение, luminous aura, flowing light energy",
+            "15-20s: Close-up organic spirals в UV-свете",
+            "20-25s: Картина A2 в UV-свете, золотистые вихри на холсте",
+            "25-30s: Logo + текст 'LUMIN SPIRIT // 01, лимит 10'"
+          ],
+          "callToAction": "Discover more → haori.vision"
+        },
+        "photos": [
+          {
+            "filename": "lumin_01_photo_1.jpg",
+            "description": "Фото 1: Модель в хаори, дневной свет, мягкая серо-белая основа"
+          },
+          {
+            "filename": "lumin_01_photo_2.jpg",
+            "description": "Фото 2: Модель в хаори, UV-свет, тёплые золотистые и жёлтые потоки"
+          },
+          {
+            "filename": "lumin_01_photo_3.jpg",
+            "description": "Фото 3: Close-up organic flow patterns в UV-свете, luminous aura"
+          },
+          {
+            "filename": "lumin_01_photo_4.jpg",
+            "description": "Фото 4: Картина A2 в UV-свете, flowing light energy на холсте"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nLUMIN SPIRIT // 01.\n\nВнутренний свет. Энергия души.\n\n#haorivision #wearlight #luminspirit #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #innerlight",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nLUMIN SPIRIT // 01.\n\nInner light. Energy of the soul.\n\n#haorivision #wearlight #luminspirit #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #innerlight"
+        },
+        "platforms": ["Instagram", "TikTok", "YouTube Shorts"],
+        "postingTime": "19:00 UTC+3"
+      },
+      {
+        "day": 6,
+        "date": "2025-10-14",
+        "product": "LUMIN-01",
+        "productName": "LUMIN SPIRIT // 01",
+        "contentType": "Carousel (4 Photos)",
+        "photos": [
+          {
+            "filename": "lumin_01_carousel_1.jpg",
+            "description": "Фото 1: Flat lay — хаори разложено, дневной свет, светлая воздушная основа"
+          },
+          {
+            "filename": "lumin_01_carousel_2.jpg",
+            "description": "Фото 2: Тот же flat lay, UV-свет, золотистые вихри проявляются"
+          },
+          {
+            "filename": "lumin_01_carousel_3.jpg",
+            "description": "Фото 3: Close-up тёплых UV-reactive yellows и golds на ткани"
+          },
+          {
+            "filename": "lumin_01_carousel_4.jpg",
+            "description": "Фото 4: Картина A2 в natural wood floating frame, UV-эффект"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nLUMIN SPIRIT // 01.\n\n100% silk Habotai, UV-reactive warm golds, organic cotton lining.\n\n#haorivision #wearlight #luminspirit #uvart #handpainted #limitededition #silkhaori #artfashion #tokyo",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nLUMIN SPIRIT // 01.\n\n100% silk Habotai, UV-reactive warm golds, organic cotton lining.\n\n#haorivision #wearlight #luminspirit #uvart #handpainted #limitededition #silkhaori #artfashion #tokyo"
+        },
+        "platforms": ["Instagram", "Facebook"],
+        "postingTime": "12:00 UTC+3"
+      },
+      {
+        "day": 7,
+        "date": "2025-10-15",
+        "product": "BLOOM-01",
+        "productName": "FLUO BLOOM // 01",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "filename": "bloom_01_reels.mp4",
+          "duration": "15-30s",
+          "concept": "Floral bloom reveal — начинаем с нежной пастельной основы, UV включается, цветы вспыхивают неоновыми оттенками (pink, green, blue). Nature meets neon. Feminine energy.",
+          "music": "Uplifting electronic ambient с organic sounds",
+          "keyFrames": [
+            "0-5s: Пастельное хаори, дневной свет, тонкие цветочные мотивы",
+            "5-10s: UV начинает проявляться, первые неоновые розовые лепестки",
+            "10-15s: Полный bloom, neon florals (pink, green, blue), природное цветение в неоне",
+            "15-20s: Close-up sakura-inspired pattern в UV-свете",
+            "20-25s: Картина A3 в UV-свете, neon florals на холсте",
+            "25-30s: Logo + текст 'FLUO BLOOM // 01, лимит 10'"
+          ],
+          "callToAction": "Shop now → haori.vision/bloom"
+        },
+        "photos": [
+          {
+            "filename": "bloom_01_photo_1.jpg",
+            "description": "Фото 1: Модель в хаори, дневной свет, пастельная основа с цветочными мотивами"
+          },
+          {
+            "filename": "bloom_01_photo_2.jpg",
+            "description": "Фото 2: Модель в хаори, UV-свет, неоновые розовые, зелёные и голубые цветы"
+          },
+          {
+            "filename": "bloom_01_photo_3.jpg",
+            "description": "Фото 3: Close-up neon florals (sakura-inspired) в UV-свете"
+          },
+          {
+            "filename": "bloom_01_photo_4.jpg",
+            "description": "Фото 4: Картина A3 в white floating frame, UV neon florals"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nFLUO BLOOM // 01.\n\nПриродное цветение в неоне. Женственная сила.\n\n#haorivision #wearlight #fluobloom #neonflowers #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #sakura",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nFLUO BLOOM // 01.\n\nNature's bloom in neon. Feminine power.\n\n#haorivision #wearlight #fluobloom #neonflowers #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #sakura"
+        },
+        "platforms": ["Instagram", "TikTok", "YouTube Shorts"],
+        "postingTime": "19:00 UTC+3"
+      },
+      {
+        "day": 8,
+        "date": "2025-10-16",
+        "product": "BLOOM-01",
+        "productName": "FLUO BLOOM // 01",
+        "contentType": "Carousel (4 Photos)",
+        "photos": [
+          {
+            "filename": "bloom_01_carousel_1.jpg",
+            "description": "Фото 1: Модель в хаори, дневной свет, пастельная лёгкость"
+          },
+          {
+            "filename": "bloom_01_carousel_2.jpg",
+            "description": "Фото 2: Та же поза, UV-свет, neon pink и green florals"
+          },
+          {
+            "filename": "bloom_01_carousel_3.jpg",
+            "description": "Фото 3: Close-up UV-reactive neon pink pigments на ткани"
+          },
+          {
+            "filename": "bloom_01_carousel_4.jpg",
+            "description": "Фото 4: Packaging — white rigid box с UV LED panel 8W"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nFLUO BLOOM // 01.\n\n100% silk Habotai, UV-reactive neon pigments (pink, green, cyan).\n\n#haorivision #wearlight #fluobloom #uvart #handpainted #limitededition #silkhaori #artfashion #tokyo",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nFLUO BLOOM // 01.\n\n100% silk Habotai, UV-reactive neon pigments (pink, green, cyan).\n\n#haorivision #wearlight #fluobloom #uvart #handpainted #limitededition #silkhaori #artfashion #tokyo"
+        },
+        "platforms": ["Instagram", "Facebook"],
+        "postingTime": "12:00 UTC+3"
+      },
+      {
+        "day": 9,
+        "date": "2025-10-17",
+        "product": "ECLIPSE-01",
+        "productName": "ECLIPSE // 01 (Behind the Scenes)",
+        "contentType": "Reels Video + 4 Photos (BTS)",
+        "reelsVideo": {
+          "filename": "eclipse_01_bts_reels.mp4",
+          "duration": "15-30s",
+          "concept": "Behind the scenes — процесс ручной росписи хаори, художник наносит UV-реактивные пигменты кистью, тест UV-подсветки, финальная фотосессия. Showing the craft.",
+          "music": "Lo-fi ambient instrumental",
+          "keyFrames": [
+            "0-5s: Чистое чёрное хаори на столе, кисти и пигменты",
+            "5-10s: Художник наносит серебряные акценты, крупный план руки",
+            "10-15s: Нанесение UV-reactive violet pigments",
+            "15-20s: Первый тест UV-подсветки, паттерн проявляется",
+            "20-25s: Финальная фотосессия с моделью",
+            "25-30s: Готовое хаори в упаковке + текст '18 часов ручной работы'"
+          ],
+          "callToAction": "See the full collection → haori.vision"
+        },
+        "photos": [
+          {
+            "filename": "eclipse_01_bts_1.jpg",
+            "description": "Фото 1: Студия в Токио, хаори на столе, кисти и UV-pigments"
+          },
+          {
+            "filename": "eclipse_01_bts_2.jpg",
+            "description": "Фото 2: Крупный план руки художника, нанесение violet pigment"
+          },
+          {
+            "filename": "eclipse_01_bts_3.jpg",
+            "description": "Фото 3: Первый UV-тест, паттерн проявляется"
+          },
+          {
+            "filename": "eclipse_01_bts_4.jpg",
+            "description": "Фото 4: Финальное хаори на модели, студийный свет + UV"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\nECLIPSE // 01.\n\n18 часов ручной работы. Каждое хаори уникально.\n\n#haorivision #wearlight #behindthescenes #handpainted #artisan #tokyo #uvart #limitededition #craft #silkhaori",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\nECLIPSE // 01.\n\n18 hours of handwork. Each haori is unique.\n\n#haorivision #wearlight #behindthescenes #handpainted #artisan #tokyo #uvart #limitededition #craft #silkhaori"
+        },
+        "platforms": ["Instagram", "TikTok", "YouTube Shorts"],
+        "postingTime": "19:00 UTC+3"
+      },
+      {
+        "day": 10,
+        "date": "2025-10-18",
+        "product": "All Products",
+        "productName": "ECLIPSE & BLOOM Collection Summary",
+        "contentType": "Carousel (4 Photos) — Collection Overview",
+        "photos": [
+          {
+            "filename": "collection_overview_1.jpg",
+            "description": "Фото 1: Все 4 хаори вместе (ECLIPSE-01, ECLIPSE-02, LUMIN-01, BLOOM-01) в дневном свете"
+          },
+          {
+            "filename": "collection_overview_2.jpg",
+            "description": "Фото 2: Все 4 хаори в UV-свете, контраст стилей (dark eclipse vs warm lumin vs neon bloom)"
+          },
+          {
+            "filename": "collection_overview_3.jpg",
+            "description": "Фото 3: Все 4 картины (A3 и A2) в UV-свете, разные рамки"
+          },
+          {
+            "filename": "collection_overview_4.jpg",
+            "description": "Фото 4: Таблица с ценами и эдициями (ECLIPSE-01: €1,200 / ECLIPSE-02: €1,800 / LUMIN-01: €1,800 / BLOOM-01: €1,200)"
+          }
+        ],
+        "caption": {
+          "ru": "Сначала — тьма. Потом — ты.\n\nHAORI VISION. Хаори + картина, лимит 10.\n\nECLIPSE & BLOOM Collection:\n• ECLIPSE // 01 — €1,200 (A3)\n• ECLIPSE // 02 — €1,800 (A2)\n• LUMIN SPIRIT // 01 — €1,800 (A2)\n• FLUO BLOOM // 01 — €1,200 (A3)\n\nВсе товары в наличии. Доставка по всему миру.\n\n#haorivision #wearlight #eclipse #luminspirit #fluobloom #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #collection",
+          "en": "First — darkness. Then — you.\n\nHAORI VISION. Haori + painting, limit 10.\n\nECLIPSE & BLOOM Collection:\n• ECLIPSE // 01 — €1,200 (A3)\n• ECLIPSE // 02 — €1,800 (A2)\n• LUMIN SPIRIT // 01 — €1,800 (A2)\n• FLUO BLOOM // 01 — €1,200 (A3)\n\nAll products available. Worldwide shipping.\n\n#haorivision #wearlight #eclipse #luminspirit #fluobloom #uvart #handpainted #limitededition #artfashion #tokyo #silkhaori #collection"
+        },
+        "platforms": ["Instagram", "Facebook", "Pinterest"],
+        "postingTime": "12:00 UTC+3"
+      }
+    ],
+    "notes": {
+      "mediaProduction": "Все фото и видео должны быть сняты профессиональным фотографом с UV-оборудованием. Используйте portable UV LED panels (8W и 12W) для съёмки.",
+      "models": "Желательно использовать разных моделей для каждого товара (diversity). Mix of genders и ethnicities.",
+      "videoQuality": "Reels: 1080×1920 (vertical), 30fps minimum. 4K preferred для Instagram и YouTube Shorts.",
+      "photoQuality": "Фото: minimum 3000×4000 pixels, RGB color space, sRGB profile.",
+      "uvLighting": "Все UV-съёмки делать в темноте с portable UV LED panels. Контраст должен быть максимальным.",
+      "captionStrategy": "Универсальная подпись для всех постов: 'Сначала — тьма. Потом — ты. HAORI VISION. Хаори + картина, лимит 10. [НАЗВАНИЕ].' + хэштеги.",
+      "hashtagStrategy": "Всегда включать #haorivision #wearlight + специфичные теги для каждого товара.",
+      "engagementStrategy": "Отвечать на комментарии в течение 1 часа. Использовать Stories для дополнительного контента (polls, Q&A, BTS clips).",
+      "analyticsTracking": "Отслеживать engagement rate, reach, saves, shares для каждого поста. Корректировать стратегию на основе данных."
+    },
+    "callToAction": {
+      "primary": "Shop now → haori.vision/shop",
+      "secondary": "Discover more → haori.vision",
+      "tertiary": "Link in bio",
+      "urgency": "Лимит 10 экземпляров. При заказе 3+ товаров — бесплатная доставка."
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "createdDate": "2025-10-08",
+    "author": "HAORI VISION Marketing Team",
+    "contentFocus": "ECLIPSE & BLOOM Collection (4 new products)",
+    "targetAudience": "Premium art collectors, fashion enthusiasts, UV art lovers, Tokyo/global market",
+    "estimatedReach": "10,000-50,000 impressions per post (organic + paid)",
+    "budget": "€500-1,000 for paid promotion (Instagram Ads, TikTok Ads)"
+  }
+}

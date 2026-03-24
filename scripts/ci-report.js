@@ -60,6 +60,10 @@ if (fs.existsSync(junitPath)) {
 
 console.log(summary);
 
+// Запись в файл ci-summary.md для локального использования и CI
+const ciSummaryPath = path.join(process.cwd(), "ci-summary.md");
+fs.writeFileSync(ciSummaryPath, summary);
+
 // Опционально: запись в файл для GitHub Actions
 const summaryPath = process.env.GITHUB_STEP_SUMMARY;
 if (summaryPath) {

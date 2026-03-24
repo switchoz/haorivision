@@ -8,6 +8,7 @@ import express from "express";
 import Order from "../models/Order.js";
 import Product from "../models/Product.js";
 import Customer from "../models/Customer.js";
+import { baseLogger } from "../middlewares/logger.js";
 
 const router = express.Router();
 
@@ -123,10 +124,9 @@ router.post("/", async (req, res) => {
 
     res.status(201).json({ order: populatedOrder });
   } catch (error) {
-    console.error(
-      "Failed to create order:",
-      error.message,
-      error.stack?.split("\n")[1],
+    baseLogger.error(
+      { err: error, stackLine: error.stack?.split("\n")[1] },
+      "Failed to create order",
     );
 
     if (error.name === "ValidationError") {
@@ -156,14 +156,16 @@ router.get("/:orderId", async (req, res) => {
     if (orderId.startsWith("HV")) {
       order = await Order.findOne({ orderNumber: orderId })
         .populate("customer", "name email phone")
-        .populate("items.product");
+        .populate("items.product", "name id images price")
+        .lean();
     }
 
     // Если не нашли — попробовать по MongoDB _id
     if (!order && orderId.match(/^[0-9a-fA-F]{24}$/)) {
       order = await Order.findById(orderId)
         .populate("customer", "name email phone")
-        .populate("items.product");
+        .populate("items.product", "name id images price")
+        .lean();
     }
 
     if (!order) {
@@ -172,7 +174,7 @@ router.get("/:orderId", async (req, res) => {
 
     res.json({ order });
   } catch (error) {
-    console.error("Failed to get order:", error);
+    baseLogger.error({ err: error }, "Failed to get order");
     res.status(500).json({ error: "Failed to get order" });
   }
 });
@@ -210,11 +212,9 @@ router.patch("/:orderId/status", async (req, res) => {
       "cancelled",
     ];
     if (status && !validStatuses.includes(status)) {
-      return res
-        .status(400)
-        .json({
-          error: `Invalid status. Must be one of: ${validStatuses.join(", ")}`,
-        });
+      return res.status(400).json({
+        error: `Invalid status. Must be one of: ${validStatuses.join(", ")}`,
+      });
     }
 
     if (status) {
@@ -243,7 +243,7 @@ router.patch("/:orderId/status", async (req, res) => {
 
     res.json({ order: updatedOrder });
   } catch (error) {
-    console.error("Failed to update order status:", error);
+    baseLogger.error({ err: error }, "Failed to update order status");
     res.status(500).json({ error: "Failed to update order status" });
   }
 });

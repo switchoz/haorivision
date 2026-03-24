@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://haorivision.com/schemas/product.schema.json",
+  "title": "HAORI VISION Product Schema",
+  "description": "Schema for validating HAORI VISION product catalog items",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique product identifier (ECLIPSE-01, HV-202510-001, etc.)",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "description": "Product title",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name (alternative to title)",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "size": {
+      "type": "string",
+      "enum": ["A2", "A3", "custom"],
+      "description": "Product size"
+    },
+    "price_eur": {
+      "type": "number",
+      "description": "Price in EUR",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "price": {
+      "type": "number",
+      "description": "Price (alternative field)",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "edition": {
+      "type": "integer",
+      "description": "Edition number",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "totalEditions": {
+      "type": "integer",
+      "description": "Total number of editions",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "status": {
+      "type": "string",
+      "enum": ["available", "reserved", "sold_out", "active", "draft"],
+      "description": "Product availability status"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description",
+      "minLength": 20,
+      "maxLength": 2000
+    },
+    "media": {
+      "type": "object",
+      "description": "Product media files",
+      "properties": {
+        "video_preview": {
+          "type": "string",
+          "description": "Video preview URL or path"
+        },
+        "photo_day": {
+          "type": "string",
+          "description": "Photo in daylight"
+        },
+        "photo_uv": {
+          "type": "string",
+          "description": "Photo under UV light"
+        },
+        "photo_macro": {
+          "type": "string",
+          "description": "Macro photo"
+        },
+        "photo_on_model": {
+          "type": "string",
+          "description": "Photo on model"
+        }
+      }
+    },
+    "images": {
+      "type": "object",
+      "description": "Product images (alternative to media)",
+      "properties": {
+        "daylight": {
+          "type": "string"
+        },
+        "uv": {
+          "type": "string"
+        },
+        "macro": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        }
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "Product type"
+    },
+    "sku": {
+      "type": "string",
+      "description": "Stock Keeping Unit"
+    }
+  },
+  "anyOf": [
+    {
+      "required": ["title"]
+    },
+    {
+      "required": ["name"]
+    }
+  ]
+}

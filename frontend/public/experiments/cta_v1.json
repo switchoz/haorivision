@@ -1,0 +1,127 @@
+{
+  "experiment": {
+    "id": "cta_v1",
+    "name": "CTA Button Copy Test - New Products Only",
+    "description": "A/B test comparing two CTA button texts on new product pages (P007-P010)",
+    "status": "active",
+    "created_at": "2025-10-17T00:00:00.000Z",
+    "started_at": null,
+    "ended_at": null
+  },
+  "variants": {
+    "A": {
+      "id": "control",
+      "name": "Buy Now (Control)",
+      "cta_text": {
+        "en": "Buy Now",
+        "ru": "Купить сейчас"
+      },
+      "description": "Direct purchase CTA - standard e-commerce approach",
+      "weight": 50
+    },
+    "B": {
+      "id": "urgency",
+      "name": "Reserve 24h (Urgency)",
+      "cta_text": {
+        "en": "Reserve for 24h",
+        "ru": "Забронировать на 24ч"
+      },
+      "description": "Time-limited reservation CTA - creates urgency for 1-of-1 products",
+      "weight": 50
+    }
+  },
+  "targeting": {
+    "enabled": true,
+    "product_ids": [
+      "P007",
+      "P008",
+      "P009",
+      "P010",
+      "HV-202510-001",
+      "HV-202510-002",
+      "HV-202510-003",
+      "HV-202510-004",
+      "ECLIPSE-01",
+      "ECLIPSE-02",
+      "BLOOM-01",
+      "BLOOM-02"
+    ],
+    "comment": "Only applies to NEW products. Legacy products (P001-P006) keep existing CTAs."
+  },
+  "distribution": {
+    "method": "random",
+    "split": {
+      "A": 50,
+      "B": 50
+    },
+    "sticky": true,
+    "sticky_duration_days": 30,
+    "comment": "Users see consistent variant for 30 days via cookie"
+  },
+  "tracking": {
+    "events": [
+      {
+        "name": "cta_view",
+        "description": "CTA button was rendered on product page"
+      },
+      {
+        "name": "cta_click",
+        "description": "User clicked CTA button"
+      },
+      {
+        "name": "add_to_cart",
+        "description": "User added product to cart after clicking CTA"
+      },
+      {
+        "name": "checkout_started",
+        "description": "User started checkout process"
+      },
+      {
+        "name": "order_completed",
+        "description": "User completed purchase"
+      }
+    ],
+    "metrics": {
+      "primary": "conversion_rate",
+      "secondary": [
+        "click_through_rate",
+        "add_to_cart_rate",
+        "checkout_started_rate",
+        "average_time_to_purchase"
+      ]
+    }
+  },
+  "results": {
+    "total_views": 0,
+    "A": {
+      "views": 0,
+      "clicks": 0,
+      "add_to_cart": 0,
+      "checkout_started": 0,
+      "orders": 0,
+      "revenue": 0
+    },
+    "B": {
+      "views": 0,
+      "clicks": 0,
+      "add_to_cart": 0,
+      "checkout_started": 0,
+      "orders": 0,
+      "revenue": 0
+    }
+  },
+  "hypothesis": {
+    "assumption": "For 1-of-1 handcrafted products, time-limited 'Reserve' language will increase urgency and conversion rate compared to standard 'Buy Now' CTA",
+    "success_criteria": "Variant B achieves >10% higher conversion rate than Variant A with statistical significance (p<0.05)",
+    "min_sample_size": 100,
+    "expected_duration_days": 30
+  },
+  "notes": [
+    "This experiment ONLY applies to new product pages",
+    "Legacy products (P001-P006) keep their existing CTAs unchanged",
+    "Users are assigned to variant randomly on first view",
+    "Variant assignment is stored in cookie for 30 days (sticky sessions)",
+    "UTM session tracking integrates with this experiment to track traffic sources",
+    "Results should be reviewed weekly during active experiment period"
+  ]
+}

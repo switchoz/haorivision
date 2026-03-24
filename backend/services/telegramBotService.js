@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import TelegramPost from "../models/TelegramPost.js";
+import { baseLogger } from "../middlewares/logger.js";
 
 const TELEGRAM_API = "https://api.telegram.org/bot";
 
@@ -124,7 +125,7 @@ ${topic ? `Что показать: ${topic}` : "Покажи процесс с�
     };
 
     const message = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-6",
       max_tokens: 500,
       messages: [
         {
@@ -199,7 +200,7 @@ ${topic ? `Что показать: ${topic}` : "Покажи процесс с�
     const types = ["esoteric", "haori_work", "news", "behind_scenes"];
     const randomType = types[Math.floor(Math.random() * types.length)];
 
-    console.log(`[Telegram] Auto-Post: generating ${randomType} post...`);
+    baseLogger.info(`[Telegram] Auto-Post: generating ${randomType} post...`);
     return await this.generateAndPublish(randomType);
   }
 

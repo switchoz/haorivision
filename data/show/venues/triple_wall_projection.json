@@ -1,0 +1,78 @@
+{
+  "id": "triple_wall_projection",
+  "name": "Triple Wall Projection — Immersive Setup",
+  "location": "Pop-up Gallery / Event Space",
+  "createdAt": "2025-01-07",
+
+  "displays": [
+    {
+      "id": "projector_left",
+      "name": "Left Wall Projector",
+      "position": "left",
+      "offset": { "x": 0, "y": 0 },
+      "size": { "width": 1920, "height": 1080 },
+      "resolution": { "width": 1920, "height": 1080 },
+      "rotation": 0,
+      "enabled": true
+    },
+    {
+      "id": "projector_center",
+      "name": "Center Wall Projector",
+      "position": "center",
+      "offset": { "x": 1920, "y": 0 },
+      "size": { "width": 1920, "height": 1080 },
+      "resolution": { "width": 1920, "height": 1080 },
+      "rotation": 0,
+      "enabled": true
+    },
+    {
+      "id": "projector_right",
+      "name": "Right Wall Projector",
+      "position": "right",
+      "offset": { "x": 3840, "y": 0 },
+      "size": { "width": 1920, "height": 1080 },
+      "resolution": { "width": 1920, "height": 1080 },
+      "rotation": 0,
+      "enabled": true
+    }
+  ],
+
+  "projection": {
+    "totalWidth": 5760,
+    "totalHeight": 1080,
+    "throwDistance": 6.0,
+    "aspectRatio": "48:9"
+  },
+
+  "calibration": {
+    "brightness": 0.95,
+    "contrast": 1.05,
+    "gamma": 2.4,
+    "whitePoint": { "r": 0.98, "g": 1.0, "b": 1.02 },
+    "blackLevel": { "r": 0.02, "g": 0.02, "b": 0.02 }
+  },
+
+  "geometry": {
+    "warpEnabled": true,
+    "warpGrid": {
+      "rows": 9,
+      "cols": 9,
+      "points": []
+    },
+    "keystoneCorrection": {
+      "enabled": true,
+      "corners": {
+        "topLeft": { "x": 10, "y": 5 },
+        "topRight": { "x": 5750, "y": 8 },
+        "bottomLeft": { "x": 8, "y": 1075 },
+        "bottomRight": { "x": 5748, "y": 1072 }
+      }
+    }
+  },
+
+  "sync": {
+    "mode": "network",
+    "websocketUrl": "ws://localhost:8080/sync",
+    "frameDelay": 16
+  }
+}

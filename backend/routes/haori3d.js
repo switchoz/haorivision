@@ -10,6 +10,7 @@ import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import { baseLogger } from "../middlewares/logger.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -81,7 +82,7 @@ router.post("/:itemId/upload", uploadFields, (req, res) => {
 
     res.json({ success: true, ...result });
   } catch (error) {
-    console.error("Haori 3D upload error:", error);
+    baseLogger.error({ err: error }, "Haori 3D upload error");
     res.status(500).json({ error: error.message });
   }
 });

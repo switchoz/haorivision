@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-09",
+  "brand": {
+    "name": "HAORI VISION",
+    "tagline": "Where light becomes form",
+    "description": "Luxury fashion house specializing in avant-garde outerwear that transforms ambient light into wearable art.",
+    "founded": "2024",
+    "headquarters": "Stockholm, Sweden",
+    "website": "https://haorivision.com",
+    "press_email": "press@haorivision.com"
+  },
+  "contacts": {
+    "press_inquiries": "press@haorivision.com",
+    "buyer_inquiries": "buyers@haorivision.com",
+    "general": "hello@haorivision.com",
+    "phone": "+46 (0) 8 123 4567"
+  },
+  "pressKit": {
+    "includes": [
+      "Brand manifesto",
+      "High-resolution product images (web & print)",
+      "Logo suite (primary, secondary, icon)",
+      "Color palette",
+      "Process & UV photography",
+      "Credits & contacts"
+    ],
+    "imageFormats": {
+      "web": {
+        "width": 1600,
+        "format": "jpg",
+        "quality": 90,
+        "colorSpace": "sRGB"
+      },
+      "print": {
+        "dpi": 300,
+        "format": "tiff",
+        "colorSpace": "Adobe RGB",
+        "profile": "Coated FOGRA39"
+      }
+    },
+    "watermark": {
+      "enabled": true,
+      "text": "HAORI VISION PRESS",
+      "angle": 30,
+      "opacity": 0.08,
+      "fontSize": 48,
+      "color": "#000000"
+    }
+  },
+  "featuredProducts": [
+    "ECLIPSE-01",
+    "ECLIPSE-02",
+    "LUMIN-01",
+    "BLOOM-01"
+  ],
+  "processImages": [
+    "UV_Process_01.jpg",
+    "UV_Process_02.jpg"
+  ],
+  "branding": {
+    "logoPath": "assets/branding/logo-primary.svg",
+    "manifestoPath": "data/branding/manifesto.md",
+    "paletteColors": [
+      "#000000",
+      "#FFFFFF",
+      "#E8E8E8",
+      "#4A4A4A"
+    ]
+  }
+}

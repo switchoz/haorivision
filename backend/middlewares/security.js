@@ -40,7 +40,7 @@ const ALLOWED_CDN_DOMAINS = [
 // Allowed script sources (if needed)
 const ALLOWED_SCRIPT_SOURCES = [
   "'self'",
-  "'unsafe-inline'", // For inline scripts (use nonce in production)
+  // TODO: implement nonce-based CSP for scripts instead of 'unsafe-inline'
   "https://js.stripe.com", // Stripe SDK
   "https://www.google-analytics.com", // Google Analytics
   "https://www.googletagmanager.com",

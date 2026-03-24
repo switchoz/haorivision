@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DM Console — HAORI VISION</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #000000;
+      --secondary: #E8E8E8;
+      --text: #4A4A4A;
+      --border: #D0D0D0;
+      --success: #2E7D32;
+      --warning: #F57C00;
+      --error: #C62828;
+      --critical: #D32F2F;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--primary);
+      background: #FAFAFA;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-label {
+      color: var(--text);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .stat-value.ok { color: var(--success); }
+    .stat-value.warn { color: var(--warning); }
+    .stat-value.critical { color: var(--critical); }
+
+    .main-container {
+      display: grid;
+      grid-template-columns: 300px 1fr 350px;
+      height: calc(100vh - 70px);
+    }
+
+    .sidebar {
+      background: #FFFFFF;
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+    }
+
+    .sidebar-section {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--secondary);
+    }
+
+    .sidebar-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .script-list {
+      list-style: none;
+    }
+
+    .script-item {
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      background: var(--secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    .script-item:hover {
+      background: #D8D8D8;
+    }
+
+    .script-item.active {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .script-name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .script-trigger {
+      font-size: 0.75rem;
+      color: var(--text);
+      margin-top: 0.25rem;
+    }
+
+    .script-item.active .script-trigger {
+      color: #CCCCCC;
+    }
+
+    .chat-area {
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+    }
+
+    .chat-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .platform-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--secondary);
+    }
+
+    .sla-timer {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .sla-timer.ok {
+      background: #E8F5E9;
+      color: var(--success);
+    }
+
+    .sla-timer.warn {
+      background: #FFF3E0;
+      color: var(--warning);
+    }
+
+    .sla-timer.critical {
+      background: #FFEBEE;
+      color: var(--critical);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    .message {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .message.incoming {
+      flex-direction: row;
+    }
+
+    .message.outgoing {
+      flex-direction: row-reverse;
+    }
+
+    .message-bubble {
+      max-width: 70%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+
+    .message.incoming .message-bubble {
+      background: var(--secondary);
+    }
+
+    .message.outgoing .message-bubble {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      color: var(--text);
+      margin-top: 0.25rem;
+    }
+
+    .chat-input-area {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .input-controls {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .chat-input {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .input-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: var(--primary);
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--secondary);
+    }
+
+    .suggestions-panel {
+      background: #FFFFFF;
+      border-left: 1px solid var(--border);
+      overflow-y: auto;
+    }
+
+    .panel-section {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--secondary);
+    }
+
+    .panel-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .suggestion-card {
+      background: var(--secondary);
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .suggestion-card:hover {
+      background: #D8D8D8;
+    }
+
+    .suggestion-text {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .suggestion-label {
+      font-size: 0.75rem;
+      color: var(--text);
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .quick-reply {
+      padding: 0.5rem 1rem;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-reply:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .variable-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .variable-input {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .variable-input label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .variable-input input {
+      padding: 0.5rem;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text);
+    }
+
+    @media (max-width: 1200px) {
+      .main-container {
+        grid-template-columns: 250px 1fr;
+      }
+
+      .suggestions-panel {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="logo">HAORI VISION</div>
+      <div style="font-size: 0.85rem; color: var(--text); margin-top: 0.25rem;">DM Console</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-item">
+        <span class="stat-label">Median Response</span>
+        <span class="stat-value" id="medianStat">--</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Max Response</span>
+        <span class="stat-value" id="maxStat">--</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">SLA Status</span>
+        <span class="stat-value ok" id="slaStatusStat">OK</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Scripts Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Message Templates</div>
+        <ul class="script-list" id="scriptList">
+          <!-- Populated dynamically -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area">
+      <div class="chat-header">
+        <div class="chat-info">
+          <span class="platform-badge" id="platformBadge">Instagram</span>
+          <span id="customerInfo">Customer #123</span>
+        </div>
+        <div class="sla-timer ok" id="slaTimer">
+          <span id="timerValue">0 min</span>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="empty-state">
+          Select a template or start a conversation
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <div class="input-controls">
+          <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+          </div>
+        </div>
+
+        <textarea class="chat-input" id="messageInput" placeholder="Type your message or select a template..."></textarea>
+
+        <div class="input-actions">
+          <button class="btn" onclick="sendMessage()">Send Message</button>
+          <button class="btn btn-secondary" onclick="clearInput()">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggestions Panel -->
+    <div class="suggestions-panel">
+      <div class="panel-section">
+        <div class="panel-title">Current Suggestion</div>
+        <div id="currentSuggestion" class="suggestion-text" style="color: var(--text);">
+          Select a template from the sidebar
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Variables</div>
+        <div class="variable-inputs" id="variableInputs">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Quick Replies</div>
+        <div class="quick-replies" id="quickReplies">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { DMAssistant } from '../src/dm/assistant.js';
+
+    const assistant = new DMAssistant();
+    let currentLanguage = 'ru';
+    let currentScript = null;
+    let currentConversation = null;
+    let slaInterval = null;
+    const variables = {};
+
+    // Initialize
+    async function init() {
+      try {
+        await assistant.init();
+        loadScripts();
+        loadQuickReplies();
+        startMockConversation();
+      } catch (error) {
+        console.error('Failed to initialize DM Console:', error);
+      }
+    }
+
+    function loadScripts() {
+      const scripts = assistant.getScripts();
+      const scriptList = document.getElementById('scriptList');
+
+      scriptList.innerHTML = Object.values(scripts).map(script => `
+        <li class="script-item" onclick="selectScript('${script.id}')">
+          <div class="script-name">${script.id.replace(/_/g, ' ')}</div>
+          <div class="script-trigger">${script.trigger}</div>
+        </li>
+      `).join('');
+    }
+
+    function loadQuickReplies() {
+      const replies = assistant.getQuickReplies(currentLanguage);
+      const quickRepliesEl = document.getElementById('quickReplies');
+
+      quickRepliesEl.innerHTML = replies.map(reply => `
+        <div class="quick-reply" onclick="insertQuickReply('${reply}')">${reply}</div>
+      `).join('');
+    }
+
+    window.setLanguage = function(lang) {
+      currentLanguage = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      loadQuickReplies();
+
+      if (currentScript) {
+        selectScript(currentScript);
+      }
+    };
+
+    window.selectScript = function(scriptId) {
+      currentScript = scriptId;
+
+      // Update active state
+      document.querySelectorAll('.script-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      event.target.closest('.script-item').classList.add('active');
+
+      // Get suggestion
+      const suggestion = assistant.getSuggestion(scriptId, currentLanguage);
+
+      // Show suggestion
+      document.getElementById('currentSuggestion').textContent = suggestion;
+
+      // Fill message input
+      document.getElementById('messageInput').value = suggestion;
+
+      // Show variables
+      showVariables(suggestion);
+    };
+
+    function showVariables(template) {
+      const variableRegex = /\[(\w+)\]/g;
+      const matches = template.match(variableRegex) || [];
+      const uniqueVars = [...new Set(matches.map(m => m.replace(/[\[\]]/g, '')))];
+
+      const variableInputsEl = document.getElementById('variableInputs');
+
+      if (uniqueVars.length === 0) {
+        variableInputsEl.innerHTML = '<div style="color: var(--text); font-size: 0.85rem;">No variables in this template</div>';
+        return;
+      }
+
+      variableInputsEl.innerHTML = uniqueVars.map(varName => `
+        <div class="variable-input">
+          <label>${varName}</label>
+          <input type="text" data-var="${varName}" oninput="updateVariable('${varName}', this.value)" placeholder="Enter ${varName}">
+        </div>
+      `).join('');
+    }
+
+    window.updateVariable = function(varName, value) {
+      variables[varName] = value;
+      updateMessageWithVariables();
+    };
+
+    function updateMessageWithVariables() {
+      const template = assistant.getSuggestion(currentScript, currentLanguage);
+      const filled = assistant.fillTemplate(template, variables);
+      document.getElementById('messageInput').value = filled;
+    }
+
+    window.insertQuickReply = function(reply) {
+      const input = document.getElementById('messageInput');
+      input.value = reply;
+    };
+
+    window.sendMessage = function() {
+      const message = document.getElementById('messageInput').value.trim();
+
+      if (!message) return;
+
+      // Add to chat
+      const chatMessages = document.getElementById('chatMessages');
+
+      // Remove empty state
+      if (chatMessages.querySelector('.empty-state')) {
+        chatMessages.innerHTML = '';
+      }
+
+      const messageEl = document.createElement('div');
+      messageEl.className = 'message outgoing';
+      messageEl.innerHTML = `
+        <div class="message-bubble">
+          ${message.replace(/\n/g, '<br>')}
+          <div class="message-time">${new Date().toLocaleTimeString()}</div>
+        </div>
+      `;
+
+      chatMessages.appendChild(messageEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Mark conversation as responded
+      if (currentConversation) {
+        assistant.markResponded(currentConversation);
+        updateSLAStats();
+      }
+
+      // Clear input
+      clearInput();
+    };
+
+    window.clearInput = function() {
+      document.getElementById('messageInput').value = '';
+      Object.keys(variables).forEach(key => delete variables[key]);
+      document.getElementById('variableInputs').innerHTML = '';
+    };
+
+    function startMockConversation() {
+      currentConversation = assistant.startConversation('customer_123', 'instagram', currentLanguage);
+      updateSLATimer();
+      slaInterval = setInterval(updateSLATimer, 1000);
+    }
+
+    function updateSLATimer() {
+      if (!currentConversation) return;
+
+      const { responseTime, slaStatus } = assistant.calculateSLA(currentConversation);
+
+      const timerEl = document.getElementById('slaTimer');
+      const timerValue = document.getElementById('timerValue');
+
+      timerEl.className = 'sla-timer ' + slaStatus;
+      timerValue.textContent = responseTime + ' min';
+    }
+
+    function updateSLAStats() {
+      const stats = assistant.getSLAStats();
+
+      document.getElementById('medianStat').textContent = stats.medianResponseTime + ' min';
+      document.getElementById('maxStat').textContent = stats.maxResponseTime + ' min';
+
+      const slaStatusEl = document.getElementById('slaStatusStat');
+
+      if (stats.breached > 0) {
+        slaStatusEl.textContent = 'BREACHED';
+        slaStatusEl.className = 'stat-value critical';
+      } else if (stats.critical > 0) {
+        slaStatusEl.textContent = 'CRITICAL';
+        slaStatusEl.className = 'stat-value critical';
+      } else if (stats.warn > 0) {
+        slaStatusEl.textContent = 'WARN';
+        slaStatusEl.className = 'stat-value warn';
+      } else {
+        slaStatusEl.textContent = 'OK';
+        slaStatusEl.className = 'stat-value ok';
+      }
+    }
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>

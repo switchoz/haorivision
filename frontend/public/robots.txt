@@ -1,0 +1,192 @@
+# HAORI VISION — Robots.txt
+# https://haorivision.com/robots.txt
+# Last updated: 2025-10-17
+
+# ==========================================================
+# General Crawling Rules
+# ==========================================================
+
+# Allow all well-behaved bots
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://haorivision.com/sitemap.xml
+Sitemap: https://haorivision.com/sitemap-products.xml
+Sitemap: https://haorivision.com/sitemap-legal.xml
+
+# ==========================================================
+# Disallow Admin/Private Areas
+# ==========================================================
+
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /backend/
+Disallow: /scripts/
+Disallow: /reports/
+Disallow: /temp/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Disallow search/filter result pages (avoid duplicate content)
+Disallow: /*?filter=
+Disallow: /*?sort=
+Disallow: /*?page=
+Disallow: /*?search=
+
+# Disallow checkout and user account pages
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /profile
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+
+# ==========================================================
+# Specific Bot Rules
+# ==========================================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Crawl-delay: 0
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /media/
+Allow: /images/
+Allow: /products/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Crawl-delay: 1
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Crawl-delay: 2
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 0
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 0
+
+# Pinterest
+User-agent: Pinterest
+Allow: /
+Allow: /media/
+Allow: /products/
+Crawl-delay: 1
+
+# ==========================================================
+# Block Bad Bots
+# ==========================================================
+
+# AI scrapers (protect content from training data)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Common bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SeznamBot
+Crawl-delay: 5
+
+# Aggressive crawlers
+User-agent: Baiduspider
+Crawl-delay: 10
+
+User-agent: YandexImages
+Crawl-delay: 5
+
+# ==========================================================
+# Allow Legal and Important Pages
+# ==========================================================
+
+# Explicitly allow legal pages
+Allow: /legal/
+Allow: /privacy
+Allow: /terms
+Allow: /legal/returns.html
+Allow: /legal/care.html
+Allow: /legal/uv_safety.html
+
+# Allow product pages
+Allow: /products/
+Allow: /collections/
+
+# Allow media files
+Allow: /media/
+Allow: /images/
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.webp
+Allow: *.avif
+Allow: *.svg
+
+# Allow CSS and JS (for rendering)
+Allow: *.css
+Allow: *.js
+
+# ==========================================================
+# Crawl Rate Limits
+# ==========================================================
+
+# Default crawl delay (1 second between requests)
+# Prevents server overload
+Crawl-delay: 1
+
+# ==========================================================
+# Notes
+# ==========================================================
+
+# This robots.txt follows best practices:
+# 1. Blocks admin/private areas
+# 2. Allows legal and public content
+# 3. Prevents duplicate content indexing (filters, pagination)
+# 4. Blocks AI scrapers to protect original content
+# 5. Rate-limits aggressive crawlers
+# 6. Provides sitemap locations
+
+# For questions: support@haorivision.com

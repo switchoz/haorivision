@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ritual Begins</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 100%);
+    }
+
+    .header {
+      text-align: center;
+      padding: 50px 40px 30px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .header-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #10b981 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .order-number {
+      font-size: 18px;
+      color: #10b981;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .main-text {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #e5e7eb;
+    }
+
+    .product-box {
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .product-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .product-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      margin-right: 20px;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .product-info h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .product-info p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .product-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .detail-item {
+      text-align: center;
+    }
+
+    .detail-item .label {
+      font-size: 12px;
+      opacity: 0.6;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .detail-item .value {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 5px;
+      color: #a78bfa;
+    }
+
+    .order-summary {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .summary-row.total {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      margin-top: 15px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #10b981;
+    }
+
+    .timeline {
+      margin: 40px 0;
+    }
+
+    .timeline h3 {
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: #a78bfa;
+    }
+
+    .timeline-step {
+      display: flex;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .timeline-step::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(167, 139, 250, 0.5) 0%, transparent 100%);
+    }
+
+    .timeline-step:last-child::after {
+      display: none;
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-right: 20px;
+    }
+
+    .step-content h4 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .step-content p {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .nft-box {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .nft-box h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #ec4899;
+    }
+
+    .nft-box p {
+      font-size: 14px;
+      opacity: 0.9;
+      margin: 10px 0;
+    }
+
+    .rewards-earned {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .rewards-earned h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #10b981;
+    }
+
+    .points-display {
+      font-size: 56px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #10b981 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 15px 0;
+    }
+
+    .rewards-earned .progress-text {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 15px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981 0%, #a78bfa 100%);
+      color: white;
+      text-decoration: none;
+      padding: 16px 35px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      margin: 10px 5px;
+    }
+
+    .footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 35px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <div class="header-icon">✨</div>
+      <h1>The Ritual Begins</h1>
+      <p style="margin-top: 10px; opacity: 0.8;">Твой заказ принят и обрабатывается</p>
+      <div class="order-number">Заказ #{{orderNumber}}</div>
+    </div>
+
+    <div class="content">
+      <p class="main-text">
+        Приветствую, {{customerName}}...
+      </p>
+
+      <p class="main-text">
+        Ритуал начался. Твой заказ получен, и сейчас мы готовим твоё хаори к отправке. Это не просто покупка — это вступление в Круг Света.
+      </p>
+
+      <div class="product-box">
+        <div class="product-header">
+          <div class="product-image">🌟</div>
+          <div class="product-info">
+            <h2>{{productName}}</h2>
+            <p>{{productTagline}}</p>
+          </div>
+        </div>
+
+        <div class="product-details">
+          <div class="detail-item">
+            <div class="label">Edition</div>
+            <div class="value">#{{editionNumber}}/{{totalEditions}}</div>
+          </div>
+          <div class="detail-item">
+            <div class="label">Collection</div>
+            <div class="value" style="font-size: 16px;">{{collection}}</div>
+          </div>
+          <div class="detail-item">
+            <div class="label">UV Colors</div>
+            <div class="value" style="font-size: 14px;">{{uvColors}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-summary">
+        <div class="summary-row">
+          <span>{{productName}}</span>
+          <span>${{price}}</span>
+        </div>
+        <div class="summary-row">
+          <span>Доставка DHL Express</span>
+          <span>Бесплатно</span>
+        </div>
+        <div class="summary-row">
+          <span>NFT Certificate</span>
+          <span>Включено</span>
+        </div>
+        <div class="summary-row total">
+          <span>Итого</span>
+          <span>${{total}}</span>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <h3>📍 Что происходит дальше</h3>
+
+        <div class="timeline-step">
+          <div class="step-icon">✅</div>
+          <div class="step-content">
+            <h4>Заказ подтверждён</h4>
+            <p>Мы получили твой платёж и начали обработку</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-icon">🎨</div>
+          <div class="step-content">
+            <h4>Подготовка хаори</h4>
+            <p>Проверка качества росписи и упаковка в деревянную коробку</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-icon">🎫</div>
+          <div class="step-content">
+            <h4>Минт NFT сертификата</h4>
+            <p>Создаём цифровой сертификат подлинности на blockchain</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-icon">📦</div>
+          <div class="step-content">
+            <h4>Отправка</h4>
+            <p>DHL Express доставка (5-7 дней) с трекингом</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-icon">🌟</div>
+          <div class="step-content">
+            <h4>Твой свет проявлен</h4>
+            <p>Ты получаешь хаори и становишься частью Круга Света</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nft-box">
+        <h3>🎫 NFT Certificate of Authenticity</h3>
+        <p>Твой NFT сертификат будет создан в течение 24 часов после отправки.</p>
+        <p style="margin-top: 15px;">
+          <strong>Token ID:</strong> Будет присвоен после минта<br>
+          <strong>Blockchain:</strong> Ethereum<br>
+          <strong>Marketplace:</strong> OpenSea
+        </p>
+        <p style="margin-top: 20px; font-size: 13px; opacity: 0.7;">
+          Ты получишь отдельное письмо с ссылкой на твой NFT и инструкцией по просмотру.
+        </p>
+      </div>
+
+      <div class="rewards-earned">
+        <h3>💎 Glow Points Earned!</h3>
+        <div class="points-display">+100</div>
+        <p><strong>Поздравляем!</strong> За эту покупку ты получаешь 100 Glow Points.</p>
+        <div class="progress-text">
+          Накопи <strong>500 points</strong> для скидки $100 на bespoke заказ
+        </div>
+      </div>
+
+      <p class="main-text" style="margin-top: 40px; font-style: italic; opacity: 0.9;">
+        Мы отправим тебе email с трекинг-номером, как только твоё хаори будет в пути. А пока — можешь изучить другие коллекции или присоединиться к нашему Discord-сообществу.
+      </p>
+
+      <div style="text-align: center; margin: 40px 0;">
+        <a href="{{trackingUrl}}" class="cta-button">
+          📦 Отследить заказ
+        </a>
+        <a href="https://haorivision.com/account" class="cta-button">
+          🌟 Мой аккаунт
+        </a>
+      </div>
+
+      <p class="main-text" style="text-align: right; margin-top: 50px;">
+        Свет уже в пути,<br>
+        <strong>Команда HAORI VISION</strong>
+      </p>
+    </div>
+
+    <div class="footer">
+      <p><strong>HAORI VISION</strong></p>
+      <p>Wear the Light. Become the Art.</p>
+      <p style="margin-top: 15px;">
+        Вопросы? Напиши нам: <a href="mailto:light@haorivision.com" style="color: #10b981;">light@haorivision.com</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

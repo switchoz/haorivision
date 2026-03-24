@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECLIPSE // 01 | HAORI VISION</title>
+    <meta name="description" content="лимитированная серия 10. Хаори премиум-качества, ручная роспись с световые эффекты в ультрафиолете. Ты — произведение искусства">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="ECLIPSE // 01 | HAORI VISION">
+    <meta property="og:description" content="лимитированная серия 10. Хаори премиум-качества, ручная роспись с световые эффекты в ультрафиолете. Ты — произведение искусства">
+    <meta property="og:image" content="/assets/products/eclipse-01-og.jpg">
+    <meta property="og:type" content="product">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-text: #f5f5f5;
+            --color-accent: #8A2BE2;
+            --color-accent-secondary: #00BFFF;
+            --color-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ============================================
+           HEADER / NAVIGATION
+        ============================================ */
+        .header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-link {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        /* ============================================
+           PRODUCT HERO
+        ============================================ */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        @media (max-width: 968px) {
+            .product-hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Video Preview */
+        .video-preview {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-toggle {
+            position: relative;
+            width: 100%;
+            padding-bottom: 133.33%; /* 3:4 aspect ratio */
+        }
+
+        .video-toggle video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-switch {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .video-switch button {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .video-switch button.active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .video-switch button:hover {
+            border-color: var(--color-accent);
+        }
+
+        /* Product Info */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 191, 255, 0.2));
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+        }
+
+        .product-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .product-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--color-accent);
+        }
+
+        .product-cta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .product-edition {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        /* ============================================
+           WHAT'S INCLUDED
+        ============================================ */
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .included-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .included-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--color-accent);
+        }
+
+        .included-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .included-item p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .included-item ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .included-item ul li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .included-item ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        /* ============================================
+           CARE INSTRUCTIONS
+        ============================================ */
+        .care-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 3rem;
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .care-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .care-block h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent-secondary);
+        }
+
+        .care-block ul {
+            list-style: none;
+        }
+
+        .care-block ul li {
+            padding: 0.75rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .care-block ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* ============================================
+           FAQ
+        ============================================ */
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           REVIEWS
+        ============================================ */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+            margin-top: 5rem;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">HAORI VISION</a>
+            <a href="/shop" class="back-link">← Back to Shop</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- PRODUCT HERO -->
+        <section class="product-hero">
+            <!-- Video Preview -->
+            <div class="video-preview">
+                <div class="video-toggle">
+                    <video id="videoPlayer" autoplay loop muted playsinline>
+                        <source src="/assets/videos/eclipse-01-daylight.mp4" type="video/mp4" id="videoSource">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-switch">
+                        <button class="video-btn active" data-mode="daylight">Daylight</button>
+                        <button class="video-btn" data-mode="uv">UV Light</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <span class="product-badge">ECLIPSE & BLOOM Collection — Edition 1 of 10</span>
+                <h1 class="product-title">ECLIPSE // 01</h1>
+                <p class="product-subtitle">лимитированная серия 10. Хаори премиум-качества, ручная роспись с световые эффекты в ультрафиолете. Ты — произведение искусства</p>
+
+                <div class="product-price">€1,200</div>
+
+                <div class="product-cta">
+                    <a href="mailto:shop@haorivision.com?subject=ECLIPSE-01 Purchase" class="btn btn-primary">Buy Now</a>
+                    <a href="/bespoke" class="btn btn-secondary">Book Bespoke</a>
+                </div>
+
+                <p class="product-edition">
+                    Limited edition 1 of 10 — handmade in Tokyo, Japan<br>
+                    Worldwide shipping included. NFT certificate of authenticity.
+                </p>
+            </div>
+        </section>
+
+        <!-- WHAT'S INCLUDED -->
+        <section class="section">
+            <h2 class="section-title">What's Included</h2>
+            <div class="included-grid">
+                <div class="included-item">
+                    <h3>Hand-Painted Haori</h3>
+                    <p>Чёрная основа с графичными серебристыми акцентами. Взрыв фиолетовых, синих и белых световых потоков в UV-свете, напоминающих корону затмения.</p>
+                    <ul>
+                        <li>100% Silk Habotai (12 momme)</li>
+                        <li>Black Cotton Voile lining</li>
+                        <li>UV-reactive violet & phosphorescent pigments</li>
+                        <li>Oversized unisex fit</li>
+                        <li>Length: 95 cm</li>
+                        <li>12 hours of handwork</li>
+                    </ul>
+                </div>
+
+                <div class="included-item">
+                    <h3>Companion Painting</h3>
+                    <p>A3 painting with eclipse corona rays pattern. Mirrors the haori's UV transformation with dramatic light-dark contrast.</p>
+                    <ul>
+                        <li>Museum-grade Belgian linen canvas</li>
+                        <li>Size: A3 (29.7 x 42 cm)</li>
+                        <li>UV-reactive acrylics + phosphorescent medium</li>
+                        <li>Black floating frame included</li>
+                        <li>UV-protective satin varnish</li>
+                        <li>Ready to hang</li>
+                    </ul>
+                </div>
+
+                <div class="included-item">
+                    <h3>UV LED Panel</h3>
+                    <p>Portable UV LED panel to activate the hidden fluorescent patterns.</p>
+                    <ul>
+                        <li>8W portable UV LED</li>
+                        <li>Wall-mountable or freestanding</li>
+                        <li>USB-powered</li>
+                        <li>Optimized for artwork viewing</li>
+                        <li>Safe UV-A spectrum</li>
+                    </ul>
+                </div>
+
+                <div class="included-item">
+                    <h3>Certificates & Packaging</h3>
+                    <p>Premium packaging and blockchain-verified authenticity.</p>
+                    <ul>
+                        <li>NFT Certificate of Authenticity (ERC-721)</li>
+                        <li>Physical certificate (printed)</li>
+                        <li>Black matte rigid box</li>
+                        <li>Care instructions card</li>
+                        <li>Artist's philosophy booklet</li>
+                        <li>QR code for NFT activation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARE INSTRUCTIONS -->
+        <section class="section">
+            <div class="care-section">
+                <h2 class="section-title">Care Instructions</h2>
+                <div class="care-grid">
+                    <div class="care-block">
+                        <h3>Haori Care</h3>
+                        <ul>
+                            <li>Hand wash in cold water only</li>
+                            <li>Do not wring or twist fabric</li>
+                            <li>Dry flat in shade (avoid direct sunlight)</li>
+                            <li>Iron on reverse side with low heat</li>
+                            <li>Store in breathable garment bag</li>
+                            <li>Dry cleaning recommended for best results</li>
+                        </ul>
+                    </div>
+
+                    <div class="care-block">
+                        <h3>UV Effect & Painting Care</h3>
+                        <ul>
+                            <li>UV pigments maintain vibrancy for 10+ years</li>
+                            <li>Avoid prolonged exposure to direct sunlight</li>
+                            <li>Painting: dust with soft, dry cloth only</li>
+                            <li>Do not use cleaning chemicals on artwork</li>
+                            <li>UV panel: use as needed, no constant exposure required</li>
+                            <li>Lifetime authenticity guarantee</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does the UV effect work?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            The haori and painting are created using UV-reactive fluorescent pigments that are invisible or minimal in daylight. When exposed to UV light (blacklight), hidden patterns and colors dramatically reveal themselves. The included portable UV LED panel provides optimal illumination for the artwork. The effect is safe, non-toxic, and maintains its vibrancy for over a decade with proper care.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is the NFT Certificate of Authenticity?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Each piece comes with a blockchain-verified NFT certificate (ERC-721 standard on Ethereum). This digital certificate includes high-resolution photos, artist signature, edition number, creation date, material composition, and provenance. It proves ownership and authenticity, includes 10% artist royalties on secondary sales, and grants access to the private HAORI VISION community. You'll receive a QR code to activate your NFT after purchase.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I commission a custom (bespoke) piece?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! We offer bespoke commissions where you can work directly with the artist to create a unique piece tailored to your vision. This includes custom color palettes, patterns, sizes, and personal symbolism. Bespoke pieces take 4-8 weeks to complete and start at €3,500. Click "Book Bespoke" above to schedule a consultation with our studio in Tokyo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="section">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">Elena K.</span>
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                    <p class="review-text">
+                        "The UV transformation is absolutely mesmerizing. I wear the haori during the day for its minimalist elegance, and at night it becomes a completely different piece of art. The quality of the silk and the craftsmanship is exceptional. Worth every euro."
+                    </p>
+                    <span class="review-date">Verified Purchase • 2 weeks ago</span>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">Marcus T.</span>
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                    <p class="review-text">
+                        "I've been collecting art for 15 years, and this is one of the most innovative pieces I own. The combination of wearable art and a companion painting is brilliant. The UV LED panel is a nice touch — my friends are always amazed when I show them the transformation."
+                    </p>
+                    <span class="review-date">Verified Purchase • 1 month ago</span>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">Yuki S.</span>
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                    <p class="review-text">
+                        "As someone who appreciates both traditional Japanese aesthetics and contemporary art, this piece speaks to me deeply. The hand-painted details are exquisite, and the NFT certificate adds a modern layer of authenticity. Highly recommend for serious collectors."
+                    </p>
+                    <span class="review-date">Verified Purchase • 3 weeks ago</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/about">About</a>
+            <a href="/shop">Shop</a>
+            <a href="/bespoke">Bespoke</a>
+            <a href="/immersive">Immersive Show</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <p>&copy; 2025 HAORI VISION. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            Wear the Light. Become the Art.
+        </p>
+    </footer>
+
+    <script>
+        // ============================================
+        // VIDEO TOGGLE (Daylight / UV)
+        // ============================================
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoSource = document.getElementById('videoSource');
+        const videoBtns = document.querySelectorAll('.video-btn');
+
+        const videoUrls = {
+            daylight: '/assets/videos/eclipse-01-daylight.mp4',
+            uv: '/assets/videos/eclipse-01-uv.mp4'
+        };
+
+        videoBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mode = btn.dataset.mode;
+
+                // Update active state
+                videoBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Change video source
+                videoSource.src = videoUrls[mode];
+                videoPlayer.load();
+                videoPlayer.play();
+            });
+        });
+
+        // ============================================
+        // FAQ ACCORDION
+        // ============================================
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // ============================================
+        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

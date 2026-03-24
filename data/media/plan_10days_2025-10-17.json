@@ -1,0 +1,713 @@
+{
+  "contentPlan": {
+    "title": "HAORI VISION — 10-Day Content Plan (Neon Ancestors)",
+    "description": "Автоматически сгенерированный контент-план для Reels на основе последних добавленных продуктов",
+    "generatedAt": "2025-10-17T23:13:38.983335",
+    "dateRange": {
+      "start": "2025-10-18",
+      "end": "2025-10-27"
+    },
+    "collection": {
+      "id": "col_003_neon_ancestors",
+      "name": "Neon Ancestors"
+    },
+    "products": [
+      {
+        "id": "HV-202510-006",
+        "sku": "HV-NA-H01",
+        "name": "Neon Ancestors Haori #1",
+        "creationDate": "TBD"
+      },
+      {
+        "id": "HV-202510-007",
+        "sku": "HV-NA-P01",
+        "name": "Neon Ancestors Canvas",
+        "creationDate": null
+      },
+      {
+        "id": "BLOOM-02",
+        "sku": "HV-VB-H01",
+        "name": "Void Bloom Haori #1",
+        "creationDate": "TBD"
+      },
+      {
+        "id": "BLOOM-03",
+        "sku": "HV-VB-P01",
+        "name": "Void Bloom Canvas",
+        "creationDate": null
+      }
+    ],
+    "posts": [
+      {
+        "day": 1,
+        "date": "2025-10-18",
+        "product": "HV-202510-006",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Знакомство с Neon Ancestors Haori #1: от классического чёрного к взрыву UV-красок",
+          "keyFrames": [
+            "0-3s: Neon Ancestors Haori #1 в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Neon Ancestors Haori #1 в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Neon Ancestors Haori #1 под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Знакомство с Neon Ancestors Haori #1: от классического чёрного к взрыву UV-красок\n\nNeon Ancestors Haori #1 (HV-NA-H01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Meet Neon Ancestors Haori #1: from classic black to UV color explosion\n\nNeon Ancestors Haori #1 (HV-NA-H01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 2,
+        "date": "2025-10-19",
+        "product": "HV-202510-006",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Как создаётся Neon Ancestors Haori #1: 12+ часов ручной работы с UV-пигментами",
+          "keyFrames": [
+            "0-3s: Neon Ancestors Haori #1 в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Neon Ancestors Haori #1 в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Neon Ancestors Haori #1 под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Как создаётся Neon Ancestors Haori #1: 12+ часов ручной работы с UV-пигментами\n\nNeon Ancestors Haori #1 (HV-NA-H01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Behind the scenes of Neon Ancestors Haori #1: 12+ hours of handcrafted UV artistry\n\nNeon Ancestors Haori #1 (HV-NA-H01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 3,
+        "date": "2025-10-20",
+        "product": "HV-202510-006",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Детали Neon Ancestors Haori #1: каждая линия светится по-своему под UV",
+          "keyFrames": [
+            "0-3s: Neon Ancestors Haori #1 в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Neon Ancestors Haori #1 в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Neon Ancestors Haori #1 под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Детали Neon Ancestors Haori #1: каждая линия светится по-своему под UV\n\nNeon Ancestors Haori #1 (HV-NA-H01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Neon Ancestors Haori #1 details: every line glows uniquely under UV light\n\nNeon Ancestors Haori #1 (HV-NA-H01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 4,
+        "date": "2025-10-21",
+        "product": "HV-202510-007",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Как носить Neon Ancestors Canvas: образы для дня и вечеринки с UV",
+          "keyFrames": [
+            "0-3s: Neon Ancestors Canvas в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Neon Ancestors Canvas в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Neon Ancestors Canvas под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Как носить Neon Ancestors Canvas: образы для дня и вечеринки с UV\n\nNeon Ancestors Canvas (HV-NA-P01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ How to wear Neon Ancestors Canvas: day looks and UV party styling\n\nNeon Ancestors Canvas (HV-NA-P01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 5,
+        "date": "2025-10-22",
+        "product": "HV-202510-007",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Знакомство с Neon Ancestors Canvas: от классического чёрного к взрыву UV-красок",
+          "keyFrames": [
+            "0-3s: Neon Ancestors Canvas в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Neon Ancestors Canvas в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Neon Ancestors Canvas под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Знакомство с Neon Ancestors Canvas: от классического чёрного к взрыву UV-красок\n\nNeon Ancestors Canvas (HV-NA-P01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Meet Neon Ancestors Canvas: from classic black to UV color explosion\n\nNeon Ancestors Canvas (HV-NA-P01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 6,
+        "date": "2025-10-23",
+        "product": "HV-202510-007",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Как создаётся Neon Ancestors Canvas: 12+ часов ручной работы с UV-пигментами",
+          "keyFrames": [
+            "0-3s: Neon Ancestors Canvas в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Neon Ancestors Canvas в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Neon Ancestors Canvas под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Как создаётся Neon Ancestors Canvas: 12+ часов ручной работы с UV-пигментами\n\nNeon Ancestors Canvas (HV-NA-P01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Behind the scenes of Neon Ancestors Canvas: 12+ hours of handcrafted UV artistry\n\nNeon Ancestors Canvas (HV-NA-P01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 7,
+        "date": "2025-10-24",
+        "product": "BLOOM-02",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Детали Void Bloom Haori #1: каждая линия светится по-своему под UV",
+          "keyFrames": [
+            "0-3s: Void Bloom Haori #1 в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Void Bloom Haori #1 в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Void Bloom Haori #1 под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Детали Void Bloom Haori #1: каждая линия светится по-своему под UV\n\nVoid Bloom Haori #1 (HV-VB-H01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Void Bloom Haori #1 details: every line glows uniquely under UV light\n\nVoid Bloom Haori #1 (HV-VB-H01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 8,
+        "date": "2025-10-25",
+        "product": "BLOOM-02",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Как носить Void Bloom Haori #1: образы для дня и вечеринки с UV",
+          "keyFrames": [
+            "0-3s: Void Bloom Haori #1 в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Void Bloom Haori #1 в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Void Bloom Haori #1 под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Как носить Void Bloom Haori #1: образы для дня и вечеринки с UV\n\nVoid Bloom Haori #1 (HV-VB-H01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ How to wear Void Bloom Haori #1: day looks and UV party styling\n\nVoid Bloom Haori #1 (HV-VB-H01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 9,
+        "date": "2025-10-26",
+        "product": "BLOOM-03",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Знакомство с Void Bloom Canvas: от классического чёрного к взрыву UV-красок",
+          "keyFrames": [
+            "0-3s: Void Bloom Canvas в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Void Bloom Canvas в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Void Bloom Canvas под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Знакомство с Void Bloom Canvas: от классического чёрного к взрыву UV-красок\n\nVoid Bloom Canvas (HV-VB-P01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Meet Void Bloom Canvas: from classic black to UV color explosion\n\nVoid Bloom Canvas (HV-VB-P01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      },
+      {
+        "day": 10,
+        "date": "2025-10-27",
+        "product": "BLOOM-03",
+        "contentType": "Reels Video + 4 Photos",
+        "reelsVideo": {
+          "duration": "20-25s",
+          "concept": "Как создаётся Void Bloom Canvas: 12+ часов ручной работы с UV-пигментами",
+          "keyFrames": [
+            "0-3s: Void Bloom Canvas в дневном свете — классический чёрный текстиль",
+            "3-6s: Камера приближается, показывает детали вышивки",
+            "6-10s: UV-свет включается постепенно — появляются первые яркие линии",
+            "10-15s: Полная UV-трансформация — взрыв цвета и паттернов",
+            "15-18s: Деталь: крупный план светящегося узора",
+            "18-22s: Модель в хаори двигается — игра света и тени",
+            "22-25s: Финальный кадр с логотипом и призывом к действию"
+          ],
+          "music": "Trending audio (check Instagram Reels trends)",
+          "callToAction": "Swipe up → haori.vision/shop"
+        },
+        "photos": [
+          {
+            "number": 1,
+            "description": "Void Bloom Canvas в дневном свете (детальный фронтальный)"
+          },
+          {
+            "number": 2,
+            "description": "Void Bloom Canvas под UV (полная трансформация)"
+          },
+          {
+            "number": 3,
+            "description": "Крупный план UV-паттерна (детали вышивки)"
+          },
+          {
+            "number": 4,
+            "description": "Модель в хаори (контекст/стайлинг)"
+          }
+        ],
+        "caption": {
+          "ru": "✨ Как создаётся Void Bloom Canvas: 12+ часов ручной работы с UV-пигментами\n\nVoid Bloom Canvas (HV-VB-P01) — это не просто одежда. Это портал между мирами: днём классический чёрный, ночью — взрыв UV-красок.\n\n🎨 12+ часов ручной работы\n🔬 Эксклюзивные UV-пигменты\n🌈 Уникальный паттерн (1 of 1)\n\nКаждое хаори создаётся вручную и существует в единственном экземпляре.\n\n👉 Посмотреть все детали: haori.vision/shop",
+          "en": "✨ Behind the scenes of Void Bloom Canvas: 12+ hours of handcrafted UV artistry\n\nVoid Bloom Canvas (HV-VB-P01) is not just clothing. It's a portal between worlds: classic black by day, UV color burst by night.\n\n🎨 12+ hours of handwork\n🔬 Exclusive UV pigments\n🌈 Unique pattern (1 of 1)\n\nEach haori is handcrafted and exists as a one-of-one piece.\n\n👉 See all details: haori.vision/shop"
+        },
+        "hashtags": [
+          "#HaoriVision",
+          "#UVArt",
+          "#ReactiveClothing",
+          "#HandmadeJapan",
+          "#UVReactive",
+          "#Streetwear",
+          "#FashionArt",
+          "#UniqueClothing",
+          "#BlackLight",
+          "#NeonFashion",
+          "#OneOfOne",
+          "#WearableArt"
+        ],
+        "platforms": [
+          "Instagram",
+          "TikTok",
+          "YouTube Shorts"
+        ],
+        "postingTime": {
+          "instagram": "19:00 MSK",
+          "tiktok": "20:00 MSK",
+          "youtube": "21:00 MSK"
+        }
+      }
+    ]
+  }
+}

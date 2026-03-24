@@ -1,0 +1,198 @@
+{
+  "enabled": true,
+  "version": "1.0.0",
+  "description": "HAORI VISION — Edge Cache Configuration (P25)",
+  "provider": "auto-detect",
+  "rules": [
+    {
+      "path": "/",
+      "ttl": 60,
+      "stale_while_revalidate": 300,
+      "priority": "high",
+      "description": "Homepage — 1 minute cache, 5 minutes stale"
+    },
+    {
+      "path": "/catalog",
+      "ttl": 300,
+      "stale_while_revalidate": 600,
+      "priority": "high",
+      "description": "Catalog page — 5 minutes cache, 10 minutes stale"
+    },
+    {
+      "path": "/catalog/*",
+      "ttl": 300,
+      "stale_while_revalidate": 600,
+      "priority": "high",
+      "description": "Catalog pages — 5 minutes cache"
+    },
+    {
+      "path": "/product/*",
+      "ttl": 600,
+      "stale_while_revalidate": 1800,
+      "priority": "high",
+      "description": "Product pages — 10 minutes cache, 30 minutes stale"
+    },
+    {
+      "path": "/gallery",
+      "ttl": 600,
+      "stale_while_revalidate": 1800,
+      "priority": "medium",
+      "description": "Gallery — 10 minutes cache"
+    },
+    {
+      "path": "/experience",
+      "ttl": 300,
+      "stale_while_revalidate": 900,
+      "priority": "medium",
+      "description": "Experience page — 5 minutes cache"
+    },
+    {
+      "path": "/about",
+      "ttl": 3600,
+      "stale_while_revalidate": 7200,
+      "priority": "low",
+      "description": "About page — 1 hour cache"
+    },
+    {
+      "path": "/media/*",
+      "ttl": 31536000,
+      "stale_while_revalidate": 31536000,
+      "priority": "low",
+      "immutable": true,
+      "description": "Static media — 1 year cache (immutable)"
+    },
+    {
+      "path": "/api/*",
+      "ttl": 0,
+      "cache": false,
+      "priority": "critical",
+      "description": "API endpoints — no cache"
+    },
+    {
+      "path": "/admin/*",
+      "ttl": 0,
+      "cache": false,
+      "priority": "critical",
+      "description": "Admin pages — no cache"
+    },
+    {
+      "path": "/checkout",
+      "ttl": 0,
+      "cache": false,
+      "priority": "critical",
+      "description": "Checkout — no cache"
+    },
+    {
+      "path": "/cart",
+      "ttl": 0,
+      "cache": false,
+      "priority": "critical",
+      "description": "Cart — no cache"
+    }
+  ],
+  "global_settings": {
+    "default_ttl": 60,
+    "default_stale_while_revalidate": 300,
+    "max_age": 31536000,
+    "enable_compression": true,
+    "enable_etag": true,
+    "enable_vary": true,
+    "vary_headers": ["Accept-Encoding", "Accept-Language"]
+  },
+  "exclusions": {
+    "no_cache_cookies": [
+      "auth_token",
+      "session_id",
+      "user_id",
+      "cart_id"
+    ],
+    "no_cache_query_params": [
+      "token",
+      "auth",
+      "preview",
+      "edit"
+    ],
+    "no_cache_headers": [
+      "Authorization",
+      "Cookie"
+    ],
+    "no_cache_methods": [
+      "POST",
+      "PUT",
+      "DELETE",
+      "PATCH"
+    ]
+  },
+  "providers": {
+    "vercel": {
+      "enabled": true,
+      "headers": {
+        "cache_control": "Cache-Control",
+        "surrogate_control": "Surrogate-Control",
+        "edge_cache": "x-vercel-cache"
+      },
+      "purge_endpoint": "https://api.vercel.com/v1/purge",
+      "purge_token_env": "VERCEL_PURGE_TOKEN"
+    },
+    "netlify": {
+      "enabled": true,
+      "headers": {
+        "cache_control": "Cache-Control",
+        "cdn_cache": "Netlify-CDN-Cache-Control",
+        "edge_cache": "x-nf-request-id"
+      },
+      "purge_endpoint": "https://api.netlify.com/api/v1/purge",
+      "purge_token_env": "NETLIFY_PURGE_TOKEN"
+    },
+    "cloudflare": {
+      "enabled": true,
+      "headers": {
+        "cache_control": "Cache-Control",
+        "cf_cache_status": "CF-Cache-Status",
+        "edge_cache": "cf-ray"
+      },
+      "purge_endpoint": "https://api.cloudflare.com/client/v4/zones/{zone_id}/purge_cache",
+      "purge_token_env": "CLOUDFLARE_PURGE_TOKEN",
+      "zone_id_env": "CLOUDFLARE_ZONE_ID"
+    }
+  },
+  "logging": {
+    "enabled": true,
+    "log_hits": true,
+    "log_misses": true,
+    "log_bypasses": true,
+    "log_path": "/logs/edge_cache.log",
+    "max_entries": 1000,
+    "retention_days": 7
+  },
+  "analytics": {
+    "enabled": true,
+    "track_hit_rate": true,
+    "track_response_time": true,
+    "track_bandwidth_saved": true,
+    "report_interval": 3600
+  },
+  "auto_purge": {
+    "enabled": true,
+    "triggers": [
+      {
+        "event": "product_update",
+        "paths": ["/catalog", "/catalog/*", "/product/{sku}"]
+      },
+      {
+        "event": "catalog_rebuild",
+        "paths": ["/catalog", "/catalog/*", "/product/*"]
+      },
+      {
+        "event": "content_update",
+        "paths": ["/", "/about", "/experience"]
+      }
+    ]
+  },
+  "meta": {
+    "created": "2025-10-17",
+    "last_updated": "2025-10-17",
+    "author": "Claude Code",
+    "project": "HAORI VISION"
+  }
+}

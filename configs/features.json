@@ -1,0 +1,225 @@
+{
+  "version": "1.0.0",
+  "description": "HAORI VISION — Feature Flags Configuration (P27)",
+  "last_updated": "2025-10-17",
+  "features": {
+    "LAZY_HYDRATION": {
+      "enabled": true,
+      "description": "P24 — Lazy loading для видео и 3D компонентов",
+      "category": "performance",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_FEATURE_LAZY_HYDRATION"
+    },
+    "EDGE_CACHE": {
+      "enabled": true,
+      "description": "P25 — Edge CDN кэширование (Vercel/Netlify/Cloudflare)",
+      "category": "performance",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_FEATURE_EDGE_CACHE"
+    },
+    "MICROCOPY_AB": {
+      "enabled": true,
+      "description": "P26 — A/B тестирование микрокопии на карточках",
+      "category": "optimization",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_FEATURE_MICROCOPY_AB"
+    },
+    "PERF_PRELOADS": {
+      "enabled": true,
+      "description": "P15 — Preload критических ресурсов (шрифты, изображения)",
+      "category": "performance",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_PERF_PRELOADS"
+    },
+    "RELIABILITY_KIT": {
+      "enabled": true,
+      "description": "P15 — Система мониторинга и логирования ошибок",
+      "category": "reliability",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_RELIABILITY_KIT"
+    },
+    "CSP_HEADERS": {
+      "enabled": true,
+      "description": "P21 — Content Security Policy заголовки",
+      "category": "security",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_FEATURE_CSP"
+    },
+    "UTM_TRACKING": {
+      "enabled": true,
+      "description": "UTM параметры для маркетинговых кампаний",
+      "category": "marketing",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_UTM_TRACKING"
+    },
+    "AB_CTA": {
+      "enabled": true,
+      "description": "A/B тестирование CTA кнопок",
+      "category": "optimization",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_AB_CTA"
+    },
+    "WHOLESALE_PRICING": {
+      "enabled": true,
+      "description": "Оптовые цены для байеров",
+      "category": "business",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_WHOLESALE_PRICING"
+    },
+    "BESPOKE_SLOTS": {
+      "enabled": true,
+      "description": "Система бронирования слотов для bespoke заказов",
+      "category": "business",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_BESPOKE_SLOTS"
+    },
+    "PRODUCT_VIDEOS": {
+      "enabled": true,
+      "description": "Видео на страницах продуктов",
+      "category": "content",
+      "added": "2025-10-17",
+      "dependencies": [
+        "LAZY_HYDRATION"
+      ],
+      "env_override": "REACT_APP_PRODUCT_VIDEOS"
+    },
+    "GALLERY_3D": {
+      "enabled": true,
+      "description": "3D галерея с WebGL/Three.js",
+      "category": "content",
+      "added": "2025-10-17",
+      "dependencies": [
+        "LAZY_HYDRATION"
+      ],
+      "env_override": "REACT_APP_GALLERY_3D"
+    },
+    "SOCIAL_SHARING": {
+      "enabled": true,
+      "description": "Кнопки шаринга в соцсети",
+      "category": "marketing",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_SOCIAL_SHARING"
+    },
+    "NEWSLETTER": {
+      "enabled": true,
+      "description": "Форма подписки на newsletter",
+      "category": "marketing",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_NEWSLETTER"
+    },
+    "LIVE_CHAT": {
+      "enabled": false,
+      "description": "Live chat поддержка (отключено по умолчанию)",
+      "category": "support",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_LIVE_CHAT"
+    },
+    "DARK_MODE": {
+      "enabled": false,
+      "description": "Темная тема (в разработке)",
+      "category": "ui",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_DARK_MODE"
+    },
+    "EXPERIMENTAL_ANIMATIONS": {
+      "enabled": false,
+      "description": "Экспериментальные анимации (beta)",
+      "category": "ui",
+      "added": "2025-10-17",
+      "dependencies": [],
+      "env_override": "REACT_APP_EXPERIMENTAL_ANIMATIONS"
+    }
+  },
+  "categories": {
+    "performance": {
+      "name": "Performance",
+      "description": "Оптимизация производительности",
+      "icon": "⚡"
+    },
+    "security": {
+      "name": "Security",
+      "description": "Безопасность и защита",
+      "icon": "🔒"
+    },
+    "reliability": {
+      "name": "Reliability",
+      "description": "Надежность и мониторинг",
+      "icon": "🛡️"
+    },
+    "optimization": {
+      "name": "Optimization",
+      "description": "A/B тесты и оптимизация",
+      "icon": "📊"
+    },
+    "marketing": {
+      "name": "Marketing",
+      "description": "Маркетинг и аналитика",
+      "icon": "📈"
+    },
+    "business": {
+      "name": "Business",
+      "description": "Бизнес-функции",
+      "icon": "💼"
+    },
+    "content": {
+      "name": "Content",
+      "description": "Контент и медиа",
+      "icon": "🎨"
+    },
+    "ui": {
+      "name": "UI/UX",
+      "description": "Интерфейс и пользовательский опыт",
+      "icon": "🎭"
+    },
+    "support": {
+      "name": "Support",
+      "description": "Поддержка пользователей",
+      "icon": "💬"
+    }
+  },
+  "environments": {
+    "development": {
+      "override_all": false,
+      "force_enabled": [],
+      "force_disabled": []
+    },
+    "staging": {
+      "override_all": false,
+      "force_enabled": [
+        "EXPERIMENTAL_ANIMATIONS"
+      ],
+      "force_disabled": [
+        "LIVE_CHAT"
+      ]
+    },
+    "production": {
+      "override_all": false,
+      "force_enabled": [],
+      "force_disabled": [
+        "EXPERIMENTAL_ANIMATIONS",
+        "DARK_MODE"
+      ]
+    }
+  },
+  "meta": {
+    "total_features": 17,
+    "enabled_features": 14,
+    "disabled_features": 3,
+    "author": "Claude Code",
+    "project": "HAORI VISION"
+  }
+}

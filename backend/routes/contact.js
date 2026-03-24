@@ -7,6 +7,7 @@
 import express from "express";
 import { sendCustomEmail } from "../services/emailService.js";
 import { sanitizeInput } from "../middlewares/security.js";
+import { baseLogger } from "../middlewares/logger.js";
 
 const router = express.Router();
 
@@ -100,11 +101,11 @@ router.post("/", async (req, res) => {
     if (result.success) {
       res.json({ success: true, message: "Message sent successfully" });
     } else {
-      console.error("Email sending failed:", result.error);
+      baseLogger.error({ error: result.error }, "Email sending failed");
       res.status(500).json({ error: "Failed to send message" });
     }
   } catch (error) {
-    console.error("Contact form error:", error);
+    baseLogger.error({ err: error }, "Contact form error");
     res.status(500).json({ error: "Failed to send message" });
   }
 });

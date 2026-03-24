@@ -9,7 +9,7 @@ import {
 } from "@react-three/drei";
 import { useTheme } from "../../contexts/ThemeContext";
 
-// 3D Haori Model (placeholder - replace with actual GLTF)
+// 3D Haori Model
 function HaoriModel({ scrollProgress, isUVMode }) {
   const modelRef = useRef();
   const { nodes, materials } = useGLTF("/models/haori.glb", true);

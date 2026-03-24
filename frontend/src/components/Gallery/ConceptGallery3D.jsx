@@ -36,7 +36,7 @@ export default function ConceptGallery3D() {
     try {
       setLoading(true);
       const response = await fetch(
-        "http://localhost:3010/api/brand-analysis/artistic-evolution/status",
+        "/api/brand-analysis/artistic-evolution/status",
       );
       const data = await response.json();
 
@@ -44,7 +44,7 @@ export default function ConceptGallery3D() {
         // Get concepts for latest month
         const month = new Date().toISOString().slice(0, 7); // YYYY-MM
         const conceptsResponse = await fetch(
-          `http://localhost:3010/api/brand-analysis/artistic-evolution/concepts/${month}`,
+          `/api/brand-analysis/artistic-evolution/concepts/${month}`,
         );
         const conceptsData = await conceptsResponse.json();
 

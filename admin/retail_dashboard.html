@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail Dashboard — HAORI VISION</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .location-picker {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .location-picker select {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.875rem;
+    }
+
+    .refresh-btn {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+
+    .refresh-btn:hover {
+      background: #4f46e5;
+    }
+
+    .dashboard {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .stat-change {
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    .stat-change.positive {
+      color: #10b981;
+    }
+
+    .stat-change.negative {
+      color: #ef4444;
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: #f9f9f9;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 0.875rem;
+    }
+
+    th {
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.75rem;
+    }
+
+    tbody tr:hover {
+      background: #f9f9f9;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge.success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge.warning {
+      background: #fed7aa;
+      color: #92400e;
+    }
+
+    .badge.info {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .chart-placeholder {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.125rem;
+      font-weight: 300;
+    }
+
+    .export-btn {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      margin-left: auto;
+      display: inline-block;
+    }
+
+    .export-btn:hover {
+      background: #f9f9f9;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #999;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">HAORI VISION — Retail Dashboard</div>
+    <div class="location-picker">
+      <select id="locationSelect">
+        <option value="stockholm">Stockholm Pop-Up</option>
+        <option value="copenhagen">Copenhagen Pop-Up</option>
+        <option value="berlin">Berlin Pop-Up</option>
+      </select>
+      <button class="refresh-btn" onclick="refreshData()">🔄 Refresh</button>
+    </div>
+  </header>
+
+  <div class="dashboard">
+
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">QR Scans Today</div>
+        <div class="stat-value" id="qrScans">127</div>
+        <div class="stat-change positive">↑ 23% vs yesterday</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Leads Captured</div>
+        <div class="stat-value" id="leads">34</div>
+        <div class="stat-change positive">↑ 15% vs yesterday</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Offline Sales</div>
+        <div class="stat-value" id="sales">€4,320</div>
+        <div class="stat-change positive">↑ 8% vs yesterday</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Conversion Rate</div>
+        <div class="stat-value" id="conversion">26.8%</div>
+        <div class="stat-change positive">↑ 3.2%</div>
+      </div>
+    </div>
+
+    <!-- QR Analytics -->
+    <div class="section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h2 class="section-title" style="margin: 0;">QR Code Analytics</h2>
+        <button class="export-btn" onclick="exportQRData()">📊 Export CSV</button>
+      </div>
+
+      <table id="qrTable">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Short URL</th>
+            <th>Scans</th>
+            <th>Unique Visitors</th>
+            <th>Conversion</th>
+            <th>Last Scan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sales by SKU -->
+    <div class="section">
+      <h2 class="section-title">Sales by SKU</h2>
+      <table id="salesTable">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Product Name</th>
+            <th>Units Sold</th>
+            <th>Revenue</th>
+            <th>Avg Price</th>
+            <th>Inventory Left</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Traffic Chart Placeholder -->
+    <div class="section">
+      <h2 class="section-title">Traffic Over Time</h2>
+      <div class="chart-placeholder">
+        📈 Chart will render here (integrate Chart.js or similar)
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    HAORI VISION — Retail Dashboard v1.0 | Data updates every 5 minutes
+  </footer>
+
+  <script>
+    // Mock data (replace with real API calls to /retail/data/shortlinks.json)
+
+    const mockQRData = [
+      { sku: 'ECLIPSE-01', shortUrl: 'haorivision.com/p/3f5043ca', scans: 45, unique: 38, conversion: '31%', lastScan: '2 min ago', status: 'active' },
+      { sku: 'ECLIPSE-02', shortUrl: 'haorivision.com/p/7a2b8d4e', scans: 32, unique: 29, conversion: '28%', lastScan: '15 min ago', status: 'active' },
+      { sku: 'LUMIN-01', shortUrl: 'haorivision.com/p/9c1e3f7b', scans: 28, unique: 24, conversion: '21%', lastScan: '45 min ago', status: 'active' },
+      { sku: 'BLOOM-01', shortUrl: 'haorivision.com/p/5d8a2c6f', scans: 15, unique: 13, conversion: '20%', lastScan: '1 hour ago', status: 'active' },
+      { sku: 'BLOOM-02', shortUrl: 'haorivision.com/p/4b7e9a1d', scans: 7, unique: 6, conversion: '17%', lastScan: '3 hours ago', status: 'low' }
+    ];
+
+    const mockSalesData = [
+      { sku: 'ECLIPSE-01', name: 'Eclipse Haori', units: 3, revenue: '€1,950', avgPrice: '€650', inventory: 1 },
+      { sku: 'LUMIN-01', name: 'Luminescence Jacket', units: 2, revenue: '€1,440', avgPrice: '€720', inventory: 3 },
+      { sku: 'ECLIPSE-02', name: 'Eclipse Haori Dark', units: 1, revenue: '€650', avgPrice: '€650', inventory: 1 },
+      { sku: 'BLOOM-01', name: 'Bloom Haori', units: 1, revenue: '€680', avgPrice: '€680', inventory: 2 },
+      { sku: 'BLOOM-02', name: 'Bloom Haori Night', units: 0, revenue: '€0', avgPrice: '-', inventory: 2 }
+    ];
+
+    function populateQRTable() {
+      const tbody = document.querySelector('#qrTable tbody');
+      tbody.innerHTML = '';
+
+      mockQRData.forEach(item => {
+        const tr = document.createElement('tr');
+        const statusClass = item.status === 'active' ? 'success' : 'warning';
+        tr.innerHTML = `
+          <td><strong>${item.sku}</strong></td>
+          <td>${item.shortUrl}</td>
+          <td>${item.scans}</td>
+          <td>${item.unique}</td>
+          <td>${item.conversion}</td>
+          <td>${item.lastScan}</td>
+          <td><span class="badge ${statusClass}">${item.status}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function populateSalesTable() {
+      const tbody = document.querySelector('#salesTable tbody');
+      tbody.innerHTML = '';
+
+      mockSalesData.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${item.sku}</strong></td>
+          <td>${item.name}</td>
+          <td>${item.units}</td>
+          <td>${item.revenue}</td>
+          <td>${item.avgPrice}</td>
+          <td>${item.inventory}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function refreshData() {
+      console.log('Refreshing data...');
+      // In production: fetch('/retail/data/shortlinks.json')
+      populateQRTable();
+      populateSalesTable();
+      alert('✅ Data refreshed!');
+    }
+
+    function exportQRData() {
+      // Generate CSV
+      let csv = 'SKU,Short URL,Scans,Unique Visitors,Conversion,Last Scan,Status\n';
+      mockQRData.forEach(item => {
+        csv += `${item.sku},${item.shortUrl},${item.scans},${item.unique},${item.conversion},${item.lastScan},${item.status}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `retail_qr_stats_${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Load data on page load
+    populateQRTable();
+    populateSalesTable();
+
+    // Auto-refresh every 5 minutes
+    setInterval(refreshData, 5 * 60 * 1000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Flags Console — HAORI VISION</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 30px 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #f9fafb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .actions-left {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      background: #667eea;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+    }
+
+    button.secondary {
+      background: #6b7280;
+    }
+
+    button.secondary:hover {
+      background: #4b5563;
+    }
+
+    button.danger {
+      background: #ef4444;
+    }
+
+    button.danger:hover {
+      background: #dc2626;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .filter-btn.active {
+      background: #667eea;
+      color: #fff;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .category-card {
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    .category-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    }
+
+    .category-header {
+      background: #f9fafb;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .category-icon {
+      font-size: 24px;
+    }
+
+    .category-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .category-count {
+      margin-left: auto;
+      background: #e5e7eb;
+      color: #6b7280;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .features-list {
+      padding: 20px;
+    }
+
+    .feature-item {
+      padding: 15px;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: background 0.2s;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .feature-item:hover {
+      background: #f9fafb;
+    }
+
+    .feature-info {
+      flex: 1;
+    }
+
+    .feature-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #cbd5e1;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #10b981;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+
+    .dependency-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .override-indicator {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #9ca3af;
+    }
+
+    .stats {
+      padding: 20px 40px;
+      background: #f9fafb;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-card {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .filter-buttons {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎛️ Feature Flags Console</h1>
+      <div class="subtitle">HAORI VISION — Централизованное управление функциональностью</div>
+    </header>
+
+    <div class="stats" id="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="total-features">0</div>
+        <div class="stat-label">Total Features</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="enabled-features">0</div>
+        <div class="stat-label">Enabled</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="disabled-features">0</div>
+        <div class="stat-label">Disabled</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="overridden-features">0</div>
+        <div class="stat-label">Overridden</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="actions-left">
+        <button onclick="refreshData()">↻ Refresh</button>
+        <button class="secondary" onclick="clearAllOverrides()">Clear All Overrides</button>
+        <button class="danger" onclick="disableAll()">Disable All</button>
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCategory('all')">All</button>
+        <button class="filter-btn" onclick="filterCategory('performance')">⚡ Performance</button>
+        <button class="filter-btn" onclick="filterCategory('security')">🔒 Security</button>
+        <button class="filter-btn" onclick="filterCategory('optimization')">📊 Optimization</button>
+        <button class="filter-btn" onclick="filterCategory('marketing')">📈 Marketing</button>
+      </div>
+    </div>
+
+    <div class="categories" id="categories-container">
+      <!-- Categories will be injected here -->
+    </div>
+  </div>
+
+  <script>
+    let config = null;
+    let overrides = {};
+    let currentFilter = 'all';
+
+    /**
+     * Loads feature flags configuration
+     */
+    async function loadConfig() {
+      try {
+        const response = await fetch('/configs/features.json');
+        if (!response.ok) throw new Error('Failed to load config');
+        config = await response.json();
+        loadOverrides();
+        updateUI();
+      } catch (error) {
+        console.error('[Console] Failed to load config:', error);
+        alert('Failed to load feature flags configuration');
+      }
+    }
+
+    /**
+     * Loads overrides from localStorage
+     */
+    function loadOverrides() {
+      try {
+        const stored = localStorage.getItem('haori_feature_flags_override');
+        overrides = stored ? JSON.parse(stored) : {};
+      } catch (error) {
+        console.error('[Console] Failed to load overrides:', error);
+        overrides = {};
+      }
+    }
+
+    /**
+     * Saves overrides to localStorage
+     */
+    function saveOverrides() {
+      try {
+        localStorage.setItem('haori_feature_flags_override', JSON.stringify(overrides));
+        console.log('[Console] Overrides saved:', overrides);
+      } catch (error) {
+        console.error('[Console] Failed to save overrides:', error);
+      }
+    }
+
+    /**
+     * Toggles a feature
+     */
+    function toggleFeature(featureName) {
+      const currentValue = overrides[featureName] !== undefined
+        ? overrides[featureName]
+        : config.features[featureName].enabled;
+
+      overrides[featureName] = !currentValue;
+      saveOverrides();
+      updateUI();
+      console.log(`[Console] ${featureName} = ${overrides[featureName]}`);
+    }
+
+    /**
+     * Clears all overrides
+     */
+    function clearAllOverrides() {
+      if (!confirm('Clear all overrides? This will reset all features to their default values.')) {
+        return;
+      }
+      overrides = {};
+      saveOverrides();
+      updateUI();
+      alert('All overrides cleared!');
+    }
+
+    /**
+     * Disables all features (via override)
+     */
+    function disableAll() {
+      if (!confirm('Disable all features? This will override all features to OFF.')) {
+        return;
+      }
+      for (const featureName of Object.keys(config.features)) {
+        overrides[featureName] = false;
+      }
+      saveOverrides();
+      updateUI();
+      alert('All features disabled!');
+    }
+
+    /**
+     * Refreshes data
+     */
+    async function refreshData() {
+      console.log('[Console] Refreshing...');
+      await loadConfig();
+    }
+
+    /**
+     * Filters by category
+     */
+    function filterCategory(category) {
+      currentFilter = category;
+
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      updateUI();
+    }
+
+    /**
+     * Gets effective value of a feature (considering overrides)
+     */
+    function getEffectiveValue(featureName) {
+      if (overrides[featureName] !== undefined) {
+        return overrides[featureName];
+      }
+      return config.features[featureName].enabled;
+    }
+
+    /**
+     * Checks if feature has override
+     */
+    function hasOverride(featureName) {
+      return overrides[featureName] !== undefined;
+    }
+
+    /**
+     * Updates UI
+     */
+    function updateUI() {
+      if (!config) return;
+
+      updateStats();
+      updateCategories();
+    }
+
+    /**
+     * Updates statistics
+     */
+    function updateStats() {
+      const total = Object.keys(config.features).length;
+      let enabled = 0;
+      let overridden = 0;
+
+      for (const [name, feature] of Object.entries(config.features)) {
+        if (getEffectiveValue(name)) {
+          enabled++;
+        }
+        if (hasOverride(name)) {
+          overridden++;
+        }
+      }
+
+      document.getElementById('total-features').textContent = total;
+      document.getElementById('enabled-features').textContent = enabled;
+      document.getElementById('disabled-features').textContent = total - enabled;
+      document.getElementById('overridden-features').textContent = overridden;
+    }
+
+    /**
+     * Updates categories display
+     */
+    function updateCategories() {
+      const container = document.getElementById('categories-container');
+      container.innerHTML = '';
+
+      // Group features by category
+      const featuresByCategory = {};
+
+      for (const [name, feature] of Object.entries(config.features)) {
+        if (currentFilter !== 'all' && feature.category !== currentFilter) {
+          continue;
+        }
+
+        if (!featuresByCategory[feature.category]) {
+          featuresByCategory[feature.category] = [];
+        }
+        featuresByCategory[feature.category].push({ name, ...feature });
+      }
+
+      // Render categories
+      for (const [categoryKey, features] of Object.entries(featuresByCategory)) {
+        const category = config.categories[categoryKey];
+        if (!category) continue;
+
+        const card = createCategoryCard(category, categoryKey, features);
+        container.appendChild(card);
+      }
+    }
+
+    /**
+     * Creates a category card
+     */
+    function createCategoryCard(category, categoryKey, features) {
+      const card = document.createElement('div');
+      card.className = 'category-card';
+
+      card.innerHTML = `
+        <div class="category-header">
+          <div class="category-icon">${category.icon}</div>
+          <div class="category-name">${category.name}</div>
+          <div class="category-count">${features.length}</div>
+        </div>
+        <div class="features-list">
+          ${features.map(f => createFeatureItem(f)).join('')}
+        </div>
+      `;
+
+      return card;
+    }
+
+    /**
+     * Creates a feature item
+     */
+    function createFeatureItem(feature) {
+      const isEnabled = getEffectiveValue(feature.name);
+      const override = hasOverride(feature.name);
+      const hasDeps = feature.dependencies && feature.dependencies.length > 0;
+
+      return `
+        <div class="feature-item">
+          <div class="feature-info">
+            <div class="feature-name">
+              ${feature.name}
+              ${override ? '<span class="override-indicator">Override</span>' : ''}
+            </div>
+            <div class="feature-desc">${feature.description}</div>
+            ${hasDeps ? `<div class="dependency-tag">Depends on: ${feature.dependencies.join(', ')}</div>` : ''}
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" ${isEnabled ? 'checked' : ''} onchange="toggleFeature('${feature.name}')">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      `;
+    }
+
+    /**
+     * Initialization
+     */
+    async function init() {
+      console.log('[Console] Initializing...');
+      await loadConfig();
+    }
+
+    // Run on page load
+    init();
+  </script>
+</body>
+</html>

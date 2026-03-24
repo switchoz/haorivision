@@ -1,0 +1,130 @@
+{
+  "version": "1.0.0",
+  "description": "Content Security Policy configuration for HAORI VISION",
+  "lastUpdated": "2025-10-17",
+  "policy": {
+    "default-src": [
+      "'self'"
+    ],
+    "script-src": [
+      "'self'",
+      "https://js.stripe.com",
+      "https://cdn.jsdelivr.net",
+      "https://unpkg.com",
+      "https://cdnjs.cloudflare.com"
+    ],
+    "style-src": [
+      "'self'",
+      "'unsafe-inline'",
+      "https://fonts.googleapis.com",
+      "https://cdn.jsdelivr.net",
+      "https://cdnjs.cloudflare.com"
+    ],
+    "font-src": [
+      "'self'",
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com",
+      "data:"
+    ],
+    "img-src": [
+      "'self'",
+      "data:",
+      "blob:",
+      "https:",
+      "http:"
+    ],
+    "media-src": [
+      "'self'",
+      "data:",
+      "blob:",
+      "https:",
+      "http:"
+    ],
+    "connect-src": [
+      "'self'",
+      "https://api.stripe.com",
+      "https://checkout.stripe.com",
+      "wss://localhost:8080",
+      "ws://localhost:8080",
+      "http://localhost:3010",
+      "http://localhost:3012",
+      "https://haorivision.com",
+      "https://*.haorivision.com"
+    ],
+    "frame-src": [
+      "'self'",
+      "https://js.stripe.com",
+      "https://checkout.stripe.com"
+    ],
+    "worker-src": [
+      "'self'",
+      "blob:"
+    ],
+    "object-src": [
+      "'none'"
+    ],
+    "base-uri": [
+      "'self'"
+    ],
+    "form-action": [
+      "'self'",
+      "https://checkout.stripe.com"
+    ],
+    "frame-ancestors": [
+      "'self'"
+    ],
+    "upgrade-insecure-requests": true
+  },
+  "reportOnly": false,
+  "notes": {
+    "unsafe-inline": "Required for React inline styles and Framer Motion animations",
+    "unsafe-eval": "Required for development builds of React. REMOVE in production.",
+    "stripe": "Payment processing - js.stripe.com, checkout.stripe.com, api.stripe.com",
+    "fonts": "Google Fonts CDN",
+    "cdn": "CDN for libraries (jsDelivr, Unpkg, Cloudflare)",
+    "websocket": "WebSocket sync server on port 8080",
+    "localhost": "Development servers - backend (3010), frontend (3012)",
+    "upgrade-insecure-requests": "Automatically upgrade HTTP to HTTPS in production"
+  },
+  "production": {
+    "script-src": {
+      "remove": [
+        "'unsafe-eval'"
+      ],
+      "note": "Remove unsafe-eval for production builds"
+    },
+    "connect-src": {
+      "remove": [
+        "http://localhost:3010",
+        "http://localhost:3012",
+        "wss://localhost:8080",
+        "ws://localhost:8080"
+      ],
+      "replace_with": [
+        "https://api.haorivision.com",
+        "wss://sync.haorivision.com"
+      ]
+    }
+  },
+  "whitelisted_domains": {
+    "payment": [
+      "stripe.com",
+      "js.stripe.com",
+      "checkout.stripe.com",
+      "api.stripe.com"
+    ],
+    "fonts": [
+      "fonts.googleapis.com",
+      "fonts.gstatic.com"
+    ],
+    "cdn": [
+      "cdn.jsdelivr.net",
+      "unpkg.com",
+      "cdnjs.cloudflare.com"
+    ],
+    "own": [
+      "haorivision.com",
+      "*.haorivision.com"
+    ]
+  }
+}

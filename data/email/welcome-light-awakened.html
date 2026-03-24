@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Light Has Awakened</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+    }
+
+    .header {
+      text-align: center;
+      padding: 60px 40px 40px;
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+      border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header p {
+      font-size: 16px;
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    .content {
+      padding: 50px 40px;
+    }
+
+    .greeting {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #a78bfa;
+    }
+
+    .main-text {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      color: #e5e7eb;
+    }
+
+    .quote-box {
+      background: rgba(167, 139, 250, 0.1);
+      border-left: 4px solid #a78bfa;
+      padding: 25px 30px;
+      margin: 40px 0;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .benefits {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+
+    .benefits h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #a78bfa;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .benefit-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .benefit-icon {
+      font-size: 28px;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .benefit-text h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #ffffff;
+    }
+
+    .benefit-text p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      color: white;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 10px;
+      transition: transform 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+    }
+
+    .rewards-box {
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .rewards-box h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #ec4899;
+    }
+
+    .rewards-box .points {
+      font-size: 48px;
+      font-weight: 700;
+      color: #a78bfa;
+      margin: 20px 0;
+    }
+
+    .rewards-box p {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-top: 15px;
+    }
+
+    .footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer .brand {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer p {
+      font-size: 13px;
+      opacity: 0.7;
+      margin: 8px 0;
+    }
+
+    .social-links {
+      margin: 25px 0 15px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #a78bfa;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .unsubscribe {
+      font-size: 11px;
+      opacity: 0.5;
+      margin-top: 20px;
+    }
+
+    .unsubscribe a {
+      color: #a78bfa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <div class="logo">光</div>
+      <h1>Your Light Has Awakened</h1>
+      <p>"Добро пожаловать в Круг Света"</p>
+    </div>
+
+    <div class="content">
+      <div class="greeting">
+        Здравствуй, {{customerName}}...
+      </div>
+
+      <p class="main-text">
+        Твой свет пробудился. В этот момент ты делаешь шаг за границу обыденного — туда, где одежда перестаёт быть просто тканью, а становится манифестом.
+      </p>
+
+      <p class="main-text">
+        Ты теперь часть **Circle of Light** — эксклюзивного сообщества тех, кто понимает, что истинная красота проявляется не под солнцем, а в темноте, под УФ-светом. Так же, как и твоя внутренняя сила.
+      </p>
+
+      <div class="quote-box">
+        "Свет не исчезает в темноте. Он трансформируется. Так же, как и ты."
+        <br><br>
+        — Хикари (光), Хранитель Света
+      </div>
+
+      <div class="benefits">
+        <h2>✨ Что тебя ждёт в Круге Света</h2>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🎨</div>
+          <div class="benefit-text">
+            <h3>Первый доступ к новым коллекциям</h3>
+            <p>Узнавай о новых хаори за 48 часов до публичного релиза</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">💎</div>
+          <div class="benefit-text">
+            <h3>Glow Points — твоя валюта света</h3>
+            <p>Каждая покупка = 100 Glow Points. Используй для скидок и bespoke заказов</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">📖</div>
+          <div class="benefit-text">
+            <h3>Закрытое сообщество</h3>
+            <p>Доступ к Discord-серверу для владельцев HAORI VISION</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🎁</div>
+          <div class="benefit-text">
+            <h3>Эксклюзивные предложения</h3>
+            <p>Upgrade Ritual, лимитированные принты, коллаборации с художниками</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rewards-box">
+        <h2>🌟 Твой первый подарок</h2>
+        <div class="points">+100</div>
+        <p><strong>Glow Points</strong> уже начислены на твой аккаунт!</p>
+        <p style="margin-top: 25px; font-size: 13px;">
+          Накопи <strong>500 points</strong> и получи <strong>$100 скидку</strong> на следующую покупку или bespoke заказ.
+        </p>
+      </div>
+
+      <p class="main-text">
+        Следующий шаг — изучить коллекции, которые резонируют с твоей энергией. Или, если хочешь нечто абсолютно уникальное, начни создавать свой собственный дизайн через Bespoke программу.
+      </p>
+
+      <div class="cta-section">
+        <a href="https://haorivision.com/collections" class="cta-button">
+          👀 Изучить коллекции
+        </a>
+        <a href="https://haorivision.com/bespoke" class="cta-button">
+          🎨 Создать своё хаори
+        </a>
+      </div>
+
+      <p class="main-text" style="margin-top: 50px; font-style: italic; opacity: 0.9;">
+        Помни: ты носишь не одежду. Ты носишь свет. И этот свет уже внутри тебя — хаори лишь даёт ему форму.
+      </p>
+
+      <p class="main-text" style="text-align: right; margin-top: 30px;">
+        С уважением,<br>
+        <strong>Команда HAORI VISION</strong><br>
+        <span style="opacity: 0.7; font-size: 14px;">Wearable Light Art Since 2025</span>
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="brand">HAORI VISION</div>
+      <p>Wear the Light. Become the Art.</p>
+
+      <div class="social-links">
+        <a href="https://instagram.com/haorivision">Instagram</a>
+        <a href="https://tiktok.com/@haorivision">TikTok</a>
+        <a href="https://discord.gg/haorivision">Discord</a>
+        <a href="https://opensea.io/collection/haorivision">OpenSea</a>
+      </div>
+
+      <p style="margin-top: 20px;">
+        Есть вопросы? Напиши нам:<br>
+        <a href="mailto:light@haorivision.com" style="color: #a78bfa; text-decoration: none;">light@haorivision.com</a>
+      </p>
+
+      <div class="unsubscribe">
+        <a href="{{unsubscribeUrl}}">Отписаться от рассылки</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

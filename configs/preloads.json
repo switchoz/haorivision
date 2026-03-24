@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Resource preload configuration for HAORI VISION. Only preloads if files exist.",
+  "version": "1.0.0",
+  "global": {
+    "comment": "Resources to preload on ALL pages",
+    "resources": [
+      {
+        "href": "/fonts/HaoriVision-Regular.woff2",
+        "as": "font",
+        "type": "font/woff2",
+        "crossorigin": "anonymous",
+        "comment": "Primary brand font"
+      },
+      {
+        "href": "/fonts/HaoriVision-Bold.woff2",
+        "as": "font",
+        "type": "font/woff2",
+        "crossorigin": "anonymous",
+        "comment": "Bold brand font"
+      }
+    ]
+  },
+  "pages": {
+    "/": {
+      "comment": "Homepage preloads",
+      "resources": [
+        {
+          "href": "/media/hero/hero-video.mp4",
+          "as": "video",
+          "type": "video/mp4",
+          "comment": "Hero video - main visual element"
+        },
+        {
+          "href": "/media/hero/hero-poster.jpg",
+          "as": "image",
+          "type": "image/jpeg",
+          "comment": "Hero video poster frame"
+        },
+        {
+          "href": "/media/og-default.jpg",
+          "as": "image",
+          "type": "image/jpeg",
+          "comment": "Default OG image for social sharing"
+        }
+      ]
+    },
+    "/catalog": {
+      "comment": "Catalog page preloads",
+      "resources": [
+        {
+          "href": "/media/catalog/banner.jpg",
+          "as": "image",
+          "type": "image/jpeg",
+          "comment": "Catalog banner image"
+        },
+        {
+          "href": "/critical-css/catalog.min.css",
+          "as": "style",
+          "comment": "Critical CSS for catalog"
+        }
+      ]
+    },
+    "/products/*": {
+      "comment": "Product pages preloads (applied to all /products/* routes)",
+      "resources": [
+        {
+          "href": "/fonts/ProductDetails-Regular.woff2",
+          "as": "font",
+          "type": "font/woff2",
+          "crossorigin": "anonymous",
+          "comment": "Font for product details"
+        }
+      ]
+    }
+  },
+  "conditionalPreloads": {
+    "comment": "Preloads that depend on feature flags or conditions",
+    "PERF_PRELOADS": {
+      "enabled": true,
+      "resources": [
+        {
+          "href": "/critical-css/homepage.min.css",
+          "as": "style",
+          "comment": "Critical CSS for homepage (only if PERF_PRELOADS=1)"
+        }
+      ]
+    },
+    "UV_LED_DEMO": {
+      "enabled": false,
+      "resources": [
+        {
+          "href": "/media/uv-demo/demo-video.mp4",
+          "as": "video",
+          "type": "video/mp4",
+          "comment": "UV LED demonstration video"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "checkFileExists": true,
+    "skipMissing": true,
+    "logMissing": true,
+    "comment": "Always verify files exist before adding preload links"
+  },
+  "notes": [
+    "Resources are checked for existence before preloading",
+    "Global resources load on every page",
+    "Page-specific resources only load on matching routes",
+    "Use /* for wildcard matching (e.g., /products/*)",
+    "Conditional preloads respect feature flags in .env",
+    "crossorigin='anonymous' required for fonts from same origin (CORS)",
+    "Priority: global resources are checked first, then page-specific",
+    "Font preloads significantly improve LCP and CLS metrics",
+    "Video preloads improve perceived performance but use bandwidth",
+    "Limit preloads to 3-5 critical resources per page"
+  ]
+}

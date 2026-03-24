@@ -1,0 +1,825 @@
+{
+  "brand": "HAORI VISION",
+  "tagline": "Wear the Light. Become the Art.",
+  "collections": [
+    {
+      "id": "col_001_mycelium_dreams",
+      "name": "Mycelium Dreams",
+      "season": "Eternal",
+      "releaseDate": "2025-03-15",
+      "status": "active",
+      "concept": {
+        "title": "Сеть невидимого. Корни света.",
+        "description": "Коллекция, вдохновлённая грибницей — скрытой нейронной сетью природы. Под землёй мицелий связывает деревья в единый организм, передавая информацию и энергию. Так же работает свет в этой коллекции: скрытые флюоресцентные каналы проявляются только в ультрафиолете, создавая живую карту энергетических потоков.",
+        "inspiration": [
+          "Грибной мицелий и его сетевая структура",
+          "Нейронные связи человеческого мозга",
+          "Концепция 'Wood Wide Web' (лесной интернет)",
+          "Биолюминесценция грибов в тропических лесах",
+          "Японская философия 'Mono no aware' — красота преходящего"
+        ],
+        "emotion": "Тихое осознание связности всего живого. Погружение в подземный мир, где свет рождается из тьмы.",
+        "id": "HV-202510-001"
+      },
+      "products": [
+        {
+          "type": "haori",
+          "sku": "HV-MD-H01",
+          "name": "Mycelium Dreams Haori #1",
+          "edition": "1 of 8",
+          "totalEditions": 8,
+          "visualStyle": {
+            "daylightAppearance": "Чёрная шёлковая основа с едва заметными серо-белыми органическими линиями, напоминающими трещины в земле. Минималистичный, почти монохромный.",
+            "uvLightAppearance": "Взрыв жизни: ярко-зеленые, голубые и фиолетовые каналы мицелия проявляются по всей поверхности, создавая светящуюся карту подземной сети. Пульсирующие узлы в местах пересечения нитей.",
+            "lightEffects": [
+              "UV-reactive fluorescent pigments (зелёный, cyan, фиолетовый)",
+              "Phosphorescent accents — послесвечение в темноте (до 30 минут)",
+              "Gradient transitions — плавные переходы яркости",
+              "Hidden symbols — скрытые японские иероглифы 'жизнь', 'связь', 'корень'"
+            ],
+            "pattern": "Asymmetric organic network",
+            "colorPalette": {
+              "daylight": [
+                "#000000",
+                "#2A2A2A",
+                "#F5F5F5"
+              ],
+              "uvLight": [
+                "#00FF87",
+                "#00D9FF",
+                "#B026FF",
+                "#7FFF00"
+              ]
+            }
+          },
+          "materials": {
+            "fabric": "100% Silk Habotai (японский шёлк, 12 момме)",
+            "lining": "Organic Cotton Voile (дышащая подкладка)",
+            "pigments": [
+              "UV-reactive acrylic (Golden Fluorescent)",
+              "Phosphorescent powder (Glow-in-the-dark zinc sulfide)",
+              "Natural indigo base dye"
+            ],
+            "embellishments": "Hand-painted details, UV-reactive thread embroidery",
+            "careInstructions": "Ручная стирка в холодной воде. Не отжимать. Сушить в тени. Хранить вдали от прямого солнца."
+          },
+          "dimensions": {
+            "length": "95 cm",
+            "width": "65 cm (flat)",
+            "sleeves": "55 cm",
+            "fit": "Oversized unisex"
+          },
+          "weight": "280g",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "2025-02-20",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 18
+          },
+          "description": "лимит 8 экземпляров. Авторское хаори, ручная работа с проявляется в UV-свете. Дыхание света",
+          "id": "HV-202510-002"
+        },
+        {
+          "type": "companion_painting",
+          "sku": "HV-MD-P01",
+          "name": "Mycelium Dreams Canvas",
+          "edition": "1 of 8",
+          "pairedWith": "HV-MD-H01",
+          "description": "Авторская картина-компаньон, созданная теми же флюоресцентными пигментами на холсте. Визуальное продолжение паттерна хаори, но в формате настенного искусства. При включении UV-подсветки превращается в живую световую инсталляцию.",
+          "dimensions": {
+            "size": "60 x 80 cm",
+            "depth": "4 cm (stretched canvas)",
+            "frame": "Black floating frame included"
+          },
+          "materials": {
+            "canvas": "Belgian linen, museum-grade",
+            "base": "Acrylic gesso primer",
+            "paint": "UV-reactive acrylics + phosphorescent medium",
+            "varnish": "UV-protective satin varnish"
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Portable UV LED panel, 12W, wall-mountable",
+          "id": "HV-202510-003"
+        }
+      ],
+      "nftCertificate": {
+        "blockchain": "Ethereum",
+        "standard": "ERC-721",
+        "contractAddress": "0x...",
+        "metadata": {
+          "certificateType": "Certificate of Authenticity + Ownership",
+          "includes": [
+            "High-resolution photo of haori (daylight + UV)",
+            "High-resolution photo of companion painting",
+            "Artist signature (digital)",
+            "Unique ID hash",
+            "Creation date and location",
+            "Material composition",
+            "Edition number"
+          ],
+          "royalties": "10% to artist on secondary sales",
+          "unlockableContent": "Access to private HAORI VISION community + future airdrops"
+        }
+      },
+      "pricing": {
+        "haori": {
+          "amount": 3800,
+          "currency": "USD"
+        },
+        "companionPainting": {
+          "amount": 2200,
+          "currency": "USD"
+        },
+        "bundle": {
+          "amount": 5400,
+          "currency": "USD",
+          "savings": 600
+        }
+      }
+    },
+    {
+      "id": "col_002_void_bloom",
+      "name": "Void Bloom",
+      "season": "Eternal",
+      "releaseDate": "2025-06-01",
+      "status": "upcoming",
+      "concept": {
+        "title": "Из пустоты рождается цветение.",
+        "description": "Коллекция о космической пустоте и взрыве жизни. Вдохновлена японской концепцией 'Ma' (間) — значимым пространством между объектами, и одновременно — яркими туманностями, где из темноты рождаются звёзды. При дневном свете — абсолютная пустота, чёрная поверхность без рисунка. В ультрафиолете — взрыв космических цветов.",
+        "inspiration": [
+          "Туманность Ориона и туманности-розетки",
+          "Японские сады камней Дзен (пустота как полнота)",
+          "Концепция Wabi-sabi — красота в пустоте",
+          "Цветение сакуры из голых ветвей",
+          "Квантовая пена — рождение частиц из вакуума"
+        ],
+        "emotion": "Тишина, предшествующая взрыву. Медитативная пустота, которая внезапно оживает.",
+        "id": "HV-202510-004"
+      },
+      "products": [
+        {
+          "type": "haori",
+          "sku": "HV-VB-H01",
+          "name": "Void Bloom Haori #1",
+          "edition": "1 of 5",
+          "totalEditions": 5,
+          "visualStyle": {
+            "daylightAppearance": "Абсолютно чёрная матовая поверхность без видимых узоров. Идеальная пустота. Единственный элемент — минималистичная подпись художника серебряной нитью на внутренней стороне.",
+            "uvLightAppearance": "Взрыв цвета: огромные космические цветы в оттенках розового, пурпурного, голубого и оранжевого проявляются по всей поверхности. Каждый цветок напоминает туманность — с градиентами, звёздной пылью и светящимися центрами.",
+            "lightEffects": [
+              "Invisible UV ink — абсолютно невидимые в дневном свете паттерны",
+              "Multi-layer fluorescence — до 4 слоёв пигментов для глубины",
+              "Starfield effect — мелкие точки-звёзды вокруг цветов",
+              "Gradient bloom — эффект свечения от центра к краям"
+            ],
+            "pattern": "Large-scale cosmic flowers (3-5 blooms per haori)",
+            "colorPalette": {
+              "daylight": [
+                "#000000"
+              ],
+              "uvLight": [
+                "#FF1493",
+                "#FF6EC7",
+                "#00BFFF",
+                "#FF4500",
+                "#DA70D6"
+              ]
+            }
+          },
+          "materials": {
+            "fabric": "100% Wool Crepe (японская шерсть, зимний вес)",
+            "lining": "Black Silk Charmeuse",
+            "pigments": [
+              "UV-invisible fluorescent inks (premium grade)",
+              "Neon pigments (pink, magenta, cyan, orange)",
+              "Pearlescent medium для звёздного эффекта"
+            ],
+            "embellishments": "No visible embellishments — чистота пустоты",
+            "careInstructions": "Только сухая чистка. Хранить в темноте в дышащем чехле."
+          },
+          "dimensions": {
+            "length": "100 cm",
+            "width": "70 cm (flat)",
+            "sleeves": "58 cm",
+            "fit": "Relaxed oversized unisex"
+          },
+          "weight": "450g",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "TBD",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 24
+          },
+          "description": "скрытые световые паттерны — Шёлковое хаори, расписанное вручную. эксклюзивная серия 5. Дыхание света",
+          "id": "BLOOM-02"
+        },
+        {
+          "type": "companion_painting",
+          "sku": "HV-VB-P01",
+          "name": "Void Bloom Canvas",
+          "edition": "1 of 5",
+          "pairedWith": "HV-VB-H01",
+          "description": "Монументальная чёрная картина, которая при UV-свете превращается в космический цветущий сад. Идеальна для медитативных пространств — днём создаёт тишину, ночью — взрыв жизни.",
+          "dimensions": {
+            "size": "90 x 120 cm",
+            "depth": "5 cm (deep stretched canvas)",
+            "frame": "None — frameless floating installation"
+          },
+          "materials": {
+            "canvas": "Italian linen, extra-heavy weight",
+            "base": "Black gesso (multiple layers for absolute darkness)",
+            "paint": "UV-invisible fluorescent + neon acrylics",
+            "varnish": "Matte UV-protective varnish (anti-reflective)"
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Premium UV LED strip, 20W, remote-controlled with dimmer",
+          "id": "BLOOM-03"
+        }
+      ],
+      "nftCertificate": {
+        "blockchain": "Ethereum",
+        "standard": "ERC-721",
+        "contractAddress": "0x...",
+        "metadata": {
+          "certificateType": "Certificate of Authenticity + Ownership",
+          "includes": [
+            "High-resolution photo of haori (daylight + UV)",
+            "High-resolution photo of companion painting",
+            "Artist signature (digital)",
+            "Unique ID hash",
+            "Creation date and location",
+            "Material composition",
+            "Edition number",
+            "Video of UV transformation (10 sec loop)"
+          ],
+          "royalties": "10% to artist on secondary sales",
+          "unlockableContent": "Exclusive behind-the-scenes creation video + AR filter"
+        }
+      },
+      "pricing": {
+        "haori": {
+          "amount": 4500,
+          "currency": "USD"
+        },
+        "companionPainting": {
+          "amount": 3200,
+          "currency": "USD"
+        },
+        "bundle": {
+          "amount": 6800,
+          "currency": "USD",
+          "savings": 900
+        }
+      }
+    },
+    {
+      "id": "col_003_neon_ancestors",
+      "name": "Neon Ancestors",
+      "season": "Eternal",
+      "releaseDate": "2025-09-21",
+      "status": "concept",
+      "concept": {
+        "title": "Традиция, написанная светом будущего.",
+        "description": "Коллекция, где древняя японская каллиграфия встречается с неоновым киберпанком. Традиционные иероглифы и буддийские мантры написаны флюоресцентными пигментами в стиле уличного неона. Это диалог предков с будущим, где сакральное становится электрическим.",
+        "inspiration": [
+          "Японская каллиграфия Shodo и энергия одного мазка кисти",
+          "Неоновые вывески Токио и Осаки",
+          "Буддийские мантры и священные тексты",
+          "Киберпанк-эстетика (Blade Runner, Ghost in the Shell)",
+          "Концепция 'Yūgen' (幽玄) — таинственная глубина"
+        ],
+        "emotion": "Электрическая духовность. Ритуал, закодированный в неоне. Предки, говорящие языком будущего.",
+        "id": "HV-202510-005"
+      },
+      "products": [
+        {
+          "type": "haori",
+          "sku": "HV-NA-H01",
+          "name": "Neon Ancestors Haori #1",
+          "edition": "1 of 12",
+          "totalEditions": 12,
+          "visualStyle": {
+            "daylightAppearance": "Тёмно-синяя шёлковая основа (цвет индиго) с тонкими чёрными каллиграфическими мазками. Традиционные японские иероглифы (光 — свет, 魂 — душа, 永遠 — вечность) выполнены в классической технике.",
+            "uvLightAppearance": "Каллиграфия вспыхивает неоновыми цветами: ярко-розовый, кислотно-зелёный, электрик-синий, оранжевый. Иероглифы становятся похожи на неоновые вывески, но сохраняют органику рукописного мазка. Дополнительные скрытые символы проявляются вокруг основных.",
+            "lightEffects": [
+              "Neon-style fluorescent pigments (pink, green, blue, orange)",
+              "Calligraphic brush strokes с эффектом свечения",
+              "Halo effect — световой ореол вокруг каждого иероглифа",
+              "Hidden mantras — буддийские мантры, видимые только в UV"
+            ],
+            "pattern": "Large-scale calligraphy (3-5 major characters) + hidden mantra text",
+            "colorPalette": {
+              "daylight": [
+                "#1A1A4D",
+                "#000000"
+              ],
+              "uvLight": [
+                "#FF10F0",
+                "#39FF14",
+                "#00D4FF",
+                "#FF6600"
+              ]
+            }
+          },
+          "materials": {
+            "fabric": "100% Silk Dupioni (текстурированный шёлк с лёгким блеском)",
+            "lining": "Navy Blue Cotton Sateen",
+            "pigments": [
+              "UV-reactive neon acrylics",
+              "Traditional sumi ink base (carbon black)",
+              "Fluorescent calligraphy ink (custom-made)"
+            ],
+            "embellishments": "Hand-brushed calligraphy, traditional Japanese brush techniques",
+            "careInstructions": "Ручная стирка или сухая чистка. Не замачивать. Гладить с изнанки."
+          },
+          "dimensions": {
+            "length": "92 cm",
+            "width": "68 cm (flat)",
+            "sleeves": "56 cm",
+            "fit": "Standard oversized unisex"
+          },
+          "weight": "320g",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "TBD",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 16,
+            "specialNote": "Каллиграфия выполнена в медитативном состоянии, каждый мазок — в один удар кисти (техника 'ichi-go ichi-e')"
+          },
+          "description": "Шёлковое хаори, расписанное вручную. скрытые световые паттерны. эксклюзивная серия 12. Дыхание света",
+          "id": "HV-202510-006"
+        },
+        {
+          "type": "companion_painting",
+          "sku": "HV-NA-P01",
+          "name": "Neon Ancestors Canvas",
+          "edition": "1 of 12",
+          "pairedWith": "HV-NA-H01",
+          "description": "Вертикальная картина в формате традиционного японского свитка (kakemono), но выполненная на холсте. Центральный иероглиф 光 (свет) окружён кольцами буддийских мантр, которые светятся неоном в UV-свете.",
+          "dimensions": {
+            "size": "40 x 120 cm (vertical)",
+            "depth": "3 cm",
+            "frame": "Dark wood floating frame (Japanese ash)"
+          },
+          "materials": {
+            "canvas": "Japanese washi paper mounted on canvas",
+            "base": "Traditional gesso",
+            "paint": "Sumi ink + UV neon pigments",
+            "varnish": "Semi-gloss UV-protective"
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Compact UV spotlight, 8W, adjustable angle",
+          "id": "HV-202510-007"
+        }
+      ],
+      "nftCertificate": {
+        "blockchain": "Ethereum",
+        "standard": "ERC-721",
+        "contractAddress": "0x...",
+        "metadata": {
+          "certificateType": "Certificate of Authenticity + Ownership",
+          "includes": [
+            "High-resolution photo of haori (daylight + UV)",
+            "High-resolution photo of companion painting",
+            "Artist signature (digital)",
+            "Calligraphy translation and meaning",
+            "Unique ID hash",
+            "Creation date and location",
+            "Material composition",
+            "Edition number",
+            "Audio: recording of mantra recitation"
+          ],
+          "royalties": "10% to artist on secondary sales",
+          "unlockableContent": "Digital calligraphy tutorial from the artist + exclusive wallpaper pack"
+        }
+      },
+      "pricing": {
+        "haori": {
+          "amount": 4200,
+          "currency": "USD"
+        },
+        "companionPainting": {
+          "amount": 2800,
+          "currency": "USD"
+        },
+        "bundle": {
+          "amount": 6200,
+          "currency": "USD",
+          "savings": 800
+        }
+      }
+    },
+    {
+      "id": "col_004_eclipse_bloom",
+      "name": "ECLIPSE & BLOOM",
+      "season": "Eternal",
+      "releaseDate": "2025-10-08",
+      "status": "active",
+      "concept": {
+        "title": "Контраст света и тьмы. Цветение из затмения.",
+        "description": "Коллекция, вдохновлённая солнечным затмением — моментом, когда свет побеждает тьму. Серия ECLIPSE представляет драматичный контраст чёрного и ультрафиолета, LUMIN SPIRIT — внутренний свет души, FLUO BLOOM — природное цветение в неоновых оттенках.",
+        "inspiration": [
+          "Солнечное затмение и корона Солнца",
+          "Цветение сакуры после зимы",
+          "Японская концепция 'Kintsugi' — красота в трещинах",
+          "Северное сияние",
+          "Биолюминесценция океана"
+        ],
+        "emotion": "Надежда после тьмы. Энергия возрождения. Женственная сила природы.",
+        "id": "HV-202510-008"
+      },
+      "products": [
+        {
+          "id": "ECLIPSE-01",
+          "type": "twin_bundle",
+          "sku": "HV-EB-T01",
+          "name": "ECLIPSE // 01",
+          "edition": "1 of 10",
+          "totalEditions": 10,
+          "bundleIncludes": [
+            "haori",
+            "painting_a3"
+          ],
+          "visualStyle": {
+            "daylightAppearance": "Чёрная основа с графичными серебристыми акцентами. Минимализм с намёком на драму.",
+            "uvLightAppearance": "Взрыв фиолетовых, синих и белых световых потоков, напоминающих корону затмения. Контраст максимальный.",
+            "lightEffects": [
+              "UV-reactive violet и electric blue",
+              "Phosphorescent white accents",
+              "Corona effect — лучи света от центра",
+              "Gradient transitions от тьмы к свету"
+            ],
+            "pattern": "Eclipse corona rays",
+            "colorPalette": {
+              "daylight": [
+                "#000000",
+                "#C0C0C0"
+              ],
+              "uvLight": [
+                "#8A2BE2",
+                "#00BFFF",
+                "#FFFFFF",
+                "#4169E1"
+              ]
+            }
+          },
+          "materials": {
+            "haori": {
+              "fabric": "100% Silk Habotai (12 momme)",
+              "lining": "Black Cotton Voile",
+              "pigments": [
+                "UV-reactive violet",
+                "Phosphorescent powder",
+                "Metallic silver"
+              ],
+              "careInstructions": "Ручная стирка холодной водой. Сушить в тени."
+            },
+            "painting": {
+              "canvas": "Belgian linen, museum-grade",
+              "size": "A3 (29.7 x 42 cm)",
+              "base": "Acrylic gesso primer",
+              "paint": "UV-reactive acrylics + phosphorescent medium",
+              "varnish": "UV-protective satin varnish",
+              "frame": "Black floating frame included"
+            }
+          },
+          "dimensions": {
+            "haori": {
+              "length": "95 cm",
+              "width": "65 cm (flat)",
+              "sleeves": "55 cm",
+              "fit": "Oversized unisex"
+            },
+            "painting": {
+              "size": "29.7 x 42 cm (A3)",
+              "depth": "3 cm",
+              "frame": "Included"
+            }
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Portable UV LED panel, 8W",
+          "pricing": {
+            "amount": 1200,
+            "currency": "EUR"
+          },
+          "status": "available",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "2025-10-08",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 12
+          },
+          "description": "лимитированная серия 10. Хаори премиум-качества, ручная роспись с световые эффекты в ультрафиолете. Ты — произведение искусства"
+        },
+        {
+          "id": "ECLIPSE-02",
+          "type": "twin_bundle",
+          "sku": "HV-EB-T02",
+          "name": "ECLIPSE // 02",
+          "edition": "1 of 10",
+          "totalEditions": 10,
+          "bundleIncludes": [
+            "haori",
+            "painting_a2"
+          ],
+          "visualStyle": {
+            "daylightAppearance": "Глубокий чёрный с тонкими серебряными трещинами, напоминающими Kintsugi.",
+            "uvLightAppearance": "Трещины вспыхивают ультрафиолетом, фиолетовым и синим. Драматичный контраст света и тьмы.",
+            "lightEffects": [
+              "Crack pattern с UV-reactive fill",
+              "Deep purple и cyan gradients",
+              "Phosphorescent edges",
+              "Shadow-light contrast"
+            ],
+            "pattern": "Kintsugi-inspired cracks + eclipse rays",
+            "colorPalette": {
+              "daylight": [
+                "#000000",
+                "#C0C0C0"
+              ],
+              "uvLight": [
+                "#8A2BE2",
+                "#00CED1",
+                "#4B0082",
+                "#E0E0E0"
+              ]
+            }
+          },
+          "materials": {
+            "haori": {
+              "fabric": "100% Silk Habotai (12 momme)",
+              "lining": "Black Cotton Voile",
+              "pigments": [
+                "UV-reactive purple",
+                "Cyan fluorescent",
+                "Silver metallic"
+              ],
+              "careInstructions": "Ручная стирка холодной водой. Сушить в тени."
+            },
+            "painting": {
+              "canvas": "Belgian linen, museum-grade",
+              "size": "A2 (42 x 59.4 cm)",
+              "base": "Acrylic gesso primer",
+              "paint": "UV-reactive acrylics + metallic medium",
+              "varnish": "UV-protective satin varnish",
+              "frame": "Black floating frame included"
+            }
+          },
+          "dimensions": {
+            "haori": {
+              "length": "95 cm",
+              "width": "65 cm (flat)",
+              "sleeves": "55 cm",
+              "fit": "Oversized unisex"
+            },
+            "painting": {
+              "size": "42 x 59.4 cm (A2)",
+              "depth": "4 cm",
+              "frame": "Included"
+            }
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Portable UV LED panel, 12W",
+          "pricing": {
+            "amount": 1800,
+            "currency": "EUR"
+          },
+          "status": "available",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "2025-10-08",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 16
+          },
+          "description": "Хаори ручной росписи. световые эффекты в ультрафиолете. 10 в мире. Искусство на теле"
+        },
+        {
+          "id": "LUMIN-01",
+          "type": "twin_bundle",
+          "sku": "HV-LS-T01",
+          "name": "LUMIN SPIRIT // 01",
+          "edition": "1 of 10",
+          "totalEditions": 10,
+          "bundleIncludes": [
+            "haori",
+            "painting_a2"
+          ],
+          "visualStyle": {
+            "daylightAppearance": "Мягкая серо-белая основа с нежными органическими паттернами. Светлая, воздушная.",
+            "uvLightAppearance": "Внутреннее свечение проявляется в тёплых оттенках — жёлтый, золотистый, мягкий оранжевый. Энергия внутреннего света.",
+            "lightEffects": [
+              "Warm UV-reactive yellows и golds",
+              "Soft glow effect",
+              "Organic flow patterns",
+              "Luminous aura"
+            ],
+            "pattern": "Flowing light energy, organic spirals",
+            "colorPalette": {
+              "daylight": [
+                "#F5F5F5",
+                "#E0E0E0",
+                "#D3D3D3"
+              ],
+              "uvLight": [
+                "#FFD700",
+                "#FFA500",
+                "#FFFF00",
+                "#F0E68C"
+              ]
+            }
+          },
+          "materials": {
+            "haori": {
+              "fabric": "100% Silk Habotai (12 momme)",
+              "lining": "Organic Cotton Voile",
+              "pigments": [
+                "UV-reactive yellow",
+                "Golden fluorescent",
+                "Warm white"
+              ],
+              "careInstructions": "Ручная стирка холодной водой. Сушить в тени."
+            },
+            "painting": {
+              "canvas": "Belgian linen, museum-grade",
+              "size": "A2 (42 x 59.4 cm)",
+              "base": "Acrylic gesso primer",
+              "paint": "UV-reactive warm acrylics + gold medium",
+              "varnish": "UV-protective satin varnish",
+              "frame": "Natural wood floating frame included"
+            }
+          },
+          "dimensions": {
+            "haori": {
+              "length": "95 cm",
+              "width": "65 cm (flat)",
+              "sleeves": "55 cm",
+              "fit": "Oversized unisex"
+            },
+            "painting": {
+              "size": "42 x 59.4 cm (A2)",
+              "depth": "4 cm",
+              "frame": "Included"
+            }
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Portable UV LED panel, 12W",
+          "pricing": {
+            "amount": 1800,
+            "currency": "EUR"
+          },
+          "status": "available",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "2025-10-08",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 14
+          },
+          "description": "лимитированная серия 10. Хаори премиум-качества, ручная роспись с UV-реактивные пигменты. Стань искусством"
+        },
+        {
+          "id": "BLOOM-01",
+          "type": "twin_bundle",
+          "sku": "HV-FB-T01",
+          "name": "FLUO BLOOM // 01",
+          "edition": "1 of 10",
+          "totalEditions": 10,
+          "bundleIncludes": [
+            "haori",
+            "painting_a3"
+          ],
+          "visualStyle": {
+            "daylightAppearance": "Нежная пастельная основа с тонкими цветочными мотивами. Женственная, лёгкая.",
+            "uvLightAppearance": "Цветы вспыхивают неоновыми оттенками — розовый, зелёный, голубой. Природное цветение в неоне.",
+            "lightEffects": [
+              "Neon pink, green, blue florals",
+              "Petal glow effect",
+              "Natural bloom patterns",
+              "Gradient transitions"
+            ],
+            "pattern": "Floral bloom, sakura-inspired",
+            "colorPalette": {
+              "daylight": [
+                "#FFE4E1",
+                "#F0F8FF",
+                "#E6E6FA"
+              ],
+              "uvLight": [
+                "#FF1493",
+                "#00FF7F",
+                "#00BFFF",
+                "#FF69B4"
+              ]
+            }
+          },
+          "materials": {
+            "haori": {
+              "fabric": "100% Silk Habotai (12 momme)",
+              "lining": "Organic Cotton Voile",
+              "pigments": [
+                "UV-reactive neon pink",
+                "Fluorescent green",
+                "Neon cyan"
+              ],
+              "careInstructions": "Ручная стирка холодной водой. Сушить в тени."
+            },
+            "painting": {
+              "canvas": "Belgian linen, museum-grade",
+              "size": "A3 (29.7 x 42 cm)",
+              "base": "Acrylic gesso primer",
+              "paint": "UV-reactive neon acrylics + floral medium",
+              "varnish": "UV-protective satin varnish",
+              "frame": "White floating frame included"
+            }
+          },
+          "dimensions": {
+            "haori": {
+              "length": "95 cm",
+              "width": "65 cm (flat)",
+              "sleeves": "55 cm",
+              "fit": "Oversized unisex"
+            },
+            "painting": {
+              "size": "29.7 x 42 cm (A3)",
+              "depth": "3 cm",
+              "frame": "Included"
+            }
+          },
+          "includesUVLight": true,
+          "uvLightSpec": "Portable UV LED panel, 8W",
+          "pricing": {
+            "amount": 1200,
+            "currency": "EUR"
+          },
+          "status": "available",
+          "artisan": {
+            "signedBy": "Founder Artist",
+            "creationDate": "2025-10-08",
+            "studioLocation": "Tokyo, Japan",
+            "hoursOfWork": 11
+          },
+          "description": "Хаори ручной росписи. световые эффекты в ультрафиолете. лимитированная серия 10. Световая магия в каждом мазке"
+        }
+      ],
+      "nftCertificate": {
+        "blockchain": "Ethereum",
+        "standard": "ERC-721",
+        "contractAddress": "0x...",
+        "metadata": {
+          "certificateType": "Certificate of Authenticity + Ownership",
+          "includes": [
+            "High-resolution photo of haori (daylight + UV)",
+            "High-resolution photo of companion painting",
+            "Artist signature (digital)",
+            "Unique ID hash",
+            "Creation date and location",
+            "Material composition",
+            "Edition number"
+          ],
+          "royalties": "10% to artist on secondary sales",
+          "unlockableContent": "Access to private HAORI VISION community + future airdrops"
+        }
+      }
+    }
+  ],
+  "globalProductFeatures": {
+    "packaging": {
+      "box": "Black matte rigid box с магнитной крышкой",
+      "interior": "Tissue paper с логотипом HAORI VISION",
+      "includes": [
+        "Сертификат подлинности (бумажный)",
+        "QR-код для активации NFT",
+        "Инструкция по уходу",
+        "Карточка художника с философией коллекции",
+        "UV-фонарик (портативный, для проверки эффекта)"
+      ],
+      "sustainability": "Все материалы упаковки пригодны для переработки или биоразлагаемы"
+    },
+    "shipping": {
+      "method": "Express international shipping с страховкой",
+      "tracking": "Full tracking + signature required",
+      "packaging": "Museum-grade protective wrapping"
+    },
+    "warranty": {
+      "duration": "Lifetime authenticity guarantee",
+      "coverage": "Pigment fading (при правильном уходе), structural defects",
+      "service": "Free minor repairs at Tokyo studio"
+    }
+  },
+  "metadata": {
+    "version": "1.1.0",
+    "lastUpdated": "2025-10-08",
+    "schema": "HAORI_VISION_COLLECTIONS_V1",
+    "changelog": [
+      {
+        "version": "1.1.0",
+        "date": "2025-10-08",
+        "changes": "Added new collection: ECLIPSE & BLOOM (4 products: ECLIPSE-01, ECLIPSE-02, LUMIN-01, BLOOM-01)"
+      },
+      {
+        "version": "1.0.0",
+        "date": "2025-10-06",
+        "changes": "Initial release with 3 collections (Mycelium Dreams, Void Bloom, Neon Ancestors)"
+      }
+    ]
+  }
+}

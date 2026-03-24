@@ -22,9 +22,7 @@ export default function EventsListPage() {
         params.append("status", filter);
       }
 
-      const response = await fetch(
-        `http://localhost:3010/api/events?${params.toString()}`,
-      );
+      const response = await fetch(`/api/events?${params.toString()}`);
       const data = await response.json();
 
       if (data.success) {

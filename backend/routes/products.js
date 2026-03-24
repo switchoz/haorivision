@@ -6,6 +6,7 @@
 
 import express from "express";
 import Product from "../models/Product.js";
+import { baseLogger } from "../middlewares/logger.js";
 
 const router = express.Router();
 
@@ -58,7 +59,11 @@ router.get("/", async (req, res) => {
     const skip = (pageNum - 1) * limitNum;
 
     const [products, total] = await Promise.all([
-      Product.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limitNum),
+      Product.find(filter)
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limitNum)
+        .lean(),
       Product.countDocuments(filter),
     ]);
 
@@ -72,7 +77,7 @@ router.get("/", async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Failed to list products:", error);
+    baseLogger.error({ err: error }, "Failed to list products");
     res.status(500).json({ error: "Failed to list products" });
   }
 });
@@ -104,7 +109,7 @@ router.get("/:id", async (req, res) => {
 
     res.json({ product });
   } catch (error) {
-    console.error("Failed to get product:", error);
+    baseLogger.error({ err: error }, "Failed to get product");
     res.status(500).json({ error: "Failed to get product" });
   }
 });
@@ -129,7 +134,7 @@ router.post("/", async (req, res) => {
 
     res.status(201).json({ product });
   } catch (error) {
-    console.error("Failed to create product:", error);
+    baseLogger.error({ err: error }, "Failed to create product");
 
     if (error.name === "ValidationError") {
       return res.status(400).json({ error: error.message });
@@ -165,7 +170,7 @@ router.patch("/:id", async (req, res) => {
 
     res.json({ product });
   } catch (error) {
-    console.error("Failed to update product:", error);
+    baseLogger.error({ err: error }, "Failed to update product");
 
     if (error.name === "ValidationError") {
       return res.status(400).json({ error: error.message });

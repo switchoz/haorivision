@@ -1,0 +1,120 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-09",
+  "wholesale": {
+    "minimumOrder": {
+      "value": 5000,
+      "currency": "EUR"
+    },
+    "paymentTerms": "Net 30",
+    "shippingTerms": "FOB Stockholm",
+    "discountTiers": [
+      {
+        "minAmount": 5000,
+        "discount": 0
+      },
+      {
+        "minAmount": 10000,
+        "discount": 5
+      },
+      {
+        "minAmount": 25000,
+        "discount": 10
+      },
+      {
+        "minAmount": 50000,
+        "discount": 15
+      }
+    ]
+  },
+  "products": [
+    {
+      "sku": "ECLIPSE-01",
+      "name": "Eclipse Lumière Coat",
+      "collection": "SS25",
+      "category": "Outerwear",
+      "retailPrice": 650,
+      "wholesalePrice": 325,
+      "currency": "EUR",
+      "moq": 2,
+      "availableSizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Black", "Midnight Blue"],
+      "leadTime": "6-8 weeks",
+      "material": "UV-reactive technical fabric",
+      "careInstructions": "Dry clean only"
+    },
+    {
+      "sku": "ECLIPSE-02",
+      "name": "Eclipse Lumière Jacket",
+      "collection": "SS25",
+      "category": "Outerwear",
+      "retailPrice": 520,
+      "wholesalePrice": 260,
+      "currency": "EUR",
+      "moq": 2,
+      "availableSizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Black", "Charcoal"],
+      "leadTime": "6-8 weeks",
+      "material": "UV-reactive technical fabric",
+      "careInstructions": "Dry clean only"
+    },
+    {
+      "sku": "LUMIN-01",
+      "name": "Lumin Dawn Parka",
+      "collection": "SS25",
+      "category": "Outerwear",
+      "retailPrice": 780,
+      "wholesalePrice": 390,
+      "currency": "EUR",
+      "moq": 2,
+      "availableSizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Pearl White", "Ice Blue"],
+      "leadTime": "8-10 weeks",
+      "material": "UV-reactive technical fabric with insulation",
+      "careInstructions": "Dry clean only"
+    },
+    {
+      "sku": "BLOOM-01",
+      "name": "Bloom Radiance Cape",
+      "collection": "SS25",
+      "category": "Outerwear",
+      "retailPrice": 890,
+      "wholesalePrice": 445,
+      "currency": "EUR",
+      "moq": 1,
+      "availableSizes": ["One Size"],
+      "colors": ["Lavender", "Rose"],
+      "leadTime": "10-12 weeks",
+      "material": "UV-reactive silk blend",
+      "careInstructions": "Professional dry clean only"
+    }
+  ],
+  "terms": {
+    "returnsPolicy": "Final sale - no returns on wholesale orders",
+    "cancelPolicy": "Orders can be cancelled within 48 hours of placement",
+    "damagePolicy": "Damaged goods must be reported within 7 days of receipt",
+    "exclusivity": "Regional exclusivity available for orders over €50,000"
+  },
+  "shipping": {
+    "regions": [
+      {
+        "name": "Europe",
+        "freeShippingThreshold": 10000,
+        "shippingCost": 150,
+        "estimatedDays": "3-5 business days"
+      },
+      {
+        "name": "North America",
+        "freeShippingThreshold": 15000,
+        "shippingCost": 350,
+        "estimatedDays": "5-7 business days"
+      },
+      {
+        "name": "Asia",
+        "freeShippingThreshold": 20000,
+        "shippingCost": 400,
+        "estimatedDays": "7-10 business days"
+      }
+    ]
+  }
+}

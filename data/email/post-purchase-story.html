@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Light Story</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+    }
+    .header {
+      text-align: center;
+      padding: 50px 40px 30px;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #ec4899 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .content { padding: 40px; }
+    .main-text {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #e5e7eb;
+    }
+    .story-box {
+      background: rgba(236, 72, 153, 0.1);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 35px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ec4899 0%, #a78bfa 100%);
+      color: white;
+      text-decoration: none;
+      padding: 16px 35px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      margin: 10px 5px;
+    }
+    .footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 35px;
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>💫 Your Light Story</h1>
+      <p>Как чувствует себя твоё хаори?</p>
+    </div>
+
+    <div class="content">
+      <p class="main-text">Здравствуй, {{customerName}}...</p>
+
+      <p class="main-text">
+        Прошла неделя с тех пор, как {{productName}} стало частью твоей жизни. Надеюсь, ты уже успел почувствовать его энергию — как оно трансформируется под UV, как реагирует свет вокруг тебя.
+      </p>
+
+      <div class="story-box">
+        <h2 style="margin-bottom: 20px; color: #ec4899;">🌟 Поделись своей историей</h2>
+        <p style="margin-bottom: 20px;">
+          Каждое хаори живёт своей жизнью с новым владельцем. Нам очень интересно узнать:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 25px;">
+          <li>Где ты носил своё хаори?</li>
+          <li>Как реагировали люди?</li>
+          <li>Какие эмоции оно вызывает?</li>
+        </ul>
+        <p style="font-size: 14px; opacity: 0.8;">
+          Оставь отзыв с фото/видео и получи <strong>+25 Glow Points</strong>!
+        </p>
+      </div>
+
+      <div style="text-align: center; margin: 40px 0;">
+        <a href="{{reviewUrl}}" class="cta-button">📸 Оставить отзыв</a>
+        <a href="{{communityUrl}}" class="cta-button">💬 Присоединиться к Discord</a>
+      </div>
+
+      <p class="main-text" style="text-align: right; margin-top: 50px;">
+        Спасибо, что носишь свет,<br>
+        <strong>Команда HAORI VISION</strong>
+      </p>
+    </div>
+
+    <div class="footer">
+      <p><strong>HAORI VISION</strong></p>
+      <p>Wear the Light. Become the Art.</p>
+    </div>
+  </div>
+</body>
+</html>

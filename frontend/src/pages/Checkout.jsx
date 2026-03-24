@@ -9,13 +9,14 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useTheme } from "../contexts/ThemeContext";
+import { useCart } from "../contexts/CartContext";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
 import { tid } from "../shared/testid";
 
 // Stripe publishable key (test mode)
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const CheckoutForm = ({ product, onSuccess }) => {
+const CheckoutForm = ({ items, totalAmount, onSuccess, clearCart }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -48,17 +49,14 @@ const CheckoutForm = ({ product, onSuccess }) => {
       return;
     }
 
-    // Track checkout started event (P18)
-    trackCTAEvent("checkout_started", product.id);
+    trackCTAEvent("checkout_started", items[0]?.id);
 
     setLoading(true);
     setError(null);
 
     try {
-      // Get card element
       const cardElement = elements.getElement(CardElement);
 
-      // Create payment method
       const { error: pmError, paymentMethod } =
         await stripe.createPaymentMethod({
           type: "card",
@@ -80,12 +78,16 @@ const CheckoutForm = ({ product, onSuccess }) => {
         throw new Error(pmError.message);
       }
 
-      // Create order via backend API
       const orderRes = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          productId: product.id || product._id,
+          items: items.map((item) => ({
+            productId: item.id,
+            name: item.name,
+            price: item.price,
+            qty: item.qty || 1,
+          })),
           paymentMethodId: paymentMethod.id,
           customer: {
             name: `${formData.firstName} ${formData.lastName}`,
@@ -95,7 +97,7 @@ const CheckoutForm = ({ product, onSuccess }) => {
             phone: formData.phone,
             country: formData.country,
           },
-          amount: product.price,
+          amount: totalAmount,
           shippingAddress: {
             name: `${formData.firstName} ${formData.lastName}`,
             street: formData.address,
@@ -113,16 +115,14 @@ const CheckoutForm = ({ product, onSuccess }) => {
         throw new Error(orderData.error || "Ошибка создания заказа");
       }
 
-      // Track order completed event (P18)
-      trackCTAEvent("order_completed", product.id);
+      trackCTAEvent("order_completed", items[0]?.id);
 
-      // Build order object for success page
       const order = {
         id: orderData.order?.orderNumber || orderData.order?._id,
-        product: product,
+        items,
         customer: formData,
         paymentMethodId: paymentMethod.id,
-        amount: product.price,
+        amount: totalAmount,
         currency: "USD",
         status: "confirmed",
         createdAt: new Date().toISOString(),
@@ -135,14 +135,14 @@ const CheckoutForm = ({ product, onSuccess }) => {
         },
       };
 
-      // Also save to localStorage for order tracking page
       const existingOrders = JSON.parse(
         localStorage.getItem("haori_orders") || "[]",
       );
       existingOrders.push(order);
       localStorage.setItem("haori_orders", JSON.stringify(existingOrders));
 
-      // Navigate to success page
+      if (clearCart) clearCart();
+
       navigate("/checkout/success", { state: { order } });
     } catch (err) {
       console.error("Payment error:", err);
@@ -316,9 +316,7 @@ const CheckoutForm = ({ product, onSuccess }) => {
         whileHover={!loading && stripe ? { scale: 1.02 } : {}}
         whileTap={!loading && stripe ? { scale: 0.98 } : {}}
       >
-        {loading
-          ? "Обработка..."
-          : `Оплатить $${product.price.toLocaleString()}`}
+        {loading ? "Обработка..." : `Оплатить $${totalAmount.toLocaleString()}`}
       </motion.button>
 
       {/* Security Badges */}
@@ -346,21 +344,41 @@ const Checkout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isUVMode } = useTheme();
-  const product = location.state?.product;
+  const cart = useCart();
+
+  // Support both: single product from ProductDetail and multi-item from Cart
+  const singleProduct = location.state?.product;
+  const fromCart = location.state?.fromCart;
+
+  const checkoutItems = fromCart
+    ? cart.items
+    : singleProduct
+      ? [
+          {
+            ...singleProduct,
+            qty: 1,
+            image: singleProduct.images?.daylight?.hero,
+          },
+        ]
+      : [];
 
   useEffect(() => {
-    if (!product) {
-      navigate("/products");
+    if (checkoutItems.length === 0) {
+      navigate("/shop");
     }
-  }, [product, navigate]);
+  }, [checkoutItems.length, navigate]);
 
-  if (!product) {
+  if (checkoutItems.length === 0) {
     return null;
   }
 
-  const shippingCost = product.price >= 5000 ? 0 : 150; // Free shipping over $5,000
-  const tax = Math.round(product.price * 0.08); // 8% tax (example)
-  const total = product.price + shippingCost + tax;
+  const subtotal = checkoutItems.reduce(
+    (sum, item) => sum + item.price * (item.qty || 1),
+    0,
+  );
+  const shippingCost = subtotal >= 5000 ? 0 : 150;
+  const tax = Math.round(subtotal * 0.08);
+  const total = subtotal + shippingCost + tax;
 
   return (
     <div
@@ -385,7 +403,11 @@ const Checkout = () => {
           {/* Left: Checkout Form */}
           <div>
             <Elements stripe={stripePromise}>
-              <CheckoutForm product={product} />
+              <CheckoutForm
+                items={checkoutItems}
+                totalAmount={total}
+                clearCart={fromCart ? cart.clearCart : undefined}
+              />
             </Elements>
           </div>
 
@@ -397,38 +419,48 @@ const Checkout = () => {
               </h3>
 
               <div className="bg-zinc-900 border border-zinc-800 p-6 mb-6">
-                {/* Product Info */}
-                <div className="flex gap-4 mb-6 pb-6 border-b border-zinc-800">
-                  <img
-                    src={product.images.daylight.hero}
-                    alt={product.name}
-                    className="w-24 h-32 object-cover"
-                  />
-                  <div className="flex-1">
-                    <p className="text-xs uppercase tracking-wider text-zinc-500 mb-1">
-                      {product.collection}
-                    </p>
-                    <h4 className="text-lg font-bold text-white mb-2">
-                      {product.name}
-                    </h4>
-                    <p className="text-sm text-zinc-400">
-                      Издание{" "}
-                      {product.editions.total - product.editions.remaining + 1}/
-                      {product.editions.total}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xl font-bold text-white">
-                      ${product.price.toLocaleString()}
-                    </p>
-                  </div>
+                {/* Items */}
+                <div className="space-y-4 mb-6 pb-6 border-b border-zinc-800">
+                  {checkoutItems.map((item) => (
+                    <div key={item.id} className="flex gap-4">
+                      <div className="w-16 h-20 flex-shrink-0 bg-zinc-800 rounded overflow-hidden">
+                        {item.image || item.images?.daylight?.hero ? (
+                          <img
+                            src={item.image || item.images?.daylight?.hero}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-zinc-600">
+                            👘
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs uppercase tracking-wider text-zinc-500 mb-1">
+                          {item.collection}
+                        </p>
+                        <h4 className="text-sm font-bold text-white truncate">
+                          {item.name}
+                        </h4>
+                        {(item.qty || 1) > 1 && (
+                          <p className="text-xs text-zinc-400">x{item.qty}</p>
+                        )}
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <p className="text-sm font-bold text-white">
+                          ${(item.price * (item.qty || 1)).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Price Breakdown */}
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-zinc-400">
                     <span>Промежуточный итог</span>
-                    <span>${product.price.toLocaleString()}</span>
+                    <span>${subtotal.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Доставка (DHL Express)</span>
@@ -460,7 +492,6 @@ const Checkout = () => {
                   {[
                     "👘 Расписанное вручную шёлковое хаори",
                     "🎁 Фирменная упаковка",
-                    "💡 Профессиональная UV лампа",
                     "✍️ Подпись художника LiZa",
                     "📦 Роскошная подарочная коробка",
                     "🚚 Застрахованная доставка",

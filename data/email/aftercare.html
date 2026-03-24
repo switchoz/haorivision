@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aftercare Guide — HAORI VISION</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      padding: 50px;
+      border-radius: 16px;
+      border: 1px solid #a855f7;
+      box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .logo {
+      font-size: 42px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+    .header h1 {
+      font-size: 36px;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #a855f7;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #888;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    .intro-box {
+      background: rgba(168, 85, 247, 0.15);
+      border-left: 4px solid #a855f7;
+      padding: 25px;
+      margin: 30px 0;
+      border-radius: 8px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .section {
+      margin: 40px 0;
+    }
+    .section h2 {
+      font-size: 28px;
+      color: #a855f7;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .section-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .care-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .care-card h3 {
+      font-size: 20px;
+      color: #10b981;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .care-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .care-card li {
+      padding: 10px 0 10px 30px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .care-card li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .warning-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid #ef4444;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+    .warning-box h3 {
+      color: #ef4444;
+      margin-top: 0;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .warning-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0 0 0;
+    }
+    .warning-box li {
+      padding: 8px 0 8px 30px;
+      position: relative;
+    }
+    .warning-box li:before {
+      content: "⚠";
+      position: absolute;
+      left: 0;
+      font-size: 18px;
+    }
+    .tip-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid #10b981;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .tip-box h4 {
+      color: #10b981;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      color: #ffffff;
+      padding: 18px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin: 15px 10px;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.3s;
+    }
+    .button:hover {
+      transform: translateY(-3px);
+    }
+    .button-green {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #888;
+      font-size: 13px;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 18px;
+      color: #a855f7;
+      margin-bottom: 15px;
+    }
+    .social-links {
+      margin: 25px 0;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 0 12px;
+      color: #a855f7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">✧ HAORI VISION</div>
+      <h1>AFTERCARE GUIDE</h1>
+      <div class="subtitle">How to Keep Your Wearable Art Luminous</div>
+    </div>
+
+    <div class="intro-box">
+      <p style="margin: 0;">
+        <strong>Dear {{customerName}},</strong><br><br>
+        Your <strong>{{productName}}</strong> is not just clothing—it's a hand-painted work of art. This aftercare guide will help you preserve its beauty and UV glow for years to come.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-icon">🧼</span>Washing & Cleaning</h2>
+
+      <div class="care-card">
+        <h3>Hand Washing (Recommended)</h3>
+        <ul>
+          <li>Fill basin with cold water (max 30°C / 86°F)</li>
+          <li>Add mild silk detergent (pH neutral)</li>
+          <li>Gently submerge haori and swirl for 2-3 minutes</li>
+          <li>Rinse thoroughly with cold water until soap-free</li>
+          <li>Never wring or twist the fabric</li>
+        </ul>
+      </div>
+
+      <div class="warning-box">
+        <h3>⚠ Never Do This</h3>
+        <ul>
+          <li>Machine wash (damages UV paint and silk fibers)</li>
+          <li>Use bleach or harsh chemicals (destroys fluorescent pigments)</li>
+          <li>Hot water (shrinks silk and fades colors)</li>
+          <li>Tumble dry (ruins structure and glow effect)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-icon">💧</span>Drying</h2>
+
+      <div class="care-card">
+        <h3>Air Dry Only</h3>
+        <ul>
+          <li>Lay flat on clean towel, reshape gently</li>
+          <li>Avoid direct sunlight (fades UV paint over time)</li>
+          <li>Dry in well-ventilated area</li>
+          <li>Allow 24-48 hours for complete drying</li>
+          <li>Never hang while wet (stretches shoulders)</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Pro Tip</h4>
+        <p style="margin: 0;">Roll the haori in a clean towel to absorb excess water before laying flat. This speeds up drying without damaging the fabric.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-icon">👔</span>Storage</h2>
+
+      <div class="care-card">
+        <h3>Proper Storage</h3>
+        <ul>
+          <li>Hang on wide padded hanger (prevents shoulder marks)</li>
+          <li>Store in breathable garment bag (not plastic)</li>
+          <li>Keep in cool, dark, dry place</li>
+          <li>Avoid compression or folding (creases UV paint)</li>
+          <li>Use cedar or lavender sachets to prevent moths</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-icon">✨</span>UV Glow Care</h2>
+
+      <div class="care-card">
+        <h3>Maintaining Fluorescence</h3>
+        <ul>
+          <li>Minimize sun exposure (UV light slowly fades fluorescent pigments)</li>
+          <li>Test UV lamp regularly (included lamp lasts 10,000+ hours)</li>
+          <li>Clean glow areas gently (no rubbing or scrubbing)</li>
+          <li>Recharge glow occasionally under blacklight (10-15 minutes)</li>
+          <li>Expected lifespan: 5-10 years with proper care</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Glow Restoration</h4>
+        <p style="margin: 0;">If glow seems dimmer, expose to included UV lamp for 10-15 minutes. This "recharges" the fluorescent pigments. If glow has significantly faded after 3+ years, contact us for professional restoration service.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-icon">🛡️</span>Repairs & Touch-ups</h2>
+
+      <div class="care-card">
+        <h3>Professional Services</h3>
+        <ul>
+          <li><strong>Minor repairs:</strong> Small tears or loose threads — contact us within warranty period</li>
+          <li><strong>UV restoration:</strong> Faded glow areas can be repainted (fee applies after warranty)</li>
+          <li><strong>Cleaning service:</strong> Professional art textile cleaning available</li>
+          <li><strong>Companion painting care:</strong> Same guidelines apply to framed canvas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <h3>⚠ Warranty Voidance</h3>
+      <p>Your 2-year limited warranty is voided if:</p>
+      <ul>
+        <li>Machine washed or dry cleaned</li>
+        <li>Bleached or chemically treated</li>
+        <li>Modified, altered, or DIY-repaired</li>
+        <li>Exposed to extreme heat or open flame</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-icon">💬</span>Questions?</h2>
+      <p>We're here to help you preserve your wearable art. Contact us anytime:</p>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="mailto:care@haorivision.com" class="button">Email Care Team</a>
+        <a href="https://haorivision.com/aftercare" class="button button-green">Full Care Guide</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-brand">HAORI VISION</div>
+      <p style="margin: 20px 0; font-size: 16px; color: #a855f7;">
+        Wearable Light Art Since 2025
+      </p>
+
+      <div class="social-links">
+        <a href="https://instagram.com/haorivision">Instagram</a> •
+        <a href="https://twitter.com/haorivision">Twitter</a> •
+        <a href="https://discord.gg/haorivision">Discord</a>
+      </div>
+
+      <p style="margin-top: 35px; font-size: 13px;">
+        Need help? Contact us anytime:<br>
+        <a href="mailto:care@haorivision.com" style="color: #a855f7; text-decoration: none;">care@haorivision.com</a>
+      </p>
+
+      <p style="margin-top: 25px; font-size: 11px; opacity: 0.6;">
+        © 2025 HAORI VISION. All rights reserved.<br>
+        Order #{{orderNumber}} • {{productName}}<br>
+        Edition {{editionNumber}}/{{totalEditions}}
+      </p>
+    </div>
+  </div>
+</body>
+</html>

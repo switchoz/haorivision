@@ -1,0 +1,73 @@
+{
+  "timezone": "Europe/Stockholm",
+  "jobs": [
+    {
+      "id": "daily_light_report",
+      "name": "Daily Light Report",
+      "description": "Generate daily metrics report with Views/CTR/Orders, video completions, avg check, and DM SLA",
+      "schedule": {
+        "type": "daily",
+        "time": "09:00",
+        "enabled": true
+      },
+      "command": "npm run report:daily_now",
+      "script": "scripts/build_daily_report.py",
+      "output": "reports/daily_light_[DATE].pdf",
+      "notification": {
+        "enabled": false,
+        "channels": ["email", "slack"],
+        "recipients": []
+      },
+      "retention": {
+        "keepDays": 30,
+        "archiveAfterDays": 90
+      }
+    },
+    {
+      "id": "dm_sla_check",
+      "name": "DM SLA Monitoring",
+      "description": "Check Instagram DM response times (if A18 enabled)",
+      "schedule": {
+        "type": "daily",
+        "time": "09:00",
+        "enabled": false
+      },
+      "command": "npm run dm:report:daily",
+      "condition": "A18_enabled",
+      "notification": {
+        "enabled": true,
+        "channels": ["slack"],
+        "threshold": "SLA_breach"
+      }
+    },
+    {
+      "id": "backup_rotation",
+      "name": "Daily Backup",
+      "description": "Automated backup of catalog and configuration files",
+      "schedule": {
+        "type": "daily",
+        "time": "03:00",
+        "enabled": true
+      },
+      "command": "npm run backup:now",
+      "retention": {
+        "keepDays": 7,
+        "archiveAfterDays": 30
+      }
+    }
+  ],
+  "global_settings": {
+    "max_concurrent_jobs": 1,
+    "job_timeout_minutes": 30,
+    "retry_on_failure": true,
+    "retry_attempts": 3,
+    "retry_delay_minutes": 5,
+    "log_output": true,
+    "log_directory": "logs/scheduler"
+  },
+  "meta": {
+    "version": "1.0.0",
+    "created": "2025-10-17",
+    "description": "HAORI VISION — Scheduled Jobs Configuration"
+  }
+}

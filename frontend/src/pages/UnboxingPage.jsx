@@ -21,9 +21,7 @@ export default function UnboxingPage() {
 
   const fetchPackaging = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3010/api/packaging/qr/${qrCode}`,
-      );
+      const response = await fetch(`/api/packaging/qr/${qrCode}`);
       const data = await response.json();
 
       if (data.success) {
@@ -40,7 +38,7 @@ export default function UnboxingPage() {
 
   const trackScan = async () => {
     try {
-      await fetch(`http://localhost:3010/api/packaging/scan/${qrCode}`, {
+      await fetch(`/api/packaging/scan/${qrCode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -65,7 +65,7 @@ import "./cron/telegramAutoPost.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3010;
 
 // Connect to MongoDB
 connectDB();
@@ -84,13 +84,18 @@ app.use(
   cors({
     origin: function (origin, callback) {
       const allowed = [
-        process.env.CLIENT_URL,
-        "http://localhost:3012",
+        process.env.CLIENT_URL || "http://localhost:3012",
         "https://haorivision.com",
         "https://www.haorivision.com",
-      ].filter(Boolean);
+      ];
+      // Include localhost only in development
+      if (process.env.NODE_ENV !== "production") {
+        allowed.push("http://localhost:3012");
+      }
+      // Deduplicate
+      const uniqueAllowed = [...new Set(allowed.filter(Boolean))];
       // Allow requests with no origin (mobile apps, curl, etc.)
-      if (!origin || allowed.includes(origin)) {
+      if (!origin || uniqueAllowed.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));

@@ -1,0 +1,45 @@
+{
+  "thresholds": {
+    "performance": 85,
+    "accessibility": 90,
+    "best-practices": 85,
+    "seo": 90,
+    "pwa": 0
+  },
+  "metrics": {
+    "first-contentful-paint": 1800,
+    "largest-contentful-paint": 2500,
+    "cumulative-layout-shift": 0.1,
+    "time-to-interactive": 3800,
+    "speed-index": 3400,
+    "total-blocking-time": 300
+  },
+  "settings": {
+    "onlyCategories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ],
+    "formFactor": "desktop",
+    "throttling": {
+      "rttMs": 40,
+      "throughputKbps": 10240,
+      "cpuSlowdownMultiplier": 1
+    },
+    "screenEmulation": {
+      "mobile": false,
+      "width": 1350,
+      "height": 940,
+      "deviceScaleFactor": 1,
+      "disabled": false
+    }
+  },
+  "audits": {
+    "skip": [
+      "uses-http2",
+      "uses-long-cache-ttl",
+      "redirects"
+    ]
+  }
+}

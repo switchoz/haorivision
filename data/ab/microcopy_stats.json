@@ -1,0 +1,23 @@
+{
+  "experiment_id": "microcopy_v1",
+  "last_updated": "2025-10-17T21:19:25.565Z",
+  "variants": {
+    "A": {
+      "views": 0,
+      "clicks": 0,
+      "interactions": 0,
+      "ctr": 0,
+      "avg_time_to_click": 0,
+      "avg_time_to_interaction": 0
+    },
+    "B": {
+      "views": 0,
+      "clicks": 0,
+      "interactions": 0,
+      "ctr": 0,
+      "avg_time_to_click": 0,
+      "avg_time_to_interaction": 0
+    }
+  },
+  "events": []
+}

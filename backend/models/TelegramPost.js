@@ -71,5 +71,6 @@ const telegramPostSchema = new mongoose.Schema(
 
 telegramPostSchema.index({ status: 1, scheduledAt: 1 });
 telegramPostSchema.index({ type: 1 });
+telegramPostSchema.index({ createdAt: -1 });
 
 export default mongoose.model("TelegramPost", telegramPostSchema);

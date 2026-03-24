@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Reliability Kit configuration for HAORI VISION. Controls error boundaries, logging, and fallback behavior.",
+  "version": "1.0.0",
+  "features": {
+    "errorBoundaries": {
+      "enabled": true,
+      "globalBoundary": true,
+      "componentBoundaries": {
+        "shop": true,
+        "checkout": true,
+        "cart": true,
+        "product": true,
+        "assistant": true
+      }
+    },
+    "logging": {
+      "enabled": true,
+      "level": "info",
+      "console": true,
+      "remote": false,
+      "remoteEndpoint": "/api/logs",
+      "actionLogging": {
+        "enabled": true,
+        "events": [
+          "product_viewed",
+          "add_to_cart",
+          "remove_from_cart",
+          "checkout_started",
+          "checkout_completed",
+          "payment_failed",
+          "dm_opened",
+          "bespoke_form_submitted"
+        ]
+      }
+    },
+    "fallbacks": {
+      "showContactOptions": true,
+      "showRetryButton": true,
+      "dmLink": "https://instagram.com/haorivision",
+      "bespokeFormLink": "/forms/bespoke.html"
+    },
+    "errorReporting": {
+      "enabled": false,
+      "service": "sentry",
+      "dsn": null
+    }
+  },
+  "environment": {
+    "development": {
+      "errorBoundaries": {
+        "enabled": true,
+        "showErrorDetails": true
+      },
+      "logging": {
+        "level": "debug",
+        "console": true
+      }
+    },
+    "production": {
+      "errorBoundaries": {
+        "enabled": true,
+        "showErrorDetails": false
+      },
+      "logging": {
+        "level": "error",
+        "console": false,
+        "remote": true
+      }
+    }
+  },
+  "notes": [
+    "Enable/disable reliability features via feature flags",
+    "Set REACT_APP_RELIABILITY_KIT=1 in .env to enable all features",
+    "Individual features can be toggled in this config",
+    "Error boundaries wrap components without modifying original code",
+    "Logging captures key user actions and errors with trace IDs",
+    "Fallback UI provides alternative contact methods when errors occur"
+  ]
+}

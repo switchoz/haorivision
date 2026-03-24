@@ -1,15 +1,70 @@
+# Dependencies
 node_modules/
-dist/
+**/node_modules/
+
+# Environment
 .env
 .env.local
+.env.production
 **/.env
 **/.env.local
-*.log
-coverage/
-AUDIT/
 
-# CI/Testing artifacts
-ci-summary.md
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Testing
+coverage/
 playwright-report/
 test-results/
 visual-pages/
+ci-summary.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+nul
+
+# Logs
+*.log
+npm-debug.log*
+pino-pretty.log
+
+# Archives & backups
+*.tar.gz
+*.zip
+*.bak
+*.backup
+*.safe
+backup/
+
+# Generated reports
+reports/
+AUDIT/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Claude Code
+.claude/
+
+# Runtime data
+data/clients.db
+data/utm_sessions.json
+data/experiments/
+
+# Misc
+.dry_run_config.json
+hikari_training_data.json
+chatgpt-archive*

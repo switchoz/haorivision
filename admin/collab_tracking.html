@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collab Tracking — HAORI VISION</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+
+    .btn:hover {
+      background: #4f46e5;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #1a1a1a;
+      border: 1px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #f9f9f9;
+    }
+
+    .dashboard {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: #f9f9f9;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 0.875rem;
+    }
+
+    th {
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.75rem;
+    }
+
+    tbody tr:hover {
+      background: #f9f9f9;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge.active {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge.pending {
+      background: #fed7aa;
+      color: #92400e;
+    }
+
+    .badge.completed {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .badge.overdue {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #6366f1;
+      transition: width 0.3s;
+    }
+
+    .link {
+      color: #6366f1;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.875rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #999;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">HAORI VISION — Collab Tracking</div>
+    <div class="actions">
+      <button class="btn" onclick="openNewCollabModal()">+ New Collab</button>
+      <button class="btn-secondary btn" onclick="exportData()">📊 Export CSV</button>
+      <button class="btn-secondary btn" onclick="refreshData()">🔄 Refresh</button>
+    </div>
+  </header>
+
+  <div class="dashboard">
+
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Active Collabs</div>
+        <div class="stat-value" id="activeCount">2</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Items on Loan</div>
+        <div class="stat-value" id="itemsOnLoan">3</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Total Value</div>
+        <div class="stat-value" id="totalValue">€2,050</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Overdue Returns</div>
+        <div class="stat-value" id="overdueCount" style="color: #dc2626;">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Completed</div>
+        <div class="stat-value" id="completedCount">1</div>
+      </div>
+    </div>
+
+    <!-- Active Collaborations -->
+    <div class="section">
+      <h2 class="section-title">Active Collaborations</h2>
+      <table id="activeCollabsTable">
+        <thead>
+          <tr>
+            <th>Agreement ID</th>
+            <th>Influencer</th>
+            <th>Platform</th>
+            <th>Items</th>
+            <th>Value</th>
+            <th>Content Progress</th>
+            <th>Return Deadline</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Content Performance -->
+    <div class="section">
+      <h2 class="section-title">Content Performance</h2>
+      <table id="contentTable">
+        <thead>
+          <tr>
+            <th>Influencer</th>
+            <th>Posts Published</th>
+            <th>Impressions</th>
+            <th>Engagement</th>
+            <th>Link Clicks</th>
+            <th>Conversions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Upcoming Deadlines -->
+    <div class="section">
+      <h2 class="section-title">Upcoming Deadlines</h2>
+      <table id="deadlinesTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Influencer</th>
+            <th>Event</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- New Collab Modal -->
+  <div id="newCollabModal" class="modal">
+    <div class="modal-content">
+      <h2 class="modal-title">New Collaboration</h2>
+
+      <div class="form-group">
+        <label class="form-label">Influencer Handle</label>
+        <input type="text" class="form-input" id="handleInput" placeholder="@dj_aurora">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">SKUs (comma-separated)</label>
+        <input type="text" class="form-input" id="skusInput" placeholder="ECLIPSE-01,LUMIN-01">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Sizes (comma-separated)</label>
+        <input type="text" class="form-input" id="sizesInput" placeholder="M,L">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Campaign Name</label>
+        <input type="text" class="form-input" id="campaignInput" placeholder="uv-promo-2025">
+      </div>
+
+      <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+        <button class="btn" onclick="createCollab()">Create Collab Pack</button>
+        <button class="btn-secondary btn" onclick="closeNewCollabModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    HAORI VISION — Collab Tracking v1.0 | Data updates in real-time
+  </footer>
+
+  <script>
+    // Mock data
+    const mockActiveCollabs = [
+      {
+        agreementId: 'COLLAB-2025-001',
+        influencer: '@dj_aurora',
+        name: 'Aurora Lindström',
+        platform: 'Instagram',
+        items: 'ECLIPSE-01, LUMIN-01',
+        value: '€1,370',
+        contentProgress: 60,
+        returnDeadline: '2025-11-15',
+        daysLeft: 37,
+        status: 'active'
+      },
+      {
+        agreementId: 'COLLAB-2025-002',
+        influencer: '@urban_nomad',
+        name: 'Marcus Chen',
+        platform: 'TikTok',
+        items: 'BLOOM-01',
+        value: '€680',
+        contentProgress: 40,
+        returnDeadline: '2025-11-20',
+        daysLeft: 42,
+        status: 'active'
+      }
+    ];
+
+    const mockContentPerformance = [
+      { influencer: '@dj_aurora', posts: '3/5', impressions: '45.2k', engagement: '7.8%', clicks: 342, conversions: 12 },
+      { influencer: '@urban_nomad', posts: '2/5', impressions: '38.5k', engagement: '9.3%', clicks: 289, conversions: 8 }
+    ];
+
+    const mockDeadlines = [
+      { date: '2025-10-15', influencer: '@dj_aurora', event: 'Reel #2 publication', priority: 'medium' },
+      { date: '2025-10-20', influencer: '@urban_nomad', event: 'Content plan completion', priority: 'high' },
+      { date: '2025-11-15', influencer: '@dj_aurora', event: 'Return deadline', priority: 'high' }
+    ];
+
+    function populateActiveCollabs() {
+      const tbody = document.querySelector('#activeCollabsTable tbody');
+      tbody.innerHTML = '';
+
+      mockActiveCollabs.forEach(collab => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><a href="#" class="link">${collab.agreementId}</a></td>
+          <td>
+            <div><strong>${collab.influencer}</strong></div>
+            <div style="font-size: 0.75rem; color: #666;">${collab.name}</div>
+          </td>
+          <td>${collab.platform}</td>
+          <td>${collab.items}</td>
+          <td>${collab.value}</td>
+          <td>
+            <div style="margin-bottom: 0.25rem; font-size: 0.75rem;">${collab.contentProgress}%</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${collab.contentProgress}%"></div>
+            </div>
+          </td>
+          <td>
+            <div>${collab.returnDeadline}</div>
+            <div style="font-size: 0.75rem; color: #666;">${collab.daysLeft} days left</div>
+          </td>
+          <td><span class="badge ${collab.status}">${collab.status}</span></td>
+          <td>
+            <a href="#" class="link" onclick="viewDetails('${collab.agreementId}')">View</a>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function populateContentPerformance() {
+      const tbody = document.querySelector('#contentTable tbody');
+      tbody.innerHTML = '';
+
+      mockContentPerformance.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${item.influencer}</strong></td>
+          <td>${item.posts}</td>
+          <td>${item.impressions}</td>
+          <td>${item.engagement}</td>
+          <td>${item.clicks}</td>
+          <td>${item.conversions}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function populateDeadlines() {
+      const tbody = document.querySelector('#deadlinesTable tbody');
+      tbody.innerHTML = '';
+
+      mockDeadlines.forEach(deadline => {
+        const tr = document.createElement('tr');
+        const priorityClass = deadline.priority === 'high' ? 'overdue' : 'pending';
+        tr.innerHTML = `
+          <td>${deadline.date}</td>
+          <td>${deadline.influencer}</td>
+          <td>${deadline.event}</td>
+          <td><span class="badge ${priorityClass}">${deadline.priority}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function openNewCollabModal() {
+      document.getElementById('newCollabModal').style.display = 'flex';
+    }
+
+    function closeNewCollabModal() {
+      document.getElementById('newCollabModal').style.display = 'none';
+    }
+
+    function createCollab() {
+      const handle = document.getElementById('handleInput').value;
+      const skus = document.getElementById('skusInput').value;
+      const sizes = document.getElementById('sizesInput').value;
+      const campaign = document.getElementById('campaignInput').value;
+
+      if (!handle || !skus || !sizes) {
+        alert('Please fill all required fields');
+        return;
+      }
+
+      alert(`Creating collab pack for ${handle}...\n\nCommand:\npython scripts/collab_pack.py --handle=${handle} --skus=${skus} --sizes=${sizes} --campaign=${campaign}`);
+
+      closeNewCollabModal();
+    }
+
+    function viewDetails(agreementId) {
+      alert(`Opening details for ${agreementId}...\n\nLocation: collab/agreements/${agreementId}/`);
+    }
+
+    function refreshData() {
+      populateActiveCollabs();
+      populateContentPerformance();
+      populateDeadlines();
+      alert('✅ Data refreshed!');
+    }
+
+    function exportData() {
+      let csv = 'Agreement ID,Influencer,Platform,Items,Value,Content Progress,Return Deadline,Status\n';
+      mockActiveCollabs.forEach(collab => {
+        csv += `${collab.agreementId},${collab.influencer},${collab.platform},"${collab.items}",${collab.value},${collab.contentProgress}%,${collab.returnDeadline},${collab.status}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `collab_tracking_${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Load data on page load
+    populateActiveCollabs();
+    populateContentPerformance();
+    populateDeadlines();
+
+    // Auto-refresh every 5 minutes
+    setInterval(refreshData, 5 * 60 * 1000);
+  </script>
+
+</body>
+</html>
