@@ -3,7 +3,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import ARCamera from "../components/ar/ARCamera";
 import HaoriOverlay from "../components/ar/HaoriOverlay";
 import { usePoseDetection } from "../components/ar/usePoseDetection";
-import productsData from "../data/demo-products-ru.json";
 import {
   X,
   Camera,
@@ -45,26 +44,28 @@ export default function ARTryOn() {
 
   // Загрузить реальные товары из каталога
   useEffect(() => {
-    // Преобразовать products в формат для AR примерки
-    const products = productsData.products.map((product) => ({
-      id: product.id,
-      name: product.name,
-      image: product.images.daylight.hero, // Используем дневное фото
-      uvImage: product.images.uv?.hero, // UV версия если есть
-      price: `$${product.price.toLocaleString()}`,
-      pattern: product.tagline,
-      collection: product.collection,
-    }));
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3010";
+    fetch(`${apiUrl}/api/products?category=haori&limit=20`)
+      .then((r) => r.json())
+      .then((data) => {
+        const products = (data.products || []).map((product) => ({
+          id: product.id,
+          name: product.name,
+          image: product.images?.daylight?.hero,
+          uvImage: product.images?.uv?.hero,
+          price: `$${product.price?.toLocaleString()}`,
+          pattern: product.tagline,
+          collection: product.productCollection,
+        }));
 
-    setHaoriOptions(products);
+        setHaoriOptions(products);
 
-    // Если передан productId, автоматически выбрать этот товар
-    if (productId) {
-      const selectedProduct = products.find((p) => p.id === productId);
-      if (selectedProduct) {
-        setSelectedHaori(selectedProduct);
-      }
-    }
+        if (productId) {
+          const selectedProduct = products.find((p) => p.id === productId);
+          if (selectedProduct) setSelectedHaori(selectedProduct);
+        }
+      })
+      .catch(() => {});
   }, [productId]);
 
   // Обработчик готовности видео

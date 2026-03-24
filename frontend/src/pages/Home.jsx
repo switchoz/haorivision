@@ -3,6 +3,9 @@ import { useTheme } from "../contexts/ThemeContext";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import UVParticles from "../components/UVParticles";
+import PageMeta from "../components/PageMeta";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
 
 const Home = () => {
   const { isUVMode } = useTheme();
@@ -10,13 +13,11 @@ const Home = () => {
   const [uvCompare, setUvCompare] = useState(false);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch(`${API_URL}/api/products?featured=true&limit=6`)
       .then((r) => r.json())
       .then((data) => {
         if (data.products)
-          setProducts(
-            data.products.filter((p) => p.status !== "archived").slice(0, 6),
-          );
+          setProducts(data.products.filter((p) => p.status !== "archived"));
       })
       .catch(() => {});
   }, []);
