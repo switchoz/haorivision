@@ -1,0 +1,364 @@
+{
+  "products": [
+    {
+      "id": "twin-001-mycelium",
+      "name": "Mycelium Dreams",
+      "collection": "Genesis Collection",
+      "tagline": "Where nature meets neon",
+      "price": 7200,
+      "currency": "USD",
+      "editions": {
+        "total": 8,
+        "remaining": 3,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "https://images.unsplash.com/photo-1558769132-cb1aea672c70?w=600&h=800&fit=crop",
+          "haori": "https://images.unsplash.com/photo-1558769132-cb1aea672c70?w=600&h=800&fit=crop",
+          "canvas": "https://images.unsplash.com/photo-1549887534-1541e9326642?w=600&h=800&fit=crop",
+          "detail1": "https://images.unsplash.com/photo-1558769132-cb1aea672c70?w=600&h=800&fit=crop",
+          "detail2": "https://images.unsplash.com/photo-1558769132-cb1aea672c70?w=600&h=800&fit=crop",
+          "lifestyle": "https://images.unsplash.com/photo-1558769132-cb1aea672c70?w=600&h=800&fit=crop"
+        },
+        "uv": {
+          "hero": "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=600&h=800&fit=crop",
+          "haori": "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=600&h=800&fit=crop",
+          "canvas": "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=600&h=800&fit=crop",
+          "detail1": "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=600&h=800&fit=crop",
+          "detail2": "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=600&h=800&fit=crop",
+          "transformation": "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=600&h=800&fit=crop"
+        }
+      },
+      "description": {
+        "short": "Organic mycelium networks come alive under UV light, transforming from black silence into neon green and purple bio-luminescence.",
+        "full": "Inspired by the hidden underground networks of fungal mycelium, this Twin Artwork reveals nature's secret communication system. In daylight, delicate black ink traces hint at organic connections. Under UV light, the entire network explodes into life with vivid neon green nodes and purple pathways, creating a living, breathing organism across both haori and canvas.",
+        "story": "Created during a month-long meditation in the forests of Yakushima, Japan. The artist spent days observing mycelium patterns under microscopes, translating their fractal beauty into wearable art. Each piece contains over 40 hours of hand-painting with specialized UV-reactive pigments."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% Silk Haori (Vintage Japanese)",
+          "weight": "280g premium silk",
+          "dimensions": {
+            "length": "95cm",
+            "width": "68cm (across shoulders)",
+            "sleeve": "49cm"
+          },
+          "sizes": ["One Size (Unisex)", "Fits S-XL"],
+          "technique": "Hand-painted UV fluorescent pigments",
+          "paintLayers": 4,
+          "dryingTime": "72 hours between layers",
+          "uvColors": ["Neon Green (#39FF14)", "Electric Purple (#B026FF)", "Cyan Glow (#00D4FF)"],
+          "care": "Dry clean only. Store away from direct sunlight. UV exposure recommended 1-2 hours max per wear."
+        },
+        "canvas": {
+          "material": "Belgian linen canvas, museum-grade",
+          "dimensions": {
+            "width": "60cm",
+            "height": "80cm",
+            "depth": "4cm (stretched on wooden frame)"
+          },
+          "technique": "Mixed media: Acrylic base + UV fluorescent layers",
+          "frame": "Black stained oak floating frame included",
+          "weight": "2.3kg (framed)",
+          "hanging": "D-ring hanging system + gallery wire",
+          "uvColors": ["Neon Green (#39FF14)", "Electric Purple (#B026FF)", "Bio Pink (#FF10F0)"]
+        },
+        "uvLamp": {
+          "included": true,
+          "model": "HAORI UV-365 Pro",
+          "wavelength": "365nm (optimal fluorescence)",
+          "power": "12W LED",
+          "coverage": "3 square meters",
+          "battery": "Rechargeable lithium-ion, 4-hour runtime",
+          "features": ["Adjustable intensity", "Magnetic mount", "USB-C charging"]
+        }
+      },
+      "packaging": {
+        "type": "Twin Box - Custom designed",
+        "dimensions": "85cm × 65cm × 15cm",
+        "materials": ["Matte black rigid box", "UV-reactive inner lining", "Custom tissue paper with mycelium print"],
+        "includes": [
+          "Artist signature card (hand-signed by LiZa)",
+          "Artist statement card",
+          "Care instruction booklet",
+          "UV lamp with charging cable",
+          "White gloves for handling"
+        ],
+        "weight": "4.5kg (total package)"
+      },
+      "authenticity": {
+        "certificate": "Letterpress printed, hand-numbered",
+        "signature": "Artist signed on both haori label and canvas back",
+        "hologram": "UV-reactive security hologram",
+        "nfc": "NFC chip embedded in haori label (tap to verify)"
+      },
+      "shipping": {
+        "regions": ["Worldwide"],
+        "estimatedDays": {
+          "domestic": "3-5 business days",
+          "international": "7-14 business days"
+        },
+        "carrier": "DHL Express (tracked & insured)",
+        "insurance": "Full value coverage included",
+        "customsDuty": "Buyer responsible for import duties"
+      },
+      "tags": ["Genesis Collection", "Nature", "Bio-luminescence", "Mycelium", "Organic", "Neon Green", "Purple"],
+      "featured": true,
+      "status": "available",
+      "releaseDate": "2025-01-15",
+      "artist": {
+        "name": "HIKARI Collective",
+        "bio": "Anonymous art collective exploring the intersection of nature, technology, and light.",
+        "website": "https://hikari-collective.art"
+      }
+    },
+    {
+      "id": "twin-002-void-bloom",
+      "name": "Void Bloom",
+      "collection": "Genesis Collection",
+      "tagline": "From emptiness, infinite light",
+      "price": 9800,
+      "currency": "USD",
+      "editions": {
+        "total": 5,
+        "remaining": 1,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop",
+          "haori": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop",
+          "canvas": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=800&fit=crop",
+          "detail1": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop",
+          "detail2": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop",
+          "lifestyle": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop"
+        },
+        "uv": {
+          "hero": "https://images.unsplash.com/photo-1526478806264-2d4a1c44e9a9?w=600&h=800&fit=crop",
+          "haori": "https://images.unsplash.com/photo-1526478806264-2d4a1c44e9a9?w=600&h=800&fit=crop",
+          "canvas": "https://images.unsplash.com/photo-1526478806264-2d4a1c44e9a9?w=600&h=800&fit=crop",
+          "detail1": "https://images.unsplash.com/photo-1526478806264-2d4a1c44e9a9?w=600&h=800&fit=crop",
+          "detail2": "https://images.unsplash.com/photo-1526478806264-2d4a1c44e9a9?w=600&h=800&fit=crop",
+          "transformation": "https://images.unsplash.com/photo-1526478806264-2d4a1c44e9a9?w=600&h=800&fit=crop"
+        }
+      },
+      "description": {
+        "short": "Pure white minimalism transforms into explosive mandala of pink, cyan, and purple light. The most dramatic transformation in the collection.",
+        "full": "Void Bloom represents the Buddhist concept of Śūnyatā (emptiness) - the idea that within the void lies infinite potential. The artwork begins as pure white space, almost invisible. Under UV light, concentric circles of fluorescent colors explode from the center, creating a hypnotic mandala that seems to pulse with energy. This is the flagship piece of the Genesis Collection.",
+        "story": "Created during a 30-day silent meditation retreat in Kyoto. The artist contemplated the nature of emptiness and light, resulting in this minimalist yet explosive work. The white-on-white daylight version took 3 weeks alone, requiring 8 layers of subtle texture to create dimension without color."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% Silk Haori (Vintage Japanese, Shōwa era)",
+          "weight": "300g premium silk (heavier grade)",
+          "dimensions": {
+            "length": "98cm",
+            "width": "70cm (across shoulders)",
+            "sleeve": "50cm"
+          },
+          "sizes": ["One Size (Unisex)", "Fits S-XL"],
+          "technique": "Multi-layer UV fluorescent + white-on-white embroidery",
+          "paintLayers": 8,
+          "dryingTime": "96 hours between layers",
+          "uvColors": ["Hot Pink (#FF10F0)", "Cyan Blast (#00D4FF)", "Electric Purple (#B026FF)", "UV Orange (#FF6600)"],
+          "care": "Dry clean only. Store in darkness. UV exposure recommended 1 hour max per wear (high intensity pigments)."
+        },
+        "canvas": {
+          "material": "Belgian linen canvas, museum-grade, triple-primed",
+          "dimensions": {
+            "width": "80cm",
+            "height": "100cm",
+            "depth": "5cm (deep edge stretched frame)"
+          },
+          "technique": "Mixed media: Textured gesso base + 12 UV fluorescent layers",
+          "frame": "White lacquered floating frame included",
+          "weight": "3.8kg (framed)",
+          "hanging": "French cleat hanging system (gallery-grade)",
+          "uvColors": ["Hot Pink (#FF10F0)", "Cyan Blast (#00D4FF)", "Electric Purple (#B026FF)", "UV Orange (#FF6600)"]
+        },
+        "uvLamp": {
+          "included": true,
+          "model": "HAORI UV-365 Pro MAX",
+          "wavelength": "365nm (optimal fluorescence)",
+          "power": "18W LED (50% more powerful than standard)",
+          "coverage": "5 square meters",
+          "battery": "Rechargeable lithium-ion, 6-hour runtime",
+          "features": ["3-level intensity control", "Magnetic mount", "Tripod thread", "USB-C fast charging", "Memory mode"]
+        }
+      },
+      "packaging": {
+        "type": "Twin Box Deluxe - Premium edition",
+        "dimensions": "95cm × 75cm × 18cm",
+        "materials": ["Matte white rigid box with embossed mandala", "UV-reactive silk inner lining", "Custom letterpress tissue paper"],
+        "includes": [
+          "Artist signature card (letterpress + gold foil, hand-signed by LiZa)",
+          "Artist statement card (signed)",
+          "Meditation guide booklet",
+          "Care instruction booklet",
+          "UV lamp Pro MAX with charging cable",
+          "White silk gloves for handling",
+          "Limited edition art print (A4, UV test print)"
+        ],
+        "weight": "6.2kg (total package)"
+      },
+      "authenticity": {
+        "certificate": "Letterpress printed with gold foil, hand-numbered",
+        "signature": "Artist signed + thumbprint on canvas back, embroidered signature on haori",
+        "hologram": "Multi-layer UV-reactive security hologram",
+        "nfc": "NFC chip embedded in haori label + canvas frame (tap to verify)",
+        "dna": "Unique UV-reactive 'fingerprint' pattern on certificate (matches artwork)"
+      },
+      "shipping": {
+        "regions": ["Worldwide"],
+        "estimatedDays": {
+          "domestic": "2-3 business days (priority)",
+          "international": "5-10 business days (express)"
+        },
+        "carrier": "DHL Express (tracked, insured, signature required)",
+        "insurance": "Full value coverage + $1,000 extra protection",
+        "customsDuty": "Buyer responsible for import duties",
+        "whiteGlove": "Available on request (installation service)"
+      },
+      "tags": ["Genesis Collection", "Mandala", "Minimalism", "Void", "Buddhism", "Pink", "Cyan", "Flagship"],
+      "featured": true,
+      "status": "limited",
+      "releaseDate": "2025-01-15",
+      "artist": {
+        "name": "HIKARI Collective",
+        "bio": "Anonymous art collective exploring the intersection of nature, technology, and light.",
+        "website": "https://hikari-collective.art"
+      },
+      "awards": ["Awwwards Site of the Day Nominee", "Featured in Vogue Japan Digital Art Issue"]
+    },
+    {
+      "id": "twin-003-neon-ancestors",
+      "name": "Neon Ancestors",
+      "collection": "Genesis Collection",
+      "tagline": "Past meets future in electric light",
+      "price": 8400,
+      "currency": "USD",
+      "editions": {
+        "total": 6,
+        "remaining": 2,
+        "numbered": true
+      },
+      "images": {
+        "daylight": {
+          "hero": "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop",
+          "haori": "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop",
+          "canvas": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&h=800&fit=crop",
+          "detail1": "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop",
+          "detail2": "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop",
+          "lifestyle": "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop"
+        },
+        "uv": {
+          "hero": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop",
+          "haori": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop",
+          "canvas": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop",
+          "detail1": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop",
+          "detail2": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop",
+          "transformation": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&h=800&fit=crop"
+        }
+      },
+      "description": {
+        "short": "Traditional Japanese kanji and geometric patterns merge with cyberpunk aesthetics. Ancient wisdom glows in neon orange, green, and purple.",
+        "full": "Neon Ancestors bridges 1,000 years of Japanese art history with the cyberpunk future. Traditional kanji characters spelling ancient wisdom are combined with geometric patterns inspired by Edo-era textiles. In daylight, the work appears as elegant black calligraphy. Under UV light, each character erupts into electric color, creating a dialogue between past and future, tradition and innovation.",
+        "story": "Inspired by the artist's discovery of ancient UV-reactive minerals in Japanese temple paintings. The piece explores how traditional Japanese spirituality (神道/Shinto) might express itself in a neon-lit future Tokyo. Each kanji was hand-painted over 2 weeks, with UV layers added during full moon nights for symbolic resonance."
+      },
+      "specifications": {
+        "haori": {
+          "material": "100% Silk Haori (Vintage Japanese, Taishō era)",
+          "weight": "290g premium silk",
+          "dimensions": {
+            "length": "96cm",
+            "width": "69cm (across shoulders)",
+            "sleeve": "50cm"
+          },
+          "sizes": ["One Size (Unisex)", "Fits S-XL"],
+          "technique": "Traditional Japanese brush calligraphy + UV fluorescent pigments",
+          "paintLayers": 6,
+          "dryingTime": "72 hours between layers",
+          "uvColors": ["Cyber Orange (#FF6600)", "Matrix Green (#39FF14)", "Purple Haze (#B026FF)", "Pink Glow (#FF10F0)"],
+          "care": "Dry clean only. Store flat or hanging. UV exposure recommended 2 hours max per wear.",
+          "culturalSignificance": "Features 12 traditional kanji representing virtues: 光 (light), 夢 (dream), 魂 (soul), 道 (path), etc."
+        },
+        "canvas": {
+          "material": "Belgian linen canvas, museum-grade",
+          "dimensions": {
+            "width": "70cm",
+            "height": "90cm",
+            "depth": "4cm (stretched on wooden frame)"
+          },
+          "technique": "Mixed media: Sumi ink base + UV fluorescent layers + geometric stenciling",
+          "frame": "Black ash wood floating frame included",
+          "weight": "2.9kg (framed)",
+          "hanging": "D-ring hanging system + gallery wire",
+          "uvColors": ["Cyber Orange (#FF6600)", "Matrix Green (#39FF14)", "Purple Haze (#B026FF)"],
+          "calligraphy": "Features 27 kanji characters in total, arranged in spiral composition"
+        },
+        "uvLamp": {
+          "included": true,
+          "model": "HAORI UV-365 Pro",
+          "wavelength": "365nm (optimal fluorescence)",
+          "power": "12W LED",
+          "coverage": "3 square meters",
+          "battery": "Rechargeable lithium-ion, 4-hour runtime",
+          "features": ["Adjustable intensity", "Magnetic mount", "USB-C charging"]
+        }
+      },
+      "packaging": {
+        "type": "Twin Box - Custom designed",
+        "dimensions": "88cm × 68cm × 16cm",
+        "materials": ["Matte black rigid box with embossed kanji", "UV-reactive orange inner lining", "Custom washi paper wrapping"],
+        "includes": [
+          "Artist signature card (letterpress with orange foil, hand-signed by LiZa)",
+          "Artist statement card",
+          "Kanji meaning guide (bilingual JP/EN)",
+          "Care instruction booklet",
+          "UV lamp with charging cable",
+          "White gloves for handling",
+          "Incense stick set (Japanese temple blend)"
+        ],
+        "weight": "5.1kg (total package)"
+      },
+      "authenticity": {
+        "certificate": "Letterpress printed with orange foil, hand-numbered",
+        "signature": "Artist signed + red ink seal (hanko) on both pieces",
+        "hologram": "UV-reactive security hologram with kanji pattern",
+        "nfc": "NFC chip embedded in haori label (tap to verify)"
+      },
+      "shipping": {
+        "regions": ["Worldwide"],
+        "estimatedDays": {
+          "domestic": "3-5 business days",
+          "international": "7-14 business days"
+        },
+        "carrier": "DHL Express (tracked & insured)",
+        "insurance": "Full value coverage included",
+        "customsDuty": "Buyer responsible for import duties"
+      },
+      "tags": ["Genesis Collection", "Calligraphy", "Kanji", "Cyberpunk", "Japanese", "Orange", "Green", "Cultural"],
+      "featured": true,
+      "status": "available",
+      "releaseDate": "2025-01-15",
+      "artist": {
+        "name": "HIKARI Collective",
+        "bio": "Anonymous art collective exploring the intersection of nature, technology, and light.",
+        "website": "https://hikari-collective.art"
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "totalProducts": 3,
+    "totalEditions": 19,
+    "availableEditions": 6,
+    "priceRange": {
+      "min": 7200,
+      "max": 9800,
+      "currency": "USD"
+    }
+  }
+}

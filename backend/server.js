@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import helmet from "helmet";
+import compression from "compression";
 import csp from "./middlewares/cspSafe.js";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
@@ -27,6 +28,13 @@ import bespokeSlotsRoutes from "./routes/bespokeSlots.js";
 import sitemapRoutes from "./routes/sitemap.js";
 import payments from "./routes/payments.js";
 import logsRoute from "./routes/logs.js";
+import adminAuth from "./routes/admin.auth.js";
+import adminCore from "./routes/admin.core.js";
+import adminProducts from "./routes/admin.products.js";
+import adminFlags from "./routes/admin.flags.js";
+import adminOrders from "./routes/admin.orders.js";
+import adminOAuth from "./routes/admin/oauth.js";
+import { passport } from "./config/passport.js";
 
 // Import middleware
 import { cacheHeadersMiddleware } from "./middlewares/cacheHeaders.js";
@@ -35,10 +43,12 @@ import requestId from "./middlewares/requestId.js";
 import httpLogger from "./middlewares/logger.js";
 import errorHandler from "./middlewares/errorHandler.js";
 
-// import productRoutes from './routes/productRoutes.js';
-// import orderRoutes from './routes/orderRoutes.js';
-// import customerRoutes from './routes/customerRoutes.js';
-// import adminRoutes from './routes/adminRoutes.js';
+import telegramRoutes from "./routes/telegram.js";
+import productRoutes from "./routes/products.js";
+import orderRoutes from "./routes/orders.js";
+import contactRoutes from "./routes/contact.js";
+import chatRoutes from "./routes/chat.js";
+import haori3dRoutes from "./routes/haori3d.js";
 import {
   edgeCacheMiddleware,
   edgeCacheAgeMiddleware,
@@ -50,6 +60,7 @@ import "./cron/weeklyReport.js";
 import "./cron/weeklyAnalyticsReport.js";
 import "./cron/aiDirector.js";
 import "./cron/artisticEvolution.js";
+import "./cron/telegramAutoPost.js";
 
 dotenv.config();
 
@@ -61,6 +72,7 @@ connectDB();
 
 // Middleware
 app.use(helmet());
+app.use(compression());
 app.use(requestId);
 app.use(httpLogger());
 
@@ -70,7 +82,20 @@ app.use(edgeCacheAgeMiddleware);
 app.use(csp()); // P21 Content Security Policy
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3012",
+    origin: function (origin, callback) {
+      const allowed = [
+        process.env.CLIENT_URL,
+        "http://localhost:3012",
+        "https://haorivision.com",
+        "https://www.haorivision.com",
+      ].filter(Boolean);
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin || allowed.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   }),
 );
@@ -78,6 +103,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+
+// Passport initialization
+app.use(passport.initialize());
 
 // Cache headers middleware (P14)
 app.use(cacheHeadersMiddleware);
@@ -87,6 +115,8 @@ app.use(utmCaptureMiddleware);
 // Serve static files
 app.use("/configs", express.static(path.join(__dirname, "..", "configs")));
 app.use("/admin", express.static(path.join(__dirname, "..", "admin")));
+app.use("/miniapp", express.static(path.join(__dirname, "public", "miniapp")));
+app.use("/uploads", express.static(path.join(__dirname, "public", "uploads")));
 
 // Serve favicon
 app.get("/favicon.ico", (req, res) => {
@@ -96,10 +126,20 @@ app.get("/favicon.ico", (req, res) => {
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 app.use("/api/", limiter);
+
+// Strict rate-limit for sensitive endpoints
+const strictLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: { error: "Too many requests, please try again later" },
+});
+app.use("/api/contact", strictLimiter);
+app.use("/api/chat", strictLimiter);
+app.use("/api/telegram/generate", strictLimiter);
 
 // Basic routes
 app.get("/", (req, res) => {
@@ -125,6 +165,17 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+// Artist data
+import { readFileSync } from "fs";
+const artistData = JSON.parse(
+  readFileSync(path.join(__dirname, "..", "data", "artist.json"), "utf-8"),
+);
+app.get("/api/artist", (req, res) => {
+  // Exclude private contact info from public API
+  const { phone, email, ...publicData } = artistData;
+  res.json(publicData);
+});
+
 // Routes
 app.use("/api/brand-analysis", brandAnalysisRoutes);
 app.use("/api/venues", venuesRoutes);
@@ -135,11 +186,21 @@ app.use("/api/metrics", metricsRoutes);
 app.use("/api/bespoke-slots", bespokeSlotsRoutes);
 app.use("/api/payments", payments);
 app.use("/api/logs", logsRoute);
+app.use("/api/telegram", telegramRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/haori-3d", haori3dRoutes);
 app.use("/", sitemapRoutes); // Sitemap routes (no /api prefix)
-// app.use('/api/products', productRoutes);
-// app.use('/api/orders', orderRoutes);
-// app.use('/api/customers', customerRoutes);
-// app.use('/api/admin', adminRoutes);
+
+// Admin routes
+app.use("/api/admin/auth", adminAuth);
+app.use("/api/admin/auth", adminOAuth); // OAuth routes
+app.use("/api/admin", adminCore);
+app.use("/api/admin/products", adminProducts);
+app.use("/api/admin/flags", adminFlags);
+app.use("/api/admin/orders", adminOrders);
 
 // Error handling middleware
 app.use(errorHandler);

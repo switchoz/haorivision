@@ -15,7 +15,6 @@ const Shop = () => {
       edition: "3 of 8",
       price: 5400,
       status: "available",
-      nft: true,
       image: "mycelium",
     },
     {
@@ -26,7 +25,6 @@ const Shop = () => {
       edition: "1 of 5",
       price: 4500,
       status: "upcoming",
-      nft: true,
       image: "void",
     },
     {
@@ -37,7 +35,6 @@ const Shop = () => {
       edition: "5 of 12",
       price: 6200,
       status: "concept",
-      nft: true,
       image: "neon",
     },
     {
@@ -48,7 +45,6 @@ const Shop = () => {
       edition: "2 of 8",
       price: 2200,
       status: "available",
-      nft: true,
       image: "mycelium",
     },
   ];
@@ -73,7 +69,7 @@ const Shop = () => {
             Магазин
           </h1>
           <p className="text-xl text-zinc-400">
-            Каждая работа — уникальный артефакт света, связанный с NFT
+            Каждая работа — уникальный артефакт света
           </p>
         </motion.div>
 
@@ -155,21 +151,6 @@ const Shop = () => {
                     {product.status}
                   </span>
                 </div>
-
-                {/* NFT Badge */}
-                {product.nft && (
-                  <div className="absolute top-3 left-3">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        isUVMode
-                          ? "bg-uv-purple/30 text-uv-purple"
-                          : "bg-purple-500/20 text-purple-400"
-                      }`}
-                    >
-                      NFT
-                    </span>
-                  </div>
-                )}
               </div>
 
               {/* Product Info */}
@@ -224,80 +205,6 @@ const Shop = () => {
           ))}
         </div>
 
-        {/* NFT Information Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-zinc-900 rounded-lg p-12 mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2
-              className={`text-3xl font-display font-bold mb-4 ${
-                isUVMode ? "gradient-text" : "text-white"
-              }`}
-            >
-              NFT Сертификат Подлинности
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">
-              Каждая работа HAORI VISION поставляется с блокчейн-сертификатом,
-              гарантирующим подлинность и предоставляющим права цифрового
-              владения.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "🔐",
-                title: "Подтверждено Блокчейном",
-                desc: "Стандарт ERC-721 на Ethereum",
-              },
-              {
-                icon: "📸",
-                title: "Изображения Высокого Разрешения",
-                desc: "Включены фото при дневном свете и УФ",
-              },
-              {
-                icon: "💎",
-                title: "10% Роялти",
-                desc: "Художник получает роялти с перепродаж",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                className="text-center"
-              >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3
-                  className={`text-lg font-semibold mb-2 ${
-                    isUVMode ? "text-uv-pink" : "text-white"
-                  }`}
-                >
-                  {item.title}
-                </h3>
-                <p className="text-zinc-400 text-sm">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <a
-              href="https://opensea.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 text-sm ${
-                isUVMode
-                  ? "text-uv-cyan hover:text-uv-pink"
-                  : "text-zinc-400 hover:text-white"
-              } transition-colors`}
-            >
-              Посмотреть на OpenSea →
-            </a>
-          </div>
-        </motion.div>
-
         {/* Custom Orders */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -314,8 +221,8 @@ const Shop = () => {
           </h2>
           <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
             Закажите уникальное творение HAORI VISION, разработанное специально
-            для вас. Каждая индивидуальная работа единственна в своём роде,
-            создаётся в сотрудничестве с художником.
+            для вас. Художник Елизавета Федькина (LiZa) создаст работу в
+            потоковом состоянии — из вашей энергии, цвета и формы.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}

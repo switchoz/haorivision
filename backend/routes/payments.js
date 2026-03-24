@@ -1,6 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { createCheckout, handleWebhook } from "../services/paymentService.js";
+import {
+  createCheckout,
+  createPaymentIntent,
+  handleWebhook,
+} from "../services/paymentService.js";
 import { CreateCheckoutSchema } from "../schemas/index.js";
 
 const router = express.Router();
@@ -17,6 +21,22 @@ router.post("/checkout", async (req, res, next) => {
       customerEmail: email,
     });
     res.json(out);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post("/create-intent", async (req, res, next) => {
+  try {
+    const { amount, currency, orderId, customerEmail } = req.body;
+    if (!amount) return res.status(400).json({ error: "amount is required" });
+    const result = await createPaymentIntent({
+      amount,
+      currency,
+      orderId,
+      customerEmail,
+    });
+    res.json(result);
   } catch (e) {
     next(e);
   }

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Enhanced Viewport Settings for Cross-Device Compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+
+    <!-- SEO -->
+    <meta name="description" content="HAORI VISION — носимое световое искусство. Ручная роспись UV-пигментами. Хаори, джинсы, куртки. Каждое изделие уникально." />
+    <meta name="keywords" content="haori, UV art, wearable art, ручная роспись, флуоресцентная живопись, хаори, носимое искусство" />
+    <meta name="author" content="HAORI VISION" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://haorivision.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HAORI VISION — Wearable Light Art" />
+    <meta property="og:description" content="Носимое световое искусство. Ручная роспись UV-пигментами. Каждое изделие — единственный экземпляр." />
+    <meta property="og:url" content="https://haorivision.com" />
+    <meta property="og:site_name" content="HAORI VISION" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HAORI VISION — Wearable Light Art" />
+    <meta name="twitter:description" content="Носимое световое искусство. Ручная роспись UV-пигментами." />
+
+    <!-- Cross-Browser Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- PWA and Mobile Optimization -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+    <!-- Performance and Rendering Hints -->
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="cleartype" content="on" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" href="/vite.svg" />
+
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="//localhost:3010" />
+
+    <!-- Preconnect to Backend API -->
+    <link rel="preconnect" href="http://localhost:3010" crossorigin />
+
+    <title>HAORI VISION — Wearable Light Art</title>
+
+    <!-- Защита от конфликтов криптокошельков -->
+    <script>
+      // Блокируем множественную инициализацию TronWeb
+      (function() {
+        // Перехватываем console ПЕРЕД загрузкой скриптов расширений
+        const originalConsoleWarn = console.warn;
+        const originalConsoleError = console.error;
+        const originalConsoleLog = console.log;
+
+        console.warn = function(...args) {
+          const msg = String(args[0] || '');
+
+          // Игнорируем расширения криптокошельков
+          if (msg.includes('TronWeb') ||
+              msg.includes('TronLink') ||
+              msg.includes('already initiated') ||
+              msg.includes('Backpack') ||
+              msg.includes("couldn't override")) {
+            return;
+          }
+
+          // Игнорируем Stripe dev warnings
+          if (msg.includes('Stripe.js integration over HTTP') ||
+              msg.includes('live Stripe.js integrations must use HTTPS')) {
+            return;
+          }
+
+          // Игнорируем AudioContext warnings (нормальное поведение браузера)
+          if (msg.includes('AudioContext') ||
+              msg.includes('user gesture') ||
+              msg.includes('autoplay')) {
+            return;
+          }
+
+          originalConsoleWarn.apply(console, args);
+        };
+
+        console.error = function(...args) {
+          const msg = String(args[0] || '');
+          const str = JSON.stringify(args);
+
+          // Игнорируем ошибки расширений криптокошельков
+          if (msg.includes('TronWeb') ||
+              msg.includes('bybit:page provider') ||
+              msg.includes('Namada') ||
+              msg.includes('message port closed') ||
+              msg.includes('Backpack') ||
+              msg.includes("couldn't override") ||
+              msg.includes('window.ethereum')) {
+            return;
+          }
+
+          // Игнорируем Stripe origin errors от расширений
+          if (msg.includes("origins don't match") ||
+              msg.includes('stripe.com') ||
+              msg.includes('stripe.network') ||
+              msg.includes('Failed to load Stripe') ||
+              msg.includes('ERR_NETWORK_CHANGED')) {
+            return;
+          }
+
+          // Игнорируем React DevTools errors
+          if (msg.includes('Invalid argument not valid semver') ||
+              msg.includes('react_devtools') ||
+              str.includes('react_devtools')) {
+            return;
+          }
+
+          // Игнорируем JSX attribute warnings
+          if (msg.includes('non-boolean attribute') ||
+              msg.includes('Received `true` for a non-boolean')) {
+            return;
+          }
+
+          originalConsoleError.apply(console, args);
+        };
+
+        console.log = function(...args) {
+          const msg = String(args[0] || '');
+
+          // Игнорируем логи расширений
+          if (msg.includes('bybit:page provider') ||
+              msg.includes('Listening on port') ||
+              msg.includes('[INFO]')) {
+            return;
+          }
+
+          // Игнорируем Tone.js startup messages
+          if (msg.includes('Tone.js v') ||
+              msg.includes('* Tone.js')) {
+            return;
+          }
+
+          originalConsoleLog.apply(console, args);
+        };
+
+        // Защищаем window от переопределения (только getters/setters)
+        try {
+          Object.defineProperty(window, 'tronWeb', {
+            configurable: false,
+            set: function(value) {
+              if (!this._tronWebSet) {
+                this._tronWebValue = value;
+                this._tronWebSet = true;
+              }
+            },
+            get: function() {
+              return this._tronWebValue;
+            }
+          });
+        } catch (e) {
+          // Уже определено, игнорируем
+        }
+
+        // Предотвращаем переопределение ethereum
+        try {
+          Object.defineProperty(window, 'ethereum', {
+            configurable: false,
+            set: function(value) {
+              if (!this._ethereumSet) {
+                this._ethereumValue = value;
+                this._ethereumSet = true;
+              }
+            },
+            get: function() {
+              return this._ethereumValue;
+            }
+          });
+        } catch (e) {
+          // Уже определено, игнорируем
+        }
+      })();
+    </script>
+    
+    <!-- Feature Detection & Polyfills -->
+    <script>
+      // Detect critical features
+      (function() {
+        const features = {
+          webgl: !!document.createElement('canvas').getContext('webgl'),
+          webgl2: !!document.createElement('canvas').getContext('webgl2'),
+          webp: false,
+          avif: false
+        };
+        
+        // Test WebP support
+        const webpTest = new Image();
+        webpTest.onload = webpTest.onerror = function() {
+          features.webp = (webpTest.height === 1);
+        };
+        webpTest.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+        
+        // Test AVIF support
+        const avifTest = new Image();
+        avifTest.onload = avifTest.onerror = function() {
+          features.avif = (avifTest.height === 1);
+        };
+        avifTest.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+        
+        window.__HAORI_FEATURES__ = features;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

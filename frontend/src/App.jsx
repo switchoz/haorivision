@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, Suspense, lazy } from "react";
+import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 
@@ -24,11 +25,23 @@ import EventPage from "./pages/EventPage";
 import UnboxingPage from "./pages/UnboxingPage";
 import UnboxingFeedbackPage from "./pages/UnboxingFeedbackPage";
 import Gallery from "./pages/Gallery";
+const ARTryOn = lazy(() => import("./pages/ARTryOn"));
+const Haori3DStudio = lazy(() => import("./pages/Haori3DStudio"));
 import Metrics from "./pages/admin/Metrics";
 import TestErrorBoundary from "./pages/TestErrorBoundary";
 import NotFound from "./pages/NotFound";
 import ServerError from "./pages/ServerError";
 import { setupErrorTracking } from "./lib/logger";
+
+// Admin Panel Components
+import Guard from "./admin/Guard";
+import AdminLayout from "./admin/Layout";
+import AdminLogin from "./admin/Login";
+import Dashboard from "./admin/pages/Dashboard";
+import Orders from "./admin/pages/Orders";
+import Flags from "./admin/pages/Flags";
+import AdminProducts from "./admin/pages/Products";
+import Logs from "./admin/pages/Logs";
 
 function App() {
   // Setup global error tracking for Reliability Kit
@@ -39,6 +52,7 @@ function App() {
   }, []);
   return (
     <ThemeProvider>
+      <Toaster position="top-right" />
       <Router>
         <Suspense
           fallback={<div className="p-8 text-neutral-400">Loading…</div>}
@@ -68,6 +82,8 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="contact" element={<Contact />} />
               <Route path="faq" element={<FAQ />} />
+              <Route path="ar-tryon" element={<ARTryOn />} />
+              <Route path="3d-studio" element={<Haori3DStudio />} />
               <Route path="admin/metrics" element={<Metrics />} />
               <Route
                 path="test-error-boundary"
@@ -75,8 +91,41 @@ function App() {
               />
               {/* Error Pages (P22) */}
               <Route path="/500" element={<ServerError />} />
-              <Route path="*" element={<NotFound />} /> {/* 404 Catch-all */}
             </Route>
+
+            {/* Admin Panel Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin"
+              element={
+                <Guard>
+                  <AdminLayout />
+                </Guard>
+              }
+            >
+              <Route index element={<Dashboard />} />
+              <Route path="orders" element={<Orders />} />
+              <Route
+                path="products"
+                element={
+                  <Guard allow={["admin", "editor"]}>
+                    <AdminProducts />
+                  </Guard>
+                }
+              />
+              <Route
+                path="flags"
+                element={
+                  <Guard allow={["admin"]}>
+                    <Flags />
+                  </Guard>
+                }
+              />
+              <Route path="logs" element={<Logs />} />
+            </Route>
+
+            {/* 404 Catch-all */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </Router>

@@ -1,0 +1,293 @@
+/**
+ * HaoriVision Telegram Mini App — Core
+ * SPA Router + Telegram WebApp + State
+ */
+
+const App = {
+  tg: null,
+  user: null,
+  currentScreen: "home",
+  cart: [],
+  orders: [],
+  products: [],
+
+  // Fallback product data (used when API is unavailable)
+  fallbackProducts: [
+    {
+      id: "haori-neon-dragon",
+      name: "Неоновый дракон",
+      category: "haori",
+      priceType: "custom",
+      price: null,
+      currency: "USD",
+      images: [
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80",
+      ],
+      shortDesc: "UV-реактивный дракон с традиционными элементами",
+      longDesc:
+        "Ручная роспись UV-реактивного дракона, сочетающая древнюю символику с современной неоновой эстетикой. Каждое изделие уникально и светится в ультрафиолете.",
+      tags: ["ручная работа", "UV", "лимитированная"],
+      featured: true,
+      availability: "made_to_order",
+    },
+    {
+      id: "jeans-mandala",
+      name: "Мандала джинсы",
+      category: "jeans",
+      priceType: "fixed",
+      price: 299,
+      currency: "USD",
+      images: [
+        "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80",
+      ],
+      shortDesc: "Сакральная геометрия на премиальном дениме",
+      longDesc:
+        "Сложные узоры мандалы, расписанные вручную на премиальном японском дениме с UV-реактивными акцентами.",
+      tags: ["ручная работа", "UV", "геометрия"],
+      featured: true,
+      availability: "in_stock",
+    },
+    {
+      id: "jacket-cosmic",
+      name: "Космический бомбер",
+      category: "jackets",
+      priceType: "fixed",
+      price: 449,
+      currency: "USD",
+      images: [
+        "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80",
+      ],
+      shortDesc: "Бомбер в стиле галактики",
+      longDesc:
+        "Стрит-стайл бомбер с расписанными вручную космическими узорами и UV-реактивными звёздами.",
+      tags: ["ручная работа", "UV", "космос"],
+      featured: true,
+      availability: "made_to_order",
+    },
+    {
+      id: "art-mandala-canvas",
+      name: "Мандала холст",
+      category: "art",
+      priceType: "fixed",
+      price: 189,
+      currency: "USD",
+      images: [
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80",
+      ],
+      shortDesc: "Оригинальная мандала на холсте",
+      longDesc:
+        "Расписанная вручную мандала на премиальном холсте с UV-реактивными элементами для медитативных пространств.",
+      tags: ["ручная работа", "UV", "медитация"],
+      featured: true,
+      availability: "in_stock",
+    },
+    {
+      id: "haori-phoenix",
+      name: "Феникс хаори",
+      category: "haori",
+      priceType: "fixed",
+      price: 399,
+      currency: "USD",
+      images: [
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80",
+      ],
+      shortDesc: "Символ возрождения в неоновом пламени",
+      longDesc:
+        "Величественный дизайн феникса с неоновым пламенем и UV-реактивными деталями.",
+      tags: ["ручная работа", "UV", "феникс"],
+      featured: false,
+      availability: "made_to_order",
+    },
+    {
+      id: "accessories-backpack",
+      name: "Космический рюкзак",
+      category: "accessories",
+      priceType: "fixed",
+      price: 159,
+      currency: "USD",
+      images: [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80",
+      ],
+      shortDesc: "Расписанный вручную космический дизайн",
+      longDesc:
+        "Премиальный рюкзак с расписанными вручную галактическими узорами и светящимися в темноте звёздами.",
+      tags: ["ручная работа", "космос", "практичный"],
+      featured: false,
+      availability: "in_stock",
+    },
+  ],
+
+  // Initialize
+  async init() {
+    this.initTelegram();
+    this.loadSavedData();
+    await this.loadProducts();
+    this.initRouter();
+    this.navigate(window.location.hash.slice(1) || "home");
+  },
+
+  initTelegram() {
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      this.tg = tg;
+      tg.ready();
+      tg.expand();
+      tg.setHeaderColor("#0a0a0a");
+      tg.setBackgroundColor("#0a0a0a");
+
+      if (tg.initDataUnsafe?.user) {
+        this.user = tg.initDataUnsafe.user;
+      }
+
+      tg.BackButton.onClick(() => {
+        if (this.currentScreen !== "home") {
+          this.navigate("home");
+        }
+      });
+
+      this.haptic("light");
+    }
+  },
+
+  haptic(type) {
+    this.tg?.HapticFeedback?.impactOccurred(type);
+  },
+
+  hapticNotify(type) {
+    this.tg?.HapticFeedback?.notificationOccurred(type);
+  },
+
+  async loadProducts() {
+    try {
+      const data = await Api.getProducts();
+      if (data?.products?.length) {
+        this.products = data.products;
+      } else {
+        this.products = this.fallbackProducts;
+      }
+    } catch {
+      this.products = this.fallbackProducts;
+    }
+  },
+
+  loadSavedData() {
+    try {
+      const saved = localStorage.getItem("haori_orders");
+      if (saved) this.orders = JSON.parse(saved);
+    } catch {
+      /* ignore */
+    }
+  },
+
+  // Router
+  initRouter() {
+    window.addEventListener("hashchange", () => {
+      const hash = window.location.hash.slice(1) || "home";
+      const [screen, ...params] = hash.split("/");
+      this.renderScreen(screen, params.join("/"));
+    });
+  },
+
+  navigate(screen, param) {
+    this.haptic("light");
+    const hash = param ? `${screen}/${param}` : screen;
+    window.location.hash = hash;
+  },
+
+  renderScreen(screen, param) {
+    this.currentScreen = screen;
+    const app = document.getElementById("app");
+
+    // Telegram back button
+    if (this.tg) {
+      if (screen === "home") {
+        this.tg.BackButton.hide();
+      } else {
+        this.tg.BackButton.show();
+      }
+    }
+
+    switch (screen) {
+      case "home":
+        app.innerHTML = Screens.home();
+        break;
+      case "catalog":
+        app.innerHTML = Screens.catalog();
+        break;
+      case "product":
+        app.innerHTML = Screens.product(param);
+        break;
+      case "portfolio":
+        app.innerHTML = Screens.portfolio();
+        break;
+      case "order":
+        app.innerHTML = Screens.orderCustom();
+        break;
+      case "checkout":
+        app.innerHTML = Screens.checkout(param);
+        break;
+      default:
+        app.innerHTML = Screens.home();
+        break;
+    }
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Init screen-specific logic
+    switch (screen) {
+      case "catalog":
+        Screens.initCatalog();
+        break;
+      case "product":
+        Screens.initProduct(param);
+        break;
+      case "checkout":
+        Screens.initCheckout(param);
+        break;
+    }
+
+    this.updateNav(screen);
+  },
+
+  updateNav(screen) {
+    document.querySelectorAll(".nav-item").forEach((el) => {
+      el.classList.toggle("active", el.dataset.screen === screen);
+    });
+  },
+
+  formatPrice(product) {
+    if (!product) return "";
+    if (product.priceType === "custom") return "Индивидуальная цена";
+    return `$${product.price}`;
+  },
+
+  getProduct(id) {
+    return this.products.find((p) => p.id === id || p._id === id);
+  },
+
+  createOrder(orderData) {
+    const order = {
+      id: `order_${Date.now()}`,
+      userId: this.user?.id || null,
+      username: this.user?.username || null,
+      status: "sent",
+      createdAt: new Date().toISOString(),
+      ...orderData,
+    };
+    this.orders.push(order);
+    localStorage.setItem("haori_orders", JSON.stringify(this.orders));
+
+    if (this.tg) {
+      try {
+        this.tg.sendData(JSON.stringify(order));
+      } catch {
+        /* fallback */
+      }
+    }
+    return order;
+  },
+};
+
+// Boot
+document.addEventListener("DOMContentLoaded", () => App.init());

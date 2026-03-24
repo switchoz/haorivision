@@ -1,0 +1,522 @@
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  Elements,
+  CardElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+import { useTheme } from "../contexts/ThemeContext";
+import { trackCTAEvent } from "../ab/withCTAExperiment";
+import { tid } from "../shared/testid";
+
+// Stripe publishable key (test mode)
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
+const CheckoutForm = ({ product, onSuccess }) => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const navigate = useNavigate();
+  const { isUVMode } = useTheme();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    // Track checkout started event (P18)
+    trackCTAEvent("checkout_started", product.id);
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      // Get card element
+      const cardElement = elements.getElement(CardElement);
+
+      // Create payment method
+      const { error: pmError, paymentMethod } =
+        await stripe.createPaymentMethod({
+          type: "card",
+          card: cardElement,
+          billing_details: {
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            phone: formData.phone,
+            address: {
+              line1: formData.address,
+              city: formData.city,
+              postal_code: formData.postalCode,
+              country: formData.country,
+            },
+          },
+        });
+
+      if (pmError) {
+        throw new Error(pmError.message);
+      }
+
+      // Create order via backend API
+      const orderRes = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productId: product.id || product._id,
+          paymentMethodId: paymentMethod.id,
+          customer: {
+            name: `${formData.firstName} ${formData.lastName}`,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            country: formData.country,
+          },
+          amount: product.price,
+          shippingAddress: {
+            name: `${formData.firstName} ${formData.lastName}`,
+            street: formData.address,
+            city: formData.city,
+            zipCode: formData.postalCode,
+            country: formData.country,
+            phone: formData.phone,
+          },
+        }),
+      });
+
+      const orderData = await orderRes.json();
+
+      if (!orderRes.ok) {
+        throw new Error(orderData.error || "Ошибка создания заказа");
+      }
+
+      // Track order completed event (P18)
+      trackCTAEvent("order_completed", product.id);
+
+      // Build order object for success page
+      const order = {
+        id: orderData.order?.orderNumber || orderData.order?._id,
+        product: product,
+        customer: formData,
+        paymentMethodId: paymentMethod.id,
+        amount: product.price,
+        currency: "USD",
+        status: "confirmed",
+        createdAt: new Date().toISOString(),
+        estimatedDelivery: new Date(
+          Date.now() + 14 * 24 * 60 * 60 * 1000,
+        ).toISOString(),
+        tracking: orderData.order?.tracking || {
+          carrier: "DHL Express",
+          status: "processing",
+        },
+      };
+
+      // Also save to localStorage for order tracking page
+      const existingOrders = JSON.parse(
+        localStorage.getItem("haori_orders") || "[]",
+      );
+      existingOrders.push(order);
+      localStorage.setItem("haori_orders", JSON.stringify(existingOrders));
+
+      // Navigate to success page
+      navigate("/checkout/success", { state: { order } });
+    } catch (err) {
+      console.error("Payment error:", err);
+      setError(
+        err.message || "Оплата не удалась. Пожалуйста, попробуйте снова.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        fontSize: "16px",
+        color: "#ffffff",
+        "::placeholder": {
+          color: "#71717a",
+        },
+        backgroundColor: "transparent",
+      },
+      invalid: {
+        color: "#ef4444",
+      },
+    },
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-8">
+      {/* Contact Information */}
+      <div>
+        <h3 className="text-xl font-bold text-white mb-4">
+          Контактная информация
+        </h3>
+        <div className="space-y-4">
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+            required
+            className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+          />
+          <div className="grid grid-cols-2 gap-4">
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              placeholder="Имя"
+              required
+              className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+            />
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              placeholder="Фамилия"
+              required
+              className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder="Телефон"
+            required
+            className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+          />
+        </div>
+      </div>
+
+      {/* Shipping Address */}
+      <div>
+        <h3 className="text-xl font-bold text-white mb-4">Адрес доставки</h3>
+        <div className="space-y-4">
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleInputChange}
+            placeholder="Адрес"
+            required
+            className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+          />
+          <div className="grid grid-cols-2 gap-4">
+            <input
+              type="text"
+              name="city"
+              value={formData.city}
+              onChange={handleInputChange}
+              placeholder="Город"
+              required
+              className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+            />
+            <input
+              type="text"
+              name="postalCode"
+              value={formData.postalCode}
+              onChange={handleInputChange}
+              placeholder="Почтовый индекс"
+              required
+              className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+          <select
+            name="country"
+            value={formData.country}
+            onChange={handleInputChange}
+            required
+            className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white focus:outline-none focus:border-purple-500"
+          >
+            <option value="">Выберите страну</option>
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="JP">Japan</option>
+            <option value="DE">Germany</option>
+            <option value="FR">France</option>
+            <option value="IT">Italy</option>
+            <option value="ES">Spain</option>
+            <option value="CA">Canada</option>
+            <option value="AU">Australia</option>
+            <option value="SG">Singapore</option>
+            <option value="HK">Hong Kong</option>
+            <option value="AE">UAE</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Payment Information */}
+      <div>
+        <h3 className="text-xl font-bold text-white mb-4">
+          Платежная информация
+        </h3>
+        <div className="bg-zinc-900 border border-zinc-700 p-4">
+          <CardElement options={cardElementOptions} />
+        </div>
+        <p className="text-xs text-zinc-500 mt-2">
+          Тестовая карта: 4242 4242 4242 4242 • Любая будущая дата • Любой
+          3-значный CVC
+        </p>
+      </div>
+
+      {/* Error Message */}
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-red-900/20 border border-red-500 p-4 text-red-400"
+        >
+          {error}
+        </motion.div>
+      )}
+
+      {/* Submit Button */}
+      <motion.button
+        {...tid("checkout")}
+        type="submit"
+        disabled={!stripe || loading}
+        className={`w-full py-5 text-lg font-bold uppercase tracking-wider transition-all ${
+          loading || !stripe
+            ? "bg-zinc-800 text-zinc-600 cursor-not-allowed"
+            : isUVMode
+              ? "bg-purple-600 text-white hover:bg-purple-700"
+              : "bg-white text-black hover:bg-zinc-200"
+        }`}
+        whileHover={!loading && stripe ? { scale: 1.02 } : {}}
+        whileTap={!loading && stripe ? { scale: 0.98 } : {}}
+      >
+        {loading
+          ? "Обработка..."
+          : `Оплатить $${product.price.toLocaleString()}`}
+      </motion.button>
+
+      {/* Security Badges */}
+      <div className="flex items-center justify-center gap-4 pt-4">
+        <svg
+          className="w-6 h-6 text-zinc-500"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fillRule="evenodd"
+            d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <span className="text-sm text-zinc-500">Безопасная оплата</span>
+        <span className="text-zinc-700">|</span>
+        <span className="text-sm text-zinc-500">При поддержке Stripe</span>
+      </div>
+    </form>
+  );
+};
+
+const Checkout = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { isUVMode } = useTheme();
+  const product = location.state?.product;
+
+  useEffect(() => {
+    if (!product) {
+      navigate("/products");
+    }
+  }, [product, navigate]);
+
+  if (!product) {
+    return null;
+  }
+
+  const shippingCost = product.price >= 5000 ? 0 : 150; // Free shipping over $5,000
+  const tax = Math.round(product.price * 0.08); // 8% tax (example)
+  const total = product.price + shippingCost + tax;
+
+  return (
+    <div
+      className={`min-h-screen ${isUVMode ? "bg-black" : "bg-zinc-950"} py-16`}
+    >
+      <div className="max-w-6xl mx-auto px-8">
+        {/* Header */}
+        <div className="mb-12">
+          <h1
+            className={`text-4xl font-black mb-2 ${
+              isUVMode
+                ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
+                : "text-white"
+            }`}
+          >
+            Безопасная оплата
+          </h1>
+          <p className="text-zinc-500">Завершите покупку</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left: Checkout Form */}
+          <div>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm product={product} />
+            </Elements>
+          </div>
+
+          {/* Right: Order Summary */}
+          <div>
+            <div className="sticky top-24">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Сводка заказа
+              </h3>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-6 mb-6">
+                {/* Product Info */}
+                <div className="flex gap-4 mb-6 pb-6 border-b border-zinc-800">
+                  <img
+                    src={product.images.daylight.hero}
+                    alt={product.name}
+                    className="w-24 h-32 object-cover"
+                  />
+                  <div className="flex-1">
+                    <p className="text-xs uppercase tracking-wider text-zinc-500 mb-1">
+                      {product.collection}
+                    </p>
+                    <h4 className="text-lg font-bold text-white mb-2">
+                      {product.name}
+                    </h4>
+                    <p className="text-sm text-zinc-400">
+                      Издание{" "}
+                      {product.editions.total - product.editions.remaining + 1}/
+                      {product.editions.total}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xl font-bold text-white">
+                      ${product.price.toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Price Breakdown */}
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between text-zinc-400">
+                    <span>Промежуточный итог</span>
+                    <span>${product.price.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>Доставка (DHL Express)</span>
+                    <span>
+                      {shippingCost === 0 ? "БЕСПЛАТНО" : `$${shippingCost}`}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>Налог (приблизительно)</span>
+                    <span>${tax.toLocaleString()}</span>
+                  </div>
+                </div>
+
+                {/* Total */}
+                <div className="flex justify-between items-center pt-6 border-t border-zinc-800">
+                  <span className="text-xl font-bold text-white">Итого</span>
+                  <span className="text-3xl font-bold text-white">
+                    ${total.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+
+              {/* What's Included */}
+              <div className="bg-zinc-900 border border-zinc-800 p-6">
+                <h4 className="text-sm uppercase tracking-wider text-zinc-500 mb-4">
+                  Что входит в комплект
+                </h4>
+                <div className="space-y-3">
+                  {[
+                    "👘 Расписанное вручную шёлковое хаори",
+                    "🎁 Фирменная упаковка",
+                    "💡 Профессиональная UV лампа",
+                    "✍️ Подпись художника LiZa",
+                    "📦 Роскошная подарочная коробка",
+                    "🚚 Застрахованная доставка",
+                    "🌍 Доставка по всему миру",
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-3 text-sm text-zinc-400"
+                    >
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="mt-6 grid grid-cols-2 gap-4">
+                <div className="bg-zinc-900/50 border border-zinc-800 p-4 text-center">
+                  <svg
+                    className="w-8 h-8 text-purple-400 mx-auto mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                  <p className="text-xs text-zinc-500">SSL шифрование</p>
+                </div>
+                <div className="bg-zinc-900/50 border border-zinc-800 p-4 text-center">
+                  <svg
+                    className="w-8 h-8 text-purple-400 mx-auto mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                  <p className="text-xs text-zinc-500">PCI сертифицирован</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Checkout;
