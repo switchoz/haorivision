@@ -102,6 +102,44 @@ const Shop = () => {
     return () => clearTimeout(debounce);
   }, [fetchProducts, search]);
 
+  // Wishlist
+  const [wishlistIds, setWishlistIds] = useState(new Set());
+
+  useEffect(() => {
+    const token = localStorage.getItem("customer_jwt");
+    if (!token) return;
+    fetch(`${API_URL}/api/account/wishlist`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((r) => r.json())
+      .then((d) => setWishlistIds(new Set((d.items || []).map((p) => p.id))))
+      .catch(() => {});
+  }, []);
+
+  const toggleWishlist = (e, productId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const token = localStorage.getItem("customer_jwt");
+    if (!token) {
+      toast.error("Войдите в аккаунт");
+      return;
+    }
+    const inList = wishlistIds.has(productId);
+    fetch(`${API_URL}/api/account/wishlist/${productId}`, {
+      method: inList ? "DELETE" : "POST",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(() => {
+        const next = new Set(wishlistIds);
+        inList ? next.delete(productId) : next.add(productId);
+        setWishlistIds(next);
+        toast.success(
+          inList ? "Удалено из избранного" : "Добавлено в избранное",
+        );
+      })
+      .catch(() => toast.error("Ошибка"));
+  };
+
   const handleAddToCart = (e, product) => {
     e.preventDefault();
     e.stopPropagation();
@@ -324,6 +362,39 @@ const Shop = () => {
                           >
                             ${product.price.toLocaleString()}
                           </p>
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={(e) => toggleWishlist(e, product.id)}
+                            className={`p-2 rounded-full transition-all ${
+                              wishlistIds.has(product.id)
+                                ? "bg-red-500/20 text-red-400"
+                                : "bg-zinc-800 text-zinc-500 hover:text-red-400"
+                            }`}
+                            title={
+                              wishlistIds.has(product.id)
+                                ? "Убрать из избранного"
+                                : "В избранное"
+                            }
+                          >
+                            <svg
+                              className="w-4 h-4"
+                              viewBox="0 0 24 24"
+                              fill={
+                                wishlistIds.has(product.id)
+                                  ? "currentColor"
+                                  : "none"
+                              }
+                              stroke="currentColor"
+                              strokeWidth={2}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                              />
+                            </svg>
+                          </motion.button>
                           <motion.button
                             data-testid="add-to-cart"
                             whileHover={{ scale: 1.1 }}

@@ -59,6 +59,7 @@ export default function Account() {
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
   const [bespoke, setBespoke] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [tab, setTab] = useState("orders");
   const [loading, setLoading] = useState(true);
 
@@ -75,14 +76,16 @@ export default function Account() {
   const loadAccount = async () => {
     setLoading(true);
     try {
-      const [me, ordersData, bespokeData] = await Promise.all([
+      const [me, ordersData, bespokeData, wishlistData] = await Promise.all([
         apiFetch("/api/account/me"),
         apiFetch("/api/account/orders"),
         apiFetch("/api/account/bespoke"),
+        apiFetch("/api/account/wishlist"),
       ]);
       setUser(me.customer);
       setOrders(ordersData.orders || []);
       setBespoke(bespokeData.commissions || []);
+      setWishlist(wishlistData.items || []);
     } catch {
       clearToken();
       setUser(null);
@@ -129,6 +132,19 @@ export default function Account() {
     setUser(null);
     setOrders([]);
     setBespoke([]);
+    setWishlist([]);
+  };
+
+  const removeFromWishlist = async (productId) => {
+    try {
+      await apiFetch(`/api/account/wishlist/${productId}`, {
+        method: "DELETE",
+      });
+      setWishlist(wishlist.filter((p) => p.id !== productId));
+      toast.success("Удалено из избранного");
+    } catch {
+      toast.error("Ошибка");
+    }
   };
 
   if (loading) {
@@ -266,6 +282,7 @@ export default function Account() {
           {[
             { key: "orders", label: `Заказы (${orders.length})` },
             { key: "bespoke", label: `Bespoke (${bespoke.length})` },
+            { key: "wishlist", label: `Избранное (${wishlist.length})` },
           ].map((t) => (
             <button
               key={t.key}
@@ -439,6 +456,68 @@ export default function Account() {
                   )}
                 </motion.div>
               ))
+            )}
+          </div>
+        )}
+
+        {/* Wishlist */}
+        {tab === "wishlist" && (
+          <div className="space-y-4">
+            {wishlist.length === 0 ? (
+              <div className="text-center py-16 text-zinc-500">
+                <p className="text-xl mb-4">Список избранного пуст</p>
+                <Link
+                  to="/shop"
+                  className="text-purple-400 hover:text-purple-300"
+                >
+                  Перейти в магазин
+                </Link>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {wishlist.map((p) => (
+                  <motion.div
+                    key={p.id || p._id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden"
+                  >
+                    {p.images?.[0] && (
+                      <Link to={`/product/${p.id}`}>
+                        <img
+                          src={p.images[0]}
+                          alt={p.name}
+                          className="w-full h-48 object-cover hover:opacity-80 transition-opacity"
+                        />
+                      </Link>
+                    )}
+                    <div className="p-4">
+                      <Link
+                        to={`/product/${p.id}`}
+                        className="text-white font-medium hover:text-purple-400 transition-colors"
+                      >
+                        {p.name}
+                      </Link>
+                      {p.tagline && (
+                        <p className="text-zinc-500 text-sm mt-1">
+                          {p.tagline}
+                        </p>
+                      )}
+                      <div className="flex items-center justify-between mt-3">
+                        <span className="text-white font-bold">
+                          {p.price?.toLocaleString()} $
+                        </span>
+                        <button
+                          onClick={() => removeFromWishlist(p.id)}
+                          className="text-xs text-zinc-500 hover:text-red-400 transition-colors"
+                        >
+                          Удалить
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             )}
           </div>
         )}

@@ -128,7 +128,7 @@ router.post("/register", async (req, res) => {
 router.get("/me", authCustomer, async (req, res) => {
   try {
     const customer = await Customer.findById(req.customerId).select(
-      "-password -nftCertificates -walletAddress",
+      "-password",
     );
     if (!customer) return res.status(404).json({ error: "Не найден" });
     res.json({ customer });
@@ -193,11 +193,66 @@ router.patch("/me", authCustomer, async (req, res) => {
       req.customerId,
       { $set: update },
       { new: true },
-    ).select("-password -nftCertificates -walletAddress");
+    ).select("-password");
 
     res.json({ customer });
   } catch (err) {
     baseLogger.error({ err }, "Account update error");
+    res.status(500).json({ error: "Ошибка сервера" });
+  }
+});
+
+/**
+ * GET /api/account/wishlist
+ */
+router.get("/wishlist", authCustomer, async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.customerId).select("wishlist");
+    if (!customer) return res.status(404).json({ error: "Не найден" });
+
+    // Подгрузить данные продуктов
+    const Product = (await import("../models/Product.js")).default;
+    const products = customer.wishlist?.length
+      ? await Product.find({ id: { $in: customer.wishlist } })
+          .select("id name price images tagline")
+          .lean()
+      : [];
+
+    res.json({ items: products });
+  } catch (err) {
+    baseLogger.error({ err }, "Wishlist get error");
+    res.status(500).json({ error: "Ошибка сервера" });
+  }
+});
+
+/**
+ * POST /api/account/wishlist/:productId
+ */
+router.post("/wishlist/:productId", authCustomer, async (req, res) => {
+  try {
+    const { productId } = req.params;
+    await Customer.findByIdAndUpdate(req.customerId, {
+      $addToSet: { wishlist: productId },
+    });
+    res.json({ ok: true });
+  } catch (err) {
+    baseLogger.error({ err }, "Wishlist add error");
+    res.status(500).json({ error: "Ошибка сервера" });
+  }
+});
+
+/**
+ * DELETE /api/account/wishlist/:productId
+ */
+router.delete("/wishlist/:productId", authCustomer, async (req, res) => {
+  try {
+    const { productId } = req.params;
+    await Customer.findByIdAndUpdate(req.customerId, {
+      $pull: { wishlist: productId },
+    });
+    res.json({ ok: true });
+  } catch (err) {
+    baseLogger.error({ err }, "Wishlist remove error");
     res.status(500).json({ error: "Ошибка сервера" });
   }
 });

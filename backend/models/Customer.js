@@ -43,13 +43,9 @@ const customerSchema = new mongoose.Schema(
         ref: "Order",
       },
     ],
-    nftCertificates: [
+    wishlist: [
       {
-        tokenId: String,
-        contractAddress: String,
-        openseaUrl: String,
-        productId: String,
-        mintedAt: Date,
+        type: String, // product id
       },
     ],
     totalSpent: {
