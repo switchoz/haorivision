@@ -56,6 +56,7 @@ const AdminBlogPage = lazy(() => import("./admin/pages/Blog"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPostPage = lazy(() => import("./pages/BlogPost"));
 const ReviewsPage = lazy(() => import("./pages/Reviews"));
+const AccountPage = lazy(() => import("./pages/Account"));
 const AdminReviewsPage = lazy(() => import("./admin/pages/Reviews"));
 
 function App() {
@@ -115,6 +116,7 @@ function App() {
                 <Route path="journal" element={<Blog />} />
                 <Route path="journal/:slug" element={<BlogPostPage />} />
                 <Route path="reviews" element={<ReviewsPage />} />
+                <Route path="account" element={<AccountPage />} />
                 <Route path="ar-tryon" element={<ARTryOn />} />
                 <Route path="3d-studio" element={<Haori3DStudio />} />
                 <Route path="presentation" element={<Presentation />} />
