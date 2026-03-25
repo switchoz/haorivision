@@ -82,9 +82,48 @@ class TelegramBotService {
   }
 
   /**
+   * Check if Anthropic API is configured
+   */
+  isAIConfigured() {
+    const key = process.env.ANTHROPIC_API_KEY;
+    return key && key !== "sk-ant-replace" && !key.startsWith("sk-ant-replace");
+  }
+
+  /**
+   * Fallback post templates when AI is unavailable
+   */
+  getFallbackPost(type) {
+    const templates = {
+      esoteric:
+        "✨ <b>Цвет — это язык вселенной</b>\n\nКаждый оттенок несёт свою вибрацию. Бирюзовый — связь с высшим. Фуксия — пробуждение интуиции. Золотой — мудрость предков.\n\nНаши хаори говорят на этом языке. Под UV-светом они раскрывают то, что скрыто днём.\n\n#HaoriVision #эзотерика #энергияцвета",
+      haori_work:
+        "🎨 <b>Новая работа в мастерской</b>\n\nКаждое хаори рождается из потокового состояния — когда рука художника следует за интуицией, а не за разумом. UV-пигменты ложатся слой за слоем, создавая скрытый мир, который оживает только под ультрафиолетом.\n\nЕдинственный экземпляр. Подпись LiZa.\n\n#HaoriVision #хаори #wearableart",
+      news: "📢 <b>HAORI VISION</b>\n\nМы продолжаем создавать уникальные произведения носимого света. Каждая работа — единственный экземпляр, расписанный вручную UV-реактивными красками.\n\nСледите за обновлениями!\n\n#HaoriVision #новости",
+      promo:
+        "💜 <b>Bespoke заказ — хаори по вашей энергии</b>\n\nHaori Vision создаёт индивидуальные хаори от €3,000. Художник LiZa создаст moodboard по вашей энергии и предложит эскиз в течение 72 часов.\n\nСрок: 2-4 недели. Результат: единственное в мире произведение.\n\n#HaoriVision #bespoke",
+      behind_scenes:
+        "🔮 <b>За кулисами мастерской</b>\n\nСегодня в работе — новый слой UV-пигментов. Каждый слой сохнет 24 часа. На одном хаори — от 4 до 12 слоёв. Терпение и поток.\n\nLiZa работает только под музыку и при свечах.\n\n#HaoriVision #процесс #behindthescenes",
+    };
+    return templates[type] || templates.news;
+  }
+
+  /**
    * AI-генерация поста по теме
    */
   async generatePost(type, topic = null) {
+    // Fallback if AI not configured
+    if (!this.isAIConfigured()) {
+      const text = this.getFallbackPost(type);
+      const post = new TelegramPost({
+        type,
+        text,
+        status: "draft",
+        aiGenerated: false,
+      });
+      await post.save();
+      return post;
+    }
+
     const client = this.getAnthropicClient();
 
     const prompts = {

@@ -30,6 +30,7 @@ const EventPage = lazy(() => import("./pages/EventPage"));
 const UnboxingPage = lazy(() => import("./pages/UnboxingPage"));
 const UnboxingFeedbackPage = lazy(() => import("./pages/UnboxingFeedbackPage"));
 const Gallery = lazy(() => import("./pages/Gallery"));
+const BespokeCommission = lazy(() => import("./pages/BespokeCommissionPage"));
 const ARTryOn = lazy(() => import("./pages/ARTryOn"));
 const Haori3DStudio = lazy(() => import("./pages/Haori3DStudio"));
 const Presentation = lazy(() => import("./pages/Presentation"));
@@ -88,6 +89,7 @@ function App() {
                   path="product/:productId"
                   element={<ProductDetailWithTrustBlocks />}
                 />
+                <Route path="bespoke" element={<BespokeCommission />} />
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="checkout/success" element={<CheckoutSuccess />} />
                 <Route path="orders/:orderId" element={<OrderTracking />} />
