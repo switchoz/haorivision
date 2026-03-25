@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const Products = () => {
   const { isUVMode } = useTheme();

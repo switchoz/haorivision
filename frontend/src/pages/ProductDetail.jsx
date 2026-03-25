@@ -7,7 +7,7 @@ import ProductCTA from "../components/ProductCTA";
 import ARButton from "../components/ARButton";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const ProductDetail = () => {
   const { productId } = useParams();

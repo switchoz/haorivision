@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageMeta from "../components/PageMeta";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const CATEGORIES = [
   { key: "all", label: "Все товары" },

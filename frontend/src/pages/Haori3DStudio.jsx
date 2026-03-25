@@ -8,7 +8,7 @@ import { useTheme } from "../contexts/ThemeContext";
 
 const HaoriViewer = lazy(() => import("../components/HaoriModelViewer.jsx"));
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const SLOTS = [
   { key: "front", label: "Перёд", desc: "Фото хаори спереди", required: true },

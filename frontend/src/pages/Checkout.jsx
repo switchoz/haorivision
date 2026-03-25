@@ -13,7 +13,7 @@ import { useCart } from "../contexts/CartContext";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
 import { tid } from "../shared/testid";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 // Stripe publishable key (test mode)
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);

@@ -6,7 +6,7 @@ import UVParticles from "../components/UVParticles";
 import PageMeta from "../components/PageMeta";
 import ReviewsSection from "../components/ReviewsSection";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const Home = () => {
   const { isUVMode } = useTheme();

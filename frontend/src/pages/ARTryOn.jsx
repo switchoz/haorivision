@@ -44,7 +44,7 @@ export default function ARTryOn() {
 
   // Загрузить реальные товары из каталога
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3010";
+    const apiUrl = import.meta.env.VITE_API_URL || "";
     fetch(`${apiUrl}/api/products?category=haori&limit=20`)
       .then((r) => r.json())
       .then((data) => {

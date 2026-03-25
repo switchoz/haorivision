@@ -155,6 +155,9 @@ const strictLimiter = rateLimit({
 app.use("/api/contact", strictLimiter);
 app.use("/api/chat", strictLimiter);
 app.use("/api/telegram/generate", strictLimiter);
+app.use("/api/account/login", strictLimiter);
+app.use("/api/account/register", strictLimiter);
+app.use("/api/reviews", strictLimiter);
 
 // Webhook rate-limit: 60 req/min per IP (Telegram sends bursts)
 const webhookLimiter = rateLimit({
