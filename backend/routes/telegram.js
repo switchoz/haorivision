@@ -212,9 +212,16 @@ router.patch("/posts/:id", authAdmin, async (req, res) => {
 /**
  * POST /api/telegram/webhook
  * Telegram Bot Webhook — обработка входящих сообщений
+ * Верифицирует X-Telegram-Bot-Api-Secret-Token если TELEGRAM_WEBHOOK_SECRET задан
  */
 router.post("/webhook", async (req, res) => {
   try {
+    // Проверка подписи от Telegram
+    if (!telegramBotService.verifyWebhook(req)) {
+      baseLogger.warn({ ip: req.ip }, "Telegram webhook: invalid secret token");
+      return res.status(403).json({ ok: false });
+    }
+
     await telegramBotService.handleUpdate(req.body);
     res.json({ ok: true });
   } catch (error) {

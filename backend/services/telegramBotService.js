@@ -8,6 +8,7 @@ class TelegramBotService {
   constructor() {
     this.botToken = process.env.TELEGRAM_BOT_TOKEN;
     this.channelId = process.env.TELEGRAM_CHANNEL_ID;
+    this.webhookSecret = process.env.TELEGRAM_WEBHOOK_SECRET || "";
     this.anthropic = null;
   }
 
@@ -434,12 +435,26 @@ ${topic ? `Что показать: ${topic}` : "Покажи процесс с�
     if (!this.botToken) return;
 
     const url = `${TELEGRAM_API}${this.botToken}/setWebhook`;
+    const body = { url: webhookUrl };
+    // Передаём secret_token для верификации входящих webhook-запросов
+    if (this.webhookSecret) {
+      body.secret_token = this.webhookSecret;
+    }
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: webhookUrl }),
+      body: JSON.stringify(body),
     });
     return await response.json();
+  }
+
+  /**
+   * Проверка подписи webhook-запроса от Telegram
+   */
+  verifyWebhook(req) {
+    if (!this.webhookSecret) return true; // Если секрет не настроен — пропускаем
+    const token = req.headers["x-telegram-bot-api-secret-token"];
+    return token === this.webhookSecret;
   }
 }
 
