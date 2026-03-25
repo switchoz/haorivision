@@ -10,7 +10,7 @@
 import React, { useState } from "react";
 import "./SafetyNotice.css";
 
-export default function SafetyNotice({ onAccept, language = "en" }) {
+export default function SafetyNotice({ onAccept, language = "ru" }) {
   const [accepted, setAccepted] = useState(false);
 
   const content = {

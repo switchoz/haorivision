@@ -16,7 +16,7 @@ export default function GuestCheckin() {
     name: "",
     email: "",
     photoConsent: false,
-    language: "en", // en | ru
+    language: "ru", // en | ru
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,12 +37,12 @@ export default function GuestCheckin() {
 
     // Validation
     if (!formData.name || !formData.email) {
-      setError("Please fill in all required fields");
+      setError("Пожалуйста, заполните все обязательные поля");
       return;
     }
 
     if (!formData.photoConsent) {
-      setError("Please agree to photo/video consent");
+      setError("Необходимо согласие на фото/видеосъёмку");
       return;
     }
 
@@ -57,7 +57,7 @@ export default function GuestCheckin() {
       });
 
       if (!response.ok) {
-        throw new Error("Check-in failed");
+        throw new Error("Ошибка регистрации");
       }
 
       const data = await response.json();
@@ -68,7 +68,7 @@ export default function GuestCheckin() {
       if (import.meta.env.DEV) console.log("[Check-in] Success:", data);
     } catch (err) {
       console.error("[Check-in] Error:", err);
-      setError("Check-in failed. Please try again.");
+      setError("Ошибка регистрации. Попробуйте ещё раз.");
     } finally {
       setIsSubmitting(false);
     }
@@ -89,8 +89,8 @@ export default function GuestCheckin() {
       <div className="guest-checkin">
         <div className="checkin-success">
           <div className="success-header">
-            <h1>✦ WELCOME TO THE LIGHT ✦</h1>
-            <p className="success-subtitle">Your Light Card is ready</p>
+            <h1>✦ ДОБРО ПОЖАЛОВАТЬ В СВЕТ ✦</h1>
+            <p className="success-subtitle">Ваша Light Card готова</p>
           </div>
 
           <div className="light-card-preview">
@@ -103,7 +103,7 @@ export default function GuestCheckin() {
               <div className="light-card-content">
                 <div className="card-header">
                   <h2 className="card-logo">HAORI VISION</h2>
-                  <p className="card-subtitle">Eclipse of Light</p>
+                  <p className="card-subtitle">Затмение света</p>
                 </div>
 
                 <div className="card-body">
@@ -131,20 +131,18 @@ export default function GuestCheckin() {
 
           <div className="success-actions">
             <button onClick={downloadLightCard} className="btn-primary">
-              Download Light Card
+              Скачать Light Card
             </button>
             <p className="success-hint">
-              Check your email for the digital copy
+              Цифровая копия отправлена на вашу почту
             </p>
           </div>
 
           <div className="success-message">
             <p>
-              Your Light Card has been sent to <strong>{formData.email}</strong>
+              Light Card отправлена на <strong>{formData.email}</strong>
             </p>
-            <p className="message-detail">
-              Show this card at the venue entrance
-            </p>
+            <p className="message-detail">Покажите эту карту на входе</p>
           </div>
         </div>
       </div>
@@ -156,23 +154,23 @@ export default function GuestCheckin() {
       <div className="checkin-container">
         <div className="checkin-header">
           <h1 className="checkin-title">
-            <span className="title-line">THE LIGHT</span>
-            <span className="title-line">AWAITS</span>
+            <span className="title-line">СВЕТ</span>
+            <span className="title-line">ЖДЁТ ВАС</span>
           </h1>
-          <p className="checkin-subtitle">HAORI VISION — Guest Check-in</p>
+          <p className="checkin-subtitle">HAORI VISION — Регистрация гостей</p>
         </div>
 
         <form className="checkin-form" onSubmit={handleSubmit}>
           {/* Name */}
           <div className="form-group">
-            <label htmlFor="name">Full Name *</label>
+            <label htmlFor="name">Полное имя *</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Enter your name"
+              placeholder="Введите ваше имя"
               required
             />
           </div>
@@ -193,7 +191,7 @@ export default function GuestCheckin() {
 
           {/* Language */}
           <div className="form-group">
-            <label htmlFor="language">Audio Guide Language</label>
+            <label htmlFor="language">Язык аудиогида</label>
             <select
               id="language"
               name="language"
@@ -216,7 +214,7 @@ export default function GuestCheckin() {
                 required
               />
               <span className="checkbox-text">
-                I agree to be photographed and/or filmed during the show *
+                Я согласен на фото- и видеосъёмку во время шоу *
               </span>
             </label>
           </div>
@@ -226,13 +224,13 @@ export default function GuestCheckin() {
 
           {/* Submit */}
           <button type="submit" className="btn-submit" disabled={isSubmitting}>
-            {isSubmitting ? "Checking in..." : "Enter the Light"}
+            {isSubmitting ? "Регистрация..." : "Войти в свет"}
           </button>
         </form>
 
         <div className="checkin-footer">
           <p className="footer-text">
-            By checking in, you agree to our privacy policy
+            Регистрируясь, вы соглашаетесь с политикой конфиденциальности
           </p>
         </div>
       </div>

@@ -56,7 +56,9 @@ const Footer = () => {
                 HAORI VISION
               </h3>
             </Link>
-            <p className="text-zinc-400 text-sm mb-2">Wearable Light Art</p>
+            <p className="text-zinc-400 text-sm mb-2">
+              Носимое световое искусство
+            </p>
             <p className="text-zinc-500 text-xs mb-1">
               Художник: Елизавета Федькина (LiZa)
             </p>

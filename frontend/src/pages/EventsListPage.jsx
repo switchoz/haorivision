@@ -90,7 +90,7 @@ export default function EventsListPage() {
         <div className="max-w-7xl mx-auto">
           {loading ? (
             <div className="text-center text-purple-400 text-xl">
-              Loading events...
+              Загрузка событий...
             </div>
           ) : events.length === 0 ? (
             <div className="text-center text-gray-400">

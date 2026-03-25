@@ -60,7 +60,7 @@ const NotFound = () => {
             HAORI VISION
           </h1>
           <div className="text-zinc-500 text-sm tracking-widest uppercase">
-            Wearable Light Art
+            Носимое световое искусство
           </div>
         </motion.div>
 

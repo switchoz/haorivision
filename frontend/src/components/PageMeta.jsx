@@ -9,7 +9,7 @@ export default function PageMeta({ title, description }) {
     const base = "HAORI VISION";
     document.title = title
       ? `${title} | ${base}`
-      : `${base} — Wearable Light Art`;
+      : `${base} — Носимое световое искусство`;
 
     if (description) {
       let meta = document.querySelector('meta[name="description"]');
