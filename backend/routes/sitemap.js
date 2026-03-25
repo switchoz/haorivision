@@ -154,7 +154,7 @@ router.get("/sitemap-products.xml", async (req, res) => {
   try {
     // Fetch only published products
     const products = await Product.find({ published: true })
-      .select("sku name description images updatedAt")
+      .select("id name description images updatedAt")
       .sort({ updatedAt: -1 })
       .lean();
 
@@ -162,7 +162,7 @@ router.get("/sitemap-products.xml", async (req, res) => {
 
     // Add each product
     products.forEach((product) => {
-      const loc = `/products/${product.sku}`;
+      const loc = `/product/${product.id}`;
       const lastmod = formatDate(product.updatedAt);
       const images =
         product.images?.slice(0, 5).map((img) => ({
@@ -202,28 +202,18 @@ router.get("/sitemap-legal.xml", async (req, res) => {
     const legalPages = [
       {
         loc: "/legal/returns.html",
-        title: "Return Policy",
+        title: "Возврат и обмен",
         lastmod: "2025-10-17",
       },
       {
         loc: "/legal/care.html",
-        title: "Care Instructions",
+        title: "Уход за изделиями",
         lastmod: "2025-10-17",
       },
       {
         loc: "/legal/uv_safety.html",
-        title: "UV Safety",
+        title: "Безопасность UV",
         lastmod: "2025-10-17",
-      },
-      {
-        loc: "/privacy",
-        title: "Privacy Policy",
-        lastmod: now,
-      },
-      {
-        loc: "/terms",
-        title: "Terms of Service",
-        lastmod: now,
       },
     ];
 
@@ -264,9 +254,29 @@ router.get("/sitemap-static.xml", async (req, res) => {
         changefreq: CHANGEFREQ.homepage,
       },
       {
+        loc: "/shop",
+        priority: PRIORITY.products,
+        changefreq: CHANGEFREQ.products,
+      },
+      {
         loc: "/collections",
         priority: PRIORITY.collections,
         changefreq: CHANGEFREQ.collections,
+      },
+      {
+        loc: "/gallery",
+        priority: PRIORITY.collections,
+        changefreq: CHANGEFREQ.collections,
+      },
+      {
+        loc: "/presentation",
+        priority: PRIORITY.static,
+        changefreq: CHANGEFREQ.static,
+      },
+      {
+        loc: "/bespoke",
+        priority: PRIORITY.static,
+        changefreq: CHANGEFREQ.static,
       },
       {
         loc: "/about",
@@ -279,7 +289,7 @@ router.get("/sitemap-static.xml", async (req, res) => {
         changefreq: CHANGEFREQ.static,
       },
       {
-        loc: "/bespoke",
+        loc: "/faq",
         priority: PRIORITY.static,
         changefreq: CHANGEFREQ.static,
       },
