@@ -1,8 +1,14 @@
 import express from "express";
 import authAdmin, { requireRole } from "../middlewares/authAdmin.js";
 import Order from "../models/Order.js";
+import Customer from "../models/Customer.js";
 import { toCSV } from "../utils/csv.js";
 import { baseLogger } from "../middlewares/logger.js";
+import {
+  sendOrderConfirmation,
+  sendShippingNotification,
+  sendWelcomeEmail,
+} from "../services/emailService.js";
 
 const r = express.Router();
 
@@ -104,6 +110,11 @@ r.patch("/:id", requireRole("admin", "editor"), async (req, res) => {
       "Order status updated",
     );
 
+    // Отправка email при смене статуса (non-blocking)
+    sendOrderStatusEmail(doc, status).catch((err) =>
+      baseLogger.warn({ err, orderId: doc._id }, "Order status email failed"),
+    );
+
     res.json({ ok: true, item: doc });
   } catch (err) {
     baseLogger.error({ err }, "Error updating order status");
@@ -168,5 +179,52 @@ r.post("/export", requireRole("admin", "editor"), async (req, res) => {
     res.status(500).json({ ok: false, code: "SERVER_ERROR" });
   }
 });
+
+/**
+ * Отправка email при смене статуса заказа
+ * Не блокирует ответ API — ошибки логируются
+ */
+async function sendOrderStatusEmail(order, newStatus) {
+  // Получить email клиента
+  const email =
+    order.email ||
+    (order.customer ? (await Customer.findById(order.customer))?.email : null);
+  if (!email) return;
+
+  const customer = { name: order.shippingAddress?.name || "Клиент", email };
+
+  switch (newStatus) {
+    case "paid": {
+      const result = await sendOrderConfirmation(customer, order);
+      if (result.success && !order.emailSent?.confirmation) {
+        await Order.findByIdAndUpdate(order._id, {
+          "emailSent.confirmation": true,
+        });
+      }
+      // Welcome email при первой оплате
+      if (!order.emailSent?.welcome) {
+        const wr = await sendWelcomeEmail(customer, order);
+        if (wr.success) {
+          await Order.findByIdAndUpdate(order._id, {
+            "emailSent.welcome": true,
+          });
+        }
+      }
+      break;
+    }
+    case "fulfilled":
+    case "shipped": {
+      if (order.tracking?.trackingNumber && !order.emailSent?.shipping) {
+        const result = await sendShippingNotification(customer, order);
+        if (result.success) {
+          await Order.findByIdAndUpdate(order._id, {
+            "emailSent.shipping": true,
+          });
+        }
+      }
+      break;
+    }
+  }
+}
 
 export default r;

@@ -207,18 +207,17 @@ const replaceVariables = (template, variables) => {
 };
 
 // Send Welcome Email
-export const sendWelcomeEmail = async (customer, order, nft) => {
+export const sendWelcomeEmail = async (customer, order) => {
   try {
     const transporter = createTransporter();
     const template = loadTemplate("welcome");
 
+    const firstItem = order.items?.[0] || {};
     const variables = {
       customerName: customer.name,
-      productName: order.items[0].name,
-      editionNumber: order.items[0].editionNumber,
-      totalEditions: order.items[0].product.editions.total,
-      tokenId: nft.tokenId,
-      openseaUrl: nft.openseaUrl,
+      productName: firstItem.name || "Хаори",
+      editionNumber: firstItem.editionNumber || 1,
+      totalEditions: firstItem.product?.editions?.total || "—",
       orderNumber: order.orderNumber,
     };
 
@@ -227,7 +226,7 @@ export const sendWelcomeEmail = async (customer, order, nft) => {
     const mailOptions = {
       from: `HAORI VISION <${process.env.EMAIL_FROM || process.env.EMAIL_USER}>`,
       to: customer.email,
-      subject: "✨ Welcome to the Light Circle — Your Haori Journey Begins",
+      subject: `Добро пожаловать в круг Света — HAORI VISION`,
       html: htmlContent,
     };
 
@@ -270,7 +269,7 @@ export const sendOrderConfirmation = async (customer, order) => {
     const mailOptions = {
       from: `HAORI VISION <${process.env.EMAIL_FROM || process.env.EMAIL_USER}>`,
       to: customer.email,
-      subject: `✅ Order Confirmed #${order.orderNumber}`,
+      subject: `Заказ подтверждён #${order.orderNumber}`,
       html: htmlContent,
     };
 
@@ -313,7 +312,7 @@ export const sendShippingNotification = async (customer, order) => {
     const mailOptions = {
       from: `HAORI VISION <${process.env.EMAIL_FROM || process.env.EMAIL_USER}>`,
       to: customer.email,
-      subject: `📦 Your Haori Has Shipped! #${order.orderNumber}`,
+      subject: `Ваше хаори отправлено! #${order.orderNumber}`,
       html: htmlContent,
     };
 
@@ -354,7 +353,7 @@ const calculateEstimatedDelivery = (shippedDate) => {
   const estimated = new Date(shipped);
   estimated.setDate(estimated.getDate() + 7); // 7-14 days
 
-  return estimated.toLocaleDateString("en-US", {
+  return estimated.toLocaleDateString("ru-RU", {
     weekday: "long",
     year: "numeric",
     month: "long",
