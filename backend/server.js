@@ -53,6 +53,8 @@ import contactRoutes from "./routes/contact.js";
 import chatRoutes from "./routes/chat.js";
 import blogRoutes from "./routes/blog.js";
 import accountRoutes from "./routes/account.js";
+import promoRoutes from "./routes/promo.js";
+import adminPromo from "./routes/admin.promo.js";
 import reviewRoutes from "./routes/reviews.js";
 import adminReviews from "./routes/admin.reviews.js";
 import haori3dRoutes from "./routes/haori3d.js";
@@ -228,6 +230,8 @@ app.use("/api/admin/bespoke", adminBespoke);
 app.use("/api/admin/blog", adminBlog);
 app.use("/api/blog", blogRoutes);
 app.use("/api/account", accountRoutes);
+app.use("/api/promo", promoRoutes);
+app.use("/api/admin/promo", adminPromo);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin/reviews", adminReviews);
 

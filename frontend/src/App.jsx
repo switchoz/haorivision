@@ -58,6 +58,7 @@ const BlogPostPage = lazy(() => import("./pages/BlogPost"));
 const ReviewsPage = lazy(() => import("./pages/Reviews"));
 const AccountPage = lazy(() => import("./pages/Account"));
 const AdminReviewsPage = lazy(() => import("./admin/pages/Reviews"));
+const AdminPromo = lazy(() => import("./admin/pages/Promo"));
 
 function App() {
   // Setup global error tracking for Reliability Kit
@@ -146,6 +147,7 @@ function App() {
                 <Route path="telegram" element={<AdminTelegram />} />
                 <Route path="blog" element={<AdminBlogPage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
+                <Route path="promo" element={<AdminPromo />} />
                 <Route
                   path="products"
                   element={

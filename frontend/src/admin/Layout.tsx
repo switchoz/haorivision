@@ -12,6 +12,7 @@ import {
   Send,
   BookOpen,
   Star,
+  Tag,
 } from "lucide-react";
 import { getToken, getRole } from "./api";
 
@@ -36,6 +37,7 @@ export default function AdminLayout() {
     { to: "/admin/telegram", icon: Send, label: "Telegram" },
     { to: "/admin/blog", icon: BookOpen, label: "Журнал" },
     { to: "/admin/reviews", icon: Star, label: "Отзывы" },
+    { to: "/admin/promo", icon: Tag, label: "Промокоды" },
     { to: "/admin/products", icon: Package, label: "Товары" },
     { to: "/admin/flags", icon: Flag, label: "Фичи" },
     { to: "/admin/logs", icon: FileText, label: "Логи" },
