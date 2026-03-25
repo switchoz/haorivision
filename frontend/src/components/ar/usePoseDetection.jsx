@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import * as poseDetection from "@tensorflow-models/pose-detection";
-import "@tensorflow/tfjs-core";
-import "@tensorflow/tfjs-backend-webgl";
 
 /**
  * Hook для детекции позы пользователя с использованием TensorFlow.js
+ * TensorFlow загружается динамически для оптимизации бандла (~1.7MB)
  * Отслеживает ключевые точки тела для наложения AR одежды
  */
 export const usePoseDetection = (videoRef) => {
@@ -13,10 +11,17 @@ export const usePoseDetection = (videoRef) => {
   const [isLoading, setIsLoading] = useState(true);
   const animationFrameRef = useRef();
 
-  // Инициализация детектора позы
+  // Инициализация детектора позы (динамическая загрузка tensorflow)
   useEffect(() => {
     const initDetector = async () => {
       try {
+        // Динамический import — tensorflow грузится только при открытии AR
+        const [poseDetection] = await Promise.all([
+          import("@tensorflow-models/pose-detection"),
+          import("@tensorflow/tfjs-core"),
+          import("@tensorflow/tfjs-backend-webgl"),
+        ]);
+
         const model = poseDetection.SupportedModels.MoveNet;
         const detectorConfig = {
           modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING,
@@ -24,11 +29,8 @@ export const usePoseDetection = (videoRef) => {
           minPoseScore: 0.25,
         };
 
-        const detector = await poseDetection.createDetector(
-          model,
-          detectorConfig,
-        );
-        setDetector(detector);
+        const det = await poseDetection.createDetector(model, detectorConfig);
+        setDetector(det);
         setIsLoading(false);
       } catch (error) {
         console.error("Ошибка инициализации детектора позы:", error);

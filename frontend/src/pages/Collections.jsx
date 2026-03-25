@@ -1,47 +1,12 @@
 import PageMeta from "../components/PageMeta";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { useTheme } from "../contexts/ThemeContext";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import collectionsData from "../data/collections.json";
 
-// 3D Haori Model — стилизованная форма хаори (рукава + тело)
-const HaoriModel = ({ color, isUVMode }) => {
-  const matProps = {
-    color: isUVMode ? color : "#1a1a2e",
-    emissive: isUVMode ? color : "#000000",
-    emissiveIntensity: isUVMode ? 0.6 : 0,
-    roughness: 0.4,
-    metalness: 0.1,
-  };
-
-  return (
-    <group rotation={[0.1, 0.5, 0]}>
-      {/* Тело хаори */}
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[1.8, 2.8, 0.08]} />
-        <meshStandardMaterial {...matProps} />
-      </mesh>
-      {/* Левый рукав */}
-      <mesh position={[-1.3, 0.4, 0]} rotation={[0, 0, 0.3]}>
-        <boxGeometry args={[1.0, 1.6, 0.06]} />
-        <meshStandardMaterial {...matProps} />
-      </mesh>
-      {/* Правый рукав */}
-      <mesh position={[1.3, 0.4, 0]} rotation={[0, 0, -0.3]}>
-        <boxGeometry args={[1.0, 1.6, 0.06]} />
-        <meshStandardMaterial {...matProps} />
-      </mesh>
-      {/* Воротник */}
-      <mesh position={[0, 1.5, 0.05]}>
-        <boxGeometry args={[0.6, 0.3, 0.1]} />
-        <meshStandardMaterial color="#2a2a3e" roughness={0.3} />
-      </mesh>
-    </group>
-  );
-};
+// Lazy load 3D scene — three.js (~1MB) грузится только когда нужен Canvas
+const Collection3DScene = lazy(() => import("../components/Collection3DScene"));
 
 const Collections = () => {
   const { isUVMode } = useTheme();
@@ -106,21 +71,18 @@ const Collections = () => {
             animate={{ opacity: 1, x: 0 }}
             className="h-[500px] rounded-lg overflow-hidden bg-zinc-900"
           >
-            <Canvas>
-              <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-              <ambientLight intensity={0.5} />
-              <pointLight
-                position={[10, 10, 10]}
-                intensity={isUVMode ? 2 : 1}
+            <Suspense
+              fallback={
+                <div className="w-full h-full flex items-center justify-center bg-zinc-900">
+                  <div className="w-8 h-8 border-2 border-zinc-600 border-t-purple-500 rounded-full animate-spin" />
+                </div>
+              }
+            >
+              <Collection3DScene
                 color={currentCollection.color}
+                isUVMode={isUVMode}
               />
-              <HaoriModel color={currentCollection.color} isUVMode={isUVMode} />
-              <OrbitControls
-                enableZoom={false}
-                autoRotate
-                autoRotateSpeed={2}
-              />
-            </Canvas>
+            </Suspense>
           </motion.div>
 
           {/* Collection Details */}
