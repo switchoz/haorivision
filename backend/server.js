@@ -35,6 +35,7 @@ import adminFlags from "./routes/admin.flags.js";
 import adminOrders from "./routes/admin.orders.js";
 import adminMessages from "./routes/admin.messages.js";
 import adminBespoke from "./routes/admin.bespoke.js";
+import adminBlog from "./routes/admin.blog.js";
 import adminOAuth from "./routes/admin/oauth.js";
 import { passport } from "./config/passport.js";
 
@@ -50,6 +51,7 @@ import productRoutes from "./routes/products.js";
 import orderRoutes from "./routes/orders.js";
 import contactRoutes from "./routes/contact.js";
 import chatRoutes from "./routes/chat.js";
+import blogRoutes from "./routes/blog.js";
 import haori3dRoutes from "./routes/haori3d.js";
 import eventsRoutes from "./routes/events.js";
 import {
@@ -220,6 +222,8 @@ app.use("/api/admin/flags", adminFlags);
 app.use("/api/admin/orders", adminOrders);
 app.use("/api/admin/messages", adminMessages);
 app.use("/api/admin/bespoke", adminBespoke);
+app.use("/api/admin/blog", adminBlog);
+app.use("/api/blog", blogRoutes);
 
 // Error handling middleware
 app.use(errorHandler);

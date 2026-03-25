@@ -10,6 +10,7 @@ import {
   MessageSquare,
   Palette,
   Send,
+  BookOpen,
 } from "lucide-react";
 import { getToken, getRole } from "./api";
 
@@ -32,6 +33,7 @@ export default function AdminLayout() {
     { to: "/admin/messages", icon: MessageSquare, label: "Сообщения" },
     { to: "/admin/bespoke", icon: Palette, label: "Bespoke" },
     { to: "/admin/telegram", icon: Send, label: "Telegram" },
+    { to: "/admin/blog", icon: BookOpen, label: "Журнал" },
     { to: "/admin/products", icon: Package, label: "Товары" },
     { to: "/admin/flags", icon: Flag, label: "Фичи" },
     { to: "/admin/logs", icon: FileText, label: "Логи" },

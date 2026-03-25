@@ -16,6 +16,7 @@ const Navigation = () => {
     { path: "/collections", label: "Коллекции" },
     { path: "/gallery", label: "Галерея" },
     { path: "/presentation", label: "Художник" },
+    { path: "/journal", label: "Журнал" },
     { path: "/about", label: "О нас" },
     { path: "/contact", label: "Контакты" },
   ];

@@ -52,6 +52,9 @@ const Logs = lazy(() => import("./admin/pages/Logs"));
 const Messages = lazy(() => import("./admin/pages/Messages"));
 const AdminBespoke = lazy(() => import("./admin/pages/Bespoke"));
 const AdminTelegram = lazy(() => import("./admin/pages/Telegram"));
+const AdminBlogPage = lazy(() => import("./admin/pages/Blog"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPostPage = lazy(() => import("./pages/BlogPost"));
 
 function App() {
   // Setup global error tracking for Reliability Kit
@@ -107,6 +110,8 @@ function App() {
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="faq" element={<FAQ />} />
+                <Route path="journal" element={<Blog />} />
+                <Route path="journal/:slug" element={<BlogPostPage />} />
                 <Route path="ar-tryon" element={<ARTryOn />} />
                 <Route path="3d-studio" element={<Haori3DStudio />} />
                 <Route path="presentation" element={<Presentation />} />
@@ -134,6 +139,7 @@ function App() {
                 <Route path="messages" element={<Messages />} />
                 <Route path="bespoke" element={<AdminBespoke />} />
                 <Route path="telegram" element={<AdminTelegram />} />
+                <Route path="blog" element={<AdminBlogPage />} />
                 <Route
                   path="products"
                   element={

@@ -293,6 +293,11 @@ router.get("/sitemap-static.xml", async (req, res) => {
         priority: PRIORITY.static,
         changefreq: CHANGEFREQ.static,
       },
+      {
+        loc: "/journal",
+        priority: PRIORITY.static,
+        changefreq: CHANGEFREQ.products,
+      },
     ];
 
     let xml = generateXMLHeader();

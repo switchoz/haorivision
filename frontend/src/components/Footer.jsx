@@ -11,6 +11,7 @@ const Footer = () => {
     { label: "Bespoke", path: "/bespoke" },
     { label: "Галерея", path: "/gallery" },
     { label: "Художник", path: "/presentation" },
+    { label: "Журнал", path: "/journal" },
     { label: "О нас", path: "/about" },
     { label: "Контакты", path: "/contact" },
     { label: "FAQ", path: "/faq" },
