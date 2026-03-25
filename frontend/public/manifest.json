@@ -1,0 +1,20 @@
+{
+  "name": "HAORI VISION — Wearable Light Art",
+  "short_name": "HAORI VISION",
+  "description": "Носимое световое искусство. Хаори с ручной росписью UV-красками.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#7C3AED",
+  "orientation": "portrait-primary",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"]
+}

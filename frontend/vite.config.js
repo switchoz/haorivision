@@ -47,6 +47,7 @@ export default defineConfig({
           three: ["three", "@react-three/fiber", "@react-three/drei"],
           stripe: ["@stripe/stripe-js", "@stripe/react-stripe-js"],
           vendor: ["html2canvas", "qrcode.react"],
+          charts: ["recharts"],
           tensorflow: ["@tensorflow/tfjs", "@tensorflow-models/pose-detection"],
         },
         assetFileNames: (assetInfo) => {

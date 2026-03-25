@@ -8,6 +8,7 @@ import express from "express";
 import { sendCustomEmail } from "../services/emailService.js";
 import { sanitizeInput } from "../middlewares/security.js";
 import { baseLogger } from "../middlewares/logger.js";
+import ContactMessage from "../models/ContactMessage.js";
 
 const router = express.Router();
 
@@ -96,17 +97,41 @@ router.post("/", async (req, res) => {
       </html>
     `;
 
-    const result = await sendCustomEmail(adminEmail, subject, htmlContent);
+    // Always save to DB first — never lose a message
+    const saved = await ContactMessage.create({
+      name,
+      email,
+      type: type || "general",
+      message,
+      emailSent: false,
+    });
 
-    if (result.success) {
-      res.json({ success: true, message: "Message sent successfully" });
-    } else {
-      baseLogger.error({ error: result.error }, "Email sending failed");
-      res.status(500).json({ error: "Failed to send message" });
+    // Try sending email (non-blocking — success even if email fails)
+    let emailSent = false;
+    try {
+      const result = await sendCustomEmail(adminEmail, subject, htmlContent);
+      if (result.success) {
+        emailSent = true;
+        saved.emailSent = true;
+        await saved.save();
+      }
+    } catch (emailErr) {
+      baseLogger.warn(
+        { err: emailErr },
+        "Contact email failed, but message saved to DB",
+      );
     }
+
+    res.json({
+      success: true,
+      message: emailSent
+        ? "Сообщение отправлено"
+        : "Сообщение сохранено, мы свяжемся с вами",
+      id: saved._id,
+    });
   } catch (error) {
     baseLogger.error({ err: error }, "Contact form error");
-    res.status(500).json({ error: "Failed to send message" });
+    res.status(500).json({ error: "Ошибка при отправке сообщения" });
   }
 });
 

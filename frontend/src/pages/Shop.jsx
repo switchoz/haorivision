@@ -153,10 +153,11 @@ const Shop = () => {
         {/* Search */}
         <div className="max-w-md mx-auto mb-8">
           <input
-            type="text"
+            type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Поиск по названию..."
+            aria-label="Поиск товаров"
             className="w-full px-5 py-3 bg-zinc-900 border border-zinc-700 rounded-full text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500 transition-colors"
           />
         </div>
@@ -381,7 +382,7 @@ const Shop = () => {
             для вас. Художник Елизавета Федькина (LiZa) создаст работу в
             потоковом состоянии — из вашей энергии, цвета и формы.
           </p>
-          <Link to="/contact">
+          <Link to="/bespoke">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

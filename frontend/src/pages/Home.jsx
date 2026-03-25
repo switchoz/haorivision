@@ -741,7 +741,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link to="/shop">
+            <Link to="/bespoke">
               <motion.button
                 whileHover={{
                   scale: 1.1,

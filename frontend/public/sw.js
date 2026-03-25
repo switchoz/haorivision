@@ -6,11 +6,11 @@
  * Pre-cache: media, data, shaders, audio loops
  */
 
-const CACHE_VERSION = "haori-vision-v2.0.0";
-const CACHE_ASSETS = "haori-assets-v2";
-const CACHE_API = "haori-api-v2";
-const CACHE_MEDIA = "haori-media-v2";
-const CACHE_SHOW = "haori-show-v2";
+const CACHE_VERSION = "haori-vision-v3.0.0";
+const CACHE_ASSETS = "haori-assets-v3";
+const CACHE_API = "haori-api-v3";
+const CACHE_MEDIA = "haori-media-v3";
+const CACHE_SHOW = "haori-show-v3";
 
 // Критичные файлы для оффлайн работы
 const CRITICAL_ASSETS = [

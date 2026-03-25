@@ -225,7 +225,7 @@ export default function GuidedWhisper({
             <button
               className="whisper-close"
               onClick={toggleEnabled}
-              title="Close"
+              title="Закрыть"
             >
               ×
             </button>

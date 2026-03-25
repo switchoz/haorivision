@@ -8,6 +8,7 @@ const Footer = () => {
   const navLinks = [
     { label: "Магазин", path: "/shop" },
     { label: "Коллекции", path: "/collections" },
+    { label: "Bespoke", path: "/bespoke" },
     { label: "Галерея", path: "/gallery" },
     { label: "Художник", path: "/presentation" },
     { label: "О нас", path: "/about" },

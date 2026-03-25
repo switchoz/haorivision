@@ -21,7 +21,7 @@ Sitemap: https://haorivision.com/sitemap-legal.xml
 
 Disallow: /admin
 Disallow: /api/
-Disallow: /_next/
+Disallow: /assets/
 Disallow: /backend/
 Disallow: /scripts/
 Disallow: /reports/
