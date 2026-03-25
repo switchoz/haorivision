@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import UVParticles from "../components/UVParticles";
 import PageMeta from "../components/PageMeta";
+import ReviewsSection from "../components/ReviewsSection";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3010";
 
@@ -676,6 +677,9 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* ===== REVIEWS ===== */}
+      <ReviewsSection />
 
       {/* ===== BESPOKE CTA ===== */}
       <section className="py-32 px-4 relative overflow-hidden">

@@ -52,6 +52,8 @@ import orderRoutes from "./routes/orders.js";
 import contactRoutes from "./routes/contact.js";
 import chatRoutes from "./routes/chat.js";
 import blogRoutes from "./routes/blog.js";
+import reviewRoutes from "./routes/reviews.js";
+import adminReviews from "./routes/admin.reviews.js";
 import haori3dRoutes from "./routes/haori3d.js";
 import eventsRoutes from "./routes/events.js";
 import {
@@ -224,6 +226,8 @@ app.use("/api/admin/messages", adminMessages);
 app.use("/api/admin/bespoke", adminBespoke);
 app.use("/api/admin/blog", adminBlog);
 app.use("/api/blog", blogRoutes);
+app.use("/api/reviews", reviewRoutes);
+app.use("/api/admin/reviews", adminReviews);
 
 // Error handling middleware
 app.use(errorHandler);
