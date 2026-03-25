@@ -9,6 +9,7 @@ import Order from "../models/Order.js";
 import Product from "../models/Product.js";
 import Customer from "../models/Customer.js";
 import { baseLogger } from "../middlewares/logger.js";
+import telegramBotService from "../services/telegramBotService.js";
 
 const router = express.Router();
 
@@ -121,6 +122,17 @@ router.post("/", async (req, res) => {
     const populatedOrder = await Order.findById(order._id)
       .populate("customer", "name email")
       .populate("items.product", "name id images");
+
+    // Telegram уведомление админу (non-blocking)
+    telegramBotService
+      .notifyAdmin(
+        `🛒 <b>Новый заказ!</b>\n` +
+          `Номер: <code>${order.orderNumber}</code>\n` +
+          `Клиент: ${customer.name} (${customer.email})\n` +
+          `Товар: ${product.name}\n` +
+          `Сумма: ${order.totals.total} ${product.currency || "USD"}`,
+      )
+      .catch(() => {});
 
     res.status(201).json({ order: populatedOrder });
   } catch (error) {

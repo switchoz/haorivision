@@ -8,6 +8,7 @@ import express from "express";
 import { sendCustomEmail } from "../services/emailService.js";
 import { sanitizeInput } from "../middlewares/security.js";
 import { baseLogger } from "../middlewares/logger.js";
+import telegramBotService from "../services/telegramBotService.js";
 import ContactMessage from "../models/ContactMessage.js";
 
 const router = express.Router();
@@ -121,6 +122,16 @@ router.post("/", async (req, res) => {
         "Contact email failed, but message saved to DB",
       );
     }
+
+    // Telegram уведомление
+    telegramBotService
+      .notifyAdmin(
+        `📩 <b>Новое сообщение!</b>\n` +
+          `От: ${name} (${email})\n` +
+          `Тип: ${type || "general"}\n` +
+          `${message.slice(0, 300)}${message.length > 300 ? "..." : ""}`,
+      )
+      .catch(() => {});
 
     res.json({
       success: true,

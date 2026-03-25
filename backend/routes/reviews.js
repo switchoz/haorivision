@@ -1,6 +1,7 @@
 import express from "express";
 import Review from "../models/Review.js";
 import { baseLogger } from "../middlewares/logger.js";
+import telegramBotService from "../services/telegramBotService.js";
 
 const router = express.Router();
 
@@ -59,6 +60,17 @@ router.post("/", async (req, res) => {
       photo,
       approved: false,
     });
+
+    // Telegram уведомление админу
+    telegramBotService
+      .notifyAdmin(
+        `⭐ <b>Новый отзыв!</b>\n` +
+          `От: ${name}${city ? ` (${city})` : ""}\n` +
+          `Оценка: ${"★".repeat(Number(rating))}${"☆".repeat(5 - Number(rating))}\n` +
+          `${text.slice(0, 200)}${text.length > 200 ? "..." : ""}\n\n` +
+          `Ожидает модерации в /admin/reviews`,
+      )
+      .catch(() => {});
 
     res
       .status(201)
