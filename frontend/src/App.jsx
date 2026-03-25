@@ -49,6 +49,8 @@ const Orders = lazy(() => import("./admin/pages/Orders"));
 const Flags = lazy(() => import("./admin/pages/Flags"));
 const AdminProducts = lazy(() => import("./admin/pages/Products"));
 const Logs = lazy(() => import("./admin/pages/Logs"));
+const Messages = lazy(() => import("./admin/pages/Messages"));
+const AdminBespoke = lazy(() => import("./admin/pages/Bespoke"));
 
 function App() {
   // Setup global error tracking for Reliability Kit
@@ -128,6 +130,8 @@ function App() {
               >
                 <Route index element={<Dashboard />} />
                 <Route path="orders" element={<Orders />} />
+                <Route path="messages" element={<Messages />} />
+                <Route path="bespoke" element={<AdminBespoke />} />
                 <Route
                   path="products"
                   element={

@@ -33,6 +33,8 @@ import adminCore from "./routes/admin.core.js";
 import adminProducts from "./routes/admin.products.js";
 import adminFlags from "./routes/admin.flags.js";
 import adminOrders from "./routes/admin.orders.js";
+import adminMessages from "./routes/admin.messages.js";
+import adminBespoke from "./routes/admin.bespoke.js";
 import adminOAuth from "./routes/admin/oauth.js";
 import { passport } from "./config/passport.js";
 
@@ -208,6 +210,8 @@ app.use("/api/admin", adminCore);
 app.use("/api/admin/products", adminProducts);
 app.use("/api/admin/flags", adminFlags);
 app.use("/api/admin/orders", adminOrders);
+app.use("/api/admin/messages", adminMessages);
+app.use("/api/admin/bespoke", adminBespoke);
 
 // Error handling middleware
 app.use(errorHandler);
