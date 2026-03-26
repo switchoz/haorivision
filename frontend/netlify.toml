@@ -2,18 +2,18 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA fallback — все роуты через index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Proxy API запросов к бэкенду (замените URL на реальный)
+# Proxy API запросов к бэкенду (ПЕРЕД SPA fallback!)
 [[redirects]]
   from = "/api/*"
   to = "https://haorivision-api.onrender.com/api/:splat"
   status = 200
   force = true
+
+# SPA fallback — все остальные роуты через index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 # Заголовки безопасности
 [[headers]]
