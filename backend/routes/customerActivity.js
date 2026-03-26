@@ -1,5 +1,5 @@
 import express from "express";
-import crmService from "../../src/assistant/crmService.js";
+import crmService from "../utils/crmStub.js";
 import loyaltyService from "../services/loyaltyService.js";
 import newsletterService from "../services/newsletterService.js";
 import { baseLogger } from "../middlewares/logger.js";

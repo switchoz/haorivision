@@ -1,5 +1,5 @@
 import Event from "../models/Event.js";
-import crmService from "../../src/assistant/crmService.js";
+import crmService from "../utils/crmStub.js";
 import emailService from "./emailService.js";
 
 /**

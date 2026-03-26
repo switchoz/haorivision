@@ -1,4 +1,4 @@
-import crmService from "../../src/assistant/crmService.js";
+import crmService from "../utils/crmStub.js";
 import emailWorkflowService from "./emailWorkflowService.js";
 
 /**

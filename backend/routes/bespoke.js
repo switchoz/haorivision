@@ -1,6 +1,6 @@
 import express from "express";
 import bespokeService from "../services/bespokeService.js";
-import crmService from "../../src/assistant/crmService.js";
+import crmService from "../utils/crmStub.js";
 import BespokeCommission from "../models/BespokeCommission.js";
 import Customer from "../models/Customer.js";
 import { sendCustomEmail } from "../services/emailService.js";

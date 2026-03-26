@@ -1,4 +1,4 @@
-import crmService from "../../src/assistant/crmService.js";
+import crmService from "../utils/crmStub.js";
 
 /**
  * Loyalty Service - Glow Points System
