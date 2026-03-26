@@ -62,7 +62,7 @@ import eventsRoutes from "./routes/events.js";
 import {
   edgeCacheMiddleware,
   edgeCacheAgeMiddleware,
-} from "../scripts/edge_headers.js";
+} from "./utils/edgeHeaders.js";
 
 // Import cron jobs
 import "./cron/aiFeedbackLoop.js";
