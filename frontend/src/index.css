@@ -173,6 +173,12 @@
 }
 
 @layer utilities {
+  /* Content-visibility for below-the-fold sections (reduces rendering cost) */
+  .content-lazy {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+
   /* Custom scrollbar */
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
@@ -258,10 +264,35 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 html[data-test-mode="static"] * {
   transition: none !important;
   animation: none !important;
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  nav,
+  footer,
+  .cookie-consent,
+  .back-to-top,
+  .hikari-chat {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .card-luxury,
+  .card-uv,
+  .glass-luxury {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  img {
+    max-width: 100% !important;
+  }
 }

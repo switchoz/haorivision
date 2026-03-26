@@ -2,6 +2,7 @@ import express from "express";
 import authAdmin, { requireRole } from "../middlewares/authAdmin.js";
 import BlogPost from "../models/BlogPost.js";
 import { baseLogger } from "../middlewares/logger.js";
+import { escapeRegex } from "../utils/escapeRegex.js";
 
 const r = express.Router();
 r.use(authAdmin);
@@ -17,7 +18,7 @@ r.get("/", requireRole("admin", "editor", "viewer"), async (req, res) => {
     if (published === "true") query.published = true;
     if (published === "false") query.published = false;
     if (search) {
-      const re = new RegExp(String(search), "i");
+      const re = new RegExp(escapeRegex(String(search)), "i");
       query.$or = [{ title: re }, { excerpt: re }, { tags: re }];
     }
 

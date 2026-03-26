@@ -4,6 +4,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import PageMeta from "../components/PageMeta";
 import UVToggle from "../components/UVToggle";
 import WorkCard from "../components/gallery/WorkCard";
 import WorkModal from "../components/gallery/WorkModal";
@@ -45,6 +46,10 @@ export default function Gallery() {
         fontFamily: "'Cormorant Garamond', serif",
       }}
     >
+      <PageMeta
+        title="Галерея"
+        description="Галерея работ художника Елизаветы Федькиной. Интуитивная живопись, UV-арт, космические мотивы."
+      />
       {/* Header */}
       <header
         className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"

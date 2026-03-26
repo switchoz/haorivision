@@ -4,6 +4,7 @@
 
 import { useState, useEffect, useCallback, Suspense, lazy } from "react";
 import { motion } from "framer-motion";
+import PageMeta from "../components/PageMeta";
 import { useTheme } from "../contexts/ThemeContext";
 
 const HaoriViewer = lazy(() => import("../components/HaoriModelViewer.jsx"));
@@ -168,6 +169,10 @@ export default function Haori3DStudio() {
 
   return (
     <div className="min-h-screen py-20 px-4">
+      <PageMeta
+        title="3D Студия"
+        description="Рассмотрите хаори HAORI VISION в 3D. Интерактивная визуализация UV-эффекта."
+      />
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -310,7 +315,7 @@ export default function Haori3DStudio() {
                       {item.textures.front && (
                         <img
                           src={item.textures.front}
-                          alt=""
+                          alt={item.title || "Текстура хаори"}
                           className="w-12 h-12 rounded-lg object-cover"
                         />
                       )}

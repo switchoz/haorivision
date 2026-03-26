@@ -1,10 +1,10 @@
 // src/components/gallery/WorkCard.jsx
 // Интерактивная карточка работы с hover-эффектами и UV-режимом
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { motion } from "framer-motion";
 
-export default function WorkCard({ work, index, isUV, onClick }) {
+function WorkCard({ work, index, isUV, onClick }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const accent = isUV ? "255,0,180" : "0,255,180";
@@ -23,6 +23,10 @@ export default function WorkCard({ work, index, isUV, onClick }) {
   return (
     <motion.div
       onClick={() => onClick(work)}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") onClick(work);
+      }}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -31,7 +35,7 @@ export default function WorkCard({ work, index, isUV, onClick }) {
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{ y: -6, transition: { duration: 0.3 } }}
-      className="cursor-pointer group relative overflow-hidden rounded-lg"
+      className="cursor-pointer group relative overflow-hidden rounded-lg focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:outline-none"
       style={{
         background: "rgba(255,255,255,0.02)",
         border: `1px solid rgba(${accent}, 0.08)`,
@@ -138,3 +142,5 @@ export default function WorkCard({ work, index, isUV, onClick }) {
     </motion.div>
   );
 }
+
+export default memo(WorkCard);

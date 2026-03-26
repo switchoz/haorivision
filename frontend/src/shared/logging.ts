@@ -1,6 +1,6 @@
 type Level = "debug" | "info" | "warn" | "error";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL || "";
 const SAMPLE = Number(import.meta.env.VITE_LOG_SAMPLE_RATE ?? 0.1);
 
 function shouldSend(sample = SAMPLE) {

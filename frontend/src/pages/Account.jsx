@@ -347,7 +347,7 @@ export default function Account() {
                       {item.product?.images?.[0] && (
                         <img
                           src={item.product.images[0]}
-                          alt=""
+                          alt={item.name}
                           className="w-10 h-12 object-cover rounded"
                         />
                       )}

@@ -3,6 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import PageMeta from "../components/PageMeta";
+import { BlogPostJsonLd } from "../components/JsonLd";
+import DOMPurify from "dompurify";
+import { marked } from "marked";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -60,15 +63,23 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen py-24 px-4">
-      <PageMeta title={post.title} description={post.excerpt} />
+      <PageMeta
+        title={post.title}
+        description={post.excerpt}
+        image={post.coverImage}
+      />
+      <BlogPostJsonLd post={post} />
       <article className="max-w-3xl mx-auto">
-        {/* Back link */}
-        <Link
-          to="/journal"
-          className="text-zinc-500 hover:text-white text-sm transition-colors mb-8 inline-block"
-        >
-          &larr; Журнал
-        </Link>
+        {/* Breadcrumbs */}
+        <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-8">
+          <Link to="/journal" className="hover:text-white transition-colors">
+            Журнал
+          </Link>
+          <span>/</span>
+          <span className="text-zinc-400 truncate max-w-[300px]">
+            {post.title}
+          </span>
+        </nav>
 
         {/* Cover */}
         {post.coverImage && (
@@ -141,7 +152,9 @@ export default function BlogPost() {
             prose-a:text-purple-400 prose-a:no-underline hover:prose-a:underline
             prose-strong:text-white
             prose-img:rounded-xl"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(marked.parse(post.content)),
+          }}
         />
 
         {/* Footer */}

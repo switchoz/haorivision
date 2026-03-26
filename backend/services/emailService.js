@@ -102,7 +102,7 @@ const getDefaultTemplate = (templateName) => {
           </div>
 
           <div class="footer">
-            <p><strong>HAORI VISION</strong> — Wearable Light Art</p>
+            <p><strong>HAORI VISION</strong> — Носимое Искусство Света</p>
             <p>Носи свет. Стань искусством.</p>
             <p style="margin-top: 20px; font-size: 11px;">
               Есть вопросы? <a href="mailto:support@haorivision.com" style="color: #a855f7;">support@haorivision.com</a>
@@ -145,7 +145,7 @@ const getDefaultTemplate = (templateName) => {
           <p style="margin-top: 30px;">Мы отправим уведомление с номером для отслеживания, как только посылка будет готова.</p>
 
           <div class="footer">
-            <p><strong>HAORI VISION</strong> — Wearable Light Art</p>
+            <p><strong>HAORI VISION</strong> — Носимое Искусство Света</p>
             <p><a href="mailto:support@haorivision.com" style="color: #a855f7;">support@haorivision.com</a></p>
           </div>
         </div>
@@ -182,7 +182,7 @@ const getDefaultTemplate = (templateName) => {
           <p>Ожидаемая доставка: {{estimatedDelivery}}</p>
 
           <div class="footer">
-            <p><strong>HAORI VISION</strong> — Wearable Light Art</p>
+            <p><strong>HAORI VISION</strong> — Носимое Искусство Света</p>
             <p><a href="mailto:support@haorivision.com" style="color: #a855f7;">support@haorivision.com</a></p>
           </div>
         </div>
@@ -259,7 +259,7 @@ export const sendOrderConfirmation = async (customer, order) => {
       orderNumber: order.orderNumber,
       productName: order.items[0].name,
       editionNumber: order.items[0].editionNumber,
-      totalEditions: order.items[0].product?.editions?.total || "N/A",
+      totalEditions: order.items[0].product?.editions?.total || "—",
       price: order.items[0].price,
       total: order.totals.total,
     };

@@ -1,9 +1,31 @@
 import PageMeta from "../components/PageMeta";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
-import { useState, Suspense, lazy } from "react";
+import { useState, Suspense, lazy, Component } from "react";
 import { Link } from "react-router-dom";
 import collectionsData from "../data/collections.json";
+import toast from "react-hot-toast";
+
+class Scene3DFallback extends Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 text-zinc-500 gap-3">
+          <span className="text-4xl">光</span>
+          <p className="text-sm">3D-модель недоступна</p>
+          <Link to="/shop" className="text-xs text-purple-400 hover:underline">
+            Смотреть в магазине →
+          </Link>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // Lazy load 3D scene — three.js (~1MB) грузится только когда нужен Canvas
 const Collection3DScene = lazy(() => import("../components/Collection3DScene"));
@@ -11,15 +33,43 @@ const Collection3DScene = lazy(() => import("../components/Collection3DScene"));
 const Collections = () => {
   const { isUVMode } = useTheme();
   const [selectedCollection, setSelectedCollection] = useState(0);
+  const [notifyEmail, setNotifyEmail] = useState("");
+  const [showNotify, setShowNotify] = useState(false);
 
   const collections = collectionsData.collections;
   const currentCollection = collections[selectedCollection];
+
+  const handleNotify = async (e) => {
+    e.preventDefault();
+    if (!notifyEmail.trim() || !notifyEmail.includes("@")) {
+      toast.error("Введите корректный email");
+      return;
+    }
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Подписка на коллекцию",
+          email: notifyEmail,
+          subject: `Уведомление: ${currentCollection?.name || "Новая коллекция"}`,
+          message: `Хочу получить уведомление о коллекции "${currentCollection?.name}".`,
+        }),
+      });
+      toast.success("Готово! Мы уведомим вас о старте коллекции.");
+      setNotifyEmail("");
+      setShowNotify(false);
+    } catch {
+      toast.error("Ошибка. Попробуйте позже.");
+    }
+  };
 
   return (
     <div className="min-h-screen py-24 px-4">
       <PageMeta
         title="Коллекции"
-        description="Коллекции HAORI VISION — UV-арт хаори с 3D-визуализацией. Лимитированные серии ручной работы."
+        description="Коллекции HAORI VISION — носимое световое искусство. Хаори, куртки, сумки и аксессуары с UV-росписью."
       />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -71,18 +121,20 @@ const Collections = () => {
             animate={{ opacity: 1, x: 0 }}
             className="h-[500px] rounded-lg overflow-hidden bg-zinc-900"
           >
-            <Suspense
-              fallback={
-                <div className="w-full h-full flex items-center justify-center bg-zinc-900">
-                  <div className="w-8 h-8 border-2 border-zinc-600 border-t-purple-500 rounded-full animate-spin" />
-                </div>
-              }
-            >
-              <Collection3DScene
-                color={currentCollection.color}
-                isUVMode={isUVMode}
-              />
-            </Suspense>
+            <Scene3DFallback>
+              <Suspense
+                fallback={
+                  <div className="w-full h-full flex items-center justify-center bg-zinc-900">
+                    <div className="w-8 h-8 border-2 border-zinc-600 border-t-purple-500 rounded-full animate-spin" />
+                  </div>
+                }
+              >
+                <Collection3DScene
+                  color={currentCollection.color}
+                  isUVMode={isUVMode}
+                />
+              </Suspense>
+            </Scene3DFallback>
           </motion.div>
 
           {/* Collection Details */}
@@ -183,7 +235,7 @@ const Collections = () => {
             </div>
 
             {currentCollection.status === "available" ? (
-              <Link to="/products">
+              <Link to="/shop">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -203,6 +255,7 @@ const Collections = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => setShowNotify(true)}
                 className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-4 rounded-full font-semibold w-full transition-colors"
               >
                 Уведомить Меня
@@ -270,6 +323,68 @@ const Collections = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Notify Modal */}
+      <AnimatePresence>
+        {showNotify && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4"
+            onClick={() => setShowNotify(false)}
+          >
+            <motion.form
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              onSubmit={handleNotify}
+              className={`w-full max-w-md rounded-2xl p-8 ${
+                isUVMode
+                  ? "bg-zinc-900 border border-purple-500/30"
+                  : "bg-zinc-900 border border-zinc-700"
+              }`}
+            >
+              <h3 className="text-xl font-bold text-white mb-2">
+                Узнать о старте первым
+              </h3>
+              <p className="text-zinc-400 text-sm mb-6">
+                Оставьте email — мы напишем, когда коллекция{" "}
+                <span className="text-white">{currentCollection?.name}</span>{" "}
+                станет доступна.
+              </p>
+              <input
+                type="email"
+                value={notifyEmail}
+                onChange={(e) => setNotifyEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white mb-4 focus:outline-none focus:border-purple-500"
+              />
+              <div className="flex gap-3">
+                <button
+                  type="submit"
+                  className={`flex-1 py-3 rounded-xl font-medium transition-colors ${
+                    isUVMode
+                      ? "bg-purple-600 text-white hover:bg-purple-700"
+                      : "bg-white text-black hover:bg-zinc-200"
+                  }`}
+                >
+                  Подписаться
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowNotify(false)}
+                  className="px-6 py-3 rounded-xl text-zinc-400 border border-zinc-700 hover:bg-zinc-800 transition-colors"
+                >
+                  Отмена
+                </button>
+              </div>
+            </motion.form>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

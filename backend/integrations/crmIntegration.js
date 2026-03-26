@@ -121,31 +121,6 @@ class CRMIntegration {
   }
 
   /**
-   * Отправка NFT сертификата
-   */
-  async processNFTMinted(customer, order, nft) {
-    try {
-      // Отправить NFT email
-      await emailWorkflowService.sendNFTMintedEmail(customer, order, nft);
-
-      // Записать в CRM
-      if (customer.id) {
-        await crmService.logInteraction(customer.id, {
-          type: "nft_minted",
-          intent: "nft",
-          message: `NFT minted: ${nft.tokenId}`,
-          response: `OpenSea: ${nft.openseaUrl}`,
-          products: [],
-        });
-      }
-
-      return { success: true };
-    } catch (error) {
-      return { success: false };
-    }
-  }
-
-  /**
    * Проверить VIP upgrade на основе total_spent или points
    */
   async checkVIPUpgrade(clientId) {

@@ -10,6 +10,9 @@
 
 import * as THREE from "three";
 
+const log = import.meta.env.DEV ? console.log.bind(console) : () => {};
+const warn = import.meta.env.DEV ? console.warn.bind(console) : () => {};
+
 // === TYPES ===
 
 export interface DisplayConfig {
@@ -119,7 +122,7 @@ export class MultiDisplayManager {
           this.displays.set(display.id, display);
         });
 
-        console.log("[Multi-Display] Detected displays:", this.displays.size);
+        log("[Multi-Display] Detected displays:", this.displays.size);
       });
     } else {
       // Fallback: single display
@@ -170,7 +173,7 @@ export class MultiDisplayManager {
         await this.connectWebSocket(profile.sync.websocketUrl);
       }
 
-      console.log("[◇] Venue profile loaded:", profile.name);
+      log("[◇] Venue profile loaded:", profile.name);
       return profile;
     } catch (error) {
       console.error("[Multi-Display] Failed to load venue profile:", error);
@@ -194,7 +197,7 @@ export class MultiDisplayManager {
       }
 
       this.venueProfile = profile;
-      console.log("[✓] Venue profile saved:", profile.name);
+      log("[✓] Venue profile saved:", profile.name);
     } catch (error) {
       console.error("[Multi-Display] Failed to save venue profile:", error);
       throw error;
@@ -242,7 +245,7 @@ export class MultiDisplayManager {
     container.appendChild(canvas);
     this.canvas = canvas;
 
-    console.log("[Multi-Display] Span canvas created:", {
+    log("[Multi-Display] Span canvas created:", {
       totalWidth,
       totalHeight,
     });
@@ -258,7 +261,7 @@ export class MultiDisplayManager {
       this.wsConnection = new WebSocket(url);
 
       this.wsConnection.onopen = () => {
-        console.log("[WebSocket] Connected to sync server:", url);
+        log("[WebSocket] Connected to sync server:", url);
         resolve();
       };
 
@@ -277,7 +280,7 @@ export class MultiDisplayManager {
       };
 
       this.wsConnection.onclose = () => {
-        console.log("[WebSocket] Disconnected");
+        log("[WebSocket] Disconnected");
 
         // Попытка переподключения через 5 секунд
         setTimeout(() => {
@@ -336,7 +339,7 @@ export class MultiDisplayManager {
         break;
 
       default:
-        console.warn("[WebSocket] Unknown message type:", type);
+        warn("[WebSocket] Unknown message type:", type);
     }
   }
 
@@ -363,7 +366,7 @@ export class MultiDisplayManager {
     // Применить post-processing pass
     // TODO: Интеграция с EffectComposer
 
-    console.log("[Warp] Applied correction:", warpGrid);
+    log("[Warp] Applied correction:", warpGrid);
   }
 
   /**
@@ -463,7 +466,7 @@ export class MultiDisplayManager {
     // Tone mapping для brightness/contrast
     renderer.toneMappingExposure = cal.brightness;
 
-    console.log("[Calibration] Applied color calibration:", cal);
+    log("[Calibration] Applied color calibration:", cal);
   }
 
   /**

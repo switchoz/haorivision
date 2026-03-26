@@ -104,8 +104,8 @@ const NotFound = () => {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          {/* Primary CTA - Back to Gallery */}
-          <Link to="/gallery">
+          {/* Primary CTA - Go Home */}
+          <Link to="/">
             <motion.button
               className={`w-full sm:w-auto px-8 py-4 text-lg font-bold uppercase tracking-wider transition-all ${
                 isUVMode
@@ -115,12 +115,12 @@ const NotFound = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Назад в галерею
+              На главную
             </motion.button>
           </Link>
 
-          {/* Secondary CTA - Go Home */}
-          <Link to="/">
+          {/* Secondary CTA - Shop */}
+          <Link to="/shop">
             <motion.button
               className={`w-full sm:w-auto px-8 py-4 text-lg font-bold uppercase tracking-wider border-2 transition-all ${
                 isUVMode
@@ -130,7 +130,22 @@ const NotFound = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              На главную
+              В магазин
+            </motion.button>
+          </Link>
+
+          {/* Tertiary CTA - Gallery */}
+          <Link to="/gallery">
+            <motion.button
+              className={`w-full sm:w-auto px-8 py-4 text-lg font-bold uppercase tracking-wider border-2 transition-all ${
+                isUVMode
+                  ? "border-purple-500/50 text-purple-400/70 hover:bg-purple-500/10"
+                  : "border-zinc-800 text-zinc-400 hover:border-zinc-600"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Галерея
             </motion.button>
           </Link>
         </motion.div>
@@ -145,16 +160,16 @@ const NotFound = () => {
           <p className="mb-2">Возможно, вы ищете:</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
+              to="/shop"
+              className="hover:text-purple-400 transition-colors"
+            >
+              Магазин
+            </Link>
+            <Link
               to="/collections"
               className="hover:text-purple-400 transition-colors"
             >
               Коллекции
-            </Link>
-            <Link
-              to="/products"
-              className="hover:text-purple-400 transition-colors"
-            >
-              Продукты
             </Link>
             <Link
               to="/about"

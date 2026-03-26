@@ -12,3 +12,18 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>,
 );
+
+// Web Vitals
+if (typeof window !== "undefined") {
+  import("web-vitals")
+    .then(({ onCLS, onFID, onLCP, onFCP, onTTFB }) => {
+      const report = (metric) =>
+        console.debug("[WebVital]", metric.name, metric.value.toFixed(1));
+      onCLS(report);
+      onFID(report);
+      onLCP(report);
+      onFCP(report);
+      onTTFB(report);
+    })
+    .catch(() => {});
+}

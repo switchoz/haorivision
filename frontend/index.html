@@ -42,10 +42,16 @@
 
     <!-- Preload critical assets -->
     <link rel="preload" href="/artist/haori-presentation.jpg" as="image" />
+    <link rel="preload" as="image" href="/artist/page3_img1.jpeg" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://mc.yandex.ru" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
     <!-- Gallery Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Unbounded:wght@200;300;400;700&display=swap" as="style" />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Unbounded:wght@200;300;400;700&display=swap" rel="stylesheet" />
 
     <!-- Performance and Rendering Hints -->
@@ -58,6 +64,17 @@
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
     <title>HAORI VISION — Wearable Light Art | Носимое световое искусство</title>
+
+    <!-- Yandex.Metrika: раскомментируйте и замените XXXXXXXX на ваш номер счётчика
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    </script>
+    -->
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">

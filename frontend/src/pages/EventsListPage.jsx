@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import PageMeta from "../components/PageMeta";
 
 /**
  * Events List Page - Все Glow Rituals
@@ -38,6 +39,10 @@ export default function EventsListPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black text-white">
+      <PageMeta
+        title="События"
+        description="События и мероприятия HAORI VISION. Выставки, показы, встречи с художником."
+      />
       {/* Header */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto text-center">

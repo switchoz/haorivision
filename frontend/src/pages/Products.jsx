@@ -9,6 +9,7 @@ const Products = () => {
   const { isUVMode } = useTheme();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Products = () => {
       .then((data) => {
         if (data.products) setProducts(data.products);
       })
-      .catch(() => {})
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
@@ -72,8 +73,23 @@ const Products = () => {
           ))}
         </div>
 
+        {/* Error State */}
+        {error && !loading && (
+          <div className="text-center py-20">
+            <p className="text-red-400 text-lg mb-4">
+              Не удалось загрузить каталог
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-6 py-2 bg-zinc-800 text-zinc-300 rounded-full hover:bg-zinc-700 transition-colors"
+            >
+              Попробовать снова
+            </button>
+          </div>
+        )}
+
         {/* Products Grid */}
-        {loading ? (
+        {!error && loading ? (
           <div className="text-center py-20">
             <div className="inline-block w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
           </div>

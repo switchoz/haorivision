@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import PageMeta from "../components/PageMeta";
 import UnboxingExperience from "../components/UnboxingExperience";
 
 /**
@@ -93,6 +94,10 @@ export default function UnboxingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black text-white">
+      <PageMeta
+        title="Распаковка"
+        description="Распаковка вашего хаори HAORI VISION. Уникальный опыт первого знакомства."
+      />
       <div className="container mx-auto px-6 py-20">
         {/* Welcome Section */}
         <motion.div
@@ -174,7 +179,7 @@ export default function UnboxingPage() {
             icon="✍️"
             title="Подпись художника"
             description="Подлинность подтверждена подписью LiZa"
-            href="#"
+            href="/about"
           />
 
           <ContentLinkCard

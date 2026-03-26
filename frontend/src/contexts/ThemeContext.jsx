@@ -12,6 +12,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [isUVMode, setIsUVMode] = useState(false);
+  const [uvIntensity, setUvIntensity] = useState(0);
 
   useEffect(() => {
     // Apply theme class to document
@@ -22,12 +23,26 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [isUVMode]);
 
+  // Sync CSS custom property with uvIntensity
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--uv-intensity",
+      uvIntensity / 100,
+    );
+  }, [uvIntensity]);
+
   const toggleUVMode = () => {
-    setIsUVMode((prev) => !prev);
+    setIsUVMode((prev) => {
+      const next = !prev;
+      setUvIntensity(next ? 100 : 0);
+      return next;
+    });
   };
 
   return (
-    <ThemeContext.Provider value={{ isUVMode, toggleUVMode }}>
+    <ThemeContext.Provider
+      value={{ isUVMode, toggleUVMode, uvIntensity, setUvIntensity }}
+    >
       {children}
     </ThemeContext.Provider>
   );

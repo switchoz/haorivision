@@ -40,6 +40,8 @@ const CartDrawer = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            role="dialog"
+            aria-label="Корзина"
             className="fixed top-0 right-0 h-full w-full max-w-md bg-zinc-950 border-l border-zinc-800 z-[70] flex flex-col"
           >
             {/* Header */}
@@ -51,6 +53,7 @@ const CartDrawer = () => {
               </h2>
               <button
                 onClick={() => setIsOpen(false)}
+                aria-label="Закрыть корзину"
                 className="text-zinc-400 hover:text-white transition-colors p-1"
               >
                 <svg
@@ -135,6 +138,14 @@ const CartDrawer = () => {
                       >
                         ${item.price.toLocaleString()}
                       </p>
+
+                      {/* Painting addon */}
+                      {item.addons?.length > 0 &&
+                        item.addons.map((a, ai) => (
+                          <p key={ai} className="text-xs text-purple-400 mt-1">
+                            + 🖼 {a.name} — ${a.price?.toLocaleString()}
+                          </p>
+                        ))}
 
                       {/* Qty controls */}
                       <div className="flex items-center gap-2 mt-2">

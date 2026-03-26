@@ -1,10 +1,13 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import UVParticles from "../components/UVParticles";
 import PageMeta from "../components/PageMeta";
+import { OrganizationJsonLd } from "../components/JsonLd";
 import ReviewsSection from "../components/ReviewsSection";
+import Stories from "../components/Stories";
+import { paintings, artistPhotos } from "../data/artist-works";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -12,6 +15,7 @@ const Home = () => {
   const { isUVMode } = useTheme();
   const [products, setProducts] = useState([]);
   const [uvCompare, setUvCompare] = useState(false);
+  const [heroVideoFailed, setHeroVideoFailed] = useState(false);
 
   useEffect(() => {
     fetch(`${API_URL}/api/products?featured=true&limit=6`)
@@ -23,36 +27,52 @@ const Home = () => {
       .catch(() => {});
   }, []);
 
-  // Real artist work photos for hero and sections
-  const heroWorks = [
-    "/artist/page5_img1.jpeg",
-    "/artist/page7_img1.jpeg",
-    "/artist/page10_img1.jpeg",
-    "/artist/page14_img1.jpeg",
-  ];
+  // Parallax для hero-секции
+  const heroRef = useRef(null);
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const hikariY = useTransform(heroScrollProgress, [0, 1], ["0%", "30%"]);
+  const bgY = useTransform(heroScrollProgress, [0, 1], ["0%", "15%"]);
 
-  const galleryPreview = [
-    "/artist/page3_img1.jpeg",
-    "/artist/page6_img1.jpeg",
-    "/artist/page8_img1.jpeg",
-    "/artist/page11_img1.jpeg",
-    "/artist/page15_img1.jpeg",
-    "/artist/page17_img1.jpeg",
-  ];
+  // Фото работ из единого источника (artist-works.js)
+  const heroWorks = paintings.slice(0, 4).map((p) => p.img);
+  const galleryPreview = paintings.slice(4, 10).map((p) => p.img);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
       <UVParticles isActive={isUVMode} />
 
       <PageMeta description="HAORI VISION — носимое световое искусство. Хаори с ручной росписью UV-красками. Каждое изделие уникально. Bespoke от €3,000." />
+      <OrganizationJsonLd />
       {/* ===== HERO ===== */}
-      <section className="relative h-screen flex items-center justify-center">
-        <div className="absolute inset-0">
+      {/* Добавьте видео hero.mp4 в public/video/ для фонового видео */}
+      <section
+        ref={heroRef}
+        className="relative h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Background video */}
+        {!heroVideoFailed && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            onError={() => setHeroVideoFailed(true)}
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          >
+            <source src="/video/hero.mp4" type="video/mp4" />
+          </video>
+        )}
+        <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <div
             className={`absolute inset-0 transition-all duration-1000 ${
               isUVMode
                 ? "bg-gradient-to-br from-purple-900/50 via-black to-pink-900/50"
-                : "bg-gradient-to-b from-black via-zinc-900 to-black"
+                : heroVideoFailed
+                  ? "bg-gradient-to-b from-black via-zinc-900 to-black"
+                  : "bg-gradient-to-b from-black/60 via-zinc-900/70 to-black/80"
             }`}
           />
           {isUVMode && (
@@ -68,7 +88,7 @@ const Home = () => {
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
           )}
-        </div>
+        </motion.div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
           <motion.div
@@ -76,7 +96,7 @@ const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.1 }}
             className={`text-8xl md:text-9xl mb-8 ${isUVMode ? "text-purple-400" : "text-zinc-700"}`}
-            style={{ fontFamily: "serif" }}
+            style={{ fontFamily: "serif", y: hikariY }}
           >
             光
           </motion.div>
@@ -147,7 +167,7 @@ const Home = () => {
                 Смотреть коллекции
               </motion.button>
             </Link>
-            <Link to="/presentation">
+            <Link to="/about">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -204,8 +224,11 @@ const Home = () => {
         </motion.div>
       </section>
 
+      {/* ===== STORIES ===== */}
+      <Stories />
+
       {/* ===== UV BEFORE/AFTER ===== */}
-      <section className="py-32 px-4 relative">
+      <section className="content-lazy py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black opacity-50" />
         <div className="relative z-10 max-w-5xl mx-auto">
           <motion.h2
@@ -242,15 +265,29 @@ const Home = () => {
               onClick={() => setUvCompare(!uvCompare)}
             >
               <img
-                src={
-                  uvCompare
-                    ? "/artist/haori-dark-uv.jpg"
-                    : "/artist/haori-presentation.jpg"
-                }
-                alt={
-                  uvCompare ? "Хаори под UV-светом" : "Хаори при дневном свете"
-                }
-                className="w-full h-full object-cover transition-all duration-700"
+                src="/artist/haori-presentation.jpg"
+                alt="Хаори HAORI VISION"
+                width={600}
+                height={450}
+                className="w-full h-full object-cover transition-all duration-[1200ms]"
+                loading="lazy"
+                style={{
+                  filter: uvCompare
+                    ? "saturate(1.8) brightness(1.2) hue-rotate(-15deg) contrast(1.2)"
+                    : "saturate(1) brightness(1)",
+                }}
+              />
+              {/* UV glow overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none transition-opacity duration-[1200ms]"
+                style={{
+                  opacity: uvCompare ? 1 : 0,
+                  background:
+                    "radial-gradient(ellipse at 50% 50%, rgba(139,0,255,0.2) 0%, rgba(255,0,180,0.1) 40%, transparent 70%)",
+                  boxShadow:
+                    "inset 0 0 80px rgba(139,0,255,0.3), inset 0 0 160px rgba(255,0,180,0.15)",
+                  mixBlendMode: "screen",
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
@@ -294,7 +331,7 @@ const Home = () => {
       {/* ===== FEATURED PRODUCTS (from API) ===== */}
       {products.length > 0 && (
         <section
-          className={`py-32 px-4 relative transition-all duration-1000 ${
+          className={`content-lazy py-32 px-4 relative transition-all duration-1000 ${
             isUVMode ? "bg-[#0a0015]" : ""
           }`}
         >
@@ -492,7 +529,7 @@ const Home = () => {
 
       {/* ===== GALLERY PREVIEW ===== */}
       <section
-        className={`py-24 px-4 relative transition-all duration-1000 ${
+        className={`content-lazy py-24 px-4 relative transition-all duration-1000 ${
           isUVMode ? "bg-[#05001a]" : "bg-zinc-950"
         }`}
       >
@@ -530,53 +567,51 @@ const Home = () => {
           </motion.p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {[
-              "/artist/page3_img1.jpeg",
-              "/artist/page5_img2.jpeg",
-              "/artist/page7_img2.jpeg",
-              "/artist/page9_img1.jpeg",
-              "/artist/page12_img1.jpeg",
-              "/artist/page16_img1.jpeg",
-            ].map((src, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                whileHover={{ scale: 1.05, zIndex: 10 }}
-                className={`aspect-square overflow-hidden relative group cursor-pointer transition-all duration-700 ${
-                  isUVMode ? "rounded-lg" : ""
-                }`}
-                style={
-                  isUVMode
-                    ? {
-                        boxShadow: `0 0 20px rgba(139,0,255,0.3), 0 0 40px rgba(255,0,180,0.15)`,
-                        border: "1px solid rgba(139,0,255,0.3)",
-                      }
-                    : {}
-                }
-              >
-                <img
-                  src={src}
-                  alt={`Работа LiZa ${i + 1}`}
-                  className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${
-                    isUVMode ? "brightness-125 saturate-[1.4] contrast-110" : ""
+            {paintings
+              .slice(10, 16)
+              .map((p) => p.imgAlt || p.img)
+              .map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ scale: 1.05, zIndex: 10 }}
+                  className={`aspect-square overflow-hidden relative group cursor-pointer transition-all duration-700 ${
+                    isUVMode ? "rounded-lg" : ""
                   }`}
-                  loading="lazy"
-                />
-                {isUVMode && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-transparent to-pink-500/15 mix-blend-screen" />
-                )}
-                <div
-                  className={`absolute inset-0 transition-all duration-300 ${
+                  style={
                     isUVMode
-                      ? "bg-purple-900/0 group-hover:bg-purple-900/20"
-                      : "bg-black/0 group-hover:bg-black/30"
-                  }`}
-                />
-              </motion.div>
-            ))}
+                      ? {
+                          boxShadow: `0 0 20px rgba(139,0,255,0.3), 0 0 40px rgba(255,0,180,0.15)`,
+                          border: "1px solid rgba(139,0,255,0.3)",
+                        }
+                      : {}
+                  }
+                >
+                  <img
+                    src={src}
+                    alt="Работа художника Елизаветы Федькиной"
+                    className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${
+                      isUVMode
+                        ? "brightness-125 saturate-[1.4] contrast-110"
+                        : ""
+                    }`}
+                    loading="lazy"
+                  />
+                  {isUVMode && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-transparent to-pink-500/15 mix-blend-screen" />
+                  )}
+                  <div
+                    className={`absolute inset-0 transition-all duration-300 ${
+                      isUVMode
+                        ? "bg-purple-900/0 group-hover:bg-purple-900/20"
+                        : "bg-black/0 group-hover:bg-black/30"
+                    }`}
+                  />
+                </motion.div>
+              ))}
           </div>
 
           <div className="text-center mt-12 flex flex-col sm:flex-row gap-4 justify-center">
@@ -592,7 +627,7 @@ const Home = () => {
                 Вся галерея
               </motion.button>
             </Link>
-            <Link to="/presentation">
+            <Link to="/about#gallery">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 className={`px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all ${
@@ -607,7 +642,7 @@ const Home = () => {
       </section>
 
       {/* ===== ARTIST ===== */}
-      <section className="relative py-24 px-4">
+      <section className="content-lazy relative py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -663,7 +698,7 @@ const Home = () => {
                   &laquo;Мои картины — это порталы в другие измерения&raquo;
                 </p>
                 <Link
-                  to="/presentation"
+                  to="/about?view=presentation"
                   className={`inline-block mt-4 text-sm font-medium transition-colors ${
                     isUVMode
                       ? "text-cyan-400 hover:text-white"
@@ -682,7 +717,7 @@ const Home = () => {
       <ReviewsSection />
 
       {/* ===== BESPOKE CTA ===== */}
-      <section className="py-32 px-4 relative overflow-hidden">
+      <section className="content-lazy py-32 px-4 relative overflow-hidden">
         <div
           className={`absolute inset-0 ${
             isUVMode
@@ -769,7 +804,7 @@ const Home = () => {
 
       {/* ===== PHILOSOPHY ===== */}
       <section
-        className={`py-24 px-4 relative transition-all duration-1000 ${
+        className={`content-lazy py-24 px-4 relative transition-all duration-1000 ${
           isUVMode ? "bg-[#08001a]" : "bg-zinc-950"
         }`}
       >

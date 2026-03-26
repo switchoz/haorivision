@@ -22,7 +22,7 @@ export default function Dashboard() {
       .finally(() => setLoading(false));
   }, []);
 
-  const kpi = data?.kpi || { revenue: 0, orders: 0, aov: 0, users: 0 };
+  const kpi = data?.kpi || { revenue: 0, orders: 0, aov: 0, customers: 0 };
   const trend =
     data?.trend ||
     Array.from({ length: 30 }, (_, i) => ({
@@ -84,7 +84,7 @@ export default function Dashboard() {
         />
         <KpiCard
           title="Пользователи"
-          value={formatNumber(kpi.users)}
+          value={formatNumber(kpi.customers)}
           sub="зарегистрировано"
           icon={Users}
           trend={15.3}

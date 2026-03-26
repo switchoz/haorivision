@@ -21,7 +21,11 @@ const CheckoutSuccess = () => {
   }, [order, navigate]);
 
   if (!order) {
-    return null;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+        <div className="w-10 h-10 border-2 border-zinc-600 border-t-green-500 rounded-full animate-spin" />
+      </div>
+    );
   }
 
   const deliveryDate = new Date(order.estimatedDelivery).toLocaleDateString(
@@ -150,34 +154,42 @@ const CheckoutSuccess = () => {
           </div>
 
           {/* Product Info */}
-          <div className="flex gap-6 mb-8 pb-8 border-b border-zinc-800">
-            <img
-              src={order.product.images.daylight.hero}
-              alt={order.product.name}
-              className="w-32 h-44 object-cover"
-            />
-            <div className="flex-1">
-              <p className="text-xs uppercase tracking-wider text-zinc-500 mb-2">
-                {order.product.collection}
-              </p>
-              <h3 className="text-2xl font-bold text-white mb-2">
-                {order.product.name}
-              </h3>
-              <p className="text-zinc-400 mb-4">{order.product.tagline}</p>
-              <div className="flex items-center gap-4">
-                <p className="text-2xl font-bold text-white">
-                  ${order.product.price.toLocaleString()}
-                </p>
-                <span className="text-zinc-600">|</span>
-                <p className="text-sm text-zinc-500">
-                  Издание{" "}
-                  {order.product.editions.total -
-                    order.product.editions.remaining +
-                    1}
-                  /{order.product.editions.total}
-                </p>
+          <div className="space-y-4 mb-8 pb-8 border-b border-zinc-800">
+            {(order.items || []).map((item, idx) => (
+              <div key={idx} className="flex gap-6">
+                {item.image && (
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-32 h-44 object-cover"
+                  />
+                )}
+                <div className="flex-1">
+                  {item.collection && (
+                    <p className="text-xs uppercase tracking-wider text-zinc-500 mb-2">
+                      {item.collection}
+                    </p>
+                  )}
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {item.name}
+                  </h3>
+                  {item.tagline && (
+                    <p className="text-zinc-400 mb-4">{item.tagline}</p>
+                  )}
+                  <div className="flex items-center gap-4">
+                    <p className="text-2xl font-bold text-white">
+                      ${(item.price * (item.qty || 1)).toLocaleString()}
+                    </p>
+                    {(item.qty || 1) > 1 && (
+                      <>
+                        <span className="text-zinc-600">|</span>
+                        <p className="text-sm text-zinc-500">x{item.qty}</p>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
           {/* Shipping Info */}
@@ -302,7 +314,7 @@ const CheckoutSuccess = () => {
             </motion.button>
           </Link>
 
-          <Link to="/products">
+          <Link to="/shop">
             <motion.button
               className="w-full py-5 border-2 border-zinc-700 text-white font-bold uppercase tracking-wider hover:border-purple-500 transition-colors"
               whileHover={{ scale: 1.02 }}

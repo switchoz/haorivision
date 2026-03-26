@@ -7,6 +7,7 @@
 import express from "express";
 import Product from "../models/Product.js";
 import { baseLogger } from "../middlewares/logger.js";
+import { escapeRegex } from "../utils/escapeRegex.js";
 
 const router = express.Router();
 
@@ -46,11 +47,12 @@ router.get("/", async (req, res) => {
     }
 
     if (search) {
+      const safe = escapeRegex(String(search));
       filter.$or = [
-        { name: { $regex: search, $options: "i" } },
-        { tagline: { $regex: search, $options: "i" } },
-        { "description.short": { $regex: search, $options: "i" } },
-        { "description.long": { $regex: search, $options: "i" } },
+        { name: { $regex: safe, $options: "i" } },
+        { tagline: { $regex: safe, $options: "i" } },
+        { "description.short": { $regex: safe, $options: "i" } },
+        { "description.long": { $regex: safe, $options: "i" } },
       ];
     }
 

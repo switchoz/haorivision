@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import PageMeta from "../components/PageMeta";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -62,21 +64,30 @@ export default function BespokeCommissionPage() {
       const data = await response.json();
 
       if (data.success) {
-        // Show moodboard
         setMoodboard(data.commission.moodboard);
         setPricing(data.commission.pricing);
-        setStep(6); // Success step
+        setStep(6);
+        toast.success("Заявка отправлена! LiZa свяжется с вами.");
+      } else {
+        toast.error(
+          data.error || "Не удалось отправить заявку. Попробуйте позже.",
+        );
       }
 
       setSubmitting(false);
     } catch (error) {
       console.error("Submit commission error:", error);
+      toast.error("Ошибка соединения. Проверьте интернет и попробуйте снова.");
       setSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black text-white">
+      <PageMeta
+        title="Индивидуальный заказ"
+        description="Закажите персональное хаори HAORI VISION. Индивидуальный дизайн, ручная роспись, UV-эффект. От €3,000."
+      />
       <div className="container mx-auto px-6 py-20">
         {/* Header */}
         <motion.div
@@ -90,8 +101,7 @@ export default function BespokeCommissionPage() {
           </h1>
 
           <p className="text-xl text-purple-300 mb-8">
-            Bespoke Commission: Индивидуальная хаори, созданная специально для
-            тебя
+            Индивидуальный заказ: хаори, созданная специально для тебя
           </p>
 
           {/* Progress Bar */}
@@ -172,11 +182,11 @@ export default function BespokeCommissionPage() {
 // Step 1: Energy
 function Step1_Energy({ brief, setBrief, onNext }) {
   const energyOptions = [
-    { value: "calm", label: "Calm & Peaceful", icon: "🌊" },
-    { value: "bold", label: "Bold & Powerful", icon: "⚡" },
-    { value: "mysterious", label: "Mysterious & Dark", icon: "🌑" },
-    { value: "joyful", label: "Joyful & Bright", icon: "✨" },
-    { value: "ethereal", label: "Ethereal & Dreamy", icon: "☁️" },
+    { value: "calm", label: "Спокойная и мирная", icon: "🌊" },
+    { value: "bold", label: "Дерзкая и мощная", icon: "⚡" },
+    { value: "mysterious", label: "Таинственная и тёмная", icon: "🌑" },
+    { value: "joyful", label: "Радостная и яркая", icon: "✨" },
+    { value: "ethereal", label: "Воздушная и мечтательная", icon: "☁️" },
   ];
 
   return (
@@ -230,14 +240,14 @@ function Step1_Energy({ brief, setBrief, onNext }) {
 // Step 2: Colors
 function Step2_Colors({ brief, setBrief, onNext, onBack }) {
   const colorOptions = [
-    { name: "Deep Purple", hex: "#7c3aed" },
-    { name: "Electric Blue", hex: "#3b82f6" },
-    { name: "Neon Pink", hex: "#ec4899" },
-    { name: "Lime Green", hex: "#84cc16" },
-    { name: "Sunset Orange", hex: "#f97316" },
-    { name: "Midnight Black", hex: "#0a0a0a" },
-    { name: "Pure White", hex: "#ffffff" },
-    { name: "Gold", hex: "#eab308" },
+    { name: "Глубокий фиолетовый", hex: "#7c3aed" },
+    { name: "Электрический синий", hex: "#3b82f6" },
+    { name: "Неоновый розовый", hex: "#ec4899" },
+    { name: "Лаймовый зелёный", hex: "#84cc16" },
+    { name: "Закатный оранжевый", hex: "#f97316" },
+    { name: "Полуночный чёрный", hex: "#0a0a0a" },
+    { name: "Чистый белый", hex: "#ffffff" },
+    { name: "Золотой", hex: "#eab308" },
   ];
 
   const toggleColor = (color) => {
@@ -308,16 +318,16 @@ function Step2_Colors({ brief, setBrief, onNext, onBack }) {
 // Step 3: Emotions
 function Step3_Emotions({ brief, setBrief, onNext, onBack }) {
   const emotionOptions = [
-    "Peace",
-    "Wonder",
-    "Power",
-    "Joy",
-    "Mystery",
-    "Freedom",
-    "Love",
-    "Courage",
-    "Serenity",
-    "Passion",
+    "Покой",
+    "Восхищение",
+    "Сила",
+    "Радость",
+    "Тайна",
+    "Свобода",
+    "Любовь",
+    "Смелость",
+    "Безмятежность",
+    "Страсть",
   ];
 
   const toggleEmotion = (emotion) => {
@@ -433,7 +443,7 @@ function Step4_Story({ brief, setBrief, onNext, onBack }) {
             Стиль
           </label>
           <div className="grid grid-cols-3 gap-4">
-            {["Minimalist", "Bold", "Ethereal"].map((style) => (
+            {["Минимализм", "Дерзкий", "Воздушный"].map((style) => (
               <button
                 key={style}
                 onClick={() => setBrief({ ...brief, style: style })}
@@ -478,6 +488,25 @@ function Step5_Specifications({
   onBack,
   submitting,
 }) {
+  const [slots, setSlots] = useState([]);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [slotsLoading, setSlotsLoading] = useState(true);
+
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL || "";
+    fetch(`${API_URL}/api/bespoke-slots`)
+      .then((r) => r.json())
+      .then((d) => {
+        const free = (d.data?.slots || []).filter((s) => s.status === "free");
+        setSlots(free);
+      })
+      .catch(() => {})
+      .finally(() => setSlotsLoading(false));
+  }, []);
+
+  const formatDate = (d) =>
+    new Date(d).toLocaleDateString("ru-RU", { day: "numeric", month: "long" });
+
   return (
     <motion.div
       className="max-w-3xl mx-auto"
@@ -497,8 +526,8 @@ function Step5_Specifications({
           </label>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { value: "haori", label: "Haori только" },
-              { value: "haori_set", label: "Haori + Painting Set" },
+              { value: "haori", label: "Только хаори" },
+              { value: "haori_set", label: "Хаори + картина в комплекте" },
             ].map((option) => (
               <button
                 key={option.value}
@@ -537,6 +566,59 @@ function Step5_Specifications({
             ))}
           </div>
         </div>
+
+        {/* Slot selection */}
+        <div>
+          <label className="block text-sm font-medium text-purple-300 mb-2">
+            Слот производства
+          </label>
+          {slotsLoading ? (
+            <div className="text-center py-4 text-gray-500 text-sm">
+              Загрузка слотов...
+            </div>
+          ) : slots.length === 0 ? (
+            <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm">
+              Все слоты на этот месяц заняты. Мы свяжемся с вами для выбора
+              даты.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {slots.map((slot) => (
+                <button
+                  key={slot.slot_id}
+                  onClick={() => setSelectedSlot(slot.slot_id)}
+                  className={`p-4 rounded-xl border-2 text-left transition-all ${
+                    selectedSlot === slot.slot_id
+                      ? "border-purple-500 bg-purple-500/20"
+                      : "border-gray-700 bg-white/5 hover:border-purple-500/60"
+                  }`}
+                >
+                  <div className="text-sm font-medium text-white mb-1">
+                    Слот #{slot.slot_number}
+                  </div>
+                  <div className="text-xs text-gray-400">
+                    Готовность: {formatDate(slot.delivery_window?.start)} —{" "}
+                    {formatDate(slot.delivery_window?.end)}
+                  </div>
+                  <div className="text-xs text-purple-400 mt-1">
+                    от €{slot.price_eur?.toLocaleString()}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Pricing info */}
+        <div className="p-4 rounded-xl bg-white/5 border border-gray-700 text-center">
+          <p className="text-sm text-gray-400">
+            Стоимость от{" "}
+            <span className="text-white font-semibold">€3,000</span>
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Депозит 50% при утверждении мудборда · 2–4 недели
+          </p>
+        </div>
       </div>
 
       <div className="flex justify-between">
@@ -573,17 +655,17 @@ function Step6_Moodboard({ moodboard, pricing }) {
       <div className="text-center mb-12">
         <div className="text-6xl mb-6">✨</div>
         <h2 className="text-4xl font-bold text-purple-300 mb-4">
-          Твой Light создан!
+          Твой свет создан!
         </h2>
         <p className="text-gray-400 text-lg">
-          AI сгенерировал персональный moodboard для твоей bespoke хаори
+          Мы создали персональный мудборд для твоей индивидуальной хаори
         </p>
       </div>
 
       {/* Color Palette */}
       <div className="bg-white/5 border border-purple-500/30 rounded-2xl p-8 mb-8">
         <h3 className="text-2xl font-semibold text-purple-300 mb-6">
-          🎨 Color Palette
+          🎨 Цветовая палитра
         </h3>
         <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
           {moodboard.colorPalette.map((color, i) => (
@@ -604,7 +686,7 @@ function Step6_Moodboard({ moodboard, pricing }) {
       {/* AI Analysis */}
       <div className="bg-white/5 border border-purple-500/30 rounded-2xl p-8 mb-8">
         <h3 className="text-2xl font-semibold text-purple-300 mb-4">
-          💡 AI Analysis
+          💡 Анализ
         </h3>
         <p className="text-gray-300 leading-relaxed">{moodboard.aiAnalysis}</p>
       </div>
@@ -612,7 +694,7 @@ function Step6_Moodboard({ moodboard, pricing }) {
       {/* Suggestions */}
       <div className="bg-white/5 border border-purple-500/30 rounded-2xl p-8 mb-8">
         <h3 className="text-2xl font-semibold text-purple-300 mb-4">
-          ✍️ Design Suggestions
+          ✍️ Рекомендации по дизайну
         </h3>
         <ul className="space-y-3">
           {moodboard.aiSuggestions.map((suggestion, i) => (
@@ -628,16 +710,16 @@ function Step6_Moodboard({ moodboard, pricing }) {
       {pricing && (
         <div className="bg-gradient-to-r from-purple-900/30 to-violet-900/30 border border-purple-500/30 rounded-2xl p-8 mb-8">
           <h3 className="text-2xl font-semibold text-purple-300 mb-6 text-center">
-            Pricing Estimate
+            Стоимость
           </h3>
 
           <div className="space-y-3 text-center">
             <p className="text-gray-400">
-              Base Price:{" "}
+              Базовая цена:{" "}
               <span className="text-white">${pricing.basePrice}</span>
             </p>
             <p className="text-gray-400">
-              Complexity:{" "}
+              Сложность:{" "}
               <span className="text-purple-300">
                 ×{pricing.complexityMultiplier}
               </span>
@@ -646,7 +728,7 @@ function Step6_Moodboard({ moodboard, pricing }) {
               ${pricing.totalPrice}
             </p>
             <p className="text-sm text-gray-500">
-              50% deposit required: ${pricing.depositRequired}
+              Депозит 50%: ${pricing.depositRequired}
             </p>
           </div>
         </div>

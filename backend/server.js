@@ -155,7 +155,15 @@ const strictLimiter = rateLimit({
 app.use("/api/contact", strictLimiter);
 app.use("/api/chat", strictLimiter);
 app.use("/api/telegram/generate", strictLimiter);
-app.use("/api/account/login", strictLimiter);
+
+// Отдельный строгий лимит для логина (5 попыток / 15 мин)
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  message: { error: "Слишком много попыток входа. Повторите через 15 минут." },
+});
+app.use("/api/account/login", loginLimiter);
+
 app.use("/api/account/register", strictLimiter);
 app.use("/api/reviews", strictLimiter);
 

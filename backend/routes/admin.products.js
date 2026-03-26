@@ -2,6 +2,7 @@ import express from "express";
 import authAdmin from "../middlewares/authAdmin.js";
 import { baseLogger } from "../middlewares/logger.js";
 import Product from "../models/Product.js";
+import { escapeRegex } from "../utils/escapeRegex.js";
 
 const r = express.Router();
 
@@ -18,10 +19,11 @@ r.get("/", async (req, res) => {
     const filter = {};
     if (status) filter.status = status;
     if (search) {
+      const safe = escapeRegex(String(search));
       filter.$or = [
-        { name: { $regex: search, $options: "i" } },
-        { id: { $regex: search, $options: "i" } },
-        { productCollection: { $regex: search, $options: "i" } },
+        { name: { $regex: safe, $options: "i" } },
+        { id: { $regex: safe, $options: "i" } },
+        { productCollection: { $regex: safe, $options: "i" } },
       ];
     }
 
@@ -62,25 +64,21 @@ r.post("/", async (req, res) => {
     const data = req.body;
 
     if (!data.name || !data.price) {
-      return res
-        .status(400)
-        .json({
-          ok: false,
-          code: "VALIDATION_ERROR",
-          message: "name и price обязательны",
-        });
+      return res.status(400).json({
+        ok: false,
+        code: "VALIDATION_ERROR",
+        message: "name и price обязательны",
+      });
     }
 
     if (data.id) {
       const existing = await Product.findOne({ id: data.id });
       if (existing) {
-        return res
-          .status(409)
-          .json({
-            ok: false,
-            code: "DUPLICATE",
-            message: "Продукт с таким id уже существует",
-          });
+        return res.status(409).json({
+          ok: false,
+          code: "DUPLICATE",
+          message: "Продукт с таким id уже существует",
+        });
       }
     }
 

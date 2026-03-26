@@ -1,7 +1,7 @@
 {
   "name": "haori-vision-backend",
   "version": "1.0.0",
-  "description": "HAORI VISION E-Commerce Backend with NFT Integration",
+  "description": "HAORI VISION E-Commerce Backend",
   "main": "server.js",
   "type": "module",
   "scripts": {

@@ -13,13 +13,9 @@ const CACHE_MEDIA = "haori-media-v3";
 const CACHE_SHOW = "haori-show-v3";
 
 // Критичные файлы для оффлайн работы
-const CRITICAL_ASSETS = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/assets/index.js",
-  "/assets/index.css",
-];
+// JS/CSS не кешируем статически — Vite генерирует хешированные имена,
+// они кешируются автоматически через fetch handler (Cache First)
+const CRITICAL_ASSETS = ["/", "/index.html", "/manifest.json", "/favicon.svg"];
 
 // SHOW ASSETS — pre-cache для полного оффлайн режима
 const SHOW_ASSETS = [

@@ -1,4 +1,5 @@
 import PageMeta from "../components/PageMeta";
+import { FAQPageJsonLd } from "../components/JsonLd";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { useState } from "react";
@@ -162,6 +163,7 @@ const FAQ = () => {
         title="FAQ"
         description="Часто задаваемые вопросы о HAORI VISION. Доставка, уход за хаори, bespoke-заказы, UV-краски."
       />
+      <FAQPageJsonLd items={faqCategories.flatMap((cat) => cat.questions)} />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div

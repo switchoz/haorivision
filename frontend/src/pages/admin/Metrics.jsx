@@ -50,7 +50,7 @@ export default function Metrics() {
       const [skuData, videoData, aovData, dmData] = await Promise.all([
         skuRes.json(),
         videoRes.json(),
-        aovData.json(),
+        aovRes.json(),
         dmRes.json(),
       ]);
 

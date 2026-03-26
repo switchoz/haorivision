@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import ARPreview from "../components/premium/ARPreview";
 import ProductCTA from "../components/ProductCTA";
 import ARButton from "../components/ARButton";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
+import { ProductJsonLd, BreadcrumbJsonLd } from "../components/JsonLd";
+import PageMeta from "../components/PageMeta";
+import { useCart } from "../contexts/CartContext";
+import toast from "react-hot-toast";
+import { formatPrice } from "../lib/format";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -13,11 +18,29 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { isUVMode } = useTheme();
+  const { addItem } = useCart();
   const [product, setProduct] = useState(null);
+  const [similarProducts, setSimilarProducts] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [viewMode, setViewMode] = useState("daylight"); // daylight or uv
   const [selectedImage, setSelectedImage] = useState("hero");
   const [activeTab, setActiveTab] = useState("description"); // description, specifications, shipping
   const [expandedIncludedItem, setExpandedIncludedItem] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
+
+  // Matching painting addon
+  const [paintingAddon, setPaintingAddon] = useState(false);
+  const [paintingSize, setPaintingSize] = useState("50x70");
+  const [paintingCanvas, setPaintingCanvas] = useState("cotton");
+
+  const PAINTING_PRICES = { "40x50": 15000, "50x70": 25000, "70x100": 45000 };
+  const CANVAS_LABELS = { cotton: "Хлопок", linen: "Лён", silk: "Шёлк" };
+  const PAINTING_SIZES = [
+    { value: "40x50", label: "40×50 см", desc: "Компактная" },
+    { value: "50x70", label: "50×70 см", desc: "Средняя" },
+    { value: "70x100", label: "70×100 см", desc: "Большая" },
+  ];
+  const paintingPrice = PAINTING_PRICES[paintingSize] || 0;
 
   useEffect(() => {
     fetch(`${API_URL}/api/products/${productId}`)
@@ -41,6 +64,30 @@ const ProductDetail = () => {
       .catch(() => {});
   }, [productId]);
 
+  // Fetch similar products
+  useEffect(() => {
+    if (!product) return;
+    const params = new URLSearchParams({ limit: "5" });
+    if (product.category) params.set("category", product.category);
+    else if (product.collection) params.set("collection", product.collection);
+    fetch(`${API_URL}/api/products?${params}`)
+      .then((r) => r.json())
+      .then((data) => {
+        const items = (data.products || []).filter((p) => p.id !== product.id);
+        setSimilarProducts(items.slice(0, 4));
+      })
+      .catch(() => setSimilarProducts([]));
+  }, [product]);
+
+  // Fetch featured reviews
+  useEffect(() => {
+    if (!product) return;
+    fetch(`${API_URL}/api/reviews?approved=true&limit=4`)
+      .then((r) => (r.ok ? r.json() : { reviews: [] }))
+      .then((data) => setReviews(data.reviews || []))
+      .catch(() => setReviews([]));
+  }, [product]);
+
   if (!product) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -55,35 +102,66 @@ const ProductDetail = () => {
   const isSoldOut =
     product.status === "sold-out" || product.editions.remaining === 0;
 
-  const handleBuyNow = () => {
-    // Track add to cart event for A/B test
-    trackCTAEvent("add_to_cart", productId);
+  const buildAddon = () =>
+    paintingAddon
+      ? [
+          {
+            type: "matching-painting",
+            name: `Картина ${paintingSize} (${CANVAS_LABELS[paintingCanvas]})`,
+            canvas: paintingCanvas,
+            size: paintingSize,
+            price: paintingPrice,
+          },
+        ]
+      : [];
 
-    // Navigate to checkout with product data
-    navigate("/checkout", { state: { product } });
+  const handleBuyNow = () => {
+    trackCTAEvent("add_to_cart", productId);
+    navigate("/checkout", {
+      state: { product: { ...product, selectedSize, addons: buildAddon() } },
+    });
+  };
+
+  const handleAddToCart = () => {
+    trackCTAEvent("add_to_cart", productId);
+    addItem({
+      id: product.id || product._id,
+      name: product.name,
+      price: product.price,
+      currency: product.currency || "USD",
+      image: product.images?.daylight?.hero,
+      collection: product.productCollection,
+      size: selectedSize,
+      addons: buildAddon(),
+    });
+    toast.success(
+      paintingAddon ? "Хаори + картина в корзине" : "Добавлено в корзину",
+    );
   };
 
   return (
     <div className={`min-h-screen ${isUVMode ? "bg-black" : "bg-zinc-950"}`}>
+      <PageMeta
+        title={product.name}
+        description={product.description?.short}
+        image={product.images?.daylight?.hero}
+      />
+      <ProductJsonLd product={product} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Магазин", url: "/shop" },
+          { name: product.name, url: `/product/${productId}` },
+        ]}
+      />
       {/* Breadcrumb */}
       <div className="max-w-[1800px] mx-auto px-8 py-6">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
-          <button
-            onClick={() => navigate("/")}
-            className="hover:text-white transition-colors"
-          >
-            Главная
-          </button>
-          <span>/</span>
-          <button
-            onClick={() => navigate("/products")}
-            className="hover:text-white transition-colors"
-          >
-            Каталог
-          </button>
+        <nav className="flex items-center gap-2 text-sm text-zinc-500">
+          <Link to="/shop" className="hover:text-white transition-colors">
+            Магазин
+          </Link>
           <span>/</span>
           <span className="text-white">{product.name}</span>
-        </div>
+        </nav>
       </div>
 
       {/* Main Product Section */}
@@ -94,16 +172,25 @@ const ProductDetail = () => {
             {/* Main Image */}
             <motion.div
               key={selectedImage + viewMode}
-              className="relative aspect-[3/4] bg-zinc-900 overflow-hidden"
+              className="relative aspect-[3/4] bg-zinc-900 overflow-hidden cursor-zoom-in"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <img
-                src={currentImages[selectedImage]}
-                alt={`${product.name} - ${selectedImage}`}
-                className="w-full h-full object-cover"
-              />
+              <picture>
+                <source
+                  srcSet={currentImages[selectedImage]?.replace(
+                    ".jpg",
+                    ".webp",
+                  )}
+                  type="image/webp"
+                />
+                <img
+                  src={currentImages[selectedImage]}
+                  alt={`${product.name} - ${selectedImage}`}
+                  className="w-full h-full object-cover hover:scale-150 transition-transform duration-500 origin-center"
+                />
+              </picture>
 
               {/* UV/Daylight Toggle */}
               <div className="absolute top-6 right-6 z-10">
@@ -200,10 +287,10 @@ const ProductDetail = () => {
             <div className="flex items-end justify-between py-6 border-y border-zinc-800">
               <div>
                 <p className="text-5xl font-bold text-white mb-2">
-                  ${product.price.toLocaleString()}
+                  {formatPrice(product.price, product.currency)}
                 </p>
                 <p className="text-sm text-zinc-500 uppercase tracking-wider">
-                  USD • Двойное произведение
+                  {product.currency || "USD"} • Двойное произведение
                 </p>
               </div>
               <div className="text-right">
@@ -349,6 +436,199 @@ const ProductDetail = () => {
               </div>
             </div>
 
+            {/* Process Gallery */}
+            {product.processImages?.length > 0 && (
+              <div className="bg-zinc-900 border border-zinc-800 p-6">
+                <p className="text-sm uppercase tracking-wider text-zinc-500 mb-4">
+                  Процесс создания
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  {product.processImages.map((img, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="relative group rounded-lg overflow-hidden"
+                    >
+                      <img
+                        src={img.url}
+                        alt={img.caption || `Процесс ${i + 1}`}
+                        loading="lazy"
+                        className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {img.caption && (
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                          <p className="text-xs text-white">{img.caption}</p>
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Size Selector */}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-sm text-zinc-500 uppercase tracking-wider">
+                  Размер
+                </p>
+                <Link
+                  to="/size-guide"
+                  className="text-sm text-purple-400 hover:text-purple-300 transition-colors underline underline-offset-2"
+                >
+                  Таблица размеров
+                </Link>
+              </div>
+              <div className="flex gap-3">
+                {["XS", "S", "M", "L", "XL"].map((size) => (
+                  <motion.button
+                    key={size}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedSize(size)}
+                    className={`flex-1 py-3 text-sm font-bold uppercase tracking-wider border-2 transition-all ${
+                      selectedSize === size
+                        ? isUVMode
+                          ? "border-purple-500 bg-purple-500/20 text-white"
+                          : "border-white bg-white/10 text-white"
+                        : "border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-zinc-300"
+                    }`}
+                  >
+                    {size}
+                  </motion.button>
+                ))}
+              </div>
+              {!selectedSize && (
+                <p className="mt-2 text-xs text-amber-400/70">
+                  Выберите размер для продолжения
+                </p>
+              )}
+            </div>
+
+            {/* ══ Matching Painting Addon ══ */}
+            {!isSoldOut && (
+              <div
+                className={`rounded-xl border p-5 mb-6 transition-all duration-500 ${
+                  paintingAddon
+                    ? isUVMode
+                      ? "border-purple-500/50 bg-purple-900/15"
+                      : "border-zinc-500 bg-zinc-800/50"
+                    : "border-zinc-800 bg-zinc-900/30"
+                }`}
+              >
+                <label className="flex items-center justify-between cursor-pointer mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-lg">🖼</span>
+                    <div>
+                      <p className="font-semibold text-white text-sm">
+                        Картина в пару
+                      </p>
+                      <p className="text-xs text-zinc-500">
+                        Тот же стиль и энергия — на холсте
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className={`relative w-11 h-6 rounded-full transition-colors ${
+                      paintingAddon
+                        ? isUVMode
+                          ? "bg-purple-600"
+                          : "bg-white"
+                        : "bg-zinc-700"
+                    }`}
+                    onClick={() => setPaintingAddon(!paintingAddon)}
+                  >
+                    <div
+                      className={`absolute top-0.5 w-5 h-5 rounded-full transition-all ${
+                        paintingAddon
+                          ? "left-[22px] bg-white shadow-[0_0_8px_rgba(168,85,247,0.5)]"
+                          : "left-[2px] bg-zinc-400"
+                      }`}
+                    />
+                  </div>
+                </label>
+
+                {paintingAddon && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    className="space-y-4 pt-3 border-t border-zinc-800"
+                  >
+                    {/* Size */}
+                    <div>
+                      <p className="text-xs text-zinc-500 uppercase tracking-wider mb-2">
+                        Размер холста
+                      </p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {PAINTING_SIZES.map((s) => (
+                          <button
+                            key={s.value}
+                            onClick={() => setPaintingSize(s.value)}
+                            className={`p-3 rounded-lg border text-center transition-all ${
+                              paintingSize === s.value
+                                ? isUVMode
+                                  ? "border-purple-500 bg-purple-500/20 text-white"
+                                  : "border-white bg-white/10 text-white"
+                                : "border-zinc-700 text-zinc-400 hover:border-zinc-500"
+                            }`}
+                          >
+                            <span className="block text-sm font-medium">
+                              {s.label}
+                            </span>
+                            <span className="block text-xs text-zinc-500">
+                              {s.desc}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Canvas */}
+                    <div>
+                      <p className="text-xs text-zinc-500 uppercase tracking-wider mb-2">
+                        Полотно
+                      </p>
+                      <div className="flex gap-2">
+                        {Object.entries(CANVAS_LABELS).map(([key, label]) => (
+                          <button
+                            key={key}
+                            onClick={() => setPaintingCanvas(key)}
+                            className={`flex-1 py-2.5 rounded-lg border text-sm transition-all ${
+                              paintingCanvas === key
+                                ? isUVMode
+                                  ? "border-purple-500 bg-purple-500/20 text-white"
+                                  : "border-white bg-white/10 text-white"
+                                : "border-zinc-700 text-zinc-400 hover:border-zinc-500"
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div
+                      className={`flex items-center justify-between p-3 rounded-lg ${isUVMode ? "bg-purple-900/20" : "bg-zinc-800"}`}
+                    >
+                      <span className="text-sm text-zinc-400">
+                        Картина {paintingSize} см,{" "}
+                        {CANVAS_LABELS[paintingCanvas]}
+                      </span>
+                      <span
+                        className={`font-bold ${isUVMode ? "text-purple-300" : "text-white"}`}
+                      >
+                        +{formatPrice(paintingPrice, product.currency)}
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            )}
+
             {/* CTA Buttons */}
             <div className="space-y-4">
               {/* Primary CTA with A/B Test */}
@@ -364,7 +644,7 @@ const ProductDetail = () => {
                   productId={productId}
                   language="ru"
                   onClick={handleBuyNow}
-                  disabled={isSoldOut}
+                  disabled={isSoldOut || !selectedSize}
                   isUVMode={isUVMode}
                 />
               )}
@@ -372,10 +652,22 @@ const ProductDetail = () => {
               {/* AR Try-On Button */}
               <ARButton productId={productId} />
 
-              {/* Secondary CTA (unchanged) */}
-              <button className="w-full py-5 border-2 border-zinc-700 text-white font-bold uppercase tracking-wider hover:border-purple-500 transition-colors">
-                В избранное
-              </button>
+              {/* Add to cart */}
+              {!isSoldOut && (
+                <button
+                  onClick={handleAddToCart}
+                  disabled={!selectedSize}
+                  className={`w-full py-5 border-2 font-bold uppercase tracking-wider transition-colors ${
+                    !selectedSize
+                      ? "border-zinc-800 text-zinc-600 cursor-not-allowed"
+                      : isUVMode
+                        ? "border-purple-500/50 text-purple-300 hover:bg-purple-500/10"
+                        : "border-zinc-700 text-white hover:border-zinc-500"
+                  }`}
+                >
+                  В корзину
+                </button>
+              )}
             </div>
 
             {/* Trust Badges */}
@@ -695,6 +987,136 @@ const ProductDetail = () => {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Customer Reviews */}
+      {reviews.length > 0 && (
+        <div className="max-w-[1800px] mx-auto px-8 pb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2
+              className={`text-3xl font-bold ${
+                isUVMode
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
+                  : "text-white"
+              }`}
+            >
+              Отзывы покупателей
+            </h2>
+            <Link
+              to="/reviews"
+              className={`text-sm font-medium transition-colors ${
+                isUVMode
+                  ? "text-purple-400 hover:text-purple-300"
+                  : "text-zinc-400 hover:text-white"
+              }`}
+            >
+              Все отзывы &rarr;
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {reviews.map((review, idx) => (
+              <motion.div
+                key={review._id || idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={`p-6 border transition-colors ${
+                  isUVMode
+                    ? "bg-black/60 border-purple-500/30"
+                    : "bg-zinc-900 border-zinc-800"
+                }`}
+              >
+                <div className="flex items-center gap-1 mb-3">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      className={`text-sm ${
+                        star <= (review.rating || 5)
+                          ? "text-yellow-400"
+                          : "text-zinc-700"
+                      }`}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-zinc-300 text-sm leading-relaxed mb-4 line-clamp-4">
+                  {review.text}
+                </p>
+                <div className="border-t border-zinc-800 pt-3">
+                  <p className="text-white text-sm font-medium">
+                    {review.name}
+                  </p>
+                  {review.city && (
+                    <p className="text-zinc-500 text-xs mt-1">{review.city}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Similar Products */}
+      {similarProducts.length > 0 && (
+        <div className="max-w-[1800px] mx-auto px-8 pb-16">
+          <h2
+            className={`text-3xl font-bold mb-8 ${
+              isUVMode
+                ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
+                : "text-white"
+            }`}
+          >
+            Вам также понравится
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {similarProducts.map((item) => (
+              <Link
+                key={item.id}
+                to={`/product/${item.id}`}
+                className="group block"
+              >
+                <div
+                  className={`overflow-hidden transition-all duration-500 ${
+                    isUVMode
+                      ? "bg-black/80 border border-purple-500/30 hover:border-purple-500/60"
+                      : "bg-zinc-900 border border-zinc-800 hover:border-zinc-600"
+                  }`}
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-zinc-800">
+                    <img
+                      src={
+                        item.images?.daylight?.hero || "/artist/page5_img1.jpeg"
+                      }
+                      alt={item.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        e.target.src = "/artist/page5_img1.jpeg";
+                      }}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-zinc-500 text-xs mb-1 truncate">
+                      {item.productCollection}
+                    </p>
+                    <h3 className="text-white font-semibold text-sm mb-2 truncate">
+                      {item.name}
+                    </h3>
+                    <p
+                      className={`text-lg font-bold ${
+                        isUVMode ? "text-purple-400" : "text-white"
+                      }`}
+                    >
+                      ${item.price?.toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

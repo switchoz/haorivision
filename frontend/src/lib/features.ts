@@ -20,6 +20,13 @@
  */
 
 // ============================================================
+// DEV-only logging
+// ============================================================
+
+const log = import.meta.env.DEV ? console.log.bind(console) : () => {};
+const warn = import.meta.env.DEV ? console.warn.bind(console) : () => {};
+
+// ============================================================
 // Types
 // ============================================================
 
@@ -146,7 +153,7 @@ async function loadConfig(): Promise<FeaturesConfig> {
       }
       const config: FeaturesConfig = await response.json();
       configCache = config;
-      console.log(
+      log(
         "[Features] Configuration loaded:",
         config.meta.total_features,
         "features",
@@ -297,7 +304,7 @@ export function setFeatureOverride(
     const parsed = overrides ? JSON.parse(overrides) : {};
     parsed[featureName] = enabled;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(parsed));
-    console.log(`[Features] Override set: ${featureName} = ${enabled}`);
+    log(`[Features] Override set: ${featureName} = ${enabled}`);
   } catch (error) {
     console.error("[Features] Failed to set localStorage override:", error);
   }
@@ -316,7 +323,7 @@ export function clearFeatureOverride(featureName: string): void {
     const parsed = JSON.parse(overrides);
     delete parsed[featureName];
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(parsed));
-    console.log(`[Features] Override cleared: ${featureName}`);
+    log(`[Features] Override cleared: ${featureName}`);
   } catch (error) {
     console.error("[Features] Failed to clear localStorage override:", error);
   }
@@ -330,7 +337,7 @@ export function clearAllFeatureOverrides(): void {
 
   try {
     localStorage.removeItem(LOCAL_STORAGE_KEY);
-    console.log("[Features] All overrides cleared");
+    log("[Features] All overrides cleared");
   } catch (error) {
     console.error("[Features] Failed to clear all overrides:", error);
   }
@@ -385,7 +392,7 @@ function checkDependencies(
 ): boolean {
   // Предотвращаем циклические зависимости
   if (checkedFeatures.has(featureName)) {
-    console.warn(`[Features] Circular dependency detected: ${featureName}`);
+    warn(`[Features] Circular dependency detected: ${featureName}`);
     return false;
   }
 
@@ -402,7 +409,7 @@ function checkDependencies(
   for (const dep of feature.dependencies) {
     const depFeature = config.features[dep];
     if (!depFeature) {
-      console.warn(`[Features] Missing dependency: ${dep} for ${featureName}`);
+      warn(`[Features] Missing dependency: ${dep} for ${featureName}`);
       return false;
     }
 
@@ -413,7 +420,7 @@ function checkDependencies(
 
     // Проверяем что зависимость включена
     if (!depFeature.enabled) {
-      console.warn(`[Features] Disabled dependency: ${dep} for ${featureName}`);
+      warn(`[Features] Disabled dependency: ${dep} for ${featureName}`);
       return false;
     }
   }
@@ -443,23 +450,21 @@ export async function isFeatureEnabled(featureName: string): Promise<boolean> {
   const feature = config.features[featureName];
 
   if (!feature) {
-    console.warn(`[Features] Unknown feature: ${featureName}`);
+    warn(`[Features] Unknown feature: ${featureName}`);
     return false;
   }
 
   // 1. LocalStorage override (highest priority)
   const localOverride = getLocalStorageOverride(featureName);
   if (localOverride !== null) {
-    console.log(
-      `[Features] ${featureName} = ${localOverride} (localStorage override)`,
-    );
+    log(`[Features] ${featureName} = ${localOverride} (localStorage override)`);
     return localOverride;
   }
 
   // 2. Environment variable override
   const envOverride = getEnvOverride(featureName, feature);
   if (envOverride !== null) {
-    console.log(`[Features] ${featureName} = ${envOverride} (env override)`);
+    log(`[Features] ${featureName} = ${envOverride} (env override)`);
     return envOverride;
   }
 
@@ -480,7 +485,7 @@ export async function isFeatureEnabled(featureName: string): Promise<boolean> {
  */
 export function isFeatureEnabledSync(featureName: string): boolean {
   if (!configCache) {
-    console.warn("[Features] Config not loaded yet, using default: false");
+    warn("[Features] Config not loaded yet, using default: false");
     return false;
   }
 
@@ -545,10 +550,10 @@ export async function getEnabledFeatures(): Promise<string[]> {
  * Инициализирует feature flags (вызывается при старте приложения)
  */
 export async function initFeatureFlags(): Promise<void> {
-  console.log("[Features] Initializing feature flags...");
+  log("[Features] Initializing feature flags...");
   await loadConfig();
   const enabled = await getEnabledFeatures();
-  console.log("[Features] Enabled features:", enabled.join(", "));
+  log("[Features] Enabled features:", enabled.join(", "));
 }
 
 // Auto-init в браузере

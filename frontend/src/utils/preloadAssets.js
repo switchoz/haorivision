@@ -15,6 +15,10 @@
  *   preloadCriticalAssets();
  */
 
+const log = import.meta.env.DEV ? console.log.bind(console) : () => {};
+const warn = import.meta.env.DEV ? console.warn.bind(console) : () => {};
+const table = import.meta.env.DEV ? console.table.bind(console) : () => {};
+
 // ============================================================
 // Configuration
 // ============================================================
@@ -70,7 +74,7 @@ function createLinkElement(rel, attributes) {
   // Check if already exists
   const selector = `link[rel="${rel}"][href="${attributes.href}"]`;
   if (document.querySelector(selector)) {
-    console.log(`[Preload] Already exists: ${rel} ${attributes.href}`);
+    log(`[Preload] Already exists: ${rel} ${attributes.href}`);
     return null;
   }
 
@@ -88,7 +92,7 @@ function createLinkElement(rel, attributes) {
   });
 
   document.head.appendChild(link);
-  console.log(`[Preload] Added: ${rel} ${attributes.href}`);
+  log(`[Preload] Added: ${rel} ${attributes.href}`);
 
   return link;
 }
@@ -106,7 +110,7 @@ export function dnsPrefetch(domains = PRELOAD_CONFIG.domains) {
     createLinkElement("dns-prefetch", { href: domain });
   });
 
-  console.log(`[Preload] DNS prefetch: ${domains.length} domains`);
+  log(`[Preload] DNS prefetch: ${domains.length} domains`);
 }
 
 // ============================================================
@@ -129,7 +133,7 @@ export function preconnectDomains(domains = PRELOAD_CONFIG.domains) {
     createLinkElement("dns-prefetch", { href: domain });
   });
 
-  console.log(`[Preload] Preconnect: ${domains.length} domains`);
+  log(`[Preload] Preconnect: ${domains.length} domains`);
 }
 
 // ============================================================
@@ -149,7 +153,7 @@ export function preloadFonts(fonts = PRELOAD_CONFIG.fonts) {
     });
   });
 
-  console.log(`[Preload] Fonts: ${fonts.length} files`);
+  log(`[Preload] Fonts: ${fonts.length} files`);
 }
 
 // ============================================================
@@ -170,7 +174,7 @@ export function preloadImages(images = PRELOAD_CONFIG.images) {
     });
   });
 
-  console.log(`[Preload] Images: ${images.length} files`);
+  log(`[Preload] Images: ${images.length} files`);
 }
 
 // ============================================================
@@ -189,7 +193,7 @@ export function preloadVideos(videos = PRELOAD_CONFIG.videos) {
     });
   });
 
-  console.log(`[Preload] Videos: ${videos.length} files`);
+  log(`[Preload] Videos: ${videos.length} files`);
 }
 
 // ============================================================
@@ -207,7 +211,7 @@ export function preloadStyles(styles = PRELOAD_CONFIG.styles) {
     });
   });
 
-  console.log(`[Preload] Styles: ${styles.length} files`);
+  log(`[Preload] Styles: ${styles.length} files`);
 }
 
 // ============================================================
@@ -218,7 +222,7 @@ export function preloadStyles(styles = PRELOAD_CONFIG.styles) {
  * Preload all critical resources
  */
 export function preloadCriticalAssets() {
-  console.log("[Preload] Loading critical assets...");
+  log("[Preload] Loading critical assets...");
 
   // Preconnect first (fastest)
   preconnectDomains();
@@ -229,7 +233,7 @@ export function preloadCriticalAssets() {
   preloadVideos();
   preloadStyles();
 
-  console.log("[Preload] All critical assets queued");
+  log("[Preload] All critical assets queued");
 }
 
 // ============================================================
@@ -247,7 +251,7 @@ export function prefetchResources(resources) {
     });
   });
 
-  console.log(`[Preload] Prefetch: ${resources.length} resources`);
+  log(`[Preload] Prefetch: ${resources.length} resources`);
 }
 
 // ============================================================
@@ -260,7 +264,7 @@ export function prefetchResources(resources) {
  */
 export function prerenderPage(url) {
   createLinkElement("prerender", { href: url });
-  console.log(`[Preload] Prerender: ${url}`);
+  log(`[Preload] Prerender: ${url}`);
 }
 
 // ============================================================
@@ -286,7 +290,7 @@ export function preloadAsset(url, options = {}) {
     fetchpriority: priority,
   });
 
-  console.log(`[Preload] Dynamic preload: ${url}`);
+  log(`[Preload] Dynamic preload: ${url}`);
 }
 
 // ============================================================
@@ -303,9 +307,7 @@ export function setFetchPriority(selector, priority) {
     el.setAttribute("fetchpriority", priority);
   });
 
-  console.log(
-    `[Preload] Set priority "${priority}" on ${elements.length} elements`,
-  );
+  log(`[Preload] Set priority "${priority}" on ${elements.length} elements`);
 }
 
 // ============================================================
@@ -335,7 +337,7 @@ export function initPreload() {
  */
 export function logPreloadPerformance() {
   if (!window.performance || !window.performance.getEntriesByType) {
-    console.warn("[Preload] Performance API not available");
+    warn("[Preload] Performance API not available");
     return;
   }
 
@@ -349,7 +351,7 @@ export function logPreloadPerformance() {
       );
     });
 
-  console.table(
+  table(
     resources.map((r) => ({
       name: r.name.split("/").pop(),
       type: r.initiatorType,

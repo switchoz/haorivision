@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: haorivision-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3010
+      - key: CLIENT_URL
+        fromGroup: haorivision
+      - key: MONGODB_URI
+        fromGroup: haorivision
+      - key: JWT_SECRET
+        fromGroup: haorivision
+      - key: SESSION_SECRET
+        fromGroup: haorivision
+      - key: STRIPE_SECRET_KEY
+        fromGroup: haorivision
+      - key: STRIPE_PUBLISHABLE_KEY
+        fromGroup: haorivision
+      - key: TELEGRAM_BOT_TOKEN
+        fromGroup: haorivision
+      - key: ANTHROPIC_API_KEY
+        fromGroup: haorivision

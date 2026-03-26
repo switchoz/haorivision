@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import PageMeta from "../components/PageMeta";
 
 /**
  * Event Landing Page - Glow Ritual
@@ -79,6 +80,10 @@ export default function EventPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black text-white">
+      <PageMeta
+        title="Событие"
+        description="Событие HAORI VISION — выставки, показы, встречи с художником."
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background gradient */}

@@ -291,13 +291,16 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-2">Email</h3>
-                      <p
-                        className={`text-sm ${
-                          isUVMode ? "text-uv-cyan" : "text-zinc-300"
+                      <a
+                        href="mailto:contact@haorivision.art"
+                        className={`text-sm transition-colors ${
+                          isUVMode
+                            ? "text-uv-cyan hover:text-white"
+                            : "text-zinc-300 hover:text-white"
                         }`}
                       >
                         contact@haorivision.art
-                      </p>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -334,16 +337,7 @@ const Contact = () => {
                     name: "Instagram",
                     icon: "IG",
                     color: isUVMode ? "bg-uv-pink" : "bg-zinc-800",
-                  },
-                  {
-                    name: "Twitter",
-                    icon: "TW",
-                    color: isUVMode ? "bg-uv-cyan" : "bg-zinc-800",
-                  },
-                  {
-                    name: "Pinterest",
-                    icon: "PI",
-                    color: isUVMode ? "bg-uv-purple" : "bg-zinc-800",
+                    href: "https://instagram.com/DIKO.RATIVNO",
                   },
                   {
                     name: "Telegram",
@@ -354,9 +348,9 @@ const Contact = () => {
                 ].map((social, i) => (
                   <motion.a
                     key={i}
-                    href={social.href || "#"}
-                    target={social.href ? "_blank" : undefined}
-                    rel={social.href ? "noopener noreferrer" : undefined}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -5 }}
                     className={`w-14 h-14 rounded-full ${social.color} flex items-center justify-center text-white font-semibold transition-all`}
                   >

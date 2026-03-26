@@ -8,7 +8,7 @@ import {
 
 const CartContext = createContext();
 
-const STORAGE_KEY = "haori_cart";
+const STORAGE_KEY = "hv_cart";
 
 function loadCart() {
   try {

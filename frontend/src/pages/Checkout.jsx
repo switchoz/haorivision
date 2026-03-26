@@ -12,6 +12,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useCart } from "../contexts/CartContext";
 import { trackCTAEvent } from "../ab/withCTAExperiment";
 import { tid } from "../shared/testid";
+import { formatPrice } from "../lib/format";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -262,18 +263,22 @@ const CheckoutForm = ({ items, totalAmount, onSuccess, clearCart }) => {
             className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 text-white focus:outline-none focus:border-purple-500"
           >
             <option value="">Выберите страну</option>
-            <option value="US">United States</option>
-            <option value="GB">United Kingdom</option>
-            <option value="JP">Japan</option>
-            <option value="DE">Germany</option>
-            <option value="FR">France</option>
-            <option value="IT">Italy</option>
-            <option value="ES">Spain</option>
-            <option value="CA">Canada</option>
-            <option value="AU">Australia</option>
-            <option value="SG">Singapore</option>
-            <option value="HK">Hong Kong</option>
-            <option value="AE">UAE</option>
+            <option value="RU">Россия</option>
+            <option value="BY">Беларусь</option>
+            <option value="KZ">Казахстан</option>
+            <option value="UA">Украина</option>
+            <option value="DE">Германия</option>
+            <option value="FR">Франция</option>
+            <option value="IT">Италия</option>
+            <option value="ES">Испания</option>
+            <option value="GB">Великобритания</option>
+            <option value="US">США</option>
+            <option value="JP">Япония</option>
+            <option value="AE">ОАЭ</option>
+            <option value="CA">Канада</option>
+            <option value="AU">Австралия</option>
+            <option value="SG">Сингапур</option>
+            <option value="HK">Гонконг</option>
           </select>
         </div>
       </div>
@@ -318,7 +323,9 @@ const CheckoutForm = ({ items, totalAmount, onSuccess, clearCart }) => {
         whileHover={!loading && stripe ? { scale: 1.02 } : {}}
         whileTap={!loading && stripe ? { scale: 0.98 } : {}}
       >
-        {loading ? "Обработка..." : `Оплатить $${totalAmount.toLocaleString()}`}
+        {loading
+          ? "Обработка..."
+          : `Оплатить ${formatPrice(totalAmount, items[0]?.currency)}`}
       </motion.button>
 
       {/* Security Badges */}
@@ -348,6 +355,12 @@ const Checkout = () => {
   const { isUVMode } = useTheme();
   const cart = useCart();
 
+  const [promoCode, setPromoCode] = useState("");
+  const [promoDiscount, setPromoDiscount] = useState(0);
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoError, setPromoError] = useState("");
+  const [promoApplied, setPromoApplied] = useState("");
+
   // Support both: single product from ProductDetail and multi-item from Cart
   const singleProduct = location.state?.product;
   const fromCart = location.state?.fromCart;
@@ -374,13 +387,45 @@ const Checkout = () => {
     return null;
   }
 
-  const subtotal = checkoutItems.reduce(
-    (sum, item) => sum + item.price * (item.qty || 1),
-    0,
-  );
+  const subtotal = checkoutItems.reduce((sum, item) => {
+    const itemTotal = item.price * (item.qty || 1);
+    const addonsTotal = (item.addons || []).reduce(
+      (s, a) => s + (a.price || 0),
+      0,
+    );
+    return sum + itemTotal + addonsTotal;
+  }, 0);
   const shippingCost = subtotal >= 5000 ? 0 : 150;
   const tax = Math.round(subtotal * 0.08);
-  const total = subtotal + shippingCost + tax;
+  const total = subtotal + shippingCost + tax - promoDiscount;
+
+  const handleApplyPromo = async () => {
+    if (!promoCode.trim()) return;
+    setPromoLoading(true);
+    setPromoError("");
+    setPromoDiscount(0);
+    setPromoApplied("");
+    try {
+      const res = await fetch(`${API_URL}/api/promo/validate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: promoCode.trim(), orderAmount: subtotal }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPromoError(data.error || "Ошибка проверки промокода");
+      } else if (data.valid) {
+        setPromoDiscount(data.discount);
+        setPromoApplied(data.code);
+      } else {
+        setPromoError(data.error || "Промокод недействителен");
+      }
+    } catch {
+      setPromoError("Не удалось проверить промокод");
+    } finally {
+      setPromoLoading(false);
+    }
+  };
 
   return (
     <div
@@ -451,7 +496,10 @@ const Checkout = () => {
                       </div>
                       <div className="text-right flex-shrink-0">
                         <p className="text-sm font-bold text-white">
-                          ${(item.price * (item.qty || 1)).toLocaleString()}
+                          {formatPrice(
+                            item.price * (item.qty || 1),
+                            item.currency,
+                          )}
                         </p>
                       </div>
                     </div>
@@ -462,25 +510,78 @@ const Checkout = () => {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-zinc-400">
                     <span>Промежуточный итог</span>
-                    <span>${subtotal.toLocaleString()}</span>
+                    <span>
+                      {formatPrice(subtotal, checkoutItems[0]?.currency)}
+                    </span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Доставка (DHL Express)</span>
                     <span>
-                      {shippingCost === 0 ? "БЕСПЛАТНО" : `$${shippingCost}`}
+                      {shippingCost === 0
+                        ? "БЕСПЛАТНО"
+                        : formatPrice(shippingCost, checkoutItems[0]?.currency)}
                     </span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Налог (приблизительно)</span>
-                    <span>${tax.toLocaleString()}</span>
+                    <span>{formatPrice(tax, checkoutItems[0]?.currency)}</span>
                   </div>
+                </div>
+
+                {/* Promo Code */}
+                <div className="mb-6 pb-6 border-b border-zinc-800">
+                  <label className="block text-sm text-zinc-400 mb-2">
+                    Промокод
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={promoCode}
+                      onChange={(e) => setPromoCode(e.target.value)}
+                      placeholder="Введите промокод"
+                      disabled={!!promoApplied}
+                      className="flex-1 px-3 py-2 bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-purple-500 disabled:opacity-50"
+                    />
+                    {promoApplied ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPromoCode("");
+                          setPromoDiscount(0);
+                          setPromoApplied("");
+                          setPromoError("");
+                        }}
+                        className="px-4 py-2 bg-zinc-700 text-zinc-300 text-sm font-medium hover:bg-zinc-600 transition-colors"
+                      >
+                        Убрать
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={handleApplyPromo}
+                        disabled={promoLoading || !promoCode.trim()}
+                        className="px-4 py-2 bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {promoLoading ? "..." : "Применить"}
+                      </button>
+                    )}
+                  </div>
+                  {promoError && (
+                    <p className="mt-2 text-sm text-red-400">{promoError}</p>
+                  )}
+                  {promoApplied && (
+                    <p className="mt-2 text-sm text-green-400">
+                      Промокод {promoApplied} применён: -
+                      {formatPrice(promoDiscount, checkoutItems[0]?.currency)}
+                    </p>
+                  )}
                 </div>
 
                 {/* Total */}
                 <div className="flex justify-between items-center pt-6 border-t border-zinc-800">
                   <span className="text-xl font-bold text-white">Итого</span>
                   <span className="text-3xl font-bold text-white">
-                    ${total.toLocaleString()}
+                    {formatPrice(total, checkoutItems[0]?.currency)}
                   </span>
                 </div>
               </div>

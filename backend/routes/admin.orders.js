@@ -4,6 +4,7 @@ import Order from "../models/Order.js";
 import Customer from "../models/Customer.js";
 import { toCSV } from "../utils/csv.js";
 import { baseLogger } from "../middlewares/logger.js";
+import { escapeRegex } from "../utils/escapeRegex.js";
 import {
   sendOrderConfirmation,
   sendShippingNotification,
@@ -48,7 +49,7 @@ r.get("/", requireRole("admin", "editor", "viewer"), async (req, res) => {
 
     // Фильтр по email (регистронезависимый поиск)
     if (email) {
-      query.email = new RegExp(String(email), "i");
+      query.email = new RegExp(escapeRegex(String(email)), "i");
     }
 
     // Фильтр по дате
@@ -138,7 +139,7 @@ r.post("/export", requireRole("admin", "editor"), async (req, res) => {
     }
 
     if (email) {
-      query.email = new RegExp(String(email), "i");
+      query.email = new RegExp(escapeRegex(String(email)), "i");
     }
 
     if (from || to) {

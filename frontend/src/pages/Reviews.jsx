@@ -72,11 +72,14 @@ export default function Reviews() {
         body: JSON.stringify(form),
       });
       if (r.ok) {
-        toast.success("Спасибо! Отзыв отправлен на модерацию");
+        toast.success(
+          "Спасибо! Отзыв будет опубликован после проверки (1–2 дня).",
+        );
         setShowForm(false);
         setForm({ name: "", city: "", rating: 5, text: "", productName: "" });
       } else {
-        toast.error("Ошибка отправки");
+        const data = await r.json().catch(() => ({}));
+        toast.error(data.error || "Ошибка отправки. Попробуйте позже.");
       }
     } catch {
       toast.error("Ошибка соединения");
@@ -164,14 +167,23 @@ export default function Reviews() {
               />
             </div>
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">
-                Отзыв *
-              </label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="text-sm text-zinc-400">Отзыв *</label>
+                <span
+                  className={`text-xs ${form.text.length > 500 ? "text-red-400" : "text-zinc-600"}`}
+                >
+                  {form.text.length}/500
+                </span>
+              </div>
               <textarea
                 value={form.text}
-                onChange={(e) => setForm({ ...form, text: e.target.value })}
+                onChange={(e) => {
+                  if (e.target.value.length <= 500)
+                    setForm({ ...form, text: e.target.value });
+                }}
                 required
                 rows={4}
+                placeholder="Расскажите о вашем опыте..."
                 className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-purple-500 resize-y"
               />
             </div>

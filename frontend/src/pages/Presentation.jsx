@@ -1,166 +1,33 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import PageMeta from "../components/PageMeta";
+import WorkModal from "../components/gallery/WorkModal";
+import { paintings, graphics, artistInfo } from "../data/artist-works";
 
 const HAORI_IMG = "/artist/haori-presentation.jpg";
 
-const works = [
-  {
-    name: "Ихтис",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    status: "Продано",
-    colors: ["#00CED1", "#FF69B4", "#D4AF37"],
-    desc: "Космический портал из переплетённых форм",
-    img: "/artist/page3_img1.jpeg",
-  },
-  {
-    name: "Небесное покрывало",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2020,
-    price: "75 050 ₽",
-    colors: ["#4169E1", "#FFD700", "#FF1493"],
-    desc: "Мистическое существо под лунным светом",
-    img: "/artist/page5_img1.jpeg",
-  },
-  {
-    name: "Алиса в стране чудес",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    price: "98 989 ₽",
-    colors: ["#00CED1", "#9932CC", "#FF69B4"],
-    desc: "Сюрреалистический мир сквозь орнамент",
-    img: "/artist/page7_img1.jpeg",
-  },
-  {
-    name: "Жар-Птица",
-    size: "70×100",
-    tech: "Смешанная техника",
-    year: 2021,
-    price: "55 555 ₽",
-    colors: ["#6A5ACD", "#00CED1", "#FF8C00"],
-    desc: "Потоковая стихия цвета и движения",
-    img: "/artist/page9_img1.jpeg",
-  },
-  {
-    name: "Змееносец",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    price: "60 600 ₽",
-    colors: ["#00CED1", "#D4AF37", "#FF4500"],
-    desc: "Созвездие, ожившее в линиях",
-    img: "/artist/page10_img1.jpeg",
-  },
-  {
-    name: "Шах Мат & Сны",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2020,
-    status: "Продано",
-    colors: ["#2F2F2F", "#D4AF37", "#FFFFFF"],
-    desc: "Золото и чернь: шахматная мистерия",
-    img: "/artist/page11_img1.jpeg",
-  },
-  {
-    name: "Космическое древо",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2019,
-    status: "Частная коллекция",
-    colors: ["#0A0A0A", "#FFFFFF", "#D4AF37"],
-    desc: "Древо жизни в космическом масштабе",
-    img: "/artist/page14_img1.jpeg",
-  },
-  {
-    name: "Эфир",
-    size: "50×65",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    status: "Продано",
-    colors: ["#4169E1", "#D4AF37", "#00CED1"],
-    desc: "Восточные мотивы в потоковой живописи",
-    img: "/artist/page15_img1.jpeg",
-  },
-  {
-    name: "Энергия воздуха",
-    size: "50×65",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    price: "44 040 ₽",
-    colors: ["#800040", "#00CED1", "#D4AF37"],
-    desc: "Вихрь воздушной стихии",
-    img: "/artist/page17_img1.jpeg",
-  },
-  {
-    name: "Повелитель Воздуха",
-    size: "70×100",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    colors: ["#00CED1", "#FF69B4", "#9932CC"],
-    desc: "Величественное существо в полёте",
-    img: "/artist/page19_img1.jpeg",
-  },
-  {
-    name: "Алхимик",
-    size: "70×90",
-    tech: "Акрил, пастельная бумага",
-    year: 2022,
-    colors: ["#4169E1", "#9932CC", "#00CED1"],
-    desc: "Кристаллическая мандала трансмутации",
-    img: "/artist/page21_img1.jpeg",
-  },
-  {
-    name: "Волнующе",
-    size: "70×90",
-    tech: "Акрил, пастельная бумага",
-    year: 2021,
-    colors: ["#00CED1", "#FF69B4", "#ADFF2F"],
-    desc: "Энергия тёмного космоса",
-    img: "/artist/page23_img1.jpeg",
-  },
-];
+const { exhibitions, galleries } = artistInfo;
 
-const exhibitions = [
-  {
-    year: 2021,
-    title: "«Крылья Ангела»",
-    venue: "Храм Христа Спасителя, Москва",
-  },
-  {
-    year: 2020,
-    title: "«Ученики и учитель»",
-    venue: "Российский центр науки и культуры, Братислава",
-  },
-  {
-    year: 2021,
-    title: "Диплом II степени",
-    venue: "Работа «Весна на планете Сириус»",
-  },
-  {
-    year: 2020,
-    title: "«В поисках Рая»",
-    venue: "Выставка современной живописи",
-  },
-];
-
-const galleries = [
-  "G1.gallery",
-  "Meeting Point",
-  "IZZI Decor",
-  "ODA Decor",
-  "Beer & Art",
-];
+const formatPrice = (p) => (p ? p.toLocaleString("ru-RU") + " ₽" : null);
+const statusText = (s) =>
+  s === "sold"
+    ? "ПРОДАНО"
+    : s === "private"
+      ? "ЧАСТНАЯ КОЛЛЕКЦИЯ"
+      : s
+        ? s.toUpperCase()
+        : null;
 
 export default function HaoriVisionPresentation() {
   const [uvMode, setUvMode] = useState(false);
   const [section, setSection] = useState(0);
   const [entered, setEntered] = useState(false);
   const [selectedWork, setSelectedWork] = useState(null);
-  const [showModal, setShowModal] = useState(false);
   const [hoveredWork, setHoveredWork] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [galleryTab, setGalleryTab] = useState("paintings");
+
+  const works = galleryTab === "paintings" ? paintings : graphics;
 
   useEffect(() => {
     if (entered) setTimeout(() => setLoaded(true), 100);
@@ -170,10 +37,7 @@ export default function HaoriVisionPresentation() {
   const accent = uvMode ? "255,0,180" : "0,255,180";
   const accentHex = uvMode ? "#ff00b4" : "#00ffb4";
 
-  const openWork = (w) => {
-    setSelectedWork(w);
-    setShowModal(true);
-  };
+  const openWork = (w) => setSelectedWork(w);
 
   if (!entered) {
     return (
@@ -279,6 +143,10 @@ export default function HaoriVisionPresentation() {
         transition: "background 1.5s",
       }}
     >
+      <PageMeta
+        title="Презентация"
+        description="Презентация HAORI VISION и художника Елизаветы Федькиной (LiZa). Интуитивная живопись, UV-арт."
+      />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Unbounded:wght@200;300;400;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
@@ -450,171 +318,15 @@ export default function HaoriVisionPresentation() {
       </div>
 
       {/* MODAL */}
-      {showModal && selectedWork && (
-        <div
-          onClick={() => setShowModal(false)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 300,
-            background: "rgba(0,0,0,.85)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            animation: "fadeIn .3s both",
-            backdropFilter: "blur(10px)",
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: 600,
-              width: "90%",
-              background: "rgba(20,20,30,.95)",
-              border: `1px solid rgba(${accent},.3)`,
-              borderRadius: 12,
-              overflow: "hidden",
-              position: "relative",
-              animation: "slideUp .5s cubic-bezier(.16,1,.3,1) both",
-            }}
-          >
-            <div
-              onClick={() => setShowModal(false)}
-              style={{
-                position: "absolute",
-                top: 16,
-                right: 20,
-                cursor: "pointer",
-                color: "rgba(255,255,255,.6)",
-                fontSize: 20,
-                fontFamily: "'Unbounded',sans-serif",
-                zIndex: 10,
-                width: 32,
-                height: 32,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "rgba(0,0,0,.5)",
-                borderRadius: "50%",
-                backdropFilter: "blur(4px)",
-              }}
-            >
-              ×
-            </div>
-            {/* Work photo in modal */}
-            {selectedWork.img && (
-              <div
-                style={{
-                  width: "100%",
-                  maxHeight: 320,
-                  overflow: "hidden",
-                  position: "relative",
-                }}
-              >
-                <img
-                  src={selectedWork.img}
-                  alt={selectedWork.name}
-                  style={{
-                    width: "100%",
-                    height: 320,
-                    objectFit: "cover",
-                    filter: uvMode ? "saturate(1.3) brightness(1.1)" : "none",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(0deg,rgba(20,20,30,.95) 0%,transparent 60%)",
-                  }}
-                />
-              </div>
-            )}
-            <div
-              style={{
-                padding: "24px 40px 40px",
-                marginTop: selectedWork.img ? -60 : 0,
-                position: "relative",
-              }}
-            >
-              <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-                {selectedWork.colors.map((c, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: 28,
-                      height: 28,
-                      borderRadius: "50%",
-                      background: c,
-                      border: "2px solid rgba(255,255,255,.1)",
-                      boxShadow: uvMode ? `0 0 12px ${c}` : "none",
-                    }}
-                  />
-                ))}
-              </div>
-              <h3 style={{ fontSize: 28, fontWeight: 300, marginBottom: 8 }}>
-                «{selectedWork.name}»
-              </h3>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "rgba(255,255,255,.4)",
-                  marginBottom: 20,
-                  fontStyle: "italic",
-                }}
-              >
-                {selectedWork.desc}
-              </p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 12,
-                }}
-              >
-                {[
-                  { l: "Размер", v: selectedWork.size + " см" },
-                  { l: "Техника", v: selectedWork.tech },
-                  { l: "Год", v: selectedWork.year },
-                  {
-                    l: "Статус",
-                    v:
-                      selectedWork.price ||
-                      selectedWork.status ||
-                      "В коллекции",
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      padding: "12px 16px",
-                      background: "rgba(255,255,255,.03)",
-                      borderRadius: 6,
-                      border: "1px solid rgba(255,255,255,.06)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontFamily: "'Unbounded',sans-serif",
-                        fontSize: 8,
-                        letterSpacing: 2,
-                        color: "rgba(255,255,255,.3)",
-                        marginBottom: 4,
-                      }}
-                    >
-                      {item.l}
-                    </div>
-                    <div style={{ fontSize: 14, color: `rgba(${accent},.8)` }}>
-                      {item.v}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {selectedWork && (
+          <WorkModal
+            work={selectedWork}
+            isUV={uvMode}
+            onClose={() => setSelectedWork(null)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* CONTENT */}
       <div
@@ -1090,7 +802,7 @@ export default function HaoriVisionPresentation() {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "baseline",
+                alignItems: "center",
                 marginBottom: 32,
               }}
             >
@@ -1104,19 +816,47 @@ export default function HaoriVisionPresentation() {
                     marginBottom: 8,
                   }}
                 >
-                  ИЗБРАННЫЕ РАБОТЫ
+                  ГАЛЕРЕЯ РАБОТ
                 </div>
                 <h2 style={{ fontSize: 32, fontWeight: 300 }}>Каталог</h2>
               </div>
-              <div
-                style={{
-                  fontFamily: "'Unbounded',sans-serif",
-                  fontSize: 9,
-                  letterSpacing: 3,
-                  color: "rgba(255,255,255,.3)",
-                }}
-              >
-                НАЖМИТЕ НА КАРТОЧКУ
+              <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+                {[
+                  {
+                    id: "paintings",
+                    label: "Живопись",
+                    count: paintings.length,
+                  },
+                  { id: "graphics", label: "Графика", count: graphics.length },
+                ].map((tab) => (
+                  <div
+                    key={tab.id}
+                    onClick={() => setGalleryTab(tab.id)}
+                    style={{
+                      fontFamily: "'Unbounded',sans-serif",
+                      fontSize: 10,
+                      letterSpacing: 3,
+                      padding: "8px 16px",
+                      borderRadius: 20,
+                      cursor: "pointer",
+                      transition: "all .3s",
+                      border: `1px solid rgba(${accent},${galleryTab === tab.id ? 0.4 : 0.1})`,
+                      color:
+                        galleryTab === tab.id
+                          ? `rgba(${accent},.9)`
+                          : "rgba(255,255,255,.3)",
+                      background:
+                        galleryTab === tab.id
+                          ? `rgba(${accent},.08)`
+                          : "transparent",
+                    }}
+                  >
+                    {tab.label}{" "}
+                    <span style={{ opacity: 0.4, marginLeft: 4 }}>
+                      {tab.count}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
             <div
@@ -1208,7 +948,7 @@ export default function HaoriVisionPresentation() {
                       ))}
                     </div>
                     {/* Status badge */}
-                    {w.status && (
+                    {statusText(w.status) && (
                       <div
                         style={{
                           position: "absolute",
@@ -1224,7 +964,7 @@ export default function HaoriVisionPresentation() {
                           backdropFilter: "blur(4px)",
                         }}
                       >
-                        {w.status.toUpperCase()}
+                        {statusText(w.status)}
                       </div>
                     )}
                   </div>
@@ -1266,7 +1006,7 @@ export default function HaoriVisionPresentation() {
                             : "rgba(255,255,255,.3)",
                         }}
                       >
-                        {w.price || "—"}
+                        {formatPrice(w.price) || "—"}
                       </div>
                     </div>
                   </div>

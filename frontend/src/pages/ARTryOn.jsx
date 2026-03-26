@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import PageMeta from "../components/PageMeta";
 import ARCamera from "../components/ar/ARCamera";
 import HaoriOverlay from "../components/ar/HaoriOverlay";
 import { usePoseDetection } from "../components/ar/usePoseDetection";
@@ -130,13 +131,17 @@ export default function ARTryOn() {
 
   return (
     <div className="fixed inset-0 bg-black z-50">
+      <PageMeta
+        title="AR Примерка"
+        description="Примерьте хаори HAORI VISION в дополненной реальности."
+      />
       {/* Модальное окно с результатом */}
       {capturedImage && (
         <div className="absolute inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
           <div className="max-w-2xl w-full">
             <img
               src={capturedImage}
-              alt="Captured"
+              alt="Снимок примерки хаори"
               className="w-full rounded-2xl shadow-2xl mb-6"
             />
             <div className="flex gap-4 justify-center">

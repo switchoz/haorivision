@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useEffect, Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -59,6 +64,10 @@ const ReviewsPage = lazy(() => import("./pages/Reviews"));
 const AccountPage = lazy(() => import("./pages/Account"));
 const AdminReviewsPage = lazy(() => import("./admin/pages/Reviews"));
 const AdminPromo = lazy(() => import("./admin/pages/Promo"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
+const SizeGuide = lazy(() => import("./pages/SizeGuide"));
+const Care = lazy(() => import("./pages/Care"));
 
 function App() {
   // Setup global error tracking for Reliability Kit
@@ -94,7 +103,10 @@ function App() {
                 <Route path="collections" element={<Collections />} />
                 <Route path="experience" element={<Experience />} />
                 <Route path="shop" element={<Shop />} />
-                <Route path="products" element={<Products />} />
+                <Route
+                  path="products"
+                  element={<Navigate to="/shop" replace />}
+                />
                 <Route
                   path="product/:productId"
                   element={<ProductDetailWithTrustBlocks />}
@@ -110,7 +122,10 @@ function App() {
                   path="unboxing/:qrCode/feedback"
                   element={<UnboxingFeedbackPage />}
                 />
-                <Route path="gallery" element={<Gallery />} />
+                <Route
+                  path="gallery"
+                  element={<Navigate to="/about#gallery" replace />}
+                />
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="faq" element={<FAQ />} />
@@ -120,7 +135,14 @@ function App() {
                 <Route path="account" element={<AccountPage />} />
                 <Route path="ar-tryon" element={<ARTryOn />} />
                 <Route path="3d-studio" element={<Haori3DStudio />} />
-                <Route path="presentation" element={<Presentation />} />
+                <Route
+                  path="presentation"
+                  element={<Navigate to="/about?view=presentation" replace />}
+                />
+                <Route path="privacy" element={<Privacy />} />
+                <Route path="terms" element={<Terms />} />
+                <Route path="size-guide" element={<SizeGuide />} />
+                <Route path="care" element={<Care />} />
                 <Route path="admin/metrics" element={<Metrics />} />
                 <Route
                   path="test-error-boundary"

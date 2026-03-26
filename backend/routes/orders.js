@@ -21,13 +21,18 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const {
-      productId,
+      productId: directProductId,
+      items: bodyItems,
       paymentMethodId,
       customer: customerData,
       amount,
       shippingAddress,
       notes,
     } = req.body;
+
+    // Поддержка и productId, и items[0].productId
+    const productId =
+      directProductId || bodyItems?.[0]?.productId || bodyItems?.[0]?.id;
 
     // Найти продукт
     let product = await Product.findOne({ id: productId });

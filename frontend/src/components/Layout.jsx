@@ -1,7 +1,10 @@
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import HikariChat from "./HikariChat";
+import CookieConsent from "./CookieConsent";
+import BackToTop from "./BackToTop";
 import AnimatedOutlet from "./AnimatedOutlet";
+import SplashScreen from "./SplashScreen";
 import ErrorBoundary from "../lib/ErrorBoundary";
 import { useTheme } from "../contexts/ThemeContext";
 import { Link } from "react-router-dom";
@@ -47,14 +50,23 @@ const Layout = () => {
     <div
       className={`min-h-screen ${isUVMode ? "uv-light-bg" : "bg-black"} transition-colors duration-500`}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded"
+      >
+        Перейти к содержимому
+      </a>
+      <SplashScreen />
       <Navigation />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         <ErrorBoundary name="PageContent" fallback={PageErrorFallback}>
           <AnimatedOutlet />
         </ErrorBoundary>
       </main>
       <Footer />
       <HikariChat />
+      <BackToTop />
+      <CookieConsent />
     </div>
   );
 };

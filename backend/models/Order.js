@@ -27,7 +27,26 @@ const orderSchema = new mongoose.Schema(
         name: String,
         qty: { type: Number, default: 1 },
         price: Number,
+        size: String,
         editionNumber: Number,
+        addons: [
+          {
+            type: {
+              type: String,
+              enum: ["matching-painting"],
+            },
+            name: String,
+            canvas: {
+              type: String,
+              enum: ["cotton", "linen", "silk"],
+            },
+            size: {
+              type: String,
+              enum: ["40x50", "50x70", "70x100"],
+            },
+            price: Number,
+          },
+        ],
       },
     ],
     shippingAddress: {

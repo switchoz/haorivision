@@ -203,7 +203,7 @@ export default function UnboxingFeedbackPage() {
                     <img
                       key={i}
                       src={url}
-                      alt={`Photo ${i + 1}`}
+                      alt="Фото распаковки от покупателя"
                       className="w-20 h-20 rounded-lg object-cover border border-purple-500/30"
                     />
                   ))}

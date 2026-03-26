@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageMeta from "../components/PageMeta";
+import { formatPrice } from "../lib/format";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -102,8 +103,15 @@ const Shop = () => {
     return () => clearTimeout(debounce);
   }, [fetchProducts, search]);
 
-  // Wishlist
-  const [wishlistIds, setWishlistIds] = useState(new Set());
+  // Wishlist — load from API (authenticated) or localStorage (guest)
+  const [wishlistIds, setWishlistIds] = useState(() => {
+    try {
+      const saved = localStorage.getItem("hv_wishlist");
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch {
+      return new Set();
+    }
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("customer_jwt");
@@ -112,32 +120,44 @@ const Shop = () => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
-      .then((d) => setWishlistIds(new Set((d.items || []).map((p) => p.id))))
+      .then((d) => {
+        const ids = new Set((d.items || []).map((p) => p.id));
+        setWishlistIds(ids);
+        localStorage.setItem("hv_wishlist", JSON.stringify([...ids]));
+      })
       .catch(() => {});
   }, []);
+
+  // Persist wishlist to localStorage on every change
+  useEffect(() => {
+    localStorage.setItem("hv_wishlist", JSON.stringify([...wishlistIds]));
+  }, [wishlistIds]);
 
   const toggleWishlist = (e, productId) => {
     e.preventDefault();
     e.stopPropagation();
     const token = localStorage.getItem("customer_jwt");
-    if (!token) {
-      toast.error("Войдите в аккаунт");
-      return;
-    }
     const inList = wishlistIds.has(productId);
-    fetch(`${API_URL}/api/account/wishlist/${productId}`, {
-      method: inList ? "DELETE" : "POST",
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then(() => {
-        const next = new Set(wishlistIds);
-        inList ? next.delete(productId) : next.add(productId);
-        setWishlistIds(next);
-        toast.success(
-          inList ? "Удалено из избранного" : "Добавлено в избранное",
-        );
-      })
-      .catch(() => toast.error("Ошибка"));
+
+    // Update local state immediately (optimistic)
+    const next = new Set(wishlistIds);
+    inList ? next.delete(productId) : next.add(productId);
+    setWishlistIds(next);
+    toast.success(inList ? "Удалено из избранного" : "Добавлено в избранное");
+
+    // Sync with API if authenticated
+    if (token) {
+      fetch(`${API_URL}/api/account/wishlist/${productId}`, {
+        method: inList ? "DELETE" : "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      }).catch(() => {
+        // Revert on failure
+        const reverted = new Set(next);
+        inList ? reverted.add(productId) : reverted.delete(productId);
+        setWishlistIds(reverted);
+        toast.error("Ошибка синхронизации избранного");
+      });
+    }
   };
 
   const handleAddToCart = (e, product) => {
@@ -247,8 +267,25 @@ const Shop = () => {
         {/* Products Grid */}
         <AnimatePresence mode="popLayout">
           {loading ? (
-            <div className="text-center py-20">
-              <div className="inline-block w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="animate-pulse">
+                  <div
+                    className={`overflow-hidden ${isUVMode ? "bg-black/80 border border-purple-500/20" : "bg-zinc-900 border border-zinc-800"}`}
+                  >
+                    <div className="aspect-[3/4] bg-zinc-800" />
+                    <div className="p-4 space-y-3">
+                      <div className="h-3 bg-zinc-800 rounded w-1/3" />
+                      <div className="h-4 bg-zinc-800 rounded w-3/4" />
+                      <div className="h-3 bg-zinc-800 rounded w-1/2" />
+                      <div className="flex items-center justify-between pt-1">
+                        <div className="h-5 bg-zinc-800 rounded w-20" />
+                        <div className="h-8 w-8 bg-zinc-800 rounded-full" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           ) : products.length === 0 ? (
             <motion.div
@@ -279,7 +316,10 @@ const Shop = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: Math.min(i * 0.03, 0.3) }}
                 >
-                  <Link to={`/product/${product.id}`} className="block group">
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="block group focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:outline-none rounded-lg"
+                  >
                     <div
                       className={`overflow-hidden transition-all duration-700 ${
                         isUVMode
@@ -289,14 +329,40 @@ const Shop = () => {
                     >
                       {/* Product Image */}
                       <div className="relative aspect-[3/4] overflow-hidden bg-zinc-800">
-                        <img
-                          src={product.images?.daylight?.hero}
-                          alt={product.name}
-                          loading="lazy"
-                          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
-                            isUVMode ? "brightness-110 saturate-[1.3]" : ""
-                          }`}
-                        />
+                        {(() => {
+                          const mediumSrc =
+                            product.images?.daylight?.hero ||
+                            "/artist/page5_img1.jpeg";
+                          const thumbSrc = mediumSrc.replace(
+                            "-medium",
+                            "-thumb",
+                          );
+                          return (
+                            <picture>
+                              <source
+                                srcSet={mediumSrc.replace(".jpg", ".webp")}
+                                type="image/webp"
+                              />
+                              <img
+                                src={mediumSrc}
+                                srcSet={`${thumbSrc} 300w, ${mediumSrc} 600w`}
+                                sizes="(max-width: 640px) 50vw, 25vw"
+                                alt={product.name}
+                                width={300}
+                                height={400}
+                                loading="lazy"
+                                className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+                                  isUVMode
+                                    ? "brightness-110 saturate-[1.3]"
+                                    : ""
+                                }`}
+                                onError={(e) => {
+                                  e.target.src = "/artist/page5_img1.jpeg";
+                                }}
+                              />
+                            </picture>
+                          );
+                        })()}
                         {isUVMode && (
                           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 mix-blend-screen pointer-events-none" />
                         )}
@@ -360,7 +426,7 @@ const Shop = () => {
                               isUVMode ? "text-uv-cyan" : "text-white"
                             }`}
                           >
-                            ${product.price.toLocaleString()}
+                            {formatPrice(product.price, product.currency)}
                           </p>
                           <motion.button
                             whileHover={{ scale: 1.1 }}

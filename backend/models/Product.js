@@ -33,10 +33,6 @@ const productSchema = new mongoose.Schema(
       type: String,
       default: "USD",
     },
-    cryptoPrice: {
-      eth: Number,
-      btc: Number,
-    },
     images: {
       daylight: {
         hero: String,
@@ -67,6 +63,12 @@ const productSchema = new mongoose.Schema(
         default: 0,
       },
     },
+    processImages: [
+      {
+        url: String,
+        caption: String,
+      },
+    ],
     uvColors: [String],
     techniques: [String],
     materials: [String],

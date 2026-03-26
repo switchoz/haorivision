@@ -68,7 +68,7 @@ export default function ReviewsSection() {
               }`}
             >
               <Stars count={r.rating} />
-              <p className="text-zinc-300 mt-3 mb-4 text-sm leading-relaxed line-clamp-4">
+              <p className="text-zinc-300 mt-3 mb-4 text-sm leading-relaxed line-clamp-6">
                 {r.text}
               </p>
               <div className="flex items-center justify-between">

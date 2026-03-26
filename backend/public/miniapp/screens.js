@@ -20,6 +20,10 @@ const Screens = {
       </div>
     </header>
 
+    <div id="pull-hint" class="pull-hint" style="text-align:center;padding:var(--space-2);font-size:var(--text-small);color:var(--color-text-tertiary);opacity:0.6;">
+      Потяните вниз для обновления
+    </div>
+
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-content">
@@ -148,19 +152,19 @@ const Screens = {
     <section class="filters-section">
       <div class="filter-tabs" id="category-tabs">
         <button class="filter-tab active" data-cat="all">Все</button>
-        <button class="filter-tab" data-cat="haori">Хаори</button>
-        <button class="filter-tab" data-cat="jeans">Джинсы</button>
         <button class="filter-tab" data-cat="jackets">Куртки</button>
-        <button class="filter-tab" data-cat="accessories">Аксессуары</button>
-        <button class="filter-tab" data-cat="art">Арт</button>
+        <button class="filter-tab" data-cat="belts">Ремни</button>
+        <button class="filter-tab" data-cat="bags">Сумки</button>
+        <button class="filter-tab" data-cat="hoodies">Худи</button>
+        <button class="filter-tab" data-cat="jeans">Джинсы</button>
       </div>
       <div class="filter-controls">
         <select class="filter-select" id="price-filter" onchange="Screens.filterCatalog()">
           <option value="">Все цены</option>
           <option value="0-200">До $200</option>
-          <option value="200-400">$200 - $400</option>
-          <option value="400+">$400+</option>
-          <option value="custom">Индивидуальная</option>
+          <option value="200-500">$200 - $500</option>
+          <option value="500+">$500+</option>
+          <option value="custom">По запросу</option>
         </select>
         <select class="filter-select" id="sort-select" onchange="Screens.filterCatalog()">
           <option value="featured">Рекомендуемые</option>
@@ -201,6 +205,7 @@ const Screens = {
     // Category tabs
     document.querySelectorAll(".filter-tab").forEach((tab) => {
       tab.addEventListener("click", () => {
+        App.haptic("light");
         document
           .querySelectorAll(".filter-tab")
           .forEach((t) => t.classList.remove("active"));
@@ -212,16 +217,57 @@ const Screens = {
 
     // Search toggle
     document.getElementById("search-toggle")?.addEventListener("click", () => {
+      App.haptic("light");
       const bar = document.getElementById("search-bar");
       bar.style.display = bar.style.display === "none" ? "block" : "none";
       if (bar.style.display === "block")
         document.getElementById("search-input").focus();
     });
 
+    // Filter change haptics
+    document.getElementById("price-filter")?.addEventListener("change", () => {
+      App.haptic("light");
+    });
+    document.getElementById("sort-select")?.addEventListener("change", () => {
+      App.haptic("light");
+    });
+
     this.filterCatalog();
   },
 
+  _skeletonCards(count) {
+    return Array.from(
+      { length: count },
+      () => `
+      <div class="card product-card skeleton-card">
+        <div class="product-image-wrap skeleton-shimmer" style="aspect-ratio:1;border-radius:var(--radius-md)"></div>
+        <div class="product-info">
+          <div class="skeleton-shimmer" style="height:14px;width:70%;border-radius:4px;margin-bottom:var(--space-2)"></div>
+          <div class="skeleton-shimmer" style="height:14px;width:40%;border-radius:4px;margin-bottom:var(--space-2)"></div>
+          <div class="skeleton-shimmer" style="height:10px;width:90%;border-radius:4px"></div>
+        </div>
+      </div>
+    `,
+    ).join("");
+  },
+
   filterCatalog() {
+    const grid = document.getElementById("products-grid");
+    const empty = document.getElementById("empty-state");
+    const count = document.getElementById("results-count");
+
+    // Show skeleton loading if products haven't loaded yet
+    if (!App.products || App.products.length === 0) {
+      if (grid) {
+        grid.style.display = "grid";
+        grid.className = `products-grid ${this._catalogView === "list" ? "list-view" : ""}`;
+        grid.innerHTML = this._skeletonCards(4);
+      }
+      if (empty) empty.style.display = "none";
+      if (count) count.textContent = "Загрузка...";
+      return;
+    }
+
     const search =
       document.getElementById("search-input")?.value?.toLowerCase() || "";
     const priceFilter = document.getElementById("price-filter")?.value || "";
@@ -260,10 +306,6 @@ const Screens = {
     if (sort === "price-high")
       filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
 
-    const grid = document.getElementById("products-grid");
-    const empty = document.getElementById("empty-state");
-    const count = document.getElementById("results-count");
-
     if (!filtered.length) {
       grid.style.display = "none";
       empty.style.display = "block";
@@ -284,6 +326,10 @@ const Screens = {
         <div class="product-image-wrap">
           <img src="${p.images?.[0] || ""}" alt="${p.name}" class="product-img" loading="lazy">
           <div class="product-badge">${p.availability === "in_stock" ? "В наличии" : "Под заказ"}</div>
+          <button class="fav-btn ${App.isFavorite(p.id || p._id) ? "active" : ""}"
+            onclick="event.stopPropagation(); App.toggleFavorite('${p.id || p._id}'); Screens.filterCatalog();">
+            <i class="fa-${App.isFavorite(p.id || p._id) ? "solid" : "regular"} fa-heart"></i>
+          </button>
         </div>
         <div class="product-info">
           <h3 class="product-name">${p.name}</h3>
@@ -300,6 +346,7 @@ const Screens = {
   },
 
   setView(view) {
+    App.haptic("light");
     this._catalogView = view;
     document
       .querySelectorAll(".view-btn")
@@ -318,6 +365,9 @@ const Screens = {
     <header class="header">
       <button class="back-btn" onclick="App.navigate('catalog')"><i class="fa-solid fa-arrow-left"></i></button>
       <h1 class="header-title">${p.name}</h1>
+      <button class="icon-btn" id="fav-detail-btn" onclick="App.toggleFavorite('${p.id || p._id}'); Screens.updateDetailFav('${p.id || p._id}');">
+        <i class="fa-${App.isFavorite(p.id || p._id) ? "solid" : "regular"} fa-heart" style="${App.isFavorite(p.id || p._id) ? "color:#ff4466" : ""}"></i>
+      </button>
       <button class="icon-btn" id="share-btn"><i class="fa-solid fa-share-nodes"></i></button>
     </header>
 
@@ -379,6 +429,7 @@ const Screens = {
     </section>`;
   },
 
+  _mainButtonHandler: null,
   _currentSlide: 0,
 
   initProduct(id) {
@@ -396,7 +447,26 @@ const Screens = {
     // Share
     document.getElementById("share-btn")?.addEventListener("click", () => {
       const p = App.getProduct(id);
-      if (navigator.share) {
+      App.haptic("light");
+      if (App.tg && App.tg.switchInlineQuery) {
+        // Telegram-native inline sharing
+        try {
+          App.tg.switchInlineQuery(p?.name || "", [
+            "users",
+            "groups",
+            "channels",
+          ]);
+        } catch (e) {
+          // Fallback to navigator.share if switchInlineQuery fails
+          if (navigator.share) {
+            navigator.share({
+              title: p?.name,
+              text: p?.shortDesc,
+              url: window.location.href,
+            });
+          }
+        }
+      } else if (navigator.share) {
         navigator.share({
           title: p?.name,
           text: p?.shortDesc,
@@ -404,6 +474,26 @@ const Screens = {
         });
       }
     });
+
+    // Telegram MainButton для заказа
+    if (App.tg) {
+      const p = App.getProduct(id);
+      if (p) {
+        // Удаляем предыдущий обработчик, если был
+        if (Screens._mainButtonHandler) {
+          App.tg.MainButton.offClick(Screens._mainButtonHandler);
+        }
+        Screens._mainButtonHandler = () => Screens.orderProduct(id);
+        App.tg.MainButton.setText(
+          "\u2728 \u0417\u0430\u043a\u0430\u0437\u0430\u0442\u044c \u2014 " +
+            App.formatPrice(p),
+        );
+        App.tg.MainButton.color = "#6c3ce0";
+        App.tg.MainButton.textColor = "#ffffff";
+        App.tg.MainButton.show();
+        App.tg.MainButton.onClick(Screens._mainButtonHandler);
+      }
+    }
 
     // Swipe gallery
     this._initGallerySwipe();
@@ -438,6 +528,13 @@ const Screens = {
       .forEach((d, idx) => d.classList.toggle("active", idx === i));
   },
 
+  updateDetailFav(id) {
+    const btn = document.getElementById("fav-detail-btn");
+    if (!btn) return;
+    const isFav = App.isFavorite(id);
+    btn.innerHTML = `<i class="fa-${isFav ? "solid" : "regular"} fa-heart" style="${isFav ? "color:#ff4466" : ""}"></i>`;
+  },
+
   orderProduct(id) {
     const p = App.getProduct(id);
     if (!p) return;
@@ -465,6 +562,20 @@ const Screens = {
     } else {
       window.open(botUrl, "_blank");
     }
+
+    App.tg?.showPopup(
+      {
+        title: "Заказ оформлен!",
+        message: "Мы свяжемся с вами в Telegram",
+        buttons: [
+          { id: "home", type: "default", text: "На главную" },
+          { id: "ok", type: "ok" },
+        ],
+      },
+      (btnId) => {
+        if (btnId === "home") App.navigate("home");
+      },
+    );
   },
 
   // ═══════════════════════════════════════════
@@ -605,6 +716,88 @@ const Screens = {
   },
 
   // ═══════════════════════════════════════════
+  // ORDERS HISTORY
+  // ═══════════════════════════════════════════
+  orders() {
+    const orders = App.orders || [];
+    const statusLabels = {
+      sent: "Отправлен",
+      pending: "В обработке",
+      confirmed: "Подтверждён",
+      in_progress: "В работе",
+      shipped: "Доставляется",
+      delivered: "Доставлен",
+      checkout: "Оформлен",
+    };
+    const statusColors = {
+      sent: "var(--color-warning)",
+      pending: "var(--color-warning)",
+      confirmed: "var(--color-accent-cyan)",
+      in_progress: "var(--color-accent-magenta)",
+      shipped: "var(--color-accent-lime)",
+      delivered: "var(--color-success)",
+      checkout: "var(--color-accent-cyan)",
+    };
+
+    const ordersList = orders.length
+      ? orders
+          .slice()
+          .reverse()
+          .map((o) => {
+            const date = o.createdAt
+              ? new Date(o.createdAt).toLocaleDateString("ru-RU", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })
+              : "";
+            const statusText =
+              statusLabels[o.status] || o.status || "Неизвестно";
+            const statusColor =
+              statusColors[o.status] || "var(--color-text-secondary)";
+            return `
+        <div class="card" style="padding:var(--space-4);margin-bottom:var(--space-3)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-2)">
+            <h3 class="text-body" style="font-weight:600">${o.productName || "Индивидуальный заказ"}</h3>
+            <span class="text-small" style="color:${statusColor};font-weight:600;white-space:nowrap;margin-left:var(--space-2)">${statusText}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              ${o.size ? `<span class="text-caption text-secondary">Размер: ${o.size}</span>` : ""}
+              ${o.price ? `<span class="text-caption" style="color:var(--color-accent-cyan);margin-left:var(--space-3)">${o.price}</span>` : ""}
+            </div>
+            <span class="text-small text-tertiary">${date}</span>
+          </div>
+          <div class="text-small text-tertiary" style="margin-top:var(--space-2)">ID: ${o.id || "—"}</div>
+        </div>`;
+          })
+          .join("")
+      : `
+      <div class="empty-state">
+        <div class="empty-icon"><i class="fa-solid fa-receipt"></i></div>
+        <h2 class="empty-title">Заказов пока нет</h2>
+        <p class="empty-desc">Ваши заказы появятся здесь после оформления</p>
+        <button class="btn btn-primary" style="margin-top:var(--space-6)" onclick="App.navigate('catalog')">
+          <i class="fa-solid fa-bag-shopping"></i> Перейти в каталог
+        </button>
+      </div>`;
+
+    return `
+    <header class="header">
+      <button class="back-btn" onclick="App.navigate('home')"><i class="fa-solid fa-arrow-left"></i></button>
+      <h1 class="header-title">Мои заказы</h1>
+    </header>
+
+    <section class="section">
+      ${orders.length ? `<p class="text-caption text-secondary" style="margin-bottom:var(--space-4)">${orders.length} ${this._plural(orders.length, "заказ", "заказа", "заказов")}</p>` : ""}
+      ${ordersList}
+    </section>
+
+    <div style="height:80px"></div>
+    ${this._bottomNav("orders")}`;
+  },
+
+  // ═══════════════════════════════════════════
   // CHECKOUT
   // ═══════════════════════════════════════════
   checkout(productId) {
@@ -713,7 +906,16 @@ const Screens = {
 
         if (!name || !email || !city || !address) {
           App.hapticNotify("error");
-          return alert("Заполните все обязательные поля");
+          if (App.tg) {
+            App.tg.showPopup({
+              title: "Внимание",
+              message: "Заполните все обязательные поля",
+              buttons: [{ type: "ok" }],
+            });
+          } else {
+            alert("Заполните все обязательные поля");
+          }
+          return;
         }
 
         App.haptic("heavy");
@@ -748,7 +950,7 @@ const Screens = {
     const items = [
       { screen: "home", icon: "fa-house", label: "Главная" },
       { screen: "catalog", icon: "fa-bag-shopping", label: "Каталог" },
-      { screen: "order", icon: "fa-pen-nib", label: "Написать" },
+      { screen: "orders", icon: "fa-receipt", label: "Заказы" },
       { screen: "portfolio", icon: "fa-images", label: "Портфолио" },
     ];
     return `

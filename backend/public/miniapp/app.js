@@ -10,6 +10,7 @@ const App = {
   cart: [],
   orders: [],
   products: [],
+  favorites: new Set(),
 
   // Fallback product data (used when API is unavailable)
   fallbackProducts: [
@@ -122,6 +123,7 @@ const App = {
     this.initTelegram();
     this.loadSavedData();
     await this.loadProducts();
+    await this.loadFavorites();
     this.initRouter();
     this.navigate(window.location.hash.slice(1) || "home");
   },
@@ -161,13 +163,84 @@ const App = {
     try {
       const data = await Api.getProducts();
       if (data?.products?.length) {
-        this.products = data.products;
+        this.products = data.products.map((p) => ({
+          ...p,
+          id: p.id || p._id,
+          images: [p.images?.daylight?.hero, p.images?.uv?.hero].filter(
+            Boolean,
+          ),
+          shortDesc: p.description?.short || p.tagline || "",
+          longDesc: p.description?.long || p.description?.short || "",
+          priceType: p.price ? "fixed" : "custom",
+          tags: p.materials || p.techniques || [],
+          availability:
+            p.status === "sold-out"
+              ? "sold_out"
+              : p.editions?.remaining > 0
+                ? "in_stock"
+                : "made_to_order",
+        }));
       } else {
         this.products = this.fallbackProducts;
       }
     } catch {
       this.products = this.fallbackProducts;
     }
+  },
+
+  async refreshProducts() {
+    await this.loadProducts();
+    if (this.currentScreen === "home") this.renderScreen("home");
+  },
+
+  async loadFavorites() {
+    // Try TG CloudStorage first, fallback to localStorage
+    if (this.tg?.CloudStorage) {
+      try {
+        const data = await new Promise((resolve, reject) => {
+          this.tg.CloudStorage.getItem("favorites", (err, val) =>
+            err ? reject(err) : resolve(val),
+          );
+        });
+        if (data) this.favorites = new Set(JSON.parse(data));
+      } catch {
+        this.loadFavoritesLocal();
+      }
+    } else {
+      this.loadFavoritesLocal();
+    }
+  },
+
+  loadFavoritesLocal() {
+    try {
+      const saved = localStorage.getItem("hv_miniapp_fav");
+      if (saved) this.favorites = new Set(JSON.parse(saved));
+    } catch {}
+  },
+
+  async saveFavorites() {
+    const arr = [...this.favorites];
+    if (this.tg?.CloudStorage) {
+      try {
+        this.tg.CloudStorage.setItem("favorites", JSON.stringify(arr));
+      } catch {}
+    }
+    localStorage.setItem("hv_miniapp_fav", JSON.stringify(arr));
+  },
+
+  toggleFavorite(productId) {
+    if (this.favorites.has(productId)) {
+      this.favorites.delete(productId);
+      this.hapticNotify("warning");
+    } else {
+      this.favorites.add(productId);
+      this.hapticNotify("success");
+    }
+    this.saveFavorites();
+  },
+
+  isFavorite(productId) {
+    return this.favorites.has(productId);
   },
 
   loadSavedData() {
@@ -196,7 +269,20 @@ const App = {
 
   renderScreen(screen, param) {
     this.currentScreen = screen;
+    if (this._pullCleanup) {
+      this._pullCleanup();
+      this._pullCleanup = null;
+    }
     const app = document.getElementById("app");
+
+    // Скрываем MainButton и убираем обработчик при смене экрана
+    if (this.tg) {
+      if (Screens._mainButtonHandler) {
+        this.tg.MainButton.offClick(Screens._mainButtonHandler);
+        Screens._mainButtonHandler = null;
+      }
+      this.tg.MainButton.hide();
+    }
 
     // Telegram back button
     if (this.tg) {
@@ -204,6 +290,15 @@ const App = {
         this.tg.BackButton.hide();
       } else {
         this.tg.BackButton.show();
+      }
+    }
+
+    // Closing confirmation on checkout
+    if (this.tg) {
+      if (screen === "checkout") {
+        this.tg.enableClosingConfirmation();
+      } else {
+        this.tg.disableClosingConfirmation();
       }
     }
 
@@ -226,6 +321,9 @@ const App = {
       case "checkout":
         app.innerHTML = Screens.checkout(param);
         break;
+      case "orders":
+        app.innerHTML = Screens.orders();
+        break;
       default:
         app.innerHTML = Screens.home();
         break;
@@ -236,6 +334,9 @@ const App = {
 
     // Init screen-specific logic
     switch (screen) {
+      case "home":
+        this._initPullToRefresh();
+        break;
       case "catalog":
         Screens.initCatalog();
         break;
@@ -250,6 +351,43 @@ const App = {
     this.updateNav(screen);
   },
 
+  _initPullToRefresh() {
+    let startY = 0;
+    let pulling = false;
+    const hint = document.getElementById("pull-hint");
+    const onStart = (e) => {
+      if (window.scrollY === 0) {
+        startY = e.touches[0].clientY;
+        pulling = true;
+      }
+    };
+    const onMove = (e) => {
+      if (!pulling) return;
+      const dy = e.touches[0].clientY - startY;
+      if (dy > 0 && hint) hint.style.opacity = Math.min(dy / 80, 1);
+    };
+    const onEnd = (e) => {
+      if (!pulling) return;
+      pulling = false;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (hint) hint.style.opacity = "0.6";
+      if (dy >= 80 && window.scrollY === 0) {
+        if (hint) hint.textContent = "Обновление...";
+        this.refreshProducts().then(() => {
+          if (hint) hint.textContent = "Потяните вниз для обновления";
+        });
+      }
+    };
+    document.addEventListener("touchstart", onStart, { passive: true });
+    document.addEventListener("touchmove", onMove, { passive: true });
+    document.addEventListener("touchend", onEnd, { passive: true });
+    this._pullCleanup = () => {
+      document.removeEventListener("touchstart", onStart);
+      document.removeEventListener("touchmove", onMove);
+      document.removeEventListener("touchend", onEnd);
+    };
+  },
+
   updateNav(screen) {
     document.querySelectorAll(".nav-item").forEach((el) => {
       el.classList.toggle("active", el.dataset.screen === screen);
@@ -258,8 +396,10 @@ const App = {
 
   formatPrice(product) {
     if (!product) return "";
-    if (product.priceType === "custom") return "Индивидуальная цена";
-    return `$${product.price}`;
+    if (product.priceType === "custom" || !product.price) return "По запросу";
+    const symbols = { USD: "$", EUR: "€", RUB: "₽" };
+    const sym = symbols[product.currency] || product.currency || "$";
+    return `${product.price.toLocaleString("ru-RU")} ${sym}`;
   },
 
   getProduct(id) {
@@ -283,6 +423,16 @@ const App = {
         this.tg.sendData(JSON.stringify(order));
       } catch {
         /* fallback */
+      }
+    } else {
+      // Если не в Telegram — сохраняем заказ через API
+      try {
+        Api.request("/orders", {
+          method: "POST",
+          body: JSON.stringify(order),
+        });
+      } catch {
+        /* silent — заказ сохранён локально */
       }
     }
     return order;

@@ -7,14 +7,23 @@
     <meta name="description" content="Ручная роспись UV-пигментами. Хаори, джинсы, куртки. Единственный экземпляр.">
     <meta name="theme-color" content="#0a0a0a">
 
+    <!-- Telegram WebApp SDK: no SRI — script is updated in-place by Telegram, hash would break it -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
         /* ══════════════════════════════════════
            DESIGN SYSTEM
            ══════════════════════════════════════ */
         :root {
+            /* Telegram theme integration */
+            --tg-bg: var(--tg-theme-bg-color, #0a0a0a);
+            --tg-text: var(--tg-theme-text-color, #ffffff);
+            --tg-hint: var(--tg-theme-hint-color, #a0a0a0);
+            --tg-link: var(--tg-theme-link-color, #00ffff);
+            --tg-btn: var(--tg-theme-button-color, #00ffff);
+            --tg-btn-text: var(--tg-theme-button-text-color, #0a0a0a);
+
             --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
             --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
             --space-12: 48px; --space-16: 64px;
@@ -22,17 +31,17 @@
             --text-display: 2.5rem; --text-h1: 2rem; --text-h2: 1.5rem;
             --text-body: 1rem; --text-caption: 0.875rem; --text-small: 0.75rem;
 
-            --color-bg-primary: #0a0a0a;
+            --color-bg-primary: var(--tg-bg);
             --color-bg-secondary: #1a1a1a;
             --color-bg-tertiary: #2a2a2a;
             --color-surface: rgba(255, 255, 255, 0.03);
             --color-surface-hover: rgba(255, 255, 255, 0.06);
             --color-border: rgba(255, 255, 255, 0.08);
             --color-border-focus: rgba(0, 255, 255, 0.4);
-            --color-text-primary: #ffffff;
-            --color-text-secondary: #a0a0a0;
+            --color-text-primary: var(--tg-text);
+            --color-text-secondary: var(--tg-hint);
             --color-text-tertiary: #666666;
-            --color-accent-cyan: #00ffff;
+            --color-accent-cyan: var(--tg-btn);
             --color-accent-magenta: #ff00ff;
             --color-accent-lime: #00ff00;
             --color-success: #00ff88;
@@ -52,11 +61,12 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-            background: var(--color-bg-primary);
-            color: var(--color-text-primary);
+            background: var(--tg-bg);
+            color: var(--tg-text);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            overscroll-behavior: contain;
         }
 
         /* ══════════════════════════════════════
@@ -83,7 +93,7 @@
            ══════════════════════════════════════ */
         .header {
             display: flex; align-items: center; justify-content: space-between;
-            padding: var(--space-4); background: rgba(10,10,10,0.85);
+            padding: var(--space-4); background: var(--tg-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--color-border);
             position: sticky; top: 0; z-index: 100;
@@ -113,7 +123,7 @@
             transition: all var(--transition-fast); user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
-        .btn-primary { background: var(--color-accent-cyan); color: var(--color-bg-primary); }
+        .btn-primary { background: var(--tg-btn); color: var(--tg-btn-text); }
         .btn-primary:hover { background: #00e6e6; transform: translateY(-1px); box-shadow: var(--shadow-glow); }
         .btn-primary:active { transform: translateY(0); }
         .btn-secondary { background: var(--color-surface); color: var(--color-text-primary); border: 1px solid var(--color-border); }
@@ -221,7 +231,7 @@
            ══════════════════════════════════════ */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(10,10,10,0.92); backdrop-filter: blur(20px);
+            background: var(--tg-bg); backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--color-border);
             padding: var(--space-2) var(--space-4); z-index: 1000;
@@ -234,7 +244,7 @@
             font-size: var(--text-small); cursor: pointer;
             transition: all var(--transition-fast);
         }
-        .nav-item.active { color: var(--color-accent-cyan); }
+        .nav-item.active { color: var(--tg-btn); }
         .nav-item:hover { color: var(--color-text-primary); }
         .nav-item i { font-size: 1.2rem; }
 
@@ -262,7 +272,7 @@
             background: var(--color-surface); border: 1px solid var(--color-border);
             color: var(--color-text-secondary);
         }
-        .filter-tab.active { background: var(--color-accent-cyan); color: var(--color-bg-primary); border-color: var(--color-accent-cyan); }
+        .filter-tab.active { background: var(--tg-btn); color: var(--tg-btn-text); border-color: var(--tg-btn); }
         .filter-tab:hover:not(.active) { background: var(--color-surface-hover); color: var(--color-text-primary); }
         .filter-controls { display: flex; gap: var(--space-3); flex-wrap: wrap; }
         .filter-select {
@@ -279,7 +289,7 @@
             padding: var(--space-2) var(--space-3); background: transparent; border: none;
             color: var(--color-text-secondary); cursor: pointer; transition: all var(--transition-fast);
         }
-        .view-btn.active { background: var(--color-accent-cyan); color: var(--color-bg-primary); }
+        .view-btn.active { background: var(--tg-btn); color: var(--tg-btn-text); }
 
         .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
         .products-grid.list-view { grid-template-columns: 1fr; }
@@ -292,6 +302,17 @@
             color: var(--color-bg-primary); font-size: var(--text-small); font-weight: 600;
             border-radius: var(--radius-sm);
         }
+        .fav-btn {
+            position: absolute; top: var(--space-2); left: var(--space-2);
+            width: 32px; height: 32px; border-radius: 50%;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+            border: none; color: var(--color-text-secondary);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 5; transition: all var(--transition-fast);
+        }
+        .fav-btn.active { color: #ff4466; }
+        .fav-btn:hover { background: rgba(0,0,0,0.7); }
+
         .product-info { padding: var(--space-2); }
         .product-desc {
             font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.4;
@@ -349,7 +370,7 @@
             color: var(--color-text-secondary); cursor: pointer; font-size: var(--text-caption);
             transition: all var(--transition-fast);
         }
-        .size-btn.active { background: var(--color-accent-cyan); color: var(--color-bg-primary); border-color: var(--color-accent-cyan); }
+        .size-btn.active { background: var(--tg-btn); color: var(--tg-btn-text); border-color: var(--tg-btn); }
         .size-btn:hover:not(.active) { border-color: var(--color-text-secondary); }
 
         .custom-notes {
@@ -477,6 +498,30 @@
         }
 
         #app > * { animation: fadeIn 0.25s ease; }
+
+        /* Skeleton shimmer loading */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .skeleton-shimmer {
+            background: linear-gradient(
+                90deg,
+                var(--color-surface) 25%,
+                var(--color-surface-hover) 50%,
+                var(--color-surface) 75%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+
+        .skeleton-card {
+            pointer-events: none;
+        }
+        .skeleton-card .product-info {
+            padding: var(--space-3);
+        }
 
         /* ══════════════════════════════════════
            SCROLLBAR

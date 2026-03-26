@@ -2,6 +2,7 @@ import express from "express";
 import authAdmin, { requireRole } from "../middlewares/authAdmin.js";
 import BespokeCommission from "../models/BespokeCommission.js";
 import { baseLogger } from "../middlewares/logger.js";
+import { escapeRegex } from "../utils/escapeRegex.js";
 
 const r = express.Router();
 r.use(authAdmin);
@@ -33,7 +34,7 @@ r.get("/", requireRole("admin", "editor", "viewer"), async (req, res) => {
     if (status) query.status = status;
 
     if (search) {
-      const re = new RegExp(String(search), "i");
+      const re = new RegExp(escapeRegex(String(search)), "i");
       query.$or = [
         { commissionNumber: re },
         { "brief.energy": re },

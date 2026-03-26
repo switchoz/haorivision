@@ -15,6 +15,9 @@ import type {
   DMXCue,
 } from "./types";
 
+const log = import.meta.env.DEV ? console.log.bind(console) : () => {};
+const warn = import.meta.env.DEV ? console.warn.bind(console) : () => {};
+
 type EventCallback = (event: ShowEvent) => void;
 
 export class ShowRunner {
@@ -59,7 +62,7 @@ export class ShowRunner {
         data: this.timeline,
       });
 
-      console.log("[◇] Show loaded:", this.timeline.name);
+      log("[◇] Show loaded:", this.timeline.name);
     } catch (error) {
       console.error("[ShowRunner] Failed to load timeline:", error);
       throw error;
@@ -76,7 +79,7 @@ export class ShowRunner {
     }
 
     if (this.isPlaying) {
-      console.warn("[ShowRunner] Show already playing");
+      warn("[ShowRunner] Show already playing");
       return;
     }
 
@@ -96,7 +99,7 @@ export class ShowRunner {
       time: 0,
     });
 
-    console.log("[▶] Show started");
+    log("[▶] Show started");
 
     this.tick();
   }
@@ -120,7 +123,7 @@ export class ShowRunner {
       time: this.currentTime,
     });
 
-    console.log("[⏸] Show paused at", this.currentTime.toFixed(2), "s");
+    log("[⏸] Show paused at", this.currentTime.toFixed(2), "s");
   }
 
   /**
@@ -137,7 +140,7 @@ export class ShowRunner {
       time: this.currentTime,
     });
 
-    console.log("[▶] Show resumed");
+    log("[▶] Show resumed");
 
     this.tick();
   }
@@ -164,7 +167,7 @@ export class ShowRunner {
       time: 0,
     });
 
-    console.log("[⏹] Show stopped");
+    log("[⏹] Show stopped");
   }
 
   /**
@@ -188,7 +191,7 @@ export class ShowRunner {
     // Обновляем текущую сцену
     this.updateCurrentScene();
 
-    console.log("[⏩] Seek to", time.toFixed(2), "s");
+    log("[⏩] Seek to", time.toFixed(2), "s");
   }
 
   /**
@@ -249,7 +252,7 @@ export class ShowRunner {
         data: scene,
       });
 
-      console.log("[→] Scene:", scene.name);
+      log("[→] Scene:", scene.name);
     }
   }
 
@@ -330,7 +333,7 @@ export class ShowRunner {
    * Конец шоу
    */
   private handleShowEnd(): void {
-    console.log("[✓] Show ended");
+    log("[✓] Show ended");
 
     this.stop();
 
@@ -435,7 +438,7 @@ export class ShowRunner {
       this.audioContext = null;
     }
 
-    console.log("[◇] ShowRunner disposed");
+    log("[◇] ShowRunner disposed");
   }
 }
 
