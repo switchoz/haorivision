@@ -25,10 +25,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ============================================================
+// Types
+// ============================================================
+
+// ============================================================
 // Configuration
 // ============================================================
 
-let config | null = null;
+let config = null;
 let logEntries = [];
 
 /**
@@ -82,7 +86,7 @@ function loadConfig() {
 /**
  * Определяет CDN провайдера по заголовкам запроса
  */
-function detectProvider(req) | null {
+function detectProvider(req) {
   if (req.headers["x-vercel-id"] || req.headers["x-vercel-cache"]) {
     return "vercel";
   }
@@ -135,7 +139,7 @@ function shouldBypassCache(req, config) {
 function findCacheRule(
   pathname,
   config,
-) | null {
+) {
   // Сначала ищем точное совпадение
   for (const rule of config.rules) {
     if (rule.path === pathname) {
@@ -191,7 +195,7 @@ function generateCacheControl(
 /**
  * Логирует событие кэширования
  */
-function logCacheEvent(entry, config): void {
+function logCacheEvent(entry, config) {
   if (!config.logging.enabled) return;
 
   // Добавляем в память
@@ -239,7 +243,7 @@ export function getRecentLogs(limit = 50) {
 /**
  * Очищает лог
  */
-export function clearLogs(): void {
+export function clearLogs() {
   logEntries = [];
   console.log("[EdgeCache] Logs cleared");
 }
@@ -255,7 +259,7 @@ export function edgeCacheMiddleware(
   req,
   res,
   next,
-): void {
+) {
   const config = loadConfig();
 
   // Если отключено — пропускаем
@@ -383,30 +387,30 @@ export function edgeCacheAgeMiddleware(
   req,
   res,
   next,
-): void {
+) {
   const provider = detectProvider(req);
-  let age | undefined;
+  let age;
 
   // Vercel
   if (provider === "vercel" && req.headers["x-vercel-cache"]) {
-    const cacheStatus = req.headers["x-vercel-cache"] as string;
+    const cacheStatus = req.headers["x-vercel-cache"];
     if (cacheStatus === "HIT" && req.headers["age"]) {
-      age = parseInt(req.headers["age"] as string, 10);
+      age = parseInt(req.headers["age"], 10);
     }
   }
 
   // Cloudflare
   if (provider === "cloudflare" && req.headers["cf-cache-status"]) {
-    const cacheStatus = req.headers["cf-cache-status"] as string;
+    const cacheStatus = req.headers["cf-cache-status"];
     if (cacheStatus === "HIT" && req.headers["age"]) {
-      age = parseInt(req.headers["age"] as string, 10);
+      age = parseInt(req.headers["age"], 10);
     }
   }
 
   // Netlify
   if (provider === "netlify" && req.headers["x-nf-request-id"]) {
     if (req.headers["age"]) {
-      age = parseInt(req.headers["age"] as string, 10);
+      age = parseInt(req.headers["age"], 10);
     }
   }
 
